@@ -1,0 +1,97 @@
+@font-face {
+    font-family: RobotoBold;
+    src: url(../Assets/Font/Roboto-Medium.ttf);
+  }
+.nameUSername {
+    width:100%;
+    height:122px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 54px;
+
+}
+.namePart, .lastNamePart {
+    width:419px;
+    height:122px;
+    
+}
+.namePart label, .lastNamePart label {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.namePart input,
+.lastNamePart input {
+  width:100%;
+  height: 48px;
+  font-size: 18px;
+  padding: 0 16px;
+  margin-top: 8px;
+}
+.namePart input:active,
+.lastNamePart input:active {
+    outline: 0;
+}
+.namePart input:focus,
+.lastNamePart input:focus {
+    outline: 0;
+}
+.namePart span,
+.lastNamePart span {
+    font-size: 14px;
+}
+.upload {
+    width:100%;
+    height:30px;
+    display: flex;
+    flex-direction: row;
+    margin-right:19px;
+    margin-bottom: 49px;
+}
+.upload p {
+    margin-right: 19px;
+}
+.upload label {
+  width: 107px;
+  height: 27px;
+  background-color: #0E80BF;
+  color: white;
+  font-size: 14px;
+  transition: transform 0.5s;
+  cursor: pointer;
+  display: flex;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding-left: calc((107px - 69px) / 2 );
+  /* I do not know why but the justify content and the text-align*/
+}
+.upload input {
+    visibility: hidden;
+}
+
+.upload input:active {
+    outline: 0;
+}
+.upload input:focus {
+    outline: 0;
+    transform: scale(0.96);
+
+}
+.aboutUs {
+    width: 100%;
+    height: 148px;
+    display: flex;
+    flex-direction: column;
+
+}
+.aboutUs label {
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 798;
+}
+.aboutUs textarea {
+    height:103px;
+    width:798px;
+}
