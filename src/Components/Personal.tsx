@@ -12,6 +12,8 @@ import Vector from "../Assets/Img/2. SecondPage/Vectorvector.svg";
 import OrangeLogo from "../Assets/Img/2. SecondPage/logoOrange.svg";
 import mobileIcon from "../Assets/Icon/phoneIcon.svg";
 import spiralIcon from "../Assets/Icon/@.svg";
+import correctIcon from "../Assets/Icon/correctIcon.svg";
+import warningIcon from "../Assets/Icon/warningIcon.svg";
 
 import CommonStyles from "./Common.module.css";
 import PersonalStyles from "./Personal.module.css";
@@ -25,8 +27,60 @@ export default function Personal() {
   const [cTel, sTel] = useState<string>();
   const [cAboutMe, sAboutMe] = useState<string | undefined>();
 
+  const [cCorrect, sCorrect] = useState<boolean>(false);
+  const [cCorrect1, sCorrect1] = useState<boolean>(false);
+  const [cCorrect2, sCorrect2] = useState<boolean>(false);
+  const [cCorrect3, sCorrect3] = useState<boolean>(false);
+
+  const [cCheckBegin, sCheckBegin] = useState<number>(0);
+
+  function validateInput(name: any, username: any) {
+    const georgianWordsRegex = /^(?:.*[ა-ჰ]){2,}.*$/;
+    if (name && georgianWordsRegex.test(name)) {
+      sCorrect(true);
+      sCheckBegin(1);
+    } else {
+      sCorrect(false);
+      sCheckBegin(2);
+    }
+    if (username && georgianWordsRegex.test(username)) {
+      sCorrect1(true);
+      sCheckBegin(1);
+    } else {
+      sCorrect2(false);
+      sCheckBegin(2);
+    }
+
+    if (name && username) {
+      useAppContext1.sPage(useAppContext1.cPage + 1);
+    }
+  }
+
   return (
     <div className={`${CommonStyles.container} ${CommonStyles.containerFlex}`}>
+      <img
+        src={
+          cCheckBegin === 1 && cCorrect
+            ? correctIcon
+            : cCheckBegin === 2 && cCorrect
+            ? warningIcon
+            : ""
+        }
+        alt="correct or wrong"
+        className={
+          cCheckBegin === 1 && cCorrect
+            ? CommonStyles.commonCorrect
+            : cCheckBegin === 2 && cCorrect
+            ? CommonStyles.commonWrong
+            : ""
+        }
+        style={{
+          visibility:
+            cCheckBegin === 1 || cCheckBegin === 2 ? "visible" : "hidden",
+          top: "190px",
+          left: cCheckBegin === 1 && cCorrect ? "490px" : "calc(490px + 40px)",
+        }}
+      />
       <div className={CommonStyles.infoContainer}>
         <img
           src={Ellipse}
@@ -73,7 +127,16 @@ export default function Personal() {
                 onChange={(e) => {
                   sName(e.target.value);
                 }}
+                style={{
+                  border:
+                    cCheckBegin === 1 && cCorrect
+                      ? "1px solid #98E37E"
+                      : cCheckBegin === 1 && cCorrect
+                      ? "1px solid #F02424"
+                      : "1px solid black",
+                }}
               />
+
               <span className={CommonStyles.spanStandard}>
                 მინიმუმ 2 ასო, ქართული ასოები
               </span>
@@ -165,7 +228,7 @@ export default function Personal() {
         <button
           className={CommonStyles.purpleButton}
           onClick={() => {
-            useAppContext1.sPage(useAppContext1.cPage + 1);
+            validateInput(cName, cUsername);
           }}
         >
           შემდეგი
