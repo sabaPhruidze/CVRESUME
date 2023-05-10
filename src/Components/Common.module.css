@@ -4,6 +4,10 @@ least for 2 page */
     font-family: RobotoBold;
     src: url(../Assets/Font/Roboto-Bold.ttf);
   }
+  @font-face {
+    font-family: light;
+    src: url(../Assets/Font/Roboto-Light.ttf);
+  }
 .container {
     width:1920px;
     height:1080px;
@@ -13,6 +17,7 @@ least for 2 page */
     position: relative;
     box-sizing: border-box;
     font-family: RobotoBold;
+    overflow: hidden;
 }
 .containerFlex {
     display: flex;
@@ -81,6 +86,44 @@ least for 2 page */
     margin-left: 150px;
     margin-top: 47px;
 }
+
+.labelStandard {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+.inputStandard {
+    width:100%;
+    height: 48px;
+    font-size: 16px;
+    margin-top: 8px;
+    padding: 0 16px;
+}
+.inputStandard:active {
+    outline: 0;
+}
+.inputStandard:focus {
+    outline: 0;
+}
+.spanStandard {
+    font-size: 14px;
+    color:#2E2E2E;
+    font-family: light;
+}
+.purpleButton {
+    padding:14px 35px;
+    position: absolute;
+    bottom:65px;
+    right:150px;
+    background-color:#6B40E3 ;
+    color:white;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+.purpleButton:focus {
+    transform: scale(0.95);
+}
 .renderContainer {
     width:822px;
     height:1080px;
@@ -89,4 +132,12 @@ least for 2 page */
     z-index: 1;
     top:0;
     right:0;
+}
+.orange {
+    width:42px;
+    height:42px;
+    position: absolute;
+    left:78px;
+    bottom:44px;
+    cursor: pointer;
 }

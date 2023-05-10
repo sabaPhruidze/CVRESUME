@@ -27,6 +27,7 @@
     top: 89px;
     left: 0px;
     transition: 0.5s ease;
+    border: 1px solid black;
   }
 .lineDark {
     position: absolute;

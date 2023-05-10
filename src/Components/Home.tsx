@@ -57,9 +57,7 @@ export default function Home() {
       />
       <hr
         className={
-          useAppContext0.cBGColor
-            ? HomeStyles.lineDark
-            : `${HomeStyles.line} ${HomeStyles.lineDark}`
+          useAppContext0.cBGColor ? HomeStyles.lineDark : HomeStyles.line
         }
       />
       <button
