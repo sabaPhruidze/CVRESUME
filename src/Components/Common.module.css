@@ -138,6 +138,7 @@ least for 2 page */
     top:0;
     right:0;
     padding-left:80px;
+    box-sizing: border-box;
 }
 .orange {
     width:42px;
@@ -158,18 +159,34 @@ least for 2 page */
     align-items: center;
     font-weight: 700;
     margin-top:68px;
-    
+    margin-bottom: 20px;
 }
 /* I through .lineName:first-child would work ,but It did not work so 
 I used chatJPT */
 .lineName > div:first-child {
     margin-right: 20px;
+    
+  }
+  .mobileContainer, .emailContainer {
+    display: flex;
+    flex-direction: row;
+    color:black;
   }
   .mobileContainer {
-    display: flex;
+    margin-bottom: 34px;
   }
-  .mobileIcon {
+  .mobileIcon, .spiralIcon {
     width:16.64px;
     height:16.64px;
     filter: invert(55%) sepia(9%) saturate(11%) hue-rotate(323deg) brightness(97%) contrast(82%);
   }
+  .imageUpload {
+    width: 246px; 
+    height: 246px; 
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2;
+    top:48px;
+    right:75px;
+  }
+  

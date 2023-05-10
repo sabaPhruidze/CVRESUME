@@ -11,6 +11,7 @@ import Ellipse from "../Assets/Img/2. SecondPage/Ellipse.svg";
 import Vector from "../Assets/Img/2. SecondPage/Vectorvector.svg";
 import OrangeLogo from "../Assets/Img/2. SecondPage/logoOrange.svg";
 import mobileIcon from "../Assets/Icon/phoneIcon.svg";
+import spiralIcon from "../Assets/Icon/@.svg";
 
 import CommonStyles from "./Common.module.css";
 import PersonalStyles from "./Personal.module.css";
@@ -19,6 +20,7 @@ export default function Personal() {
 
   const [cName, sName] = useState<string | undefined>();
   const [cUsername, sUserName] = useState<string | undefined>();
+  const [cUploadImg, sUploadImg] = useState<File | null>();
   const [cEmail, sEmail] = useState<string | undefined>();
   const [cTel, sTel] = useState<string>();
   const [cAboutMe, sAboutMe] = useState<string | undefined>();
@@ -107,6 +109,10 @@ export default function Personal() {
                 alt="upload photo"
                 accept="image/*"
                 id="uploadImg"
+                onChange={(e) => {
+                  sUploadImg(e.target.files?.[0]);
+                  //if something is uploaded it will be save in sUploadImg
+                }}
               />
               {/* allowing only Images */}
             </label>
@@ -122,6 +128,7 @@ export default function Personal() {
               placeholder="ზოგადი ინფო შენ შესახებ"
               id="aboutMe"
               onChange={(e) => sAboutMe(e.target.value)}
+              maxLength={250}
             ></textarea>
           </div>
           <div className={PersonalStyles.mail}>
@@ -133,7 +140,7 @@ export default function Personal() {
               placeholder="anzorr777@redberry.ge"
               id="email"
               className={CommonStyles.inputStandard}
-              onChange={(e) => sEmail(`@ ${e.target.value}`)}
+              onChange={(e) => sEmail(e.target.value)}
             />
             <span className={CommonStyles.spanStandard}>
               უნდა მთავრდებოდეს @redberry.ge-ით
@@ -169,16 +176,65 @@ export default function Personal() {
           <div>{cName}</div>
           <div>{cUsername}</div>
         </div>
-        <div>{cAboutMe}</div>
-        <div>{cEmail}</div>
+        <div className={CommonStyles.emailContainer}>
+          {cEmail && (
+            <>
+              <img
+                src={spiralIcon}
+                alt="spiral Icon"
+                className={CommonStyles.spiralIcon}
+              />
+            </>
+          )}
+          <div style={{ marginLeft: "5px" }}>{cEmail}</div>
+        </div>
         <div className={CommonStyles.mobileContainer}>
-          <img
-            src={mobileIcon}
-            alt="mobile icon"
-            className={CommonStyles.mobileIcon}
-          />
+          {cTel && (
+            <>
+              {" "}
+              <img
+                src={mobileIcon}
+                alt="mobile icon"
+                className={CommonStyles.mobileIcon}
+              />
+            </>
+          )}
           <div style={{ marginLeft: "5px" }}>{cTel}</div>
         </div>
+        <div className={CommonStyles.aboutMeContainer}>
+          {cAboutMe && (
+            <>
+              <div
+                style={{
+                  fontSize: "18px",
+                  fontWeight: "700",
+                  color: "#F93B1D",
+                  marginBottom: "15px",
+                }}
+              >
+                ჩემს შესახებ
+              </div>
+            </>
+          )}
+          <div
+            style={{
+              width: "432px",
+              height: "125px",
+              wordWrap: "break-word",
+              overflow: "hidden",
+              fontSize: "16px",
+            }}
+          >
+            {cAboutMe}
+          </div>
+        </div>
+        {cUploadImg && (
+          <img
+            src={URL.createObjectURL(cUploadImg)} //I do not really knew this part but chatGPT helped me here
+            alt="uploaded photo"
+            className={CommonStyles.imageUpload}
+          />
+        )}
         <img
           src={OrangeLogo}
           alt="OrangeLogo"

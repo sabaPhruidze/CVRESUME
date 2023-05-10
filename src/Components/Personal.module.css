@@ -81,6 +81,7 @@
     font-size: 16px;
     margin-bottom: 33px;
     border-radius:5px;
+    overflow: auto;
 }
 .aboutUs textarea:active {
     outline: 0;
