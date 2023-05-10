@@ -8,6 +8,7 @@ least for 2 page */
     font-family: light;
     src: url(../Assets/Font/Roboto-Light.ttf);
   }
+  /* left side */
 .container {
     width:1920px;
     height:1080px;
@@ -124,6 +125,10 @@ least for 2 page */
 .purpleButton:focus {
     transform: scale(0.95);
 }
+
+/* left side */
+
+/* right side */
 .renderContainer {
     width:822px;
     height:1080px;
@@ -132,6 +137,7 @@ least for 2 page */
     z-index: 1;
     top:0;
     right:0;
+    padding-left:80px;
 }
 .orange {
     width:42px;
@@ -141,3 +147,29 @@ least for 2 page */
     bottom:44px;
     cursor: pointer;
 }
+.lineName {
+    font-family: RobotoBold;
+    width:calc(100% - 264px - 75px);
+    height:42px;
+    color:#F93B1D;
+    font-size: 34px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 700;
+    margin-top:68px;
+    
+}
+/* I through .lineName:first-child would work ,but It did not work so 
+I used chatJPT */
+.lineName > div:first-child {
+    margin-right: 20px;
+  }
+  .mobileContainer {
+    display: flex;
+  }
+  .mobileIcon {
+    width:16.64px;
+    height:16.64px;
+    filter: invert(55%) sepia(9%) saturate(11%) hue-rotate(323deg) brightness(97%) contrast(82%);
+  }

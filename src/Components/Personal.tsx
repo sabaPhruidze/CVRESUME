@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { context } from "../App";
 
 import georgiaFlag from "../Assets/Img/common/georgia.png";
@@ -10,12 +10,18 @@ import darkMode from "../Assets/Icon/nightMode.svg";
 import Ellipse from "../Assets/Img/2. SecondPage/Ellipse.svg";
 import Vector from "../Assets/Img/2. SecondPage/Vectorvector.svg";
 import OrangeLogo from "../Assets/Img/2. SecondPage/logoOrange.svg";
+import mobileIcon from "../Assets/Icon/phoneIcon.svg";
 
 import CommonStyles from "./Common.module.css";
 import PersonalStyles from "./Personal.module.css";
-
 export default function Personal() {
   const useAppContext1 = useContext(context);
+
+  const [cName, sName] = useState<string | undefined>();
+  const [cUsername, sUserName] = useState<string | undefined>();
+  const [cEmail, sEmail] = useState<string | undefined>();
+  const [cTel, sTel] = useState<string>();
+  const [cAboutMe, sAboutMe] = useState<string | undefined>();
 
   return (
     <div className={`${CommonStyles.container} ${CommonStyles.containerFlex}`}>
@@ -62,6 +68,9 @@ export default function Personal() {
                 placeholder="ანზორ"
                 id="namef"
                 className={CommonStyles.inputStandard}
+                onChange={(e) => {
+                  sName(e.target.value);
+                }}
               />
               <span className={CommonStyles.spanStandard}>
                 მინიმუმ 2 ასო, ქართული ასოები
@@ -76,6 +85,9 @@ export default function Personal() {
                 placeholder="მუმლაძე"
                 id="userName"
                 className={CommonStyles.inputStandard}
+                onChange={(e) => {
+                  sUserName(e.target.value);
+                }}
               />
               <span className={CommonStyles.spanStandard}>
                 მინიმუმ 2 ასო, ქართული ასოები
@@ -100,42 +112,47 @@ export default function Personal() {
             </label>
           </div>
           <div className={PersonalStyles.aboutUs}>
-            <label>
-              ჩვენს შესახებ{" "}
+            <label htmlFor="aboutMe" className={CommonStyles.labelStandard}>
+              ჩვენს შესახებ
               <span className={CommonStyles.spanStandard}>
                 (არასავალდებულო)
               </span>
             </label>
-            <textarea placeholder="ზოგადი ინფო შენ შესახებ"></textarea>
-
-            <div className={PersonalStyles.mail}>
-              <label htmlFor="email" className={CommonStyles.labelStandard}>
-                ელ.ფოსტა
-              </label>
-              <input
-                type="email"
-                placeholder="anzorr777@redberry.ge"
-                id="email"
-                className={CommonStyles.inputStandard}
-              />
-              <span className={CommonStyles.spanStandard}>
-                უნდა მთავრდებოდეს @redberry.ge-ით
-              </span>
-            </div>
-            <div className={PersonalStyles.telephone}>
-              <label htmlFor="tel" className={CommonStyles.labelStandard}>
-                მობილურის ნომერი
-              </label>
-              <input
-                type="tel"
-                placeholder="+995 551 12 34 56"
-                id="tel"
-                className={CommonStyles.inputStandard}
-              />
-              <span className={CommonStyles.spanStandard}>
-                უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს
-              </span>
-            </div>
+            <textarea
+              placeholder="ზოგადი ინფო შენ შესახებ"
+              id="aboutMe"
+              onChange={(e) => sAboutMe(e.target.value)}
+            ></textarea>
+          </div>
+          <div className={PersonalStyles.mail}>
+            <label htmlFor="email" className={CommonStyles.labelStandard}>
+              ელ.ფოსტა
+            </label>
+            <input
+              type="email"
+              placeholder="anzorr777@redberry.ge"
+              id="email"
+              className={CommonStyles.inputStandard}
+              onChange={(e) => sEmail(`@ ${e.target.value}`)}
+            />
+            <span className={CommonStyles.spanStandard}>
+              უნდა მთავრდებოდეს @redberry.ge-ით
+            </span>
+          </div>
+          <div className={PersonalStyles.telephone}>
+            <label htmlFor="tel" className={CommonStyles.labelStandard}>
+              მობილურის ნომერი
+            </label>
+            <input
+              type="tel"
+              placeholder="+995 551 12 34 56"
+              id="tel"
+              className={CommonStyles.inputStandard}
+              onChange={(e) => sTel(e.target.value)}
+            />
+            <span className={CommonStyles.spanStandard}>
+              უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს
+            </span>
           </div>
         </div>
         <button
@@ -148,6 +165,20 @@ export default function Personal() {
         </button>
       </div>
       <div className={CommonStyles.renderContainer}>
+        <div className={CommonStyles.lineName}>
+          <div>{cName}</div>
+          <div>{cUsername}</div>
+        </div>
+        <div>{cAboutMe}</div>
+        <div>{cEmail}</div>
+        <div className={CommonStyles.mobileContainer}>
+          <img
+            src={mobileIcon}
+            alt="mobile icon"
+            className={CommonStyles.mobileIcon}
+          />
+          <div style={{ marginLeft: "5px" }}>{cTel}</div>
+        </div>
         <img
           src={OrangeLogo}
           alt="OrangeLogo"
