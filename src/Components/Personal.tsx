@@ -1,6 +1,9 @@
 import React from "react";
-import { useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { context } from "../App";
+
+import CommonInput from "./ForDataMap/CommonInput";
+import CorrectWrongComponent from "./ForDataMap/CorrectWrongComponent";
 
 import georgiaFlag from "../Assets/Img/common/georgia.png";
 import unitedKingdomFlag from "../Assets/Img/common/unitedKingdom.png";
@@ -12,16 +15,17 @@ import Vector from "../Assets/Img/2. SecondPage/Vectorvector.svg";
 import OrangeLogo from "../Assets/Img/2. SecondPage/logoOrange.svg";
 import mobileIcon from "../Assets/Icon/phoneIcon.svg";
 import spiralIcon from "../Assets/Icon/@.svg";
-import correctIcon from "../Assets/Icon/correctIcon.svg";
-import warningIcon from "../Assets/Icon/warningIcon.svg";
 
 import CommonStyles from "./Common.module.css";
 import PersonalStyles from "./Personal.module.css";
+
+export const MyPersonalContext = createContext<any>("s");
+
 export default function Personal() {
   const useAppContext1 = useContext(context);
 
   const [cName, sName] = useState<string | undefined>();
-  const [cUsername, sUserName] = useState<string | undefined>();
+  const [cUsername, sUsername] = useState<string | undefined>();
   const [cUploadImg, sUploadImg] = useState<File | null>();
   const [cEmail, sEmail] = useState<string | undefined>();
   const [cTel, sTel] = useState<string>();
@@ -31,24 +35,19 @@ export default function Personal() {
   const [cCorrect1, sCorrect1] = useState<boolean>(false);
   const [cCorrect2, sCorrect2] = useState<boolean>(false);
   const [cCorrect3, sCorrect3] = useState<boolean>(false);
-
-  const [cCheckBegin, sCheckBegin] = useState<number>(0);
+  const [cVisible, sVisible] = useState<boolean>(false);
 
   function validateInput(name: any, username: any) {
     const georgianWordsRegex = /^(?:.*[ა-ჰ]){2,}.*$/;
     if (name && georgianWordsRegex.test(name)) {
       sCorrect(true);
-      sCheckBegin(1);
     } else {
       sCorrect(false);
-      sCheckBegin(2);
     }
     if (username && georgianWordsRegex.test(username)) {
       sCorrect1(true);
-      sCheckBegin(1);
     } else {
-      sCorrect2(false);
-      sCheckBegin(2);
+      sCorrect1(false);
     }
 
     if (name && username) {
@@ -58,29 +57,17 @@ export default function Personal() {
 
   return (
     <div className={`${CommonStyles.container} ${CommonStyles.containerFlex}`}>
-      <img
-        src={
-          cCheckBegin === 1 && cCorrect
-            ? correctIcon
-            : cCheckBegin === 2 && cCorrect
-            ? warningIcon
-            : ""
-        }
-        alt="correct or wrong"
-        className={
-          cCheckBegin === 1 && cCorrect
-            ? CommonStyles.commonCorrect
-            : cCheckBegin === 2 && cCorrect
-            ? CommonStyles.commonWrong
-            : ""
-        }
-        style={{
-          visibility:
-            cCheckBegin === 1 || cCheckBegin === 2 ? "visible" : "hidden",
-          top: "190px",
-          left: cCheckBegin === 1 && cCorrect ? "490px" : "calc(490px + 40px)",
+      <MyPersonalContext.Provider
+        value={{
+          cCorrect,
+          cCorrect1,
+          cCorrect2,
+          cCorrect3,
+          cVisible,
         }}
-      />
+      >
+        <CorrectWrongComponent />
+      </MyPersonalContext.Provider>
       <div className={CommonStyles.infoContainer}>
         <img
           src={Ellipse}
@@ -115,49 +102,17 @@ export default function Personal() {
           </div>
           <hr style={{ marginBottom: "69px" }} />
           <div className={PersonalStyles.nameUSername}>
-            <div className={PersonalStyles.namePart}>
-              <label htmlFor="namef" className={CommonStyles.labelStandard}>
-                სახელი
-              </label>
-              <input
-                type="text"
-                placeholder="ანზორ"
-                id="namef"
-                className={CommonStyles.inputStandard}
-                onChange={(e) => {
-                  sName(e.target.value);
-                }}
-                style={{
-                  border:
-                    cCheckBegin === 1 && cCorrect
-                      ? "1px solid #98E37E"
-                      : cCheckBegin === 1 && cCorrect
-                      ? "1px solid #F02424"
-                      : "1px solid black",
-                }}
-              />
-
-              <span className={CommonStyles.spanStandard}>
-                მინიმუმ 2 ასო, ქართული ასოები
-              </span>
-            </div>
-            <div className={PersonalStyles.lastNamePart}>
-              <label htmlFor="userName" className={CommonStyles.labelStandard}>
-                გვარი
-              </label>
-              <input
-                type="text"
-                placeholder="მუმლაძე"
-                id="userName"
-                className={CommonStyles.inputStandard}
-                onChange={(e) => {
-                  sUserName(e.target.value);
-                }}
-              />
-              <span className={CommonStyles.spanStandard}>
-                მინიმუმ 2 ასო, ქართული ასოები
-              </span>
-            </div>
+            <MyPersonalContext.Provider
+              value={{
+                cCorrect,
+                cCorrect1,
+                sName,
+                cVisible,
+                sUsername,
+              }}
+            >
+              <CommonInput />
+            </MyPersonalContext.Provider>
           </div>
           <div className={PersonalStyles.upload}>
             <p>პირადი ფოტოს ატვირთვა</p>
@@ -229,6 +184,7 @@ export default function Personal() {
           className={CommonStyles.purpleButton}
           onClick={() => {
             validateInput(cName, cUsername);
+            sVisible(true);
           }}
         >
           შემდეგი
