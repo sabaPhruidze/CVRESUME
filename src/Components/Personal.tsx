@@ -49,10 +49,10 @@ export default function Personal() {
     } else {
       sCorrect1(false);
     }
-
-    if (name && username) {
-      useAppContext1.sPage(useAppContext1.cPage + 1);
-    }
+    //ესაა მთავარი რომ თუ ყველაფერი სწორადაა შევსებული ამ შემთხვევაში გადავიდეს შემდეგ გვერდზე
+    // if (name && username) {
+    //   useAppContext1.sPage(useAppContext1.cPage + 1);
+    // }
   }
 
   return (
