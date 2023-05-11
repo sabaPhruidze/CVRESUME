@@ -29,9 +29,9 @@ export default function CommonInput() {
   ];
   return (
     <>
-      {dataMap.map((data) => {
+      {dataMap.map((data, idx) => {
         return (
-          <div className={data.fullDivName}>
+          <div className={data.fullDivName} key={idx}>
             <label
               htmlFor={data.htmlForId}
               className={CommonStyles.labelStandard}
@@ -52,7 +52,7 @@ export default function CommonInput() {
                     ? "1px solid #98E37E"
                     : !data.borderCorrect && cVisible
                     ? "1px solid #EF5050"
-                    : "",
+                    : "1px solid black",
               }}
             />
             <span className={CommonStyles.spanStandard}>

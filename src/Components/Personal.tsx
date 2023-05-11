@@ -1,5 +1,5 @@
 import React from "react";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useRef } from "react";
 import { context } from "../App";
 
 import CommonInput from "./ForDataMap/CommonInput";
@@ -37,8 +37,16 @@ export default function Personal() {
   const [cCorrect3, sCorrect3] = useState<boolean>(false);
   const [cVisible, sVisible] = useState<boolean>(false);
 
-  function validateInput(name: any, username: any) {
+  function validateInput(
+    name: string | undefined,
+    username: string | undefined,
+    img: any,
+    email: string | undefined,
+    phone: any
+  ) {
     const georgianWordsRegex = /^(?:.*[ა-ჰ]){2,}.*$/;
+    const mailRegex = /.*@redberry\.ge$/;
+    const telNumber = /^\+995 \d{3} \d{2} \d{2} \d{2}$/;
     if (name && georgianWordsRegex.test(name)) {
       sCorrect(true);
     } else {
@@ -49,12 +57,39 @@ export default function Personal() {
     } else {
       sCorrect1(false);
     }
+    if (email && mailRegex.test(email)) {
+      sCorrect2(true);
+      emailRef.current.style.border = "1px solid #98E37E";
+    } else {
+      sCorrect2(false);
+      emailRef.current.style.border = "1px solid #EF5050";
+    }
+    if (phone && telNumber.test(phone)) {
+      sCorrect3(true);
+      mobileRef.current.style.border = "1px solid #98E37E";
+    } else {
+      sCorrect3(false);
+      mobileRef.current.style.border = "1px solid #EF5050";
+    }
+    if (
+      name &&
+      georgianWordsRegex.test(name) &&
+      username &&
+      georgianWordsRegex.test(username) &&
+      img &&
+      email &&
+      mailRegex.test(email) &&
+      phone &&
+      telNumber.test(phone)
+    ) {
+      useAppContext1.sPage(useAppContext1.cPage + 1);
+    }
     //ესაა მთავარი რომ თუ ყველაფერი სწორადაა შევსებული ამ შემთხვევაში გადავიდეს შემდეგ გვერდზე
-    // if (name && username) {
-    //   useAppContext1.sPage(useAppContext1.cPage + 1);
-    // }
   }
-
+  //I am just using ref to test it.Even trougth I can solve most of the tasks using useState I think sometimes useRef is also helpful
+  const textAreaRef = useRef<any>("");
+  const emailRef = useRef<any>("");
+  const mobileRef = useRef<any>("");
   return (
     <div className={`${CommonStyles.container} ${CommonStyles.containerFlex}`}>
       <MyPersonalContext.Provider
@@ -147,6 +182,8 @@ export default function Personal() {
               id="aboutMe"
               onChange={(e) => sAboutMe(e.target.value)}
               maxLength={250}
+              ref={textAreaRef}
+              style={{ border: "1px solid black" }}
             ></textarea>
           </div>
           <div className={PersonalStyles.mail}>
@@ -157,8 +194,9 @@ export default function Personal() {
               type="email"
               placeholder="anzorr777@redberry.ge"
               id="email"
-              className={CommonStyles.inputStandard}
+              className={`${CommonStyles.inputStandard} ${CommonStyles.commonInputBorder}`}
               onChange={(e) => sEmail(e.target.value)}
+              ref={emailRef}
             />
             <span className={CommonStyles.spanStandard}>
               უნდა მთავრდებოდეს @redberry.ge-ით
@@ -172,8 +210,9 @@ export default function Personal() {
               type="tel"
               placeholder="+995 551 12 34 56"
               id="tel"
-              className={CommonStyles.inputStandard}
+              className={`${CommonStyles.inputStandard} ${CommonStyles.commonInputBorder}`}
               onChange={(e) => sTel(e.target.value)}
+              ref={mobileRef}
             />
             <span className={CommonStyles.spanStandard}>
               უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს
@@ -183,8 +222,14 @@ export default function Personal() {
         <button
           className={CommonStyles.purpleButton}
           onClick={() => {
-            validateInput(cName, cUsername);
+            validateInput(cName, cUsername, cUploadImg, cEmail, cTel);
             sVisible(true);
+            if (textAreaRef.current.value.length > 0) {
+              textAreaRef.current.style.border = "1px solid #98E37E";
+            } else {
+              textAreaRef.current.style.border = "1px solid black"; //it will not become red because writing this line is not nessesary
+              // according to the figma
+            }
           }}
         >
           შემდეგი
