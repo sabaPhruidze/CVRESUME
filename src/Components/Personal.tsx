@@ -70,7 +70,21 @@ export default function Personal() {
       phone &&
       telNumber.test(phone)
     ) {
-      useAppContext1.sPage(useAppContext1.cPage + 1);
+      return [
+        localStorage.setItem("cName", cName),
+        localStorage.setItem("cUsername", cUsername),
+        localStorage.setItem("cUploadImg", cUploadImg),
+        localStorage.setItem("cEmail", cEmail),
+        localStorage.setItem("cTel", cTel),
+        localStorage.setItem("cAboutMe", cAboutMe),
+        cName,
+        cUsername,
+        cUploadImg,
+        cEmail,
+        cTel,
+        cAboutMe,
+        useAppContext1.sPage(useAppContext1.cPage + 1),
+      ];
     }
     //ესაა მთავარი რომ თუ ყველაფერი სწორადაა შევსებული ამ შემთხვევაში გადავიდეს შემდეგ გვერდზე
   }
