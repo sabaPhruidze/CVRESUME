@@ -8,7 +8,15 @@ import CommonStyles from "../Common.module.css";
 
 export default function CommonInput() {
   const MPCL = useContext(MyPersonalContext);
-  const { cCorrect, cCorrect1, sName, sUsername, cVisible, cLanguage } = MPCL;
+  const {
+    cCorrect,
+    cCorrect1,
+    sName,
+    sUsername,
+    cVisible,
+    cLanguage,
+    cBGColor,
+  } = MPCL;
   const dataMap = [
     {
       fullDivName: PersonalStyles.namePart,
@@ -42,16 +50,24 @@ export default function CommonInput() {
               type="text"
               placeholder={data.inputPlaceHolder}
               id={data.htmlForId}
-              className={CommonStyles.inputStandard}
+              className={
+                cBGColor
+                  ? CommonStyles.inputStandardDark
+                  : CommonStyles.inputStandard
+              }
               onChange={(e) => {
                 data.onChange(e.target.value);
               }}
               style={{
                 border:
-                  data.borderCorrect && cVisible
+                  (data.borderCorrect && cVisible && !cBGColor) || cBGColor
                     ? "1px solid #98E37E"
-                    : !data.borderCorrect && cVisible
+                    : (!data.borderCorrect && cVisible && !cBGColor) || cBGColor
                     ? "1px solid #EF5050"
+                    : data.borderCorrect && !cBGColor
+                    ? "1px solid black"
+                    : data.borderCorrect && cBGColor
+                    ? "1px solid white"
                     : "1px solid black",
               }}
             />

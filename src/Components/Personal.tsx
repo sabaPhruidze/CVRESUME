@@ -133,11 +133,16 @@ export default function Personal() {
           cCorrect2,
           cCorrect3,
           cVisible,
+          cBGColor,
         }}
       >
         <CorrectWrongComponent />
       </MyPersonalContext.Provider>
-      <div className={CommonStyles.infoContainer}>
+      <div
+        className={
+          cBGColor ? CommonStyles.infoContainerDark : CommonStyles.infoContainer
+        }
+      >
         <img
           src={cBGColor ? lightMode : darkMode}
           alt="light or dark"
@@ -161,13 +166,13 @@ export default function Personal() {
         <img
           src={Ellipse}
           alt="Ellipse"
-          className={CommonStyles.ellipse}
+          className={cBGColor ? CommonStyles.ellipseDark : CommonStyles.ellipse}
           onClick={() => useAppContext1.sPage(useAppContext1.cPage - 1)}
         />
         <img
           src={Vector}
           alt="Vector"
-          className={CommonStyles.vector}
+          className={cBGColor ? CommonStyles.vectorLight : CommonStyles.vector}
           onClick={() => useAppContext1.sPage(useAppContext1.cPage - 1)}
         />
         <div className={CommonStyles.skeleton}>

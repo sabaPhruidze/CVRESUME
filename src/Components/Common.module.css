@@ -20,6 +20,7 @@ least for 2 page */
     font-family: RobotoBold;
     overflow: hidden;
 }
+
 .containerFlex {
     display: flex;
     flex-direction:row;
@@ -60,6 +61,16 @@ least for 2 page */
     z-index: 2;
     cursor: pointer;
 }
+.ellipseDark {
+  width:40px;
+  height:40px;
+  position: absolute;
+  top:45px;
+  left:48px;
+  z-index: 2;
+  cursor: pointer;
+  filter: brightness(0%);
+}
 .vector {
     width: 9.21px;
     height: 16px;
@@ -68,7 +79,17 @@ least for 2 page */
     left:62px;
     z-index: 3;
     cursor: pointer;
-
+    filter: brightness(0%);
+}
+.vectorLight {
+  width: 9.21px;
+  height: 16px;
+  position: absolute;
+  top:57px;
+  left:62px;
+  z-index: 3;
+  cursor: pointer;
+  filter: invert(99%) sepia(7%) saturate(3%) hue-rotate(73deg) brightness(107%) contrast(100%);
 }
 .infoContainer {
     width:1098px;
@@ -79,6 +100,18 @@ least for 2 page */
     top:0;
     left:0;
     
+}
+
+.infoContainerDark {
+  width:1098px;
+  height:1080px;
+  background-color: #090909;
+  color:white;
+  position: absolute;
+  z-index: 1;
+  top:0;
+  left:0;
+  
 }
 .skeleton {
     width:calc(1098px - 300px);
@@ -100,12 +133,30 @@ least for 2 page */
     font-size: 16px;
     margin-top: 8px;
     padding: 0 16px;
+    color: #000000;
+  background-color: #ffffff;
 }
 .inputStandard:active {
     outline: 0;
 }
 .inputStandard:focus {
     outline: 0;
+}
+.inputStandardDark {
+  width:100%;
+  height: 48px;
+  font-size: 16px;
+  margin-top: 8px;
+  padding: 0 16px;
+  color: #ffffff;
+  background-color: #000000;
+  border-radius: 1px solid white;
+}
+.inputStandardDark:active {
+  outline: 0;
+}
+.inputStandardDark:focus {
+  outline: 0;
 }
 .spanStandard {
     font-size: 14px;
@@ -216,5 +267,5 @@ I used chatJPT */
     position: absolute;
     z-index: 2;
     top:88px;
-    left:180px;
+    left:187px;
   }
