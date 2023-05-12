@@ -4,6 +4,7 @@ import { context } from "../App";
 
 import CommonInput from "./ForDataMap/CommonInput";
 import CorrectWrongComponent from "./ForDataMap/CorrectWrongComponent";
+import Rendered from "./ForDataMap/Rendered";
 
 import georgiaFlag from "../Assets/Img/common/georgia.png";
 import unitedKingdomFlag from "../Assets/Img/common/unitedKingdom.png";
@@ -23,19 +24,6 @@ export const MyPersonalContext = createContext<any>("s");
 
 export default function Personal() {
   const useAppContext1 = useContext(context);
-
-  const [cName, sName] = useState<string | undefined>();
-  const [cUsername, sUsername] = useState<string | undefined>();
-  const [cUploadImg, sUploadImg] = useState<File | null>();
-  const [cEmail, sEmail] = useState<string | undefined>();
-  const [cTel, sTel] = useState<string>();
-  const [cAboutMe, sAboutMe] = useState<string | undefined>();
-
-  const [cCorrect, sCorrect] = useState<boolean>(false);
-  const [cCorrect1, sCorrect1] = useState<boolean>(false);
-  const [cCorrect2, sCorrect2] = useState<boolean>(false);
-  const [cCorrect3, sCorrect3] = useState<boolean>(false);
-  const [cVisible, sVisible] = useState<boolean>(false);
 
   function validateInput(
     name: string | undefined,
@@ -90,6 +78,36 @@ export default function Personal() {
   const textAreaRef = useRef<any>("");
   const emailRef = useRef<any>("");
   const mobileRef = useRef<any>("");
+  const {
+    cPage,
+    sPage,
+    cLanguage,
+    sLanguage,
+    cBGColor,
+    sBGColor,
+    cName,
+    sName,
+    cUsername,
+    sUsername,
+    cUploadImg,
+    sUploadImg,
+    cEmail,
+    sEmail,
+    cTel,
+    sTel,
+    cAboutMe,
+    sAboutMe,
+    cCorrect,
+    sCorrect,
+    cCorrect1,
+    sCorrect1,
+    cCorrect2,
+    sCorrect2,
+    cCorrect3,
+    sCorrect3,
+    cVisible,
+    sVisible,
+  } = useAppContext1;
   return (
     <div className={`${CommonStyles.container} ${CommonStyles.containerFlex}`}>
       <MyPersonalContext.Provider
@@ -235,76 +253,11 @@ export default function Personal() {
           შემდეგი
         </button>
       </div>
-      <div className={CommonStyles.renderContainer}>
-        <div className={CommonStyles.lineName}>
-          <div>{cName}</div>
-          <div>{cUsername}</div>
-        </div>
-        <div className={CommonStyles.emailContainer}>
-          {cEmail && (
-            <>
-              <img
-                src={spiralIcon}
-                alt="spiral Icon"
-                className={CommonStyles.spiralIcon}
-              />
-            </>
-          )}
-          <div style={{ marginLeft: "5px" }}>{cEmail}</div>
-        </div>
-        <div className={CommonStyles.mobileContainer}>
-          {cTel && (
-            <>
-              {" "}
-              <img
-                src={mobileIcon}
-                alt="mobile icon"
-                className={CommonStyles.mobileIcon}
-              />
-            </>
-          )}
-          <div style={{ marginLeft: "5px" }}>{cTel}</div>
-        </div>
-        <div className={CommonStyles.aboutMeContainer}>
-          {cAboutMe && (
-            <>
-              <div
-                style={{
-                  fontSize: "18px",
-                  fontWeight: "700",
-                  color: "#F93B1D",
-                  marginBottom: "15px",
-                }}
-              >
-                ჩემს შესახებ
-              </div>
-            </>
-          )}
-          <div
-            style={{
-              width: "432px",
-              height: "125px",
-              wordWrap: "break-word",
-              overflow: "hidden",
-              fontSize: "16px",
-            }}
-          >
-            {cAboutMe}
-          </div>
-        </div>
-        {cUploadImg && (
-          <img
-            src={URL.createObjectURL(cUploadImg)} //I do not really knew this part but chatGPT helped me here
-            alt="uploaded photo"
-            className={CommonStyles.imageUpload}
-          />
-        )}
-        <img
-          src={OrangeLogo}
-          alt="OrangeLogo"
-          className={CommonStyles.orange}
-        />
-      </div>
+      <MyPersonalContext.Provider
+        value={{ cName, cUsername, cEmail, cTel, cAboutMe, cUploadImg }}
+      >
+        <Rendered />
+      </MyPersonalContext.Provider>
     </div>
   );
 }

@@ -14,7 +14,21 @@ function App() {
   const [cPage, sPage] = useState<number>(0); // current page ,set page
   const [cLanguage, sLanguage] = useState<boolean>(false); //if false than georgian else english
   const [cBGColor, sBGColor] = useState<boolean>(false); //if false than white, if true than black {BG- means background color}
-  const [cThirdChanger, sThirdChanger] = useState<string>("1/3"); // here I mean 1/3 ; 2/3 ; 3/3
+
+  // For Personal
+  const [cName, sName] = useState<string | undefined>();
+  const [cUsername, sUsername] = useState<string | undefined>();
+  const [cUploadImg, sUploadImg] = useState<File | null>();
+  const [cEmail, sEmail] = useState<string | undefined>();
+  const [cTel, sTel] = useState<string>();
+  const [cAboutMe, sAboutMe] = useState<string | undefined>();
+
+  const [cCorrect, sCorrect] = useState<boolean>(false);
+  const [cCorrect1, sCorrect1] = useState<boolean>(false);
+  const [cCorrect2, sCorrect2] = useState<boolean>(false);
+  const [cCorrect3, sCorrect3] = useState<boolean>(false);
+  const [cVisible, sVisible] = useState<boolean>(false);
+
   function changePage() {
     switch (cPage) {
       case 0:
@@ -37,7 +51,36 @@ function App() {
 
   return (
     <context.Provider
-      value={{ cPage, sPage, cLanguage, sLanguage, cBGColor, sBGColor }}
+      value={{
+        cPage,
+        sPage,
+        cLanguage,
+        sLanguage,
+        cBGColor,
+        sBGColor,
+        cName,
+        sName,
+        cUsername,
+        sUsername,
+        cUploadImg,
+        sUploadImg,
+        cEmail,
+        sEmail,
+        cTel,
+        sTel,
+        cAboutMe,
+        sAboutMe,
+        cCorrect,
+        sCorrect,
+        cCorrect1,
+        sCorrect1,
+        cCorrect2,
+        sCorrect2,
+        cCorrect3,
+        sCorrect3,
+        cVisible,
+        sVisible,
+      }}
     >
       <div>{changePage()}</div>
     </context.Provider>
