@@ -24,7 +24,9 @@ export const MyPersonalContext = createContext<any>("s");
 
 export default function Personal() {
   const useAppContext1 = useContext(context);
-
+  function languageChanger(geo: string, eng: string) {
+    return !cLanguage ? geo : eng;
+  }
   function validateInput(
     name: string | undefined,
     username: string | undefined,
@@ -137,6 +139,26 @@ export default function Personal() {
       </MyPersonalContext.Provider>
       <div className={CommonStyles.infoContainer}>
         <img
+          src={cBGColor ? lightMode : darkMode}
+          alt="light or dark"
+          className={
+            cBGColor
+              ? `${CommonStyles.modeSun} ${CommonStyles.CommonBGCPosition}`
+              : `${CommonStyles.modeMoon} ${CommonStyles.CommonBGCPosition}`
+          }
+          onClick={() => {
+            sBGColor(!cBGColor);
+          }}
+        />
+        <img
+          src={cLanguage !== true ? unitedKingdomFlag : georgiaFlag}
+          alt="language"
+          className={`${CommonStyles.language} ${CommonStyles.CommonlanguagePosition}`}
+          onClick={() => {
+            sLanguage(!cLanguage);
+          }}
+        />
+        <img
           src={Ellipse}
           alt="Ellipse"
           className={CommonStyles.ellipse}
@@ -157,7 +179,7 @@ export default function Personal() {
                 fontWeight: "700",
               }}
             >
-              პირადი ინფო
+              {languageChanger("პირადი ინფო", "Personal information")}
             </p>
             <p
               style={{
@@ -176,19 +198,27 @@ export default function Personal() {
                 sName,
                 cVisible,
                 sUsername,
+                cLanguage,
               }}
             >
               <CommonInput />
             </MyPersonalContext.Provider>
           </div>
           <div className={PersonalStyles.upload}>
-            <p>პირადი ფოტოს ატვირთვა</p>
+            <p>
+              {languageChanger(
+                "პირადი ფოტოს ატვირთვა",
+                "Upload a personal photo"
+              )}
+            </p>
             <label
               htmlFor="uploadImg"
-              style={{ textAlign: "center" }}
+              style={{
+                padding: !cLanguage ? "3px 0 5px 20px" : "5px 0 5px 30px",
+              }}
               id="textArea"
             >
-              ატვირთვა
+              {languageChanger("ატვირთვა", "Upload")}
               <input
                 type="file"
                 alt="upload photo"
@@ -204,13 +234,16 @@ export default function Personal() {
           </div>
           <div className={PersonalStyles.aboutUs}>
             <label htmlFor="aboutMe" className={CommonStyles.labelStandard}>
-              ჩვენს შესახებ
+              {languageChanger("ჩვენს შესახებ", "About us")}
               <span className={CommonStyles.spanStandard}>
-                (არასავალდებულო)
+                {languageChanger("(არასავალდებულო)", "(optional)")}
               </span>
             </label>
             <textarea
-              placeholder="ზოგადი ინფო შენ შესახებ"
+              placeholder={languageChanger(
+                "ზოგადი ინფო შენ შესახებ",
+                "General information about you"
+              )}
               id="aboutMe"
               onChange={(e) => sAboutMe(e.target.value)}
               maxLength={250}
@@ -220,7 +253,7 @@ export default function Personal() {
           </div>
           <div className={PersonalStyles.mail}>
             <label htmlFor="email" className={CommonStyles.labelStandard}>
-              ელ.ფოსტა
+              {languageChanger("ელ.ფოსტა", "Email")}
             </label>
             <input
               type="email"
@@ -231,12 +264,15 @@ export default function Personal() {
               ref={emailRef}
             />
             <span className={CommonStyles.spanStandard}>
-              უნდა მთავრდებოდეს @redberry.ge-ით
+              {languageChanger(
+                "უნდა მთავრდებოდეს @redberry.ge-ით",
+                "Must end with @redberry.ge"
+              )}
             </span>
           </div>
           <div className={PersonalStyles.telephone}>
             <label htmlFor="tel" className={CommonStyles.labelStandard}>
-              მობილურის ნომერი
+              {languageChanger("მობილურის ნომერი", "Mobile number")}
             </label>
             <input
               type="tel"
@@ -247,7 +283,10 @@ export default function Personal() {
               ref={mobileRef}
             />
             <span className={CommonStyles.spanStandard}>
-              უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს
+              {languageChanger(
+                "უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს",
+                "Must meet the Georgian mobile number format"
+              )}
             </span>
           </div>
         </div>
@@ -264,7 +303,7 @@ export default function Personal() {
             }
           }}
         >
-          შემდეგი
+          {languageChanger("შემდეგი", "Next")}
         </button>
       </div>
       <MyPersonalContext.Provider

@@ -8,22 +8,22 @@ import CommonStyles from "../Common.module.css";
 
 export default function CommonInput() {
   const MPCL = useContext(MyPersonalContext);
-  const { cCorrect, cCorrect1, sName, sUsername, cVisible } = MPCL;
+  const { cCorrect, cCorrect1, sName, sUsername, cVisible, cLanguage } = MPCL;
   const dataMap = [
     {
       fullDivName: PersonalStyles.namePart,
-      content: "სახელი",
+      content: !cLanguage ? "სახელი" : "Name",
       htmlForId: "name",
       onChange: sName,
-      inputPlaceHolder: "ანზორ",
+      inputPlaceHolder: !cLanguage ? "ანზორ" : "Anzor",
       borderCorrect: cCorrect,
     },
     {
       fullDivName: PersonalStyles.lastNamePart,
-      content: "გვარი",
+      content: !cLanguage ? "გვარი" : "Username",
       htmlForId: "userName",
       onChange: sUsername,
-      inputPlaceHolder: "მუმლაძე",
+      inputPlaceHolder: !cLanguage ? "მუმლაძე" : "Mumladze",
       borderCorrect: cCorrect1,
     },
   ];
@@ -56,7 +56,9 @@ export default function CommonInput() {
               }}
             />
             <span className={CommonStyles.spanStandard}>
-              მინიმუმ 2 ასო, ქართული ასოები
+              {!cLanguage
+                ? "მინიმუმ 2 ასო, ქართული ასოები"
+                : "At least 2 letters, Georgian letters"}
             </span>
           </div>
         );

@@ -116,5 +116,5 @@
     position: absolute;
     z-index: 2;
     top:calc(89px + 10px);
-    right:calc(70px + 30px + 20px);
+    right:calc(70px + 30px);
   }
