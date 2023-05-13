@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useContext } from "react";
+import { useContext, useRef, useEffect } from "react";
 import { MyPersonalContext } from "../Personal";
 
 import PersonalStyles from "../Personal.module.css";
@@ -35,6 +35,7 @@ export default function CommonInput() {
       borderCorrect: cCorrect1,
     },
   ];
+
   return (
     <>
       {dataMap.map((data, idx) => {
@@ -50,11 +51,7 @@ export default function CommonInput() {
               type="text"
               placeholder={data.inputPlaceHolder}
               id={data.htmlForId}
-              className={
-                cBGColor
-                  ? CommonStyles.inputStandardDark
-                  : CommonStyles.inputStandard
-              }
+              className={CommonStyles.inputStandard}
               onChange={(e) => {
                 data.onChange(e.target.value);
               }}
@@ -64,11 +61,13 @@ export default function CommonInput() {
                     ? "1px solid #98E37E"
                     : (!data.borderCorrect && cVisible && !cBGColor) || cBGColor
                     ? "1px solid #EF5050"
-                    : data.borderCorrect && !cBGColor
+                    : !data.borderCorrect && !cVisible && !cBGColor
                     ? "1px solid black"
-                    : data.borderCorrect && cBGColor
+                    : !data.borderCorrect && !cVisible && cBGColor
                     ? "1px solid white"
-                    : "1px solid black",
+                    : "",
+                backgroundColor: cBGColor ? "black" : "white",
+                color: cBGColor ? "white" : "black",
               }}
             />
             <span className={CommonStyles.spanStandard}>
