@@ -35,13 +35,9 @@ function App() {
         return <Home />;
         break;
       case 1:
-        return <Personal />;
-        break;
       case 2:
-        return <Experience />;
-        break;
       case 3:
-        return <Knowledge />;
+        return <Personal />;
         break;
       case 4:
         return <FinalResume />;
