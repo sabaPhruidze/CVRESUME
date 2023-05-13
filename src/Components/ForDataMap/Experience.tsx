@@ -19,7 +19,7 @@ import spiralIcon from "../../Assets/Icon/@.svg";
 import CommonStyles from "../Common.module.css";
 import PersonalStyles from "../Personal.module.css";
 
-export const MyPersonalLeftSideContext = createContext<any>("w");
+export const MyExperienceContext = createContext<any>("w");
 export default function PersonalLeftSide() {
   const useAppContext1 = useContext(MyPersonalContext);
   const {
@@ -51,6 +51,14 @@ export default function PersonalLeftSide() {
     sCorrect3,
     cVisible,
     sVisible,
+    cPosition,
+    sPosition,
+    cEmployer,
+    sEmployer,
+    cStartDate,
+    sEndDate,
+    cDescription,
+    sDescription,
   } = useAppContext1;
   function languageChanger(geo: string, eng: string) {
     return !cLanguage ? geo : eng;
@@ -114,7 +122,7 @@ export default function PersonalLeftSide() {
         localStorage.setItem("cEmail", cEmail),
         localStorage.setItem("cTel", cTel),
         localStorage.setItem("cAboutMe", cAboutMe),
-        localStorage.setItem("cBGColor", cBGColor),
+
         useAppContext1.sPage(useAppContext1.cPage + 1),
       ];
     }
@@ -130,7 +138,7 @@ export default function PersonalLeftSide() {
         cBGColor ? CommonStyles.infoContainerDark : CommonStyles.infoContainer
       }
     >
-      <MyPersonalLeftSideContext.Provider
+      <MyExperienceContext.Provider
         value={{
           cCorrect,
           cCorrect1,
@@ -138,10 +146,11 @@ export default function PersonalLeftSide() {
           cCorrect3,
           cVisible,
           cBGColor,
+          cPage,
         }}
       >
         <CorrectWrongComponent />
-      </MyPersonalLeftSideContext.Provider>
+      </MyExperienceContext.Provider>
       <img
         src={cBGColor ? lightMode : darkMode}
         alt="light or dark"
@@ -152,6 +161,7 @@ export default function PersonalLeftSide() {
         }
         onClick={() => {
           sBGColor(!cBGColor);
+          localStorage.setItem("cBGColor", cBGColor);
         }}
       />
       <img
@@ -190,11 +200,11 @@ export default function PersonalLeftSide() {
               fontSize: "20px",
             }}
           >
-            1/3
+            2/3
           </p>
         </div>
         <hr style={{ marginBottom: "69px" }} />
-        <div className={PersonalStyles.nameUSername}>
+        <div className={PersonalStyles.positionEmployerInput}>
           <MyPersonalContext.Provider
             value={{
               cCorrect,
@@ -204,50 +214,27 @@ export default function PersonalLeftSide() {
               sUsername,
               cLanguage,
               sBGColor,
+              cPosition,
+              sPosition,
+              cEmployer,
+              sEmployer,
             }}
           >
             <CommonInput />
           </MyPersonalContext.Provider>
         </div>
-        <div className={PersonalStyles.upload}>
-          <p>
-            {languageChanger(
-              "პირადი ფოტოს ატვირთვა",
-              "Upload a personal photo"
-            )}
-          </p>
-          <label
-            htmlFor="uploadImg"
-            style={{
-              padding: !cLanguage ? "3px 0 5px 20px" : "5px 0 5px 30px",
-            }}
-            id="textArea"
-          >
-            {languageChanger("ატვირთვა", "Upload")}
-            <input
-              type="file"
-              alt="upload photo"
-              accept="image/*"
-              id="uploadImg"
-              onChange={(e) => {
-                sUploadImg(e.target.files?.[0]);
-                //if something is uploaded it will be save in sUploadImg
-              }}
-            />
-            {/* allowing only Images */}
-          </label>
+        <div className={PersonalStyles.dateContainer}>
+          <input type="date" className={PersonalStyles.calendarInput} />
+          <input type="date" className={PersonalStyles.calendarInput} />
         </div>
-        <div className={PersonalStyles.aboutUs}>
-          <label htmlFor="aboutMe" className={CommonStyles.labelStandard}>
-            {languageChanger("ჩვენს შესახებ", "About us")}
-            <span className={CommonStyles.spanStandard}>
-              {languageChanger("(არასავალდებულო)", "(optional)")}
-            </span>
+        <div className={PersonalStyles.description}>
+          <label htmlFor="Description" className={CommonStyles.labelStandard}>
+            {languageChanger("აღწერა", "Description")}
           </label>
           <textarea
             placeholder={languageChanger(
-              "ზოგადი ინფო შენ შესახებ",
-              "General information about you"
+              "როლი თანამდებობაზე და ზოგადი აღწერა",
+              "Role in the position and general description"
             )}
             id="aboutMe"
             onChange={(e) => sAboutMe(e.target.value)}
@@ -256,56 +243,28 @@ export default function PersonalLeftSide() {
             style={{
               backgroundColor: cBGColor ? "black" : "white",
               color: cBGColor ? "white" : "black",
+              height: 123,
+              padding: "13px 16px",
             }}
           ></textarea>
-        </div>
-        <div className={PersonalStyles.mail}>
-          <label htmlFor="email" className={CommonStyles.labelStandard}>
-            {languageChanger("ელ.ფოსტა", "Email")}
-          </label>
-          <input
-            type="email"
-            placeholder="anzorr777@redberry.ge"
-            id="email"
-            className={`${CommonStyles.inputStandard} ${CommonStyles.commonInputBorder}`}
-            onChange={(e) => sEmail(e.target.value)}
-            ref={emailRef}
+          <hr
             style={{
-              border: cBGColor ? "1px solid white" : "1px solid black",
-              backgroundColor: cBGColor ? "black" : "white",
-              color: cBGColor ? "white" : "black",
+              width: "100%",
+              height: "1px",
+              marginTop: "59px",
             }}
           />
-          <span className={CommonStyles.spanStandard}>
-            {languageChanger(
-              "უნდა მთავრდებოდეს @redberry.ge-ით",
-              "Must end with @redberry.ge"
-            )}
-          </span>
-        </div>
-        <div className={PersonalStyles.telephone}>
-          <label htmlFor="tel" className={CommonStyles.labelStandard}>
-            {languageChanger("მობილურის ნომერი", "Mobile number")}
-          </label>
-          <input
-            type="tel"
-            placeholder="+995 551 12 34 56"
-            id="tel"
-            className={`${CommonStyles.inputStandard} ${CommonStyles.commonInputBorder}`}
-            onChange={(e) => sTel(e.target.value)}
-            ref={mobileRef}
+          <button
             style={{
-              border: cBGColor ? "1px solid white" : "1px solid black",
-              backgroundColor: cBGColor ? "black" : "white",
-              color: cBGColor ? "white" : "black",
+              marginTop: "45px",
+              width: "289px",
+              height: "89px",
+              color: "white",
+              backgroundColor: "#62A1EB",
             }}
-          />
-          <span className={CommonStyles.spanStandard}>
-            {languageChanger(
-              "უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს",
-              "Must meet the Georgian mobile number format"
-            )}
-          </span>
+          >
+            მეტი გამოცდილების დამატება
+          </button>
         </div>
       </div>
       <button

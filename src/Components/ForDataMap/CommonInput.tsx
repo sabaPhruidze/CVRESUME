@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useContext, useRef, useEffect } from "react";
-import { MyPersonalContext } from "../Personal";
+import { MyPersonalContext } from "../InfoUpdate";
 
 import PersonalStyles from "../Personal.module.css";
 import CommonStyles from "../Common.module.css";
@@ -16,6 +16,16 @@ export default function CommonInput() {
     cVisible,
     cLanguage,
     cBGColor,
+    sBGColor,
+    cPage,
+    cPosition,
+    sPosition,
+    cEmployer,
+    sEmployer,
+    cStartDate,
+    sEndDate,
+    cDescription,
+    sDescription,
   } = MPCL;
   const dataMap = [
     {
@@ -35,10 +45,36 @@ export default function CommonInput() {
       borderCorrect: cCorrect1,
     },
   ];
+  const experienceData = [
+    {
+      fullDivName: PersonalStyles.position,
+      content: !cLanguage ? "თანამდებობა" : "Position",
+      htmlForId: "position",
+      onChange: sPosition,
+      inputPlaceHolder: !cLanguage
+        ? "დეველოპერი, დიზაინერი, ა.შ."
+        : "Developer, designer, etc.",
+      borderCorrect: cCorrect,
+    },
+    {
+      fullDivName: PersonalStyles.employer,
+      content: !cLanguage ? "დამსაქმებელი" : "Employer",
+      htmlForId: "employer",
+      onChange: sPosition,
+      inputPlaceHolder: !cLanguage ? "დამსაქმებელი" : "Employer",
+      borderCorrect: cCorrect,
+    },
+  ];
+  useEffect(() => {
+    const colorChange = localStorage.getItem("cBGColor");
+    const cChangeStep2 = JSON.stringify(colorChange);
+    sBGColor(!cChangeStep2);
+  }, []);
+  const renderData = cPage === 1 ? dataMap : experienceData;
 
   return (
     <>
-      {dataMap.map((data, idx) => {
+      {renderData.map((data, idx) => {
         return (
           <div className={data.fullDivName} key={idx}>
             <label

@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { MyPersonalContext } from "../Personal";
+import { MyPersonalContext } from "../InfoUpdate";
 import CommonStyles from "../Common.module.css";
 
 import correctIcon from "../../Assets/Icon/correctIcon.svg";

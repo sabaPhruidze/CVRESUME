@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { MyPersonalContext } from "../Personal";
+import { MyPersonalContext } from "../InfoUpdate";
 
 import CommonStyles from "../Common.module.css";
 import PersonalStyles from "../Personal.module.css";
@@ -13,9 +13,16 @@ import spiralIcon from "../../Assets/Icon/@.svg";
 
 export default function Rendered() {
   const MPCL = useContext(MyPersonalContext);
-  const { cName, cUsername, cEmail, cTel, cAboutMe, cUploadImg } = MPCL;
+  const { cName, cUsername, cEmail, cTel, cAboutMe, cUploadImg, cBGColor } =
+    MPCL;
   return (
-    <div className={CommonStyles.renderContainer}>
+    <div
+      className={
+        cBGColor
+          ? CommonStyles.renderContainerDark
+          : CommonStyles.renderContainer
+      }
+    >
       <div className={CommonStyles.lineName}>
         <div>{cName}</div>
         <div>{cUsername}</div>

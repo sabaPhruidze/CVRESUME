@@ -191,6 +191,17 @@ least for 2 page */
     padding-left:80px;
     box-sizing: border-box;
 }
+.renderContainerDark {
+  width:822px;
+  height:1080px;
+  background-color: #000000;
+  position: absolute;
+  z-index: 1;
+  top:0;
+  right:0;
+  padding-left:80px;
+  box-sizing: border-box;
+}
 .orange {
     width:42px;
     height:42px;
@@ -269,3 +280,5 @@ I used chatJPT */
     top:88px;
     left:187px;
   }
+  /* გამოცდილება */
+
