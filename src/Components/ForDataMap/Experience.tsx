@@ -18,7 +18,6 @@ import spiralIcon from "../../Assets/Icon/@.svg";
 
 import CommonStyles from "../Common.module.css";
 import PersonalStyles from "../Personal.module.css";
-
 export const MyExperienceContext = createContext<any>("w");
 export default function PersonalLeftSide() {
   const useAppContext1 = useContext(MyPersonalContext);
@@ -132,6 +131,26 @@ export default function PersonalLeftSide() {
   const textAreaRef = useRef<any>("");
   const emailRef = useRef<any>("");
   const mobileRef = useRef<any>("");
+  const experienceData = [
+    {
+      fullDivName: PersonalStyles.position,
+      content: !cLanguage ? "თანამდებობა" : "Position",
+      htmlForId: "position",
+      onChange: sPosition,
+      inputPlaceHolder: !cLanguage
+        ? "დეველოპერი, დიზაინერი, ა.შ."
+        : "Developer, designer, etc.",
+      borderCorrect: cCorrect,
+    },
+    {
+      fullDivName: PersonalStyles.employer,
+      content: !cLanguage ? "დამსაქმებელი" : "Employer",
+      htmlForId: "employer",
+      onChange: sPosition,
+      inputPlaceHolder: !cLanguage ? "დამსაქმებელი" : "Employer",
+      borderCorrect: cCorrect,
+    },
+  ];
   return (
     <div
       className={
@@ -184,6 +203,7 @@ export default function PersonalLeftSide() {
         className={cBGColor ? CommonStyles.vectorLight : CommonStyles.vector}
         onClick={() => useAppContext1.sPage(useAppContext1.cPage - 1)}
       />
+
       <div className={CommonStyles.skeleton}>
         <div className={CommonStyles.dFlex}>
           <p
@@ -205,23 +225,47 @@ export default function PersonalLeftSide() {
         </div>
         <hr style={{ marginBottom: "69px" }} />
         <div className={PersonalStyles.positionEmployerInput}>
-          <MyPersonalContext.Provider
-            value={{
-              cCorrect,
-              cCorrect1,
-              sName,
-              cVisible,
-              sUsername,
-              cLanguage,
-              sBGColor,
-              cPosition,
-              sPosition,
-              cEmployer,
-              sEmployer,
-            }}
-          >
-            <CommonInput />
-          </MyPersonalContext.Provider>
+          {experienceData.map((data: any, idx: any) => {
+            return (
+              <div className={data.fullDivName} key={idx}>
+                <label
+                  htmlFor={data.htmlForId}
+                  className={CommonStyles.labelStandard}
+                >
+                  {data.content}
+                </label>
+                <input
+                  type="text"
+                  placeholder={data.inputPlaceHolder}
+                  id={data.htmlForId}
+                  className={CommonStyles.inputStandard}
+                  onChange={(e) => {
+                    data.onChange(e.target.value);
+                  }}
+                  style={{
+                    border:
+                      (data.borderCorrect && cVisible && !cBGColor) || cBGColor
+                        ? "1px solid #98E37E"
+                        : (!data.borderCorrect && cVisible && !cBGColor) ||
+                          cBGColor
+                        ? "1px solid #EF5050"
+                        : !data.borderCorrect && !cVisible && !cBGColor
+                        ? "1px solid black"
+                        : !data.borderCorrect && !cVisible && cBGColor
+                        ? "1px solid white"
+                        : "",
+                    backgroundColor: cBGColor ? "black" : "white",
+                    color: cBGColor ? "white" : "black",
+                  }}
+                />
+                <span className={CommonStyles.spanStandard}>
+                  {!cLanguage
+                    ? "მინიმუმ 2 ასო, ქართული ასოები"
+                    : "At least 2 letters, Georgian letters"}
+                </span>
+              </div>
+            );
+          })}
         </div>
         <div className={PersonalStyles.dateContainer}>
           <input type="date" className={PersonalStyles.calendarInput} />
@@ -236,14 +280,14 @@ export default function PersonalLeftSide() {
               "როლი თანამდებობაზე და ზოგადი აღწერა",
               "Role in the position and general description"
             )}
-            id="aboutMe"
+            id="Description"
             onChange={(e) => sAboutMe(e.target.value)}
             maxLength={250}
             ref={textAreaRef}
             style={{
               backgroundColor: cBGColor ? "black" : "white",
               color: cBGColor ? "white" : "black",
-              height: 123,
+              height: "123px",
               padding: "13px 16px",
             }}
           ></textarea>
@@ -258,20 +302,35 @@ export default function PersonalLeftSide() {
             style={{
               marginTop: "45px",
               width: "289px",
-              height: "89px",
-              color: "white",
+              // height: 48, I do not get it why height doesnot work
+              boxSizing: "border-box",
+              fontSize: "16px",
               backgroundColor: "#62A1EB",
+              color: "white",
+              padding: "calc((48px - 16px) / 2)",
             }}
           >
-            მეტი გამოცდილების დამატება
+            {languageChanger(
+              "მეტი გამოცდილების დამატება",
+              "Adding more experience"
+            )}
           </button>
         </div>
       </div>
       <button
+        className={` ${CommonStyles.purpleButtonBack}`}
+        onClick={() => {
+          sPage(cPage - 1);
+        }}
+      >
+        {languageChanger("უკან", "Back")}
+      </button>
+      <button
         className={CommonStyles.purpleButton}
         onClick={() => {
-          validateInput(cName, cUsername, cUploadImg, cEmail, cTel);
-          sVisible(true);
+          // validateInput(cName, cUsername, cUploadImg, cEmail, cTel);
+          // sVisible(true);
+          sPage(cPage + 1);
           if (
             (textAreaRef.current.value.length > 0 && !cBGColor) ||
             (textAreaRef.current.value.length > 0 && cBGColor)
@@ -285,7 +344,6 @@ export default function PersonalLeftSide() {
           } else {
             return "";
           }
-          sPage(2);
         }}
       >
         {languageChanger("შემდეგი", "Next")}

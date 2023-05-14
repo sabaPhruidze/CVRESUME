@@ -37,7 +37,9 @@ export default function Rendered() {
             />
           </>
         )}
-        <div style={{ marginLeft: "5px" }}>{cEmail}</div>
+        <div style={{ marginLeft: "5px", color: cBGColor ? "white" : "black" }}>
+          {cEmail}
+        </div>
       </div>
       <div className={CommonStyles.mobileContainer}>
         {cTel && (
@@ -50,7 +52,9 @@ export default function Rendered() {
             />
           </>
         )}
-        <div style={{ marginLeft: "5px" }}>{cTel}</div>
+        <div style={{ marginLeft: "5px", color: cBGColor ? "white" : "black" }}>
+          {cTel}
+        </div>
       </div>
       <div className={CommonStyles.aboutMeContainer}>
         {cAboutMe && (

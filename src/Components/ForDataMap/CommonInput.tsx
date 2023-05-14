@@ -65,16 +65,16 @@ export default function CommonInput() {
       borderCorrect: cCorrect,
     },
   ];
-  useEffect(() => {
-    const colorChange = localStorage.getItem("cBGColor");
-    const cChangeStep2 = JSON.stringify(colorChange);
-    sBGColor(!cChangeStep2);
-  }, []);
-  const renderData = cPage === 1 ? dataMap : experienceData;
+  // useEffect(() => {
+  //   const colorChange = localStorage.getItem("cBGColor");
+  //   const cChangeStep2 = JSON.stringify(colorChange);
+  //   sBGColor(!cChangeStep2);
+  // }, []);
+  const renderData = cPage == 1 ? dataMap : experienceData;
 
   return (
     <>
-      {renderData.map((data, idx) => {
+      {dataMap.map((data, idx) => {
         return (
           <div className={data.fullDivName} key={idx}>
             <label

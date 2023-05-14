@@ -55,6 +55,24 @@ export default function PersonalLeftSide() {
   function languageChanger(geo: string, eng: string) {
     return !cLanguage ? geo : eng;
   }
+  const dataMap = [
+    {
+      fullDivName: PersonalStyles.namePart,
+      content: !cLanguage ? "სახელი" : "Name",
+      htmlForId: "name",
+      onChange: sName,
+      inputPlaceHolder: !cLanguage ? "ანზორ" : "Anzor",
+      borderCorrect: cCorrect,
+    },
+    {
+      fullDivName: PersonalStyles.lastNamePart,
+      content: !cLanguage ? "გვარი" : "Username",
+      htmlForId: "userName",
+      onChange: sUsername,
+      inputPlaceHolder: !cLanguage ? "მუმლაძე" : "Mumladze",
+      borderCorrect: cCorrect1,
+    },
+  ];
   function validateInput(
     name: string | undefined,
     username: string | undefined,
@@ -89,6 +107,7 @@ export default function PersonalLeftSide() {
       sCorrect3(false);
       mobileRef.current.style.border = "1px solid #EF5050";
     }
+
     if (
       name &&
       georgianWordsRegex.test(name) &&
@@ -195,19 +214,43 @@ export default function PersonalLeftSide() {
         </div>
         <hr style={{ marginBottom: "69px" }} />
         <div className={PersonalStyles.nameUSername}>
-          <MyPersonalContext.Provider
-            value={{
-              cCorrect,
-              cCorrect1,
-              sName,
-              cVisible,
-              sUsername,
-              cLanguage,
-              sBGColor,
-            }}
-          >
-            <CommonInput />
-          </MyPersonalContext.Provider>
+          {dataMap.map((data: any, idx: number) => {
+            return (
+              <div className={data.fullDivName} key={idx}>
+                <label
+                  htmlFor={data.htmlForId}
+                  className={CommonStyles.labelStandard}
+                >
+                  {data.content}
+                </label>
+                <input
+                  type="text"
+                  placeholder={data.inputPlaceHolder}
+                  id={data.htmlForId}
+                  className={CommonStyles.inputStandard}
+                  onChange={(e) => {
+                    data.onChange(e.target.value);
+                  }}
+                  style={{
+                    border: !cVisible
+                      ? cBGColor
+                        ? "1px solid white"
+                        : "1px solid black"
+                      : data.borderCorrect
+                      ? "1px solid #98E37E"
+                      : "1px solid #EF5050",
+                    backgroundColor: cBGColor ? "black" : "white",
+                    color: cBGColor ? "white" : "black",
+                  }}
+                />
+                <span className={CommonStyles.spanStandard}>
+                  {!cLanguage
+                    ? "მინიმუმ 2 ასო, ქართული ასოები"
+                    : "At least 2 letters, Georgian letters"}
+                </span>
+              </div>
+            );
+          })}
         </div>
         <div className={PersonalStyles.upload}>
           <p>

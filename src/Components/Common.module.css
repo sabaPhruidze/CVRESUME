@@ -172,11 +172,25 @@ least for 2 page */
     color:white;
     cursor: pointer;
     transition: 0.5s ease;
+    font-size:18px;
 }
 .purpleButton:focus {
     transform: scale(0.95);
 }
-
+.purpleButtonBack {
+  padding:14px 35px;
+  position: absolute;
+  bottom:65px;
+  left:150px;
+  background-color:#6B40E3 ;
+  color:white;
+  cursor: pointer;
+  transition: 0.5s ease;
+  font-size:18px;
+}
+.purpleButtonBack:focus {
+  transform: scale(0.95);
+}
 /* left side */
 
 /* right side */
@@ -201,6 +215,7 @@ least for 2 page */
   right:0;
   padding-left:80px;
   box-sizing: border-box;
+  color: white;
 }
 .orange {
     width:42px;
@@ -282,3 +297,13 @@ I used chatJPT */
   }
   /* გამოცდილება */
 
+/* .addMoreButton {
+  position: absolute;
+  top:804px;
+  left:149px;
+  width: 289px;
+  height: 89px;
+  color: white;
+  background-color: #62A1EB;
+  z-index: 2;
+} */
