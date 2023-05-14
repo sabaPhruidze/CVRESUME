@@ -123,7 +123,15 @@ export default function Rendered() {
           <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
             {cStartDate} - {cEndDate}
           </em>
-          <p style={{ marginTop: "16px" }}>{cDescription}</p>
+          <p
+            style={{
+              marginTop: "16px",
+              width: "calc(100% - 80px)",
+              flexWrap: "wrap",
+            }}
+          >
+            {cDescription}
+          </p>
         </>
       ) : (
         ""

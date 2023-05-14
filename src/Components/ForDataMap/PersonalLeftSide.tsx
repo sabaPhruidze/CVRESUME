@@ -299,6 +299,7 @@ export default function PersonalLeftSide() {
             style={{
               backgroundColor: cBGColor ? "black" : "white",
               color: cBGColor ? "white" : "black",
+              border: 0,
             }}
           ></textarea>
         </div>
