@@ -13,8 +13,21 @@ import spiralIcon from "../../Assets/Icon/@.svg";
 
 export default function Rendered() {
   const MPCL = useContext(MyPersonalContext);
-  const { cName, cUsername, cEmail, cTel, cAboutMe, cUploadImg, cBGColor } =
-    MPCL;
+  const {
+    cName,
+    cUsername,
+    cEmail,
+    cTel,
+    cAboutMe,
+    cUploadImg,
+    cBGColor,
+    cPosition,
+    cEmployer,
+    cDescription,
+    cStartDate,
+    cEndDate,
+    cPage,
+  } = MPCL;
   return (
     <div
       className={
@@ -91,6 +104,30 @@ export default function Rendered() {
         />
       )}
       <img src={OrangeLogo} alt="OrangeLogo" className={CommonStyles.orange} />
+      {cPage >= 2 ? (
+        <>
+          <hr style={{ marginTop: "19px", width: "calc(100% - 80px)" }} />
+          <p
+            style={{
+              fontSize: "18px",
+              fontWeight: "700",
+              color: "#F93B1D",
+              marginTop: "24px",
+            }}
+          >
+            გამოცდილება
+          </p>
+          <p style={{ marginTop: "15px", fontWeight: "600" }}>
+            {cPosition}, {cEmployer}{" "}
+          </p>
+          <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
+            {cStartDate} - {cEndDate}
+          </em>
+          <p style={{ marginTop: "16px" }}>{cDescription}</p>
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useContext, createContext, useState, useRef } from "react";
 import { MyPersonalContext } from "../InfoUpdate";
 
@@ -66,7 +66,9 @@ export default function PersonalLeftSide() {
   }
   function validateInput(
     Position: string | undefined,
-    employer: string | undefined
+    employer: string | undefined,
+    startDate: number | undefined,
+    endDate: number | undefined
   ) {
     const georgianWordsRegex = /^(?:.*[ა-ჰ]){2,}.*$/;
     if (Position && georgianWordsRegex.test(Position)) {
@@ -90,7 +92,6 @@ export default function PersonalLeftSide() {
         cEmployer,
         localStorage.setItem("Position", Position),
         localStorage.setItem("employer", employer),
-
         useAppContext2.sPage(useAppContext2.cPage + 1),
       ];
     }
@@ -98,8 +99,7 @@ export default function PersonalLeftSide() {
   }
   //I am just using ref to test it.Even trougth I can solve most of the tasks using useState I think sometimes useRef is also helpful
   const textAreaRef = useRef<any>("");
-  const emailRef = useRef<any>("");
-  const mobileRef = useRef<any>("");
+  const addMoreExperienceRef = useRef<any>("");
   const experienceData = [
     {
       fullDivName: PersonalStyles.position,
@@ -122,6 +122,10 @@ export default function PersonalLeftSide() {
       borderCorrect: cCorrect,
     },
   ];
+  useEffect(() => {
+    sVisible(false);
+  }, []);
+
   return (
     <div
       className={
@@ -175,7 +179,7 @@ export default function PersonalLeftSide() {
         onClick={() => useAppContext2.sPage(useAppContext2.cPage - 1)}
       />
 
-      <div className={CommonStyles.skeleton}>
+      <div className={CommonStyles.skeleton} ref={addMoreExperienceRef}>
         <div className={CommonStyles.dFlex}>
           <p
             style={{
@@ -234,8 +238,22 @@ export default function PersonalLeftSide() {
           })}
         </div>
         <div className={PersonalStyles.dateContainer}>
-          <input type="date" className={PersonalStyles.calendarInput} />
-          <input type="date" className={PersonalStyles.calendarInput} />
+          <input
+            type="date"
+            className={PersonalStyles.calendarInput}
+            onChange={(e) => {
+              sStartDate(e.target.value);
+            }}
+            value={cStartDate}
+          />
+          <input
+            type="date"
+            className={PersonalStyles.calendarInput}
+            onChange={(e) => {
+              sEndDate(e.target.value);
+            }}
+            value={cEndDate}
+          />
         </div>
         <div className={PersonalStyles.description}>
           <label htmlFor="Description" className={CommonStyles.labelStandard}>
@@ -247,7 +265,7 @@ export default function PersonalLeftSide() {
               "Role in the position and general description"
             )}
             id="Description"
-            onChange={(e) => sAboutMe(e.target.value)}
+            onChange={(e) => sDescription(e.target.value)}
             maxLength={250}
             ref={textAreaRef}
             style={{
@@ -256,6 +274,7 @@ export default function PersonalLeftSide() {
               height: "123px",
               padding: "13px 16px",
             }}
+            value={cDescription}
           ></textarea>
           <hr
             style={{
@@ -265,6 +284,8 @@ export default function PersonalLeftSide() {
             }}
           />
           <button
+            // When I click here It must repeat same
+            className="moreExperienceAdd"
             style={{
               marginTop: "45px",
               width: "289px",
@@ -294,8 +315,7 @@ export default function PersonalLeftSide() {
       <button
         className={CommonStyles.purpleButton}
         onClick={() => {
-          sVisible(true);
-          validateInput(cPosition, cEmployer);
+          validateInput(cPosition, cEmployer, cStartDate, cEndDate);
           if (
             (textAreaRef.current.value.length > 0 && !cBGColor) ||
             (textAreaRef.current.value.length > 0 && cBGColor)
