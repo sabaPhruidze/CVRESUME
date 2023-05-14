@@ -20,7 +20,7 @@ import CommonStyles from "../Common.module.css";
 import PersonalStyles from "../Personal.module.css";
 export const MyExperienceContext = createContext<any>("w");
 export default function PersonalLeftSide() {
-  const useAppContext1 = useContext(MyPersonalContext);
+  const useAppContext2 = useContext(MyPersonalContext);
   const {
     cPage,
     sPage,
@@ -55,74 +55,43 @@ export default function PersonalLeftSide() {
     cEmployer,
     sEmployer,
     cStartDate,
+    sStartDate,
+    cEndDate,
     sEndDate,
     cDescription,
     sDescription,
-  } = useAppContext1;
+  } = useAppContext2;
   function languageChanger(geo: string, eng: string) {
     return !cLanguage ? geo : eng;
   }
   function validateInput(
-    name: string | undefined,
-    username: string | undefined,
-    img: any,
-    email: string | undefined,
-    phone: any
+    Position: string | undefined,
+    employer: string | undefined
   ) {
     const georgianWordsRegex = /^(?:.*[ა-ჰ]){2,}.*$/;
-    const mailRegex = /.*@redberry\.ge$/;
-    const telNumber = /^\+995 \d{3} \d{2} \d{2} \d{2}$/;
-    if (name && georgianWordsRegex.test(name)) {
+    if (Position && georgianWordsRegex.test(Position)) {
       sCorrect(true);
     } else {
       sCorrect(false);
     }
-    if (username && georgianWordsRegex.test(username)) {
+    if (employer && georgianWordsRegex.test(employer)) {
       sCorrect1(true);
     } else {
       sCorrect1(false);
     }
-    if (email && mailRegex.test(email)) {
-      sCorrect2(true);
-      emailRef.current.style.border = "1px solid #98E37E";
-    } else {
-      sCorrect2(false);
-      emailRef.current.style.border = "1px solid #EF5050";
-    }
-    if (phone && telNumber.test(phone)) {
-      sCorrect3(true);
-      mobileRef.current.style.border = "1px solid #98E37E";
-    } else {
-      sCorrect3(false);
-      mobileRef.current.style.border = "1px solid #EF5050";
-    }
     if (
-      name &&
-      georgianWordsRegex.test(name) &&
-      username &&
-      georgianWordsRegex.test(username) &&
-      img &&
-      email &&
-      mailRegex.test(email) &&
-      phone &&
-      telNumber.test(phone)
+      Position &&
+      georgianWordsRegex.test(Position) &&
+      employer &&
+      georgianWordsRegex.test(employer)
     ) {
       return [
-        cName,
-        cUsername,
-        cUploadImg,
-        cEmail,
-        cTel,
-        cAboutMe,
-        cBGColor,
-        localStorage.setItem("cName", cName),
-        localStorage.setItem("cUsername", cUsername),
-        localStorage.setItem("cUploadImg", cUploadImg),
-        localStorage.setItem("cEmail", cEmail),
-        localStorage.setItem("cTel", cTel),
-        localStorage.setItem("cAboutMe", cAboutMe),
+        cPosition,
+        cEmployer,
+        localStorage.setItem("Position", Position),
+        localStorage.setItem("employer", employer),
 
-        useAppContext1.sPage(useAppContext1.cPage + 1),
+        useAppContext2.sPage(useAppContext2.cPage + 1),
       ];
     }
     //ესაა მთავარი რომ თუ ყველაფერი სწორადაა შევსებული ამ შემთხვევაში გადავიდეს შემდეგ გვერდზე
@@ -136,7 +105,8 @@ export default function PersonalLeftSide() {
       fullDivName: PersonalStyles.position,
       content: !cLanguage ? "თანამდებობა" : "Position",
       htmlForId: "position",
-      onChange: sPosition,
+      set: sPosition,
+      value: cPosition,
       inputPlaceHolder: !cLanguage
         ? "დეველოპერი, დიზაინერი, ა.შ."
         : "Developer, designer, etc.",
@@ -146,7 +116,8 @@ export default function PersonalLeftSide() {
       fullDivName: PersonalStyles.employer,
       content: !cLanguage ? "დამსაქმებელი" : "Employer",
       htmlForId: "employer",
-      onChange: sPosition,
+      set: sEmployer,
+      value: cEmployer,
       inputPlaceHolder: !cLanguage ? "დამსაქმებელი" : "Employer",
       borderCorrect: cCorrect,
     },
@@ -195,13 +166,13 @@ export default function PersonalLeftSide() {
         src={Ellipse}
         alt="Ellipse"
         className={cBGColor ? CommonStyles.ellipseDark : CommonStyles.ellipse}
-        onClick={() => useAppContext1.sPage(useAppContext1.cPage - 1)}
+        onClick={() => useAppContext2.sPage(useAppContext2.cPage - 1)}
       />
       <img
         src={Vector}
         alt="Vector"
         className={cBGColor ? CommonStyles.vectorLight : CommonStyles.vector}
-        onClick={() => useAppContext1.sPage(useAppContext1.cPage - 1)}
+        onClick={() => useAppContext2.sPage(useAppContext2.cPage - 1)}
       />
 
       <div className={CommonStyles.skeleton}>
@@ -239,24 +210,19 @@ export default function PersonalLeftSide() {
                   placeholder={data.inputPlaceHolder}
                   id={data.htmlForId}
                   className={CommonStyles.inputStandard}
-                  onChange={(e) => {
-                    data.onChange(e.target.value);
-                  }}
                   style={{
-                    border:
-                      (data.borderCorrect && cVisible && !cBGColor) || cBGColor
-                        ? "1px solid #98E37E"
-                        : (!data.borderCorrect && cVisible && !cBGColor) ||
-                          cBGColor
-                        ? "1px solid #EF5050"
-                        : !data.borderCorrect && !cVisible && !cBGColor
-                        ? "1px solid black"
-                        : !data.borderCorrect && !cVisible && cBGColor
+                    border: !cVisible
+                      ? cBGColor
                         ? "1px solid white"
-                        : "",
+                        : "1px solid black"
+                      : data.borderCorrect
+                      ? "1px solid #98E37E"
+                      : "1px solid #EF5050",
                     backgroundColor: cBGColor ? "black" : "white",
                     color: cBGColor ? "white" : "black",
                   }}
+                  value={data.value}
+                  onChange={(event) => data.set(event.target.value)}
                 />
                 <span className={CommonStyles.spanStandard}>
                   {!cLanguage
@@ -328,9 +294,8 @@ export default function PersonalLeftSide() {
       <button
         className={CommonStyles.purpleButton}
         onClick={() => {
-          // validateInput(cName, cUsername, cUploadImg, cEmail, cTel);
-          // sVisible(true);
-          sPage(cPage + 1);
+          sVisible(true);
+          validateInput(cPosition, cEmployer);
           if (
             (textAreaRef.current.value.length > 0 && !cBGColor) ||
             (textAreaRef.current.value.length > 0 && cBGColor)

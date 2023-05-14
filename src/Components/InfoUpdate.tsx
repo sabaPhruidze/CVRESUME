@@ -58,6 +58,16 @@ export default function InfoUpdate() {
     sCorrect3,
     cVisible,
     sVisible,
+    cPosition,
+    sPosition,
+    cEmployer,
+    sEmployer,
+    cStartDate,
+    sStartDate,
+    cEndDate,
+    sEndDate,
+    cDescription,
+    sDescription,
   } = useAppContext1;
 
   return (
@@ -91,6 +101,16 @@ export default function InfoUpdate() {
         sCorrect3,
         cVisible,
         sVisible,
+        cPosition,
+        sPosition,
+        cEmployer,
+        sEmployer,
+        cStartDate,
+        sStartDate,
+        cEndDate,
+        sEndDate,
+        cDescription,
+        sDescription,
       }}
     >
       <div

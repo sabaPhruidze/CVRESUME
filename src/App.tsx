@@ -11,7 +11,7 @@ import Personal from "./Components/InfoUpdate";
 export const context = createContext<any>(null);
 
 function App() {
-  const [cPage, sPage] = useState<number>(2); // current page ,set page
+  const [cPage, sPage] = useState<number>(0); // current page ,set page
   const [cLanguage, sLanguage] = useState<boolean>(false); //if false than georgian else english
   const [cBGColor, sBGColor] = useState<boolean>(false); //if false than white, if true than black {BG- means background color}
 
@@ -31,7 +31,8 @@ function App() {
 
   const [cPosition, sPosition] = useState<any>("");
   const [cEmployer, sEmployer] = useState<any>("");
-  const [cStartDate, sEndDate] = useState<any>("");
+  const [cStartDate, sStartDate] = useState<any>("");
+  const [cEndDate, sEndDate] = useState<any>("");
   const [cDescription, sDescription] = useState<any>("");
 
   function changePage() {
@@ -86,6 +87,8 @@ function App() {
         cEmployer,
         sEmployer,
         cStartDate,
+        sStartDate,
+        cEndDate,
         sEndDate,
         cDescription,
         sDescription,
