@@ -16,7 +16,7 @@ import OrangeLogo from "../../Assets/Img/2. SecondPage/logoOrange.svg";
 import mobileIcon from "../../Assets/Icon/phoneIcon.svg";
 import spiralIcon from "../../Assets/Icon/@.svg";
 
-import PersonalStyles from "../Styles/Personal.module.css";
+import infoUpdateStyles from "../Styles/infoUpdate.module.css";
 import CommonStyles from "../Styles/Common.module.css";
 export const MyExperienceContext = createContext<any>("w");
 export default function PersonalLeftSide() {
@@ -152,7 +152,7 @@ export default function PersonalLeftSide() {
   const addMoreExperienceRef = useRef<any>("");
   const experienceData = [
     {
-      fullDivName: PersonalStyles.position,
+      fullDivName: infoUpdateStyles.position,
       content: !cLanguage ? "თანამდებობა" : "Position",
       htmlForId: "position",
       set: sPosition,
@@ -163,7 +163,7 @@ export default function PersonalLeftSide() {
       borderCorrect: cCorrect,
     },
     {
-      fullDivName: PersonalStyles.employer,
+      fullDivName: infoUpdateStyles.employer,
       content: !cLanguage ? "დამსაქმებელი" : "Employer",
       htmlForId: "employer",
       set: sEmployer,
@@ -174,7 +174,7 @@ export default function PersonalLeftSide() {
   ];
   const experienceData1 = [
     {
-      fullDivName: PersonalStyles.position,
+      fullDivName: infoUpdateStyles.position,
       content: !cLanguage ? "თანამდებობა" : "Position",
       htmlForId: "position",
       set: sPosition1,
@@ -185,7 +185,7 @@ export default function PersonalLeftSide() {
       borderCorrect: cCorrect,
     },
     {
-      fullDivName: PersonalStyles.employer,
+      fullDivName: infoUpdateStyles.employer,
       content: !cLanguage ? "დამსაქმებელი" : "Employer",
       htmlForId: "employer",
       set: sEmployer1,
@@ -294,7 +294,7 @@ export default function PersonalLeftSide() {
           </p>
         </div>
         <hr style={{ marginBottom: "69px" }} />
-        <div className={PersonalStyles.positionEmployerInput}>
+        <div className={infoUpdateStyles.positionEmployerInput}>
           {experienceData.map((data: any, idx: any) => {
             return (
               <div className={data.fullDivName} key={idx}>
@@ -332,10 +332,10 @@ export default function PersonalLeftSide() {
             );
           })}
         </div>
-        <div className={PersonalStyles.dateContainer}>
+        <div className={infoUpdateStyles.dateContainer}>
           <input
             type="date"
-            className={PersonalStyles.calendarInput}
+            className={infoUpdateStyles.calendarInput}
             onChange={(e) => {
               sStartDate(e.target.value);
             }}
@@ -343,14 +343,14 @@ export default function PersonalLeftSide() {
           />
           <input
             type="date"
-            className={PersonalStyles.calendarInput}
+            className={infoUpdateStyles.calendarInput}
             onChange={(e) => {
               sEndDate(e.target.value);
             }}
             value={cEndDate}
           />
         </div>
-        <div className={PersonalStyles.description}>
+        <div className={infoUpdateStyles.description}>
           <label htmlFor="Description" className={CommonStyles.labelStandard}>
             {languageChanger("აღწერა", "Description")}
           </label>
@@ -381,7 +381,7 @@ export default function PersonalLeftSide() {
           {cMoreExperience === 1 ? (
             <>
               <hr style={{ marginBottom: "69px" }} />
-              <div className={PersonalStyles.positionEmployerInput}>
+              <div className={infoUpdateStyles.positionEmployerInput}>
                 {experienceData1.map((data: any, idx: any) => {
                   return (
                     <div className={data.fullDivName} key={idx}>
@@ -419,10 +419,10 @@ export default function PersonalLeftSide() {
                   );
                 })}
               </div>
-              <div className={PersonalStyles.dateContainer}>
+              <div className={infoUpdateStyles.dateContainer}>
                 <input
                   type="date"
-                  className={PersonalStyles.calendarInput}
+                  className={infoUpdateStyles.calendarInput}
                   onChange={(e) => {
                     sStartDate(e.target.value);
                   }}
@@ -430,14 +430,14 @@ export default function PersonalLeftSide() {
                 />
                 <input
                   type="date"
-                  className={PersonalStyles.calendarInput}
+                  className={infoUpdateStyles.calendarInput}
                   onChange={(e) => {
                     sEndDate(e.target.value);
                   }}
                   value={cEndDate1}
                 />
               </div>
-              <div className={PersonalStyles.descriptionAdded}>
+              <div className={infoUpdateStyles.descriptionAdded}>
                 <label
                   htmlFor="Description"
                   className={CommonStyles.labelStandard}

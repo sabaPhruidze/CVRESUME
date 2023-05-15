@@ -3,7 +3,7 @@ import React from "react";
 import { useContext, useRef, useEffect } from "react";
 import { MyPersonalContext } from "../InfoUpdate";
 
-import PersonalStyles from "../Styles/Personal.module.css";
+import infoUpdateStyles from "../Styles/Personal.module.css";
 import CommonStyles from "../Styles/Common.module.css";
 
 export default function CommonInput() {
@@ -29,7 +29,7 @@ export default function CommonInput() {
   } = MPCL;
   const dataMap = [
     {
-      fullDivName: PersonalStyles.namePart,
+      fullDivName: infoUpdateStyles.namePart,
       content: !cLanguage ? "სახელი" : "Name",
       htmlForId: "name",
       onChange: sName,
@@ -37,7 +37,7 @@ export default function CommonInput() {
       borderCorrect: cCorrect,
     },
     {
-      fullDivName: PersonalStyles.lastNamePart,
+      fullDivName: infoUpdateStyles.lastNamePart,
       content: !cLanguage ? "გვარი" : "Username",
       htmlForId: "userName",
       onChange: sUsername,
@@ -47,7 +47,7 @@ export default function CommonInput() {
   ];
   const experienceData = [
     {
-      fullDivName: PersonalStyles.position,
+      fullDivName: infoUpdateStyles.position,
       content: !cLanguage ? "თანამდებობა" : "Position",
       htmlForId: "position",
       onChange: sPosition,
@@ -57,7 +57,7 @@ export default function CommonInput() {
       borderCorrect: cCorrect,
     },
     {
-      fullDivName: PersonalStyles.employer,
+      fullDivName: infoUpdateStyles.employer,
       content: !cLanguage ? "დამსაქმებელი" : "Employer",
       htmlForId: "employer",
       onChange: sPosition,

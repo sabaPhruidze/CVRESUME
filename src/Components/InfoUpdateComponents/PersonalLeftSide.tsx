@@ -16,7 +16,7 @@ import OrangeLogo from "../../Assets/Img/2. SecondPage/logoOrange.svg";
 import mobileIcon from "../../Assets/Icon/phoneIcon.svg";
 import spiralIcon from "../../Assets/Icon/@.svg";
 
-import PersonalStyles from "../Styles/Personal.module.css";
+import infoUpdateStyles from "../Styles/infoUpdate.module.css";
 import CommonStyles from "../Styles/Common.module.css";
 
 export const MyPersonalLeftSideContext = createContext<any>("w");
@@ -57,7 +57,7 @@ export default function PersonalLeftSide() {
   }
   const dataMap = [
     {
-      fullDivName: PersonalStyles.namePart,
+      fullDivName: infoUpdateStyles.namePart,
       content: !cLanguage ? "სახელი" : "Name",
       htmlForId: "name",
       onChange: sName,
@@ -65,7 +65,7 @@ export default function PersonalLeftSide() {
       borderCorrect: cCorrect,
     },
     {
-      fullDivName: PersonalStyles.lastNamePart,
+      fullDivName: infoUpdateStyles.lastNamePart,
       content: !cLanguage ? "გვარი" : "Username",
       htmlForId: "userName",
       onChange: sUsername,
@@ -223,7 +223,7 @@ export default function PersonalLeftSide() {
           </p>
         </div>
         <hr style={{ marginBottom: "69px" }} />
-        <div className={PersonalStyles.nameUSername}>
+        <div className={infoUpdateStyles.nameUSername}>
           {dataMap.map((data: any, idx: number) => {
             return (
               <div className={data.fullDivName} key={idx}>
@@ -262,7 +262,7 @@ export default function PersonalLeftSide() {
             );
           })}
         </div>
-        <div className={PersonalStyles.upload}>
+        <div className={infoUpdateStyles.upload}>
           <p>
             {languageChanger(
               "პირადი ფოტოს ატვირთვა",
@@ -290,7 +290,7 @@ export default function PersonalLeftSide() {
             {/* allowing only Images */}
           </label>
         </div>
-        <div className={PersonalStyles.aboutUs}>
+        <div className={infoUpdateStyles.aboutUs}>
           <label htmlFor="aboutMe" className={CommonStyles.labelStandard}>
             {languageChanger("ჩვენს შესახებ", "About us")}
             <span className={CommonStyles.spanStandard}>
@@ -313,7 +313,7 @@ export default function PersonalLeftSide() {
             }}
           ></textarea>
         </div>
-        <div className={PersonalStyles.mail}>
+        <div className={infoUpdateStyles.mail}>
           <label htmlFor="email" className={CommonStyles.labelStandard}>
             {languageChanger("ელ.ფოსტა", "Email")}
           </label>
@@ -337,7 +337,7 @@ export default function PersonalLeftSide() {
             )}
           </span>
         </div>
-        <div className={PersonalStyles.telephone}>
+        <div className={infoUpdateStyles.telephone}>
           <label htmlFor="tel" className={CommonStyles.labelStandard}>
             {languageChanger("მობილურის ნომერი", "Mobile number")}
           </label>
