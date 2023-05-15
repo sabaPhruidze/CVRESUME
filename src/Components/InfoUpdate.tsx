@@ -214,12 +214,12 @@ export default function InfoUpdate() {
             cMoreExperience === 0
               ? "1080px"
               : cMoreExperience === 1
-              ? "calc(1080 * 2)"
+              ? "calc(846px * 2)"
               : cMoreExperience === 2
-              ? "calc(1080 * 3)"
+              ? "calc(846px * 3)"
               : cMoreExperience === 3
-              ? "calc(1080 * 4)"
-              : "calc(1080 * 5)",
+              ? "calc(846px * 4)"
+              : "calc(846px* 5)",
         }}
       >
         {cPage === 2 ? (

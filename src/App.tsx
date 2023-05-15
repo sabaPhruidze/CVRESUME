@@ -6,12 +6,12 @@ import Experience from "./Components/ForDataMap/Experience";
 import FinalResume from "./Components/FinalResume";
 import Home from "./Components/Home";
 import Knowledge from "./Components/Knowledge";
-import Personal from "./Components/InfoUpdate";
+import InfoUpdate from "./Components/InfoUpdate";
 
 export const context = createContext<any>(null);
 
 function App() {
-  const [cPage, sPage] = useState<number>(2); // current page ,set page
+  const [cPage, sPage] = useState<number>(0); // current page ,set page
   const [cLanguage, sLanguage] = useState<boolean>(false); //if false than georgian else english
   const [cBGColor, sBGColor] = useState<boolean>(false); //if false than white, if true than black {BG- means background color}
 
@@ -68,7 +68,7 @@ function App() {
       case 1:
       case 2:
       case 3:
-        return <Personal />;
+        return <InfoUpdate />;
         break;
       case 4:
         return <FinalResume />;
@@ -166,7 +166,23 @@ function App() {
         sDescription4,
       }}
     >
-      <div>{changePage()}</div>
+      <div
+        style={{
+          height:
+            cMoreExperience === 0
+              ? "1080px"
+              : cMoreExperience === 1
+              ? "calc(798px * 2)"
+              : cMoreExperience === 2
+              ? "calc(798px * 3)"
+              : cMoreExperience === 3
+              ? "calc(798px * 4)"
+              : "calc(798px * 5)",
+          overflow: cMoreExperience === 0 ? "hidden" : "none",
+        }}
+      >
+        {changePage()}
+      </div>
     </context.Provider>
   );
 }

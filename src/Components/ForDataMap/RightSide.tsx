@@ -27,6 +27,7 @@ export default function Rendered() {
     cStartDate,
     cEndDate,
     cPage,
+    cMoreExperience,
   } = MPCL;
   return (
     <div
@@ -35,6 +36,19 @@ export default function Rendered() {
           ? CommonStyles.renderContainerDark
           : CommonStyles.renderContainer
       }
+      style={{
+        height:
+          cMoreExperience === 0
+            ? "1080px"
+            : cMoreExperience === 1
+            ? "calc(798px * 2)"
+            : cMoreExperience === 2
+            ? "calc(798px * 3)"
+            : cMoreExperience === 3
+            ? "calc(798px * 4)"
+            : "calc(798px * 5)",
+        overflow: cMoreExperience === 0 ? "hidden" : "none",
+      }}
     >
       <div className={CommonStyles.lineName}>
         <div>{cName}</div>

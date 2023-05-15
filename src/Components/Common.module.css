@@ -18,7 +18,7 @@ least for 2 page */
     position: relative;
     box-sizing: border-box;
     font-family: RobotoBold;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .containerFlex {
@@ -150,7 +150,7 @@ least for 2 page */
   padding: 0 16px;
   color: #ffffff;
   background-color: #000000;
-  : 1px;
+  border: 1px solid white;
 }
 .inputStandardDark:active {
   outline: 0;

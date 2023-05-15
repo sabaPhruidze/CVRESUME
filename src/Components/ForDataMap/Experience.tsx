@@ -146,6 +146,9 @@ export default function PersonalLeftSide() {
   }
   //I am just using ref to test it.Even trougth I can solve most of the tasks using useState I think sometimes useRef is also helpful
   const textAreaRef = useRef<any>("");
+  const textAreaRef1 = useRef<any>("");
+  const textAreaRef2 = useRef<any>("");
+  const textAreaRef3 = useRef<any>("");
   const addMoreExperienceRef = useRef<any>("");
   const experienceData = [
     {
@@ -169,6 +172,28 @@ export default function PersonalLeftSide() {
       borderCorrect: cCorrect,
     },
   ];
+  const experienceData1 = [
+    {
+      fullDivName: PersonalStyles.position,
+      content: !cLanguage ? "თანამდებობა" : "Position",
+      htmlForId: "position",
+      set: sPosition1,
+      value: cPosition1,
+      inputPlaceHolder: !cLanguage
+        ? "დეველოპერი, დიზაინერი, ა.შ."
+        : "Developer, designer, etc.",
+      borderCorrect: cCorrect,
+    },
+    {
+      fullDivName: PersonalStyles.employer,
+      content: !cLanguage ? "დამსაქმებელი" : "Employer",
+      htmlForId: "employer",
+      set: sEmployer1,
+      value: cEmployer1,
+      inputPlaceHolder: !cLanguage ? "დამსაქმებელი" : "Employer",
+      borderCorrect: cCorrect,
+    },
+  ];
   useEffect(() => {
     sVisible(false);
   }, []);
@@ -178,6 +203,19 @@ export default function PersonalLeftSide() {
       className={
         cBGColor ? CommonStyles.infoContainerDark : CommonStyles.infoContainer
       }
+      style={{
+        height:
+          cMoreExperience === 0
+            ? "1080px"
+            : cMoreExperience === 1
+            ? "calc(798px * 2)"
+            : cMoreExperience === 2
+            ? "calc(798px * 3)"
+            : cMoreExperience === 3
+            ? "calc(798px * 4)"
+            : "calc(798px * 5)",
+        overflow: cMoreExperience === 0 ? "hidden" : "none",
+      }}
     >
       <MyExperienceContext.Provider
         value={{
@@ -226,7 +264,7 @@ export default function PersonalLeftSide() {
         onClick={() => useAppContext2.sPage(useAppContext2.cPage - 1)}
       />
 
-      <div className={CommonStyles.skeleton} ref={addMoreExperienceRef}>
+      <div className={CommonStyles.skeleton}>
         <div className={CommonStyles.dFlex}>
           <p
             style={{
@@ -235,7 +273,7 @@ export default function PersonalLeftSide() {
               fontWeight: "700",
             }}
           >
-            {languageChanger("პირადი ინფო", "Personal information")}
+            {languageChanger("გამოცდილება", "Experience")}
           </p>
           <p
             style={{
@@ -330,6 +368,101 @@ export default function PersonalLeftSide() {
               marginTop: "59px",
             }}
           />
+          {cMoreExperience === 1 ? (
+            <>
+              <hr style={{ marginBottom: "69px" }} />
+              <div className={PersonalStyles.positionEmployerInput}>
+                {experienceData1.map((data: any, idx: any) => {
+                  return (
+                    <div className={data.fullDivName} key={idx}>
+                      <label
+                        htmlFor={data.htmlForId}
+                        className={CommonStyles.labelStandard}
+                      >
+                        {data.content}
+                      </label>
+                      <input
+                        type="text"
+                        placeholder={data.inputPlaceHolder}
+                        id={data.htmlForId}
+                        className={CommonStyles.inputStandard}
+                        style={{
+                          border: !cVisible
+                            ? cBGColor
+                              ? "1px solid white"
+                              : "1px solid black"
+                            : data.borderCorrect
+                            ? "1px solid #98E37E"
+                            : "1px solid #EF5050",
+                          backgroundColor: cBGColor ? "black" : "white",
+                          color: cBGColor ? "white" : "black",
+                        }}
+                        value={data.value}
+                        onChange={(event) => data.set(event.target.value)}
+                      />
+                      <span className={CommonStyles.spanStandard}>
+                        {!cLanguage
+                          ? "მინიმუმ 2 ასო, ქართული ასოები"
+                          : "At least 2 letters, Georgian letters"}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className={PersonalStyles.dateContainer}>
+                <input
+                  type="date"
+                  className={PersonalStyles.calendarInput}
+                  onChange={(e) => {
+                    sStartDate(e.target.value);
+                  }}
+                  value={cStartDate1}
+                />
+                <input
+                  type="date"
+                  className={PersonalStyles.calendarInput}
+                  onChange={(e) => {
+                    sEndDate(e.target.value);
+                  }}
+                  value={cEndDate1}
+                />
+              </div>
+              <div className={PersonalStyles.descriptionAdded}>
+                <label
+                  htmlFor="Description"
+                  className={CommonStyles.labelStandard}
+                >
+                  {languageChanger("აღწერა", "Description")}
+                </label>
+                <textarea
+                  placeholder={languageChanger(
+                    "როლი თანამდებობაზე და ზოგადი აღწერა",
+                    "Role in the position and general description"
+                  )}
+                  id="Description"
+                  onChange={(e) => sDescription1(e.target.value)}
+                  maxLength={250}
+                  ref={textAreaRef1}
+                  style={{
+                    backgroundColor: cBGColor ? "black" : "white",
+                    color: cBGColor ? "white" : "black",
+                    height: "123px",
+                    padding: "13px 16px",
+                  }}
+                  value={cDescription1}
+                ></textarea>
+                <hr
+                  style={{
+                    width: "100%",
+                    height: "1px",
+                    marginTop: "59px",
+                  }}
+                />
+              </div>
+            </>
+          ) : (
+            ""
+          )}
           <button
             // When I click here It must repeat same
             className="moreExperienceAdd"
@@ -342,6 +475,10 @@ export default function PersonalLeftSide() {
               backgroundColor: "#62A1EB",
               color: "white",
               padding: "calc((48px - 16px) / 2)",
+            }}
+            onClick={() => {
+              sMoreExperience(cMoreExperience + 1);
+              console.log(cMoreExperience);
             }}
           >
             {languageChanger(
