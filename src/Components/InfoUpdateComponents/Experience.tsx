@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useContext, createContext, useState, useRef } from "react";
-import { MyPersonalContext } from "../InfoUpdate";
+import { infoUpdateContext } from "../InfoUpdate";
 
 import CommonInput from "./CommonInput";
 import CorrectWrongComponent from "./CorrectWrongComponent";
@@ -19,8 +19,8 @@ import spiralIcon from "../../Assets/Icon/@.svg";
 import infoUpdateStyles from "../Styles/infoUpdate.module.css";
 import CommonStyles from "../Styles/Common.module.css";
 export const MyExperienceContext = createContext<any>("w");
-export default function PersonalLeftSide() {
-  const useAppContext2 = useContext(MyPersonalContext);
+export default function Personal() {
+  const useAppContext2 = useContext(infoUpdateContext);
   const {
     cPage,
     sPage,

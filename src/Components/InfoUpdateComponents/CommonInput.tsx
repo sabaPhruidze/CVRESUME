@@ -1,13 +1,13 @@
 import React from "react";
 
 import { useContext, useRef, useEffect } from "react";
-import { MyPersonalContext } from "../InfoUpdate";
+import { infoUpdateContext } from "../InfoUpdate";
 
 import infoUpdateStyles from "../Styles/Personal.module.css";
 import CommonStyles from "../Styles/Common.module.css";
 
 export default function CommonInput() {
-  const MPCL = useContext(MyPersonalContext);
+  const MPCL = useContext(infoUpdateContext);
   const {
     cCorrect,
     cCorrect1,

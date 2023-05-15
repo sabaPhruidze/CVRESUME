@@ -2,7 +2,7 @@ import React from "react";
 import { createContext, useContext, useState, useRef } from "react";
 import { context } from "../App";
 import Home from "./Home";
-import PersonalLeftSide from "./InfoUpdateComponents/PersonalLeftSide";
+import Personal from "./InfoUpdateComponents/Personal";
 import Experience from "./InfoUpdateComponents/Experience";
 
 // import CommonInput from "./InfoUpdateComponents/CommonInput";
@@ -23,7 +23,7 @@ import RightSide from "./InfoUpdateComponents/RightSide";
 import CommonStyles from "./Styles/Common.module.css";
 import Knowledge from "./InfoUpdateComponents/Knowledge";
 
-export const MyPersonalContext = createContext<any>("s");
+export const infoUpdateContext = createContext<any>("s");
 
 export default function InfoUpdate() {
   const useAppContext1 = useContext(context);
@@ -117,7 +117,7 @@ export default function InfoUpdate() {
   } = useAppContext1;
 
   return (
-    <MyPersonalContext.Provider
+    <infoUpdateContext.Provider
       value={{
         cPage,
         sPage,
@@ -226,10 +226,10 @@ export default function InfoUpdate() {
         ) : cPage === 3 ? (
           <Knowledge />
         ) : (
-          <PersonalLeftSide />
+          <Personal />
         )}
         <RightSide />
       </div>
-    </MyPersonalContext.Provider>
+    </infoUpdateContext.Provider>
   );
 }

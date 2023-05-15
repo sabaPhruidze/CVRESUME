@@ -4,6 +4,7 @@ import { context } from "../../App";
 
 import CommonStyles from "../Styles/Common.module.css";
 import HomeStyles from "../Styles/Home.module.css";
+import infoUpdateStyles from "../Styles/infoUpdate.module.css";
 
 import georgiaFlag from "../../Assets/Img/common/georgia.png";
 import unitedKingdomFlag from "../../Assets/Img/common/unitedKingdom.png";
@@ -15,6 +16,11 @@ import backgroundDark from "../../Assets/Img/1. FirstPage/backgroundDark.jpg";
 import redBerryBanner from "../../Assets/Img/1. FirstPage/redberryBanner.svg";
 import diploma from "../../Assets/Img/1. FirstPage/diploma.svg";
 // for Home
+
+//for personal-
+import Ellipse from "../../Assets/Img/2. SecondPage/Ellipse.svg";
+import Vector from "../../Assets/Img/2. SecondPage/Vectorvector.svg";
+// for personal-
 
 // for Home
 export function ImgReplay() {
@@ -76,21 +82,23 @@ export function ImgReplay() {
     </>
   );
 }
-
+// for many things
+function languageChanger(changeReason: boolean, geo: string, eng: string) {
+  return !changeReason ? geo : eng;
+}
 export function ButtonReplay() {
   const useAppContext0 = useContext(context);
-  const { cBGColor, sPage, cLanguage, cPage } = useAppContext0;
+  const { cBGColor, sPage, cLanguage } = useAppContext0;
   const buttonDataHome = [
     {
       className: cBGColor
         ? `${HomeStyles.buttonDark} ${HomeStyles.button}`
         : HomeStyles.button,
       onClick: () => sPage(1),
-      language: cLanguage === false ? "რეზიუმეს დამატება" : "Add resume",
+      language: languageChanger(cLanguage, "რეზიუმეს დამატება", "Add resume"),
       key: 0,
     },
   ];
-
   return (
     <>
       {buttonDataHome.map((data) => (
@@ -105,6 +113,134 @@ export function ButtonReplay() {
     </>
   );
 }
-
 // for Home
-export function headLineReplay() {}
+
+// for personal -
+export function ImgReplayCustom() {
+  const useAppContext0 = useContext(context);
+  const { cBGColor, sBGColor, cLanguage, sLanguage, sPage, cPage } =
+    useAppContext0;
+  const imgData = [
+    {
+      src: cBGColor ? lightMode : darkMode,
+      alt: "light or dark",
+      className: cBGColor
+        ? `${CommonStyles.modeSun} ${CommonStyles.CommonBGCPosition}`
+        : `${CommonStyles.modeMoon} ${CommonStyles.CommonBGCPosition}`,
+      onClick: () => sBGColor(!useAppContext0.cBGColor),
+      key: 0,
+    },
+    {
+      src: cLanguage !== true ? unitedKingdomFlag : georgiaFlag,
+      alt: "language",
+      className: `${CommonStyles.language} ${CommonStyles.CommonlanguagePosition}`,
+      onClick: () => sLanguage(!useAppContext0.cLanguage),
+      key: 1,
+    },
+    {
+      src: Ellipse,
+      alt: "Ellipse",
+      className: cBGColor
+        ? `${CommonStyles.ellipse} ${CommonStyles.ellipseDark}`
+        : CommonStyles.ellipse,
+      onClick: () => sPage(cPage - 1),
+      key: 2,
+    },
+    {
+      src: Vector,
+      alt: "Vector",
+      className: cBGColor
+        ? `${CommonStyles.vectorDark} ${CommonStyles.vectorLight}`
+        : CommonStyles.vectorDark,
+      onClick: () => sPage(cPage - 1),
+      key: 3,
+    },
+  ];
+  return (
+    <>
+      {imgData.map((data) => (
+        <div key={data.key}>
+          <img
+            src={data.src}
+            alt={data.alt}
+            className={data.className}
+            onClick={data.onClick}
+          />
+        </div>
+      ))}
+    </>
+  );
+}
+export function InputReplayCustom() {
+  const useAppContext0 = useContext(context);
+  const {
+    cBGColor,
+    sPage,
+    cLanguage,
+    sName,
+    cCorrect,
+    sUsername,
+    cCorrect1,
+    cVisible,
+  } = useAppContext0;
+  const dataMap = [
+    {
+      fullDivName: infoUpdateStyles.namePart,
+      content: !cLanguage ? "სახელი" : "Name",
+      htmlForId: "name",
+      onChange: sName,
+      inputPlaceHolder: !cLanguage ? "ანზორ" : "Anzor",
+      borderCorrect: cCorrect,
+    },
+    {
+      fullDivName: infoUpdateStyles.lastNamePart,
+      content: !cLanguage ? "გვარი" : "Username",
+      htmlForId: "userName",
+      onChange: sUsername,
+      inputPlaceHolder: !cLanguage ? "მუმლაძე" : "Mumladze",
+      borderCorrect: cCorrect1,
+    },
+  ];
+  return (
+    <>
+      {dataMap.map((data: any, idx: number) => {
+        return (
+          <div className={data.fullDivName} key={idx}>
+            <label
+              htmlFor={data.htmlForId}
+              className={CommonStyles.labelStandard}
+            >
+              {data.content}
+            </label>
+            <input
+              type="text"
+              placeholder={data.inputPlaceHolder}
+              id={data.htmlForId}
+              className={CommonStyles.inputStandard}
+              onChange={(e) => {
+                data.onChange(e.target.value);
+              }}
+              style={{
+                border: !cVisible
+                  ? cBGColor
+                    ? "1px solid white"
+                    : "1px solid black"
+                  : data.borderCorrect
+                  ? "1px solid #98E37E"
+                  : "1px solid #EF5050",
+                backgroundColor: cBGColor ? "black" : "white",
+                color: cBGColor ? "white" : "black",
+              }}
+            />
+            <span className={CommonStyles.spanStandard}>
+              {!cLanguage
+                ? "მინიმუმ 2 ასო, ქართული ასოები"
+                : "At least 2 letters, Georgian letters"}
+            </span>
+          </div>
+        );
+      })}
+    </>
+  );
+}
+// for personal -

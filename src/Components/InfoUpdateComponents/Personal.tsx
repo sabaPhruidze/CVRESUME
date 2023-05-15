@@ -1,9 +1,10 @@
 import React from "react";
 import { useContext, createContext, useState, useRef } from "react";
-import { MyPersonalContext } from "../InfoUpdate";
+import { infoUpdateContext } from "../InfoUpdate";
 
-import CommonInput from "./CommonInput";
+import { ImgReplayCustom } from "../DataMap/Replay";
 import CorrectWrongComponent from "./CorrectWrongComponent";
+import { InputReplayCustom } from "../DataMap/Replay";
 
 import georgiaFlag from "../../Assets/Img/common/georgia.png";
 import unitedKingdomFlag from "../../Assets/Img/common/unitedKingdom.png";
@@ -19,9 +20,9 @@ import spiralIcon from "../../Assets/Icon/@.svg";
 import infoUpdateStyles from "../Styles/infoUpdate.module.css";
 import CommonStyles from "../Styles/Common.module.css";
 
-export const MyPersonalLeftSideContext = createContext<any>("w");
-export default function PersonalLeftSide() {
-  const useAppContext1 = useContext(MyPersonalContext);
+export const MyPersonalContext = createContext<any>("w");
+export default function Personal() {
+  const useAppContext1 = useContext(infoUpdateContext);
   const {
     cPage,
     sPage,
@@ -55,24 +56,6 @@ export default function PersonalLeftSide() {
   function languageChanger(geo: string, eng: string) {
     return !cLanguage ? geo : eng;
   }
-  const dataMap = [
-    {
-      fullDivName: infoUpdateStyles.namePart,
-      content: !cLanguage ? "სახელი" : "Name",
-      htmlForId: "name",
-      onChange: sName,
-      inputPlaceHolder: !cLanguage ? "ანზორ" : "Anzor",
-      borderCorrect: cCorrect,
-    },
-    {
-      fullDivName: infoUpdateStyles.lastNamePart,
-      content: !cLanguage ? "გვარი" : "Username",
-      htmlForId: "userName",
-      onChange: sUsername,
-      inputPlaceHolder: !cLanguage ? "მუმლაძე" : "Mumladze",
-      borderCorrect: cCorrect1,
-    },
-  ];
   function validateInput(
     name: string | undefined,
     username: string | undefined,
@@ -151,7 +134,7 @@ export default function PersonalLeftSide() {
           : CommonStyles.infoContainer
       }
     >
-      <MyPersonalLeftSideContext.Provider
+      <MyPersonalContext.Provider
         value={{
           cCorrect,
           cCorrect1,
@@ -162,47 +145,8 @@ export default function PersonalLeftSide() {
         }}
       >
         <CorrectWrongComponent />
-      </MyPersonalLeftSideContext.Provider>
-      <img
-        src={cBGColor ? lightMode : darkMode}
-        alt="light or dark"
-        className={
-          cBGColor
-            ? `${CommonStyles.modeSun} ${CommonStyles.CommonBGCPosition}`
-            : `${CommonStyles.modeMoon} ${CommonStyles.CommonBGCPosition}`
-        }
-        onClick={() => {
-          sBGColor(!cBGColor);
-        }}
-      />
-      <img
-        src={cLanguage !== true ? unitedKingdomFlag : georgiaFlag}
-        alt="language"
-        className={`${CommonStyles.language} ${CommonStyles.CommonlanguagePosition}`}
-        onClick={() => {
-          sLanguage(!cLanguage);
-        }}
-      />
-      <img
-        src={Ellipse}
-        alt="Ellipse"
-        className={
-          cBGColor
-            ? `${CommonStyles.ellipse} ${CommonStyles.ellipseDark}`
-            : CommonStyles.ellipse
-        }
-        onClick={() => useAppContext1.sPage(useAppContext1.cPage - 1)}
-      />
-      <img
-        src={Vector}
-        alt="Vector"
-        className={
-          cBGColor
-            ? `${CommonStyles.vectorDark} ${CommonStyles.vectorLight}`
-            : CommonStyles.vectorDark
-        }
-        onClick={() => useAppContext1.sPage(useAppContext1.cPage - 1)}
-      />
+      </MyPersonalContext.Provider>
+      <ImgReplayCustom />
       <div className={CommonStyles.skeleton}>
         <div className={CommonStyles.headline}>
           <p
@@ -214,53 +158,11 @@ export default function PersonalLeftSide() {
           >
             {languageChanger("პირადი ინფო", "Personal information")}
           </p>
-          <p
-            style={{
-              fontSize: "20px",
-            }}
-          >
-            1/3
-          </p>
+          <p style={{ fontSize: "20px" }}>1/3</p>
         </div>
         <hr style={{ marginBottom: "69px" }} />
         <div className={infoUpdateStyles.nameUSername}>
-          {dataMap.map((data: any, idx: number) => {
-            return (
-              <div className={data.fullDivName} key={idx}>
-                <label
-                  htmlFor={data.htmlForId}
-                  className={CommonStyles.labelStandard}
-                >
-                  {data.content}
-                </label>
-                <input
-                  type="text"
-                  placeholder={data.inputPlaceHolder}
-                  id={data.htmlForId}
-                  className={CommonStyles.inputStandard}
-                  onChange={(e) => {
-                    data.onChange(e.target.value);
-                  }}
-                  style={{
-                    border: !cVisible
-                      ? cBGColor
-                        ? "1px solid white"
-                        : "1px solid black"
-                      : data.borderCorrect
-                      ? "1px solid #98E37E"
-                      : "1px solid #EF5050",
-                    backgroundColor: cBGColor ? "black" : "white",
-                    color: cBGColor ? "white" : "black",
-                  }}
-                />
-                <span className={CommonStyles.spanStandard}>
-                  {!cLanguage
-                    ? "მინიმუმ 2 ასო, ქართული ასოები"
-                    : "At least 2 letters, Georgian letters"}
-                </span>
-              </div>
-            );
-          })}
+          <InputReplayCustom />
         </div>
         <div className={infoUpdateStyles.upload}>
           <p>

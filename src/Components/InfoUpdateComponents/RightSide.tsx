@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { MyPersonalContext } from "../InfoUpdate";
+import { infoUpdateContext } from "../InfoUpdate";
 
 import CommonStyles from "../Styles/Common.module.css";
 
@@ -11,7 +11,7 @@ import mobileIcon from "../../Assets/Icon/phoneIcon.svg";
 import spiralIcon from "../../Assets/Icon/@.svg";
 
 export default function Rendered() {
-  const MPCL = useContext(MyPersonalContext);
+  const MPCL = useContext(infoUpdateContext);
   const {
     cName,
     cUsername,

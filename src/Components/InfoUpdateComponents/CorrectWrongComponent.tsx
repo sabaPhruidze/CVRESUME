@@ -1,13 +1,13 @@
 import React from "react";
 import { useContext } from "react";
-import { MyPersonalContext } from "../InfoUpdate";
+import { infoUpdateContext } from "../InfoUpdate";
 import CommonStyles from "../Styles/Common.module.css";
 
 import correctIcon from "../../Assets/Icon/correctIcon.svg";
 import warningIcon from "../../Assets/Icon/warningIcon.svg";
 
 export default function CorrectWrongComponent() {
-  const MPCL = useContext(MyPersonalContext); // my personal context Local I mean Personals info
+  const MPCL = useContext(infoUpdateContext); // my personal context Local I mean Personals info
   const { cCorrect, cCorrect1, cCorrect2, cCorrect3, cVisible } = MPCL;
   const DataOfCorrectIncorrect = [cCorrect, cCorrect1, cCorrect2, cCorrect3];
 
