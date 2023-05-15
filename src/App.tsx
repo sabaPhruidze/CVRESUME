@@ -2,10 +2,10 @@ import React from "react";
 import "./App.css";
 import { useState, createContext } from "react";
 
-import Experience from "./Components/ForDataMap/Experience";
+import Experience from "./Components/InfoUpdateComponents/Experience";
 import FinalResume from "./Components/FinalResume";
 import Home from "./Components/Home";
-import Knowledge from "./Components/Knowledge";
+import Knowledge from "./Components/InfoUpdateComponents/Knowledge";
 import InfoUpdate from "./Components/InfoUpdate";
 
 export const context = createContext<any>(null);

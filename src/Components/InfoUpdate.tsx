@@ -2,12 +2,12 @@ import React from "react";
 import { createContext, useContext, useState, useRef } from "react";
 import { context } from "../App";
 import Home from "./Home";
-import PersonalLeftSide from "./ForDataMap/PersonalLeftSide";
-import Experience from "./ForDataMap/Experience";
+import PersonalLeftSide from "./InfoUpdateComponents/PersonalLeftSide";
+import Experience from "./InfoUpdateComponents/Experience";
 
-import CommonInput from "./ForDataMap/CommonInput";
-import CorrectWrongComponent from "./ForDataMap/CorrectWrongComponent";
-import RightSide from "./ForDataMap/RightSide";
+import CommonInput from "./InfoUpdateComponents/CommonInput";
+import CorrectWrongComponent from "./InfoUpdateComponents/CorrectWrongComponent";
+import RightSide from "./InfoUpdateComponents/RightSide";
 
 import georgiaFlag from "../Assets/Img/common/georgia.png";
 import unitedKingdomFlag from "../Assets/Img/common/unitedKingdom.png";
@@ -20,9 +20,8 @@ import OrangeLogo from "../Assets/Img/2. SecondPage/logoOrange.svg";
 import mobileIcon from "../Assets/Icon/phoneIcon.svg";
 import spiralIcon from "../Assets/Icon/@.svg";
 
-import CommonStyles from "./Common.module.css";
-import PersonalStyles from "./Personal.module.css";
-import Knowledge from "./Knowledge";
+import CommonStyles from "./Styles/Common.module.css";
+import Knowledge from "./InfoUpdateComponents/Knowledge";
 
 export const MyPersonalContext = createContext<any>("s");
 
