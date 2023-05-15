@@ -4,7 +4,8 @@ import { infoUpdateContext } from "../InfoUpdate";
 
 import { ImgReplayCustom } from "../DataMap/Replay";
 import CorrectWrongComponent from "./CorrectWrongComponent";
-import { InputReplayCustom } from "../DataMap/Replay";
+import { InputReplayCustomRow } from "../DataMap/Replay";
+import { InputFile } from "../DataMap/Replay";
 
 import georgiaFlag from "../../Assets/Img/common/georgia.png";
 import unitedKingdomFlag from "../../Assets/Img/common/unitedKingdom.png";
@@ -162,35 +163,10 @@ export default function Personal() {
         </div>
         <hr style={{ marginBottom: "69px" }} />
         <div className={infoUpdateStyles.nameUSername}>
-          <InputReplayCustom />
+          <InputReplayCustomRow />
         </div>
         <div className={infoUpdateStyles.upload}>
-          <p>
-            {languageChanger(
-              "პირადი ფოტოს ატვირთვა",
-              "Upload a personal photo"
-            )}
-          </p>
-          <label
-            htmlFor="uploadImg"
-            style={{
-              padding: !cLanguage ? "3px 0 5px 20px" : "5px 0 5px 30px",
-            }}
-            id="textArea"
-          >
-            {languageChanger("ატვირთვა", "Upload")}
-            <input
-              type="file"
-              alt="upload photo"
-              accept="image/*"
-              id="uploadImg"
-              onChange={(e) => {
-                sUploadImg(e.target.files?.[0]);
-                //if something is uploaded it will be save in sUploadImg
-              }}
-            />
-            {/* allowing only Images */}
-          </label>
+          <InputFile />
         </div>
         <div className={infoUpdateStyles.aboutUs}>
           <label htmlFor="aboutMe" className={CommonStyles.labelStandard}>

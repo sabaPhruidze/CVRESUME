@@ -171,7 +171,7 @@ export function ImgReplayCustom() {
     </>
   );
 }
-export function InputReplayCustom() {
+export function InputReplayCustomRow() {
   const useAppContext0 = useContext(context);
   const {
     cBGColor,
@@ -186,7 +186,7 @@ export function InputReplayCustom() {
   const dataMap = [
     {
       fullDivName: infoUpdateStyles.namePart,
-      content: !cLanguage ? "სახელი" : "Name",
+      content: languageChanger(!cLanguage, "სახელი", "Name"),
       htmlForId: "name",
       onChange: sName,
       inputPlaceHolder: !cLanguage ? "ანზორ" : "Anzor",
@@ -197,7 +197,7 @@ export function InputReplayCustom() {
       content: !cLanguage ? "გვარი" : "Username",
       htmlForId: "userName",
       onChange: sUsername,
-      inputPlaceHolder: !cLanguage ? "მუმლაძე" : "Mumladze",
+      inputPlaceHolder: languageChanger(cLanguage, "მუმლაძე", "Mumladze"),
       borderCorrect: cCorrect1,
     },
   ];
@@ -244,3 +244,133 @@ export function InputReplayCustom() {
   );
 }
 // for personal -
+export function InputReplayCustomColumn() {
+  const useAppContext0 = useContext(context);
+  const {
+    cBGColor,
+    sPage,
+    cLanguage,
+    sName,
+    cCorrect,
+    sUsername,
+    cCorrect1,
+    cVisible,
+  } = useAppContext0;
+  const dataMap = [
+    {
+      fullDivName: infoUpdateStyles.namePart,
+      content: languageChanger(!cLanguage, "სახელი", "Name"),
+      htmlForId: "name",
+      onChange: sName,
+      inputPlaceHolder: !cLanguage ? "ანზორ" : "Anzor",
+      borderCorrect: cCorrect,
+    },
+    {
+      fullDivName: infoUpdateStyles.lastNamePart,
+      content: !cLanguage ? "გვარი" : "Username",
+      htmlForId: "userName",
+      onChange: sUsername,
+      inputPlaceHolder: languageChanger(!cLanguage, "მუმლაძე", "Mumladze"),
+      borderCorrect: cCorrect1,
+    },
+  ];
+  return (
+    <>
+      {dataMap.map((data: any, idx: number) => {
+        return (
+          <div className={data.fullDivName} key={idx}>
+            <label
+              htmlFor={data.htmlForId}
+              className={CommonStyles.labelStandard}
+            >
+              {data.content}
+            </label>
+            <input
+              type="text"
+              placeholder={data.inputPlaceHolder}
+              id={data.htmlForId}
+              className={CommonStyles.inputStandard}
+              onChange={(e) => {
+                data.onChange(e.target.value);
+              }}
+              style={{
+                border: !cVisible
+                  ? cBGColor
+                    ? "1px solid white"
+                    : "1px solid black"
+                  : data.borderCorrect
+                  ? "1px solid #98E37E"
+                  : "1px solid #EF5050",
+                backgroundColor: cBGColor ? "black" : "white",
+                color: cBGColor ? "white" : "black",
+              }}
+            />
+            <span className={CommonStyles.spanStandard}>
+              {!cLanguage
+                ? "მინიმუმ 2 ასო, ქართული ასოები"
+                : "At least 2 letters, Georgian letters"}
+            </span>
+          </div>
+        );
+      })}
+    </>
+  );
+}
+export function InputFile() {
+  const useAppContext0 = useContext(context);
+  const {
+    cBGColor,
+    sPage,
+    cLanguage,
+    sName,
+    cCorrect,
+    sUsername,
+    cCorrect1,
+    cVisible,
+    sUploadImg,
+  } = useAppContext0;
+  const dataMap = [
+    {
+      pContent: languageChanger(
+        cLanguage,
+        "პირადი ფოტოს ატვირთვა",
+        "Upload a personal photo"
+      ),
+      htmlFor: "uploadImg",
+      labelStyle: !cLanguage ? "3px 0 5px 20px" : "5px 0 5px 30px",
+      labelId: "textArea",
+      buttonContent: languageChanger(cLanguage, "ატვირთვა", "Upload"),
+    },
+  ];
+  return (
+    <>
+      {dataMap.map((data: any, idx: number) => {
+        return (
+          <>
+            <p key={idx}>{data.pContent}</p>
+            <label
+              htmlFor={data.htmlFor}
+              style={{
+                padding: data.labelStyle,
+              }}
+              id={data.labelId}
+            >
+              {data.buttonContent}
+              <input
+                type="file"
+                alt="upload photo"
+                accept="image/*"
+                id={data.htmlFor}
+                onChange={(e) => {
+                  sUploadImg(e.target.files?.[0]);
+                  //if something is uploaded it will be save in sUploadImg
+                }}
+              />
+              {/* allowing only Images */}
+            </label>
+          </>
+        );
+      })}
+    </>
+  );
+}
