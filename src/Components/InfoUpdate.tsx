@@ -68,6 +68,53 @@ export default function InfoUpdate() {
     sEndDate,
     cDescription,
     sDescription,
+
+    cMoreExperience,
+    sMoreExperience,
+
+    cPosition1,
+    sPosition1,
+    cEmployer1,
+    sEmployer1,
+    cStartDate1,
+    sStartDate1,
+    cEndDate1,
+    sEndDate1,
+    cDescription1,
+    sDescription1,
+
+    cPosition2,
+    sPosition2,
+    cEmployer2,
+    sEmployer2,
+    cStartDate2,
+    sStartDate2,
+    cEndDate2,
+    sEndDate2,
+    cDescription2,
+    sDescription2,
+
+    cPosition3,
+    sPosition3,
+    cEmployer3,
+    sEmployer3,
+    cStartDate3,
+    sStartDate3,
+    cEndDate3,
+    sEndDate3,
+    cDescription3,
+    sDescription3,
+
+    cPosition4,
+    sPosition4,
+    cEmployer4,
+    sEmployer4,
+    cStartDate4,
+    sStartDate4,
+    cEndDate4,
+    sEndDate4,
+    cDescription4,
+    sDescription4,
   } = useAppContext1;
 
   return (
@@ -111,10 +158,69 @@ export default function InfoUpdate() {
         sEndDate,
         cDescription,
         sDescription,
+
+        cMoreExperience,
+        sMoreExperience,
+
+        cPosition1,
+        sPosition1,
+        cEmployer1,
+        sEmployer1,
+        cStartDate1,
+        sStartDate1,
+        cEndDate1,
+        sEndDate1,
+        cDescription1,
+        sDescription1,
+
+        cPosition2,
+        sPosition2,
+        cEmployer2,
+        sEmployer2,
+        cStartDate2,
+        sStartDate2,
+        cEndDate2,
+        sEndDate2,
+        cDescription2,
+        sDescription2,
+
+        cPosition3,
+        sPosition3,
+        cEmployer3,
+        sEmployer3,
+        cStartDate3,
+        sStartDate3,
+        cEndDate3,
+        sEndDate3,
+        cDescription3,
+        sDescription3,
+
+        cPosition4,
+        sPosition4,
+        cEmployer4,
+        sEmployer4,
+        cStartDate4,
+        sStartDate4,
+        cEndDate4,
+        sEndDate4,
+        cDescription4,
+        sDescription4,
       }}
     >
       <div
         className={`${CommonStyles.container} ${CommonStyles.containerFlex}`}
+        style={{
+          height:
+            cMoreExperience === 0
+              ? "1080px"
+              : cMoreExperience === 1
+              ? "calc(1080 * 2)"
+              : cMoreExperience === 2
+              ? "calc(1080 * 3)"
+              : cMoreExperience === 3
+              ? "calc(1080 * 4)"
+              : "calc(1080 * 5)",
+        }}
       >
         {cPage === 2 ? (
           <Experience />

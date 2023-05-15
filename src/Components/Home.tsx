@@ -7,7 +7,7 @@ import unitedKingdomFlag from "../Assets/Img/common/unitedKingdom.png";
 import lightMode from "../Assets/Icon/sunMode.svg";
 import darkMode from "../Assets/Icon/nightMode.svg";
 
-import background from "../Assets/Img/1. FirstPage/background1.png";
+import background from "../Assets/Img/1. FirstPage/background1.jpg";
 import backgroundDark from "../Assets/Img/1. FirstPage/backgroundDark.jpg";
 import redBerryBanner from "../Assets/Img/1. FirstPage/redberryBanner.svg";
 import diploma from "../Assets/Img/1. FirstPage/diploma.svg";

@@ -60,6 +60,53 @@ export default function PersonalLeftSide() {
     sEndDate,
     cDescription,
     sDescription,
+
+    cMoreExperience,
+    sMoreExperience,
+
+    cPosition1,
+    sPosition1,
+    cEmployer1,
+    sEmployer1,
+    cStartDate1,
+    sStartDate1,
+    cEndDate1,
+    sEndDate1,
+    cDescription1,
+    sDescription1,
+
+    cPosition2,
+    sPosition2,
+    cEmployer2,
+    sEmployer2,
+    cStartDate2,
+    sStartDate2,
+    cEndDate2,
+    sEndDate2,
+    cDescription2,
+    sDescription2,
+
+    cPosition3,
+    sPosition3,
+    cEmployer3,
+    sEmployer3,
+    cStartDate3,
+    sStartDate3,
+    cEndDate3,
+    sEndDate3,
+    cDescription3,
+    sDescription3,
+
+    cPosition4,
+    sPosition4,
+    cEmployer4,
+    sEmployer4,
+    cStartDate4,
+    sStartDate4,
+    cEndDate4,
+    sEndDate4,
+    cDescription4,
+    sDescription4,
   } = useAppContext2;
   function languageChanger(geo: string, eng: string) {
     return !cLanguage ? geo : eng;
@@ -70,7 +117,7 @@ export default function PersonalLeftSide() {
     startDate: number | undefined,
     endDate: number | undefined
   ) {
-    const georgianWordsRegex = /^(?:.*[ა-ჰ]){2,}.*$/;
+    const georgianWordsRegex = /.{2}.*/;
     if (Position && georgianWordsRegex.test(Position)) {
       sCorrect(true);
     } else {

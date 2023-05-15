@@ -150,7 +150,7 @@ least for 2 page */
   padding: 0 16px;
   color: #ffffff;
   background-color: #000000;
-  border-radius: 1px solid white;
+  : 1px;
 }
 .inputStandardDark:active {
   outline: 0;

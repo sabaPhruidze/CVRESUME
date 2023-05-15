@@ -11,7 +11,7 @@
 body {
   /* The task was to made the project 1920x1080 */
   width:1920px;
-  height:1080px;
+  min-height:1080px;
   box-sizing: border-box;
   background-color: rgb(249, 202, 202);
   color:black;

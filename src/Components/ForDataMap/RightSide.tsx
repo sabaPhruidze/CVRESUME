@@ -104,7 +104,12 @@ export default function Rendered() {
         />
       )}
       <img src={OrangeLogo} alt="OrangeLogo" className={CommonStyles.orange} />
-      {cPage >= 2 ? (
+      {cPage >= 2 &&
+      (cPosition.length > 0 ||
+        cEmployer.length > 0 ||
+        cStartDate.length > 0 ||
+        cEndDate.length > 0 ||
+        cDescription.length > 0) ? (
         <>
           <hr style={{ marginTop: "19px", width: "calc(100% - 80px)" }} />
           <p
@@ -123,15 +128,17 @@ export default function Rendered() {
           <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
             {cStartDate} - {cEndDate}
           </em>
-          <p
+          <div
             style={{
-              marginTop: "16px",
-              width: "calc(100% - 80px)",
-              flexWrap: "wrap",
+              width: "662px",
+              height: "125px",
+              wordWrap: "break-word",
+              overflow: "hidden",
+              fontSize: "16px",
             }}
           >
             {cDescription}
-          </p>
+          </div>
         </>
       ) : (
         ""
