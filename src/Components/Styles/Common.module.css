@@ -2,11 +2,11 @@
 least for 2 page */
 @font-face {
     font-family: RobotoBold;
-    src: url(../Assets/Font/Roboto-Bold.ttf);
+    src: url(../../Assets/Font/Roboto-Medium.ttf);
   }
   @font-face {
     font-family: light;
-    src: url(../Assets/Font/Roboto-Light.ttf);
+    src: url(../../Assets/Font/Roboto-Light.ttf);
   }
   /* left side */
 .container {

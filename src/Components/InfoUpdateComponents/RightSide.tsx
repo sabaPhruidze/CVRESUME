@@ -2,8 +2,8 @@ import React from "react";
 import { useContext } from "react";
 import { MyPersonalContext } from "../InfoUpdate";
 
-import CommonStyles from "../Common.module.css";
-import PersonalStyles from "../Personal.module.css";
+import PersonalStyles from "../Styles/Personal.module.css";
+import CommonStyles from "../Styles/Common.module.css";
 
 import Ellipse from "../Assets/Img/2. SecondPage/Ellipse.svg";
 import Vector from "../Assets/Img/2. SecondPage/Vectorvector.svg";

@@ -16,8 +16,8 @@ import OrangeLogo from "../../Assets/Img/2. SecondPage/logoOrange.svg";
 import mobileIcon from "../../Assets/Icon/phoneIcon.svg";
 import spiralIcon from "../../Assets/Icon/@.svg";
 
-import CommonStyles from "../Common.module.css";
-import PersonalStyles from "../Personal.module.css";
+import PersonalStyles from "../Styles/Personal.module.css";
+import CommonStyles from "../Styles/Common.module.css";
 
 export const MyPersonalLeftSideContext = createContext<any>("w");
 export default function PersonalLeftSide() {

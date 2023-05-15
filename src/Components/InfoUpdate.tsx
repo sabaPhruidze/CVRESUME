@@ -5,20 +5,20 @@ import Home from "./Home";
 import PersonalLeftSide from "./InfoUpdateComponents/PersonalLeftSide";
 import Experience from "./InfoUpdateComponents/Experience";
 
-import CommonInput from "./InfoUpdateComponents/CommonInput";
-import CorrectWrongComponent from "./InfoUpdateComponents/CorrectWrongComponent";
+// import CommonInput from "./InfoUpdateComponents/CommonInput";
+// import CorrectWrongComponent from "./InfoUpdateComponents/CorrectWrongComponent";
 import RightSide from "./InfoUpdateComponents/RightSide";
 
-import georgiaFlag from "../Assets/Img/common/georgia.png";
-import unitedKingdomFlag from "../Assets/Img/common/unitedKingdom.png";
-import lightMode from "../Assets/Icon/sunMode.svg";
-import darkMode from "../Assets/Icon/nightMode.svg";
+// import georgiaFlag from "../Assets/Img/common/georgia.png";
+// import unitedKingdomFlag from "../Assets/Img/common/unitedKingdom.png";
+// import lightMode from "../Assets/Icon/sunMode.svg";
+// import darkMode from "../Assets/Icon/nightMode.svg";
 
-import Ellipse from "../Assets/Img/2. SecondPage/Ellipse.svg";
-import Vector from "../Assets/Img/2. SecondPage/Vectorvector.svg";
-import OrangeLogo from "../Assets/Img/2. SecondPage/logoOrange.svg";
-import mobileIcon from "../Assets/Icon/phoneIcon.svg";
-import spiralIcon from "../Assets/Icon/@.svg";
+// import Ellipse from "../Assets/Img/2. SecondPage/Ellipse.svg";
+// import Vector from "../Assets/Img/2. SecondPage/Vectorvector.svg";
+// import OrangeLogo from "../Assets/Img/2. SecondPage/logoOrange.svg";
+// import mobileIcon from "../Assets/Icon/phoneIcon.svg";
+// import spiralIcon from "../Assets/Icon/@.svg";
 
 import CommonStyles from "./Styles/Common.module.css";
 import Knowledge from "./InfoUpdateComponents/Knowledge";

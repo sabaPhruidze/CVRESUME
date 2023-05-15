@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 
 import { context } from "../../App";
 
-import CommonStyles from "../Common.module.css";
-import HomeStyles from "../Home.module.css";
+import CommonStyles from "../Styles/Common.module.css";
+import HomeStyles from "../Styles/Home.module.css";
 
 import georgiaFlag from "../../Assets/Img/common/georgia.png";
 import unitedKingdomFlag from "../../Assets/Img/common/unitedKingdom.png";
