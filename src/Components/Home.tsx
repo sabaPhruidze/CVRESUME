@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { context } from "../App";
 import { ImgReplay } from "./DataMap/Replay";
-
+import { ButtonReplay } from "./DataMap/Replay";
 import CommonStyles from "./Common.module.css";
 import HomeStyles from "./Home.module.css";
 
@@ -16,16 +16,7 @@ export default function Home() {
           useAppContext0.cBGColor ? HomeStyles.lineDark : HomeStyles.line
         }
       />
-      <button
-        className={
-          useAppContext0.cBGColor ? HomeStyles.buttonDark : HomeStyles.button
-        }
-        onClick={() => useAppContext0.sPage(1)}
-      >
-        {useAppContext0.cLanguage === false
-          ? "რეზიუმეს დამატება"
-          : "Add resume"}
-      </button>
+      <ButtonReplay />
     </div>
   );
 }
