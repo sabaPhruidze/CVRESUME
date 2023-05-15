@@ -55,7 +55,9 @@ export function ImgReplay() {
     {
       src: diploma,
       alt: "diploma",
-      className: cBGColor ? HomeStyles.diplomaImgDark : HomeStyles.diplomaImg,
+      className: cBGColor
+        ? `${HomeStyles.diplomaImgDark} ${HomeStyles.diplomaImg}`
+        : HomeStyles.diplomaImg,
       key: 4,
     },
   ];
@@ -80,7 +82,9 @@ export function ButtonReplay() {
   const { cBGColor, sPage, cLanguage, cPage } = useAppContext0;
   const buttonDataHome = [
     {
-      className: cBGColor ? HomeStyles.buttonDark : HomeStyles.button,
+      className: cBGColor
+        ? `${HomeStyles.buttonDark} ${HomeStyles.button}`
+        : HomeStyles.button,
       onClick: () => sPage(1),
       language: cLanguage === false ? "რეზიუმეს დამატება" : "Add resume",
       key: 0,

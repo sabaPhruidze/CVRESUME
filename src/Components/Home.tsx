@@ -13,7 +13,9 @@ export default function Home() {
       <ImgReplay />
       <hr
         className={
-          useAppContext0.cBGColor ? HomeStyles.lineDark : HomeStyles.line
+          useAppContext0.cBGColor
+            ? `${HomeStyles.line} ${HomeStyles.lineDark}`
+            : HomeStyles.line
         }
       />
       <ButtonReplay />
