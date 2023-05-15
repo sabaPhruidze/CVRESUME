@@ -33,7 +33,7 @@ export default function Rendered() {
     <div
       className={
         cBGColor
-          ? CommonStyles.renderContainerDark
+          ? `${CommonStyles.renderContainerDark} ${CommonStyles.renderContainer}`
           : CommonStyles.renderContainer
       }
       style={{

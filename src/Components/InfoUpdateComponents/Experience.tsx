@@ -201,7 +201,9 @@ export default function PersonalLeftSide() {
   return (
     <div
       className={
-        cBGColor ? CommonStyles.infoContainerDark : CommonStyles.infoContainer
+        cBGColor
+          ? `${CommonStyles.infoContainer} ${CommonStyles.infoContainerDark}`
+          : CommonStyles.infoContainer
       }
       style={{
         height:
@@ -254,18 +256,26 @@ export default function PersonalLeftSide() {
       <img
         src={Ellipse}
         alt="Ellipse"
-        className={cBGColor ? CommonStyles.ellipseDark : CommonStyles.ellipse}
+        className={
+          cBGColor
+            ? `${CommonStyles.ellipse} ${CommonStyles.ellipseDark}`
+            : CommonStyles.ellipse
+        }
         onClick={() => useAppContext2.sPage(useAppContext2.cPage - 1)}
       />
       <img
         src={Vector}
         alt="Vector"
-        className={cBGColor ? CommonStyles.vectorLight : CommonStyles.vector}
+        className={
+          cBGColor
+            ? `${CommonStyles.vectorDark} ${CommonStyles.vectorLight}`
+            : CommonStyles.vectorDark
+        }
         onClick={() => useAppContext2.sPage(useAppContext2.cPage - 1)}
       />
 
       <div className={CommonStyles.skeleton}>
-        <div className={CommonStyles.dFlex}>
+        <div className={CommonStyles.headline}>
           <p
             style={{
               fontSize: "24px",
@@ -489,7 +499,7 @@ export default function PersonalLeftSide() {
         </div>
       </div>
       <button
-        className={` ${CommonStyles.purpleButtonBack}`}
+        className={` ${CommonStyles.purpleButtonBack} ${CommonStyles.purpleButton}`}
         onClick={() => {
           sPage(cPage - 1);
         }}

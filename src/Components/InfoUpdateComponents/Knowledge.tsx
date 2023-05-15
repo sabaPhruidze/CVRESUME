@@ -10,7 +10,7 @@ import Vector from "../../Assets/Img/2. SecondPage/Vectorvector.svg";
 export default function Knowledge() {
   const useAppContext3 = useContext(context);
   return (
-    <div className={`${CommonStyles.container} ${CommonStyles.containerFlex}`}>
+    <div className={`${CommonStyles.container} ${CommonStyles.flexRow}`}>
       <div className={CommonStyles.infoContainer}>
         <img
           src={Ellipse}
@@ -25,7 +25,7 @@ export default function Knowledge() {
           onClick={() => useAppContext3.sPage(2)}
         />
         <div className={CommonStyles.skeleton}>
-          <div className={CommonStyles.dFlex}>
+          <div className={CommonStyles.headline}>
             <p
               style={{
                 fontSize: "24px",

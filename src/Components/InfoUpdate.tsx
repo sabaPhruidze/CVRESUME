@@ -207,7 +207,7 @@ export default function InfoUpdate() {
       }}
     >
       <div
-        className={`${CommonStyles.container} ${CommonStyles.containerFlex}`}
+        className={`${CommonStyles.container} ${CommonStyles.flexRow}`}
         style={{
           height:
             cMoreExperience === 0
