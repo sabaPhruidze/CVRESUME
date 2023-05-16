@@ -511,3 +511,107 @@ export function PersonalMailTelephone() {
     </>
   );
 }
+export function PersonButtonReplay() {
+  const useAppContext0 = useContext(context);
+  const {
+    cBGColor,
+    cPage,
+    sPage,
+    cLanguage,
+    cName,
+    cUsername,
+    cUploadImg,
+    cEmail,
+    cTel,
+    sVisible,
+    sCorrect,
+    sCorrect1,
+    sCorrect2,
+    sCorrect3,
+    cAboutMe,
+  } = useAppContext0;
+  const buttonDataHome = [
+    {
+      className: CommonStyles.purpleButton,
+      onClick: () => {
+        validateInput(cName, cUsername, cUploadImg, cEmail, cTel);
+        sVisible(true);
+      },
+      language: languageChanger(cLanguage, "შემდეგი", "Next"),
+      key: 0,
+    },
+  ];
+  function validateInput(
+    name: string | undefined,
+    username: string | undefined,
+    img: any,
+    email: string | undefined,
+    phone: any
+  ) {
+    const georgianWordsRegex = /^(?:.*[ა-ჰ]){2,}.*$/;
+    const mailRegex = /.*@redberry\.ge$/;
+    const telNumber = /^\+995 \d{3} \d{2} \d{2} \d{2}$/;
+    if (name && georgianWordsRegex.test(name)) {
+      sCorrect(true);
+    } else {
+      sCorrect(false);
+    }
+    if (username && georgianWordsRegex.test(username)) {
+      sCorrect1(true);
+    } else {
+      sCorrect1(false);
+    }
+    if (email && mailRegex.test(email)) {
+      sCorrect2(true);
+    } else {
+      sCorrect2(false);
+    }
+    if (phone && telNumber.test(phone)) {
+      sCorrect3(true);
+    } else {
+      sCorrect3(false);
+    }
+    if (
+      name &&
+      georgianWordsRegex.test(name) &&
+      username &&
+      georgianWordsRegex.test(username) &&
+      img &&
+      email &&
+      mailRegex.test(email) &&
+      phone &&
+      telNumber.test(phone)
+    ) {
+      return [
+        cName,
+        cUsername,
+        cUploadImg,
+        cEmail,
+        cTel,
+        cAboutMe,
+        cBGColor,
+        localStorage.setItem("cName", cName),
+        localStorage.setItem("cUsername", cUsername),
+        localStorage.setItem("cUploadImg", cUploadImg),
+        localStorage.setItem("cEmail", cEmail),
+        localStorage.setItem("cTel", cTel),
+        localStorage.setItem("cAboutMe", cAboutMe),
+        localStorage.setItem("cBGColor", cBGColor),
+        sPage(cPage + 1),
+      ];
+    }
+  }
+  return (
+    <>
+      {buttonDataHome.map((data) => (
+        <button
+          className={data.className}
+          onClick={data.onClick}
+          key={data.key}
+        >
+          {data.language}
+        </button>
+      ))}
+    </>
+  );
+}

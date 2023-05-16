@@ -9,6 +9,7 @@ import {
   InputFile,
   PersonalTextArea,
   PersonalMailTelephone,
+  PersonButtonReplay,
 } from "../DataMap/Replay";
 
 import georgiaFlag from "../../Assets/Img/common/georgia.png";
@@ -61,75 +62,9 @@ export default function Personal() {
   function languageChanger(geo: string, eng: string) {
     return !cLanguage ? geo : eng;
   }
-  function validateInput(
-    name: string | undefined,
-    username: string | undefined,
-    img: any,
-    email: string | undefined,
-    phone: any
-  ) {
-    const georgianWordsRegex = /^(?:.*[ა-ჰ]){2,}.*$/;
-    const mailRegex = /.*@redberry\.ge$/;
-    const telNumber = /^\+995 \d{3} \d{2} \d{2} \d{2}$/;
-    if (name && georgianWordsRegex.test(name)) {
-      sCorrect(true);
-    } else {
-      sCorrect(false);
-    }
-    if (username && georgianWordsRegex.test(username)) {
-      sCorrect1(true);
-    } else {
-      sCorrect1(false);
-    }
-    if (email && mailRegex.test(email)) {
-      sCorrect2(true);
-      emailRef.current.style.border = "1px solid #98E37E";
-    } else {
-      sCorrect2(false);
-      emailRef.current.style.border = "1px solid #EF5050";
-    }
-    if (phone && telNumber.test(phone)) {
-      sCorrect3(true);
-      mobileRef.current.style.border = "1px solid #98E37E";
-    } else {
-      sCorrect3(false);
-      mobileRef.current.style.border = "1px solid #EF5050";
-    }
 
-    if (
-      name &&
-      georgianWordsRegex.test(name) &&
-      username &&
-      georgianWordsRegex.test(username) &&
-      img &&
-      email &&
-      mailRegex.test(email) &&
-      phone &&
-      telNumber.test(phone)
-    ) {
-      return [
-        cName,
-        cUsername,
-        cUploadImg,
-        cEmail,
-        cTel,
-        cAboutMe,
-        cBGColor,
-        localStorage.setItem("cName", cName),
-        localStorage.setItem("cUsername", cUsername),
-        localStorage.setItem("cUploadImg", cUploadImg),
-        localStorage.setItem("cEmail", cEmail),
-        localStorage.setItem("cTel", cTel),
-        localStorage.setItem("cAboutMe", cAboutMe),
-        localStorage.setItem("cBGColor", cBGColor),
-        useAppContext1.sPage(useAppContext1.cPage + 1),
-      ];
-    }
-    //ესაა მთავარი რომ თუ ყველაფერი სწორადაა შევსებული ამ შემთხვევაში გადავიდეს შემდეგ გვერდზე
-  }
   //I am just using ref to test it.Even trougth I can solve most of the tasks using useState I think sometimes useRef is also helpful
-  const emailRef = useRef<any>("");
-  const mobileRef = useRef<any>("");
+
   return (
     <div
       className={
@@ -176,16 +111,7 @@ export default function Personal() {
         </div>
         <PersonalMailTelephone />
       </div>
-      <button
-        className={CommonStyles.purpleButton}
-        onClick={() => {
-          validateInput(cName, cUsername, cUploadImg, cEmail, cTel);
-          sVisible(true);
-          sPage(2);
-        }}
-      >
-        {languageChanger("შემდეგი", "Next")}
-      </button>
+      <PersonButtonReplay />
     </div>
   );
 }
