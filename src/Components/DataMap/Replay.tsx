@@ -380,12 +380,14 @@ export function InputFile() {
 }
 export function PersonalTextArea() {
   const useAppContext0 = useContext(context);
-  const { cBGColor, cLanguage, sAboutMe } = useAppContext0;
+  const { cBGColor, cLanguage, sAboutMe, aboutMeRef, cVisible } =
+    useAppContext0;
 
   const DataOfTextArea = [
     {
       key: 0,
       htmlFor: "aboutMe",
+      ref: aboutMeRef,
       labelContext: languageChanger(cLanguage, "ჩემ შესახებ ", "About me"),
       spanContext: languageChanger(cLanguage, "(არასავალდებულო)", "(optional)"),
       placeHolder: languageChanger(
@@ -395,14 +397,6 @@ export function PersonalTextArea() {
       ),
       onChange: (e: any) => {
         sAboutMe(e.target.value);
-        (e.target.value.length > 0 && !cBGColor) ||
-        (e.target.value.length > 0 && cBGColor)
-          ? (e.target.style.border = "1px solid #98E37E")
-          : e.target.value.length < 0 && cBGColor
-          ? (e.target.style.border = "1px solid white")
-          : e.target.value.length < 0 && !cBGColor
-          ? (e.target.style.border = "1px solid black")
-          : (e.target.style.border = "1px solid black");
       },
     },
   ];
@@ -425,8 +419,13 @@ export function PersonalTextArea() {
             style={{
               backgroundColor: cBGColor ? "black" : "white",
               color: cBGColor ? "white" : "black",
-              border: cBGColor ? "1px solid white" : "1px solid black",
+              border:
+                (!cVisible && cBGColor) ||
+                (cVisible && data.ref.current.length === 0)
+                  ? "1px solid white"
+                  : "1px solid black",
             }}
+            ref={data.ref}
           ></textarea>
         </div>
       ))}
@@ -529,6 +528,7 @@ export function PersonButtonReplay() {
     sCorrect2,
     sCorrect3,
     cAboutMe,
+    aboutMeRef,
   } = useAppContext0;
   const buttonDataHome = [
     {
@@ -570,6 +570,15 @@ export function PersonButtonReplay() {
       sCorrect3(true);
     } else {
       sCorrect3(false);
+    }
+    if (aboutMeRef.current.value.length > 0) {
+      aboutMeRef.current.style.border = "1px solid #98E37E";
+    } else if (aboutMeRef.current.value.length === 0 && cBGColor) {
+      aboutMeRef.current.style.border = "1px solid white";
+    } else if (aboutMeRef.current.value.length === 0 && !cBGColor) {
+      aboutMeRef.current.style.border = "1px solid black";
+    } else {
+      aboutMeRef.current.style.border = "1px solid black";
     }
     if (
       name &&
