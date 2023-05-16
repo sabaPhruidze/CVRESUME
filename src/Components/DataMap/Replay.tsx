@@ -197,7 +197,19 @@ export function HeadlineDivCustom() {
             fontWeight: "700",
           }}
         >
-          {languageChanger(cLanguage, "პირადი ინფო", "Personal information")}
+          {languageChanger(
+            cLanguage,
+            cPage === 1
+              ? "პირადი ინფო"
+              : cPage === 2
+              ? "გამოცდილება"
+              : "განათლება",
+            cPage === 1
+              ? "Personal information"
+              : cPage === 2
+              ? "Experience"
+              : "Knowledge"
+          )}
         </p>
         <p style={{ fontSize: "20px" }}>{numberChanger(cPage)}</p>
       </div>
@@ -414,7 +426,7 @@ export function InputFile() {
 }
 export function PersonalTextArea() {
   const useAppContext0 = useContext(context);
-  const { cBGColor, cLanguage, sAboutMe, aboutMeRef, cVisible } =
+  const { cBGColor, cLanguage, sAboutMe, cVisible, aboutMeRef } =
     useAppContext0;
 
   const DataOfTextArea = [
@@ -634,13 +646,7 @@ export function PersonButtonReplay() {
         cTel,
         cAboutMe,
         cBGColor,
-        localStorage.setItem("cName", cName),
-        localStorage.setItem("cUsername", cUsername),
-        localStorage.setItem("cUploadImg", cUploadImg),
-        localStorage.setItem("cEmail", cEmail),
-        localStorage.setItem("cTel", cTel),
-        localStorage.setItem("cAboutMe", cAboutMe),
-        localStorage.setItem("cBGColor", cBGColor),
+
         sPage(cPage + 1),
       ];
     }
@@ -838,7 +844,6 @@ export function ExperienceTextArea() {
     cBGColor,
     cLanguage,
     textAreaRef,
-    textAreaRef1,
     cDescription,
     cVisible,
     sDescription,
@@ -885,12 +890,12 @@ export function ExperienceTextArea() {
               color: cBGColor ? "white" : "black",
               border:
                 (!cVisible && cBGColor) ||
-                (cVisible && data.ref.current.length === 0)
+                (cVisible && textAreaRef.current.length === 0)
                   ? "1px solid white"
                   : "1px solid black",
               padding: "13px 16px",
             }}
-            ref={data.ref}
+            ref={textAreaRef}
           ></textarea>
           <hr
             style={{
@@ -900,6 +905,37 @@ export function ExperienceTextArea() {
             }}
           />
         </div>
+      ))}
+    </>
+  );
+}
+export function ExperienceButtonReplay() {
+  const useAppContext0 = useContext(context);
+  const { cPage, sPage, cLanguage } = useAppContext0;
+  const buttonDataHome = [
+    {
+      className: ` ${CommonStyles.purpleButtonBack} ${CommonStyles.purpleButton}`,
+      onClick: () => sPage(cPage - 1),
+      language: languageChanger(cLanguage, "უკან", "Back"),
+      key: 0,
+    },
+    {
+      className: CommonStyles.purpleButton,
+      onClick: () => sPage(cPage + 1),
+      language: languageChanger(cLanguage, "შემდეგი", "Next"),
+      key: 1,
+    },
+  ];
+  return (
+    <>
+      {buttonDataHome.map((data) => (
+        <button
+          className={data.className}
+          onClick={data.onClick}
+          key={data.key}
+        >
+          {data.language}
+        </button>
       ))}
     </>
   );

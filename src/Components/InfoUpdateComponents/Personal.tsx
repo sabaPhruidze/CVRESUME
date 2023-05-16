@@ -49,12 +49,7 @@ export default function Personal() {
     cVisible,
     sVisible,
   } = useAppContext1;
-  function languageChanger(geo: string, eng: string) {
-    return !cLanguage ? geo : eng;
-  }
-
   //I am just using ref to test it.Even trougth I can solve most of the tasks using useState I think sometimes useRef is also helpful
-
   return (
     <div
       className={

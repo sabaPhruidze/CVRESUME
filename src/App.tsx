@@ -11,7 +11,7 @@ import InfoUpdate from "./Components/InfoUpdate";
 export const context = createContext<any>(null);
 
 function App() {
-  const [cPage, sPage] = useState<number>(2); // current page ,set page
+  const [cPage, sPage] = useState<number>(0); // current page ,set page
   const [cLanguage, sLanguage] = useState<boolean>(false); //if false than georgian else english
   const [cBGColor, sBGColor] = useState<boolean>(false); //if false than white, if true than black {BG- means background color}
 
@@ -23,6 +23,7 @@ function App() {
   const [cTel, sTel] = useState<string>();
   const [cAboutMe, sAboutMe] = useState<string | undefined>();
   const aboutMeRef = useRef<any>("");
+  const textAreaRef = useRef<any>(0);
 
   const [cCorrect, sCorrect] = useState<boolean>(false);
   const [cCorrect1, sCorrect1] = useState<boolean>(false);
@@ -99,6 +100,7 @@ function App() {
         cAboutMe,
         sAboutMe,
         aboutMeRef,
+        textAreaRef,
         cCorrect,
         sCorrect,
         cCorrect1,

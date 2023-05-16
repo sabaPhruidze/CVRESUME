@@ -11,6 +11,7 @@ import {
   ExperiencePositionEmployerInput,
   InputReplayExperienceRow,
   ExperienceTextArea,
+  ExperienceButtonReplay,
 } from "../DataMap/Replay";
 
 import georgiaFlag from "../../Assets/Img/common/georgia.png";
@@ -153,7 +154,7 @@ export default function Personal() {
     //ესაა მთავარი რომ თუ ყველაფერი სწორადაა შევსებული ამ შემთხვევაში გადავიდეს შემდეგ გვერდზე
   }
   //I am just using ref to test it.Even trougth I can solve most of the tasks using useState I think sometimes useRef is also helpful
-  const textAreaRef = useRef<any>("");
+  // const textAreaRef = useRef<any>("");
   const textAreaRef1 = useRef<any>("");
   const textAreaRef2 = useRef<any>("");
   const textAreaRef3 = useRef<any>("");
@@ -348,15 +349,8 @@ export default function Personal() {
           </button>
         </div>
       </div>
-      <button
-        className={` ${CommonStyles.purpleButtonBack} ${CommonStyles.purpleButton}`}
-        onClick={() => {
-          sPage(cPage - 1);
-        }}
-      >
-        {languageChanger("უკან", "Back")}
-      </button>
-      <button
+      <ExperienceButtonReplay />
+      {/* <button
         className={CommonStyles.purpleButton}
         onClick={() => {
           validateInput(cPosition, cEmployer, cStartDate, cEndDate);
@@ -375,8 +369,7 @@ export default function Personal() {
           }
         }}
       >
-        {languageChanger("შემდეგი", "Next")}
-      </button>
+      </button> */}
     </div>
   );
 }
