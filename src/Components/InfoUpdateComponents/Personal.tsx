@@ -2,11 +2,14 @@ import React from "react";
 import { useContext, createContext, useState, useRef } from "react";
 import { infoUpdateContext } from "../InfoUpdate";
 
-import { ImgReplayCustom } from "../DataMap/Replay";
 import CorrectWrongComponent from "./CorrectWrongComponent";
-import { InputReplayCustomRow } from "../DataMap/Replay";
-import { InputFile } from "../DataMap/Replay";
-import { PersonalTextArea } from "../DataMap/Replay";
+import {
+  ImgReplayCustom,
+  InputReplayCustomRow,
+  InputFile,
+  PersonalTextArea,
+  PersonalMailTelephone,
+} from "../DataMap/Replay";
 
 import georgiaFlag from "../../Assets/Img/common/georgia.png";
 import unitedKingdomFlag from "../../Assets/Img/common/unitedKingdom.png";
@@ -171,54 +174,7 @@ export default function Personal() {
         <div className={infoUpdateStyles.aboutUs}>
           <PersonalTextArea />
         </div>
-        <div className={infoUpdateStyles.mail}>
-          <label htmlFor="email" className={CommonStyles.labelStandard}>
-            {languageChanger("ელ.ფოსტა", "Email")}
-          </label>
-          <input
-            type="email"
-            placeholder="anzorr777@redberry.ge"
-            id="email"
-            className={`${CommonStyles.inputStandard} ${CommonStyles.commonInputBorder}`}
-            onChange={(e) => sEmail(e.target.value)}
-            ref={emailRef}
-            style={{
-              border: cBGColor ? "1px solid white" : "1px solid black",
-              backgroundColor: cBGColor ? "black" : "white",
-              color: cBGColor ? "white" : "black",
-            }}
-          />
-          <span className={CommonStyles.spanStandard}>
-            {languageChanger(
-              "უნდა მთავრდებოდეს @redberry.ge-ით",
-              "Must end with @redberry.ge"
-            )}
-          </span>
-        </div>
-        <div className={infoUpdateStyles.telephone}>
-          <label htmlFor="tel" className={CommonStyles.labelStandard}>
-            {languageChanger("მობილურის ნომერი", "Mobile number")}
-          </label>
-          <input
-            type="tel"
-            placeholder="+995 551 12 34 56"
-            id="tel"
-            className={`${CommonStyles.inputStandard} ${CommonStyles.commonInputBorder}`}
-            onChange={(e) => sTel(e.target.value)}
-            ref={mobileRef}
-            style={{
-              border: cBGColor ? "1px solid white" : "1px solid black",
-              backgroundColor: cBGColor ? "black" : "white",
-              color: cBGColor ? "white" : "black",
-            }}
-          />
-          <span className={CommonStyles.spanStandard}>
-            {languageChanger(
-              "უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს",
-              "Must meet the Georgian mobile number format"
-            )}
-          </span>
-        </div>
+        <PersonalMailTelephone />
       </div>
       <button
         className={CommonStyles.purpleButton}
