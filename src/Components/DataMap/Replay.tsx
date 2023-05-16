@@ -433,3 +433,81 @@ export function PersonalTextArea() {
     </>
   );
 }
+export function PersonalMailTelephone() {
+  const useAppContext0 = useContext(context);
+  const { cBGColor, sEmail, cLanguage, cCorrect2, sTel, cCorrect3, cVisible } =
+    useAppContext0;
+  const dataMap = [
+    {
+      fullDivName: infoUpdateStyles.mail,
+      content: languageChanger(cLanguage, "ელ.ფოსტა", "Email"),
+      htmlForId: "email",
+      onChange: sEmail,
+      inputPlaceHolder: "anzorr777@redberry.ge",
+      borderCorrect: cCorrect2,
+      type: "email",
+      span: languageChanger(
+        cLanguage,
+        "უნდა მთავრდებოდეს @redberry.ge-ით",
+        "Must end with @redberry.ge"
+      ),
+      key: 0,
+    },
+    {
+      fullDivName: infoUpdateStyles.telephone,
+      content: languageChanger(cLanguage, "მობილურის ნომერი", "Mobile number"),
+      htmlForId: "tel",
+      onChange: sTel,
+      inputPlaceHolder: languageChanger(
+        cLanguage,
+        "უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს",
+        "Must meet the Georgian mobile number format"
+      ),
+      borderCorrect: cCorrect3,
+      type: "tel",
+      span: languageChanger(
+        cLanguage,
+        "უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს",
+        "Must meet the Georgian mobile number format"
+      ),
+      key: 1,
+    },
+  ];
+  return (
+    <>
+      {dataMap.map((data: any) => {
+        return (
+          <div className={data.fullDivName} key={data.key}>
+            <label
+              htmlFor={data.htmlForId}
+              className={CommonStyles.labelStandard}
+            >
+              {data.content}
+            </label>
+            <input
+              type={data.type}
+              placeholder={data.inputPlaceHolder}
+              id={data.htmlForId}
+              className={CommonStyles.inputStandard}
+              onChange={(e) => {
+                data.onChange(e.target.value);
+              }}
+              style={{
+                border: !cVisible
+                  ? cBGColor
+                    ? "1px solid white"
+                    : "1px solid black"
+                  : data.borderCorrect
+                  ? "1px solid #98E37E"
+                  : "1px solid #EF5050",
+                backgroundColor: cBGColor ? "black" : "white",
+                color: cBGColor ? "white" : "black",
+              }}
+            />
+            <span className={CommonStyles.spanStandard}>{data.span}</span>
+          </div>
+        );
+      })}
+    </>
+  );
+}
