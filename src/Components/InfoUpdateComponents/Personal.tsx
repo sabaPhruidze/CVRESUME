@@ -78,7 +78,6 @@ export default function Personal() {
       <ImgReplayCustom />
       <div className={CommonStyles.skeleton}>
         <HeadlineDivCustom />
-        <hr style={{ marginBottom: "69px" }} />
         <div className={infoUpdateStyles.nameUSername}>
           <InputReplayCustomRow />
         </div>

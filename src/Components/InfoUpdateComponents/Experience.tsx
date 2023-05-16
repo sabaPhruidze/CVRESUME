@@ -5,7 +5,12 @@ import { infoUpdateContext } from "../InfoUpdate";
 import CommonInput from "./CommonInput";
 import CorrectWrongComponent from "./CorrectWrongComponent";
 
-import { ImgReplayCustom } from "../DataMap/Replay";
+import {
+  HeadlineDivCustom,
+  ImgReplayCustom,
+  ExperiencePositionEmployerInput,
+  InputReplayExperienceRow,
+} from "../DataMap/Replay";
 
 import georgiaFlag from "../../Assets/Img/common/georgia.png";
 import unitedKingdomFlag from "../../Assets/Img/common/unitedKingdom.png";
@@ -152,50 +157,29 @@ export default function Personal() {
   const textAreaRef2 = useRef<any>("");
   const textAreaRef3 = useRef<any>("");
   const addMoreExperienceRef = useRef<any>("");
-  const experienceData = [
-    {
-      fullDivName: infoUpdateStyles.position,
-      content: !cLanguage ? "თანამდებობა" : "Position",
-      htmlForId: "position",
-      set: sPosition,
-      value: cPosition,
-      inputPlaceHolder: !cLanguage
-        ? "დეველოპერი, დიზაინერი, ა.შ."
-        : "Developer, designer, etc.",
-      borderCorrect: cCorrect,
-    },
-    {
-      fullDivName: infoUpdateStyles.employer,
-      content: !cLanguage ? "დამსაქმებელი" : "Employer",
-      htmlForId: "employer",
-      set: sEmployer,
-      value: cEmployer,
-      inputPlaceHolder: !cLanguage ? "დამსაქმებელი" : "Employer",
-      borderCorrect: cCorrect,
-    },
-  ];
-  const experienceData1 = [
-    {
-      fullDivName: infoUpdateStyles.position,
-      content: !cLanguage ? "თანამდებობა" : "Position",
-      htmlForId: "position",
-      set: sPosition1,
-      value: cPosition1,
-      inputPlaceHolder: !cLanguage
-        ? "დეველოპერი, დიზაინერი, ა.შ."
-        : "Developer, designer, etc.",
-      borderCorrect: cCorrect,
-    },
-    {
-      fullDivName: infoUpdateStyles.employer,
-      content: !cLanguage ? "დამსაქმებელი" : "Employer",
-      htmlForId: "employer",
-      set: sEmployer1,
-      value: cEmployer1,
-      inputPlaceHolder: !cLanguage ? "დამსაქმებელი" : "Employer",
-      borderCorrect: cCorrect,
-    },
-  ];
+  // const experienceData = [
+  //   {
+  //     fullDivName: infoUpdateStyles.position,
+  //     content: !cLanguage ? "თანამდებობა" : "Position",
+  //     htmlForId: "position",
+  //     set: sPosition,
+  //     value: cPosition,
+  //     inputPlaceHolder: !cLanguage
+  //       ? "დეველოპერი, დიზაინერი, ა.შ."
+  //       : "Developer, designer, etc.",
+  //     borderCorrect: cCorrect,
+  //   },
+  //   {
+  //     fullDivName: infoUpdateStyles.employer,
+  //     content: !cLanguage ? "დამსაქმებელი" : "Employer",
+  //     htmlForId: "employer",
+  //     set: sEmployer,
+  //     value: cEmployer,
+  //     inputPlaceHolder: !cLanguage ? "დამსაქმებელი" : "Employer",
+  //     borderCorrect: cCorrect,
+  //   },
+  // ];
+
   useEffect(() => {
     sVisible(false);
   }, []);
@@ -236,81 +220,11 @@ export default function Personal() {
       </MyExperienceContext.Provider>
       <ImgReplayCustom />
       <div className={CommonStyles.skeleton}>
-        <div className={CommonStyles.headline}>
-          <p
-            style={{
-              fontSize: "24px",
-              marginBottom: "12px",
-              fontWeight: "700",
-            }}
-          >
-            {languageChanger("გამოცდილება", "Experience")}
-          </p>
-          <p
-            style={{
-              fontSize: "20px",
-            }}
-          >
-            2/3
-          </p>
-        </div>
-        <hr style={{ marginBottom: "69px" }} />
+        <HeadlineDivCustom />
         <div className={infoUpdateStyles.positionEmployerInput}>
-          {experienceData.map((data: any, idx: any) => {
-            return (
-              <div className={data.fullDivName} key={idx}>
-                <label
-                  htmlFor={data.htmlForId}
-                  className={CommonStyles.labelStandard}
-                >
-                  {data.content}
-                </label>
-                <input
-                  type="text"
-                  placeholder={data.inputPlaceHolder}
-                  id={data.htmlForId}
-                  className={CommonStyles.inputStandard}
-                  style={{
-                    border: !cVisible
-                      ? cBGColor
-                        ? "1px solid white"
-                        : "1px solid black"
-                      : data.borderCorrect
-                      ? "1px solid #98E37E"
-                      : "1px solid #EF5050",
-                    backgroundColor: cBGColor ? "black" : "white",
-                    color: cBGColor ? "white" : "black",
-                  }}
-                  value={data.value}
-                  onChange={(event) => data.set(event.target.value)}
-                />
-                <span className={CommonStyles.spanStandard}>
-                  {!cLanguage
-                    ? "მინიმუმ 2 ასო, ქართული ასოები"
-                    : "At least 2 letters, Georgian letters"}
-                </span>
-              </div>
-            );
-          })}
+          <ExperiencePositionEmployerInput />
         </div>
-        <div className={infoUpdateStyles.dateContainer}>
-          <input
-            type="date"
-            className={infoUpdateStyles.calendarInput}
-            onChange={(e) => {
-              sStartDate(e.target.value);
-            }}
-            value={cStartDate}
-          />
-          <input
-            type="date"
-            className={infoUpdateStyles.calendarInput}
-            onChange={(e) => {
-              sEndDate(e.target.value);
-            }}
-            value={cEndDate}
-          />
-        </div>
+        <InputReplayExperienceRow />
         <div className={infoUpdateStyles.description}>
           <label htmlFor="Description" className={CommonStyles.labelStandard}>
             {languageChanger("აღწერა", "Description")}
@@ -342,7 +256,7 @@ export default function Personal() {
           {cMoreExperience === 1 ? (
             <>
               <hr style={{ marginBottom: "69px" }} />
-              <div className={infoUpdateStyles.positionEmployerInput}>
+              {/* <div className={infoUpdateStyles.positionEmployerInput}>
                 {experienceData1.map((data: any, idx: any) => {
                   return (
                     <div className={data.fullDivName} key={idx}>
@@ -379,7 +293,7 @@ export default function Personal() {
                     </div>
                   );
                 })}
-              </div>
+              </div> */}
               <div className={infoUpdateStyles.dateContainer}>
                 <input
                   type="date"
