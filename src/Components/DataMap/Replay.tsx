@@ -186,7 +186,7 @@ export function InputReplayCustomRow() {
   const dataMap = [
     {
       fullDivName: infoUpdateStyles.namePart,
-      content: languageChanger(!cLanguage, "სახელი", "Name"),
+      content: languageChanger(cLanguage, "სახელი", "Name"),
       htmlForId: "name",
       onChange: sName,
       inputPlaceHolder: !cLanguage ? "ანზორ" : "Anzor",
@@ -250,9 +250,11 @@ export function InputReplayCustomColumn() {
     cBGColor,
     sPage,
     cLanguage,
+    cName,
     sName,
     cCorrect,
     sUsername,
+    cUsername,
     cCorrect1,
     cVisible,
   } = useAppContext0;
@@ -264,6 +266,7 @@ export function InputReplayCustomColumn() {
       onChange: sName,
       inputPlaceHolder: !cLanguage ? "ანზორ" : "Anzor",
       borderCorrect: cCorrect,
+      key: 0,
     },
     {
       fullDivName: infoUpdateStyles.lastNamePart,
@@ -272,13 +275,14 @@ export function InputReplayCustomColumn() {
       onChange: sUsername,
       inputPlaceHolder: languageChanger(!cLanguage, "მუმლაძე", "Mumladze"),
       borderCorrect: cCorrect1,
+      key: 1,
     },
   ];
   return (
     <>
-      {dataMap.map((data: any, idx: number) => {
+      {dataMap.map((data: any) => {
         return (
-          <div className={data.fullDivName} key={idx}>
+          <div className={data.fullDivName} key={data.key}>
             <label
               htmlFor={data.htmlForId}
               className={CommonStyles.labelStandard}
@@ -371,6 +375,61 @@ export function InputFile() {
           </>
         );
       })}
+    </>
+  );
+}
+export function PersonalTextArea() {
+  const useAppContext0 = useContext(context);
+  const { cBGColor, cLanguage, sAboutMe } = useAppContext0;
+
+  const DataOfTextArea = [
+    {
+      key: 0,
+      htmlFor: "aboutMe",
+      labelContext: languageChanger(cLanguage, "ჩემ შესახებ ", "About me"),
+      spanContext: languageChanger(cLanguage, "(არასავალდებულო)", "(optional)"),
+      placeHolder: languageChanger(
+        cLanguage,
+        "ზოგადი ინფო შენ შესახებ",
+        "General information about you"
+      ),
+      onChange: (e: any) => {
+        sAboutMe(e.target.value);
+        (e.target.value.length > 0 && !cBGColor) ||
+        (e.target.value.length > 0 && cBGColor)
+          ? (e.target.style.border = "1px solid #98E37E")
+          : e.target.value.length < 0 && cBGColor
+          ? (e.target.style.border = "1px solid white")
+          : e.target.value.length < 0 && !cBGColor
+          ? (e.target.style.border = "1px solid black")
+          : (e.target.style.border = "1px solid black");
+      },
+    },
+  ];
+
+  return (
+    <>
+      {DataOfTextArea.map((data: any) => (
+        <div key={data.key}>
+          <label htmlFor={data.htmlFor} className={CommonStyles.labelStandard}>
+            {data.labelContext}
+            <span className={CommonStyles.spanStandard}>
+              {data.spanContext}
+            </span>
+          </label>
+          <textarea
+            placeholder={data.placeHolder}
+            id={data.htmlFor}
+            onChange={data.onChange}
+            maxLength={250}
+            style={{
+              backgroundColor: cBGColor ? "black" : "white",
+              color: cBGColor ? "white" : "black",
+              border: cBGColor ? "1px solid white" : "1px solid black",
+            }}
+          ></textarea>
+        </div>
+      ))}
     </>
   );
 }

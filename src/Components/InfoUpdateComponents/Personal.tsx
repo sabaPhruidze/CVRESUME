@@ -6,6 +6,7 @@ import { ImgReplayCustom } from "../DataMap/Replay";
 import CorrectWrongComponent from "./CorrectWrongComponent";
 import { InputReplayCustomRow } from "../DataMap/Replay";
 import { InputFile } from "../DataMap/Replay";
+import { PersonalTextArea } from "../DataMap/Replay";
 
 import georgiaFlag from "../../Assets/Img/common/georgia.png";
 import unitedKingdomFlag from "../../Assets/Img/common/unitedKingdom.png";
@@ -124,7 +125,6 @@ export default function Personal() {
     //ესაა მთავარი რომ თუ ყველაფერი სწორადაა შევსებული ამ შემთხვევაში გადავიდეს შემდეგ გვერდზე
   }
   //I am just using ref to test it.Even trougth I can solve most of the tasks using useState I think sometimes useRef is also helpful
-  const textAreaRef = useRef<any>("");
   const emailRef = useRef<any>("");
   const mobileRef = useRef<any>("");
   return (
@@ -169,27 +169,7 @@ export default function Personal() {
           <InputFile />
         </div>
         <div className={infoUpdateStyles.aboutUs}>
-          <label htmlFor="aboutMe" className={CommonStyles.labelStandard}>
-            {languageChanger("ჩვენს შესახებ", "About us")}
-            <span className={CommonStyles.spanStandard}>
-              {languageChanger("(არასავალდებულო)", "(optional)")}
-            </span>
-          </label>
-          <textarea
-            placeholder={languageChanger(
-              "ზოგადი ინფო შენ შესახებ",
-              "General information about you"
-            )}
-            id="aboutMe"
-            onChange={(e) => sAboutMe(e.target.value)}
-            maxLength={250}
-            ref={textAreaRef}
-            style={{
-              backgroundColor: cBGColor ? "black" : "white",
-              color: cBGColor ? "white" : "black",
-              border: 0,
-            }}
-          ></textarea>
+          <PersonalTextArea />
         </div>
         <div className={infoUpdateStyles.mail}>
           <label htmlFor="email" className={CommonStyles.labelStandard}>
@@ -245,19 +225,6 @@ export default function Personal() {
         onClick={() => {
           validateInput(cName, cUsername, cUploadImg, cEmail, cTel);
           sVisible(true);
-          if (
-            (textAreaRef.current.value.length > 0 && !cBGColor) ||
-            (textAreaRef.current.value.length > 0 && cBGColor)
-          ) {
-            textAreaRef.current.style.border = "1px solid #98E37E";
-          } else if (textAreaRef.current.value.length < 0 && !cBGColor) {
-            textAreaRef.current.style.border = "1px solid black"; //it will not become red because writing this line is not nessesary
-            // according to the figma
-          } else if (textAreaRef.current.value.length < 0 && cBGColor) {
-            textAreaRef.current.style.border = "1px solid white";
-          } else {
-            return "";
-          }
           sPage(2);
         }}
       >
