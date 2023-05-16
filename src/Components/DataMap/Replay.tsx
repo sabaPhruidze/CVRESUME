@@ -171,6 +171,39 @@ export function ImgReplayCustom() {
     </>
   );
 }
+export function HeadlineDivCustom() {
+  const useAppContext0 = useContext(context);
+  const { cLanguage, cPage } = useAppContext0;
+  function numberChanger(cPage: any) {
+    switch (cPage) {
+      case 1:
+        return "1/3";
+        break;
+      case 2:
+        return "2/3";
+        break;
+      case 3:
+        return "3/3";
+        break;
+    }
+  }
+  return (
+    <>
+      <div className={CommonStyles.headline}>
+        <p
+          style={{
+            fontSize: "24px",
+            marginBottom: "12px",
+            fontWeight: "700",
+          }}
+        >
+          {languageChanger(cLanguage, "პირადი ინფო", "Personal information")}
+        </p>
+        <p style={{ fontSize: "20px" }}>{numberChanger(cPage)}</p>
+      </div>
+    </>
+  );
+}
 export function InputReplayCustomRow() {
   const useAppContext0 = useContext(context);
   const {

@@ -10,18 +10,8 @@ import {
   PersonalTextArea,
   PersonalMailTelephone,
   PersonButtonReplay,
+  HeadlineDivCustom,
 } from "../DataMap/Replay";
-
-import georgiaFlag from "../../Assets/Img/common/georgia.png";
-import unitedKingdomFlag from "../../Assets/Img/common/unitedKingdom.png";
-import lightMode from "../../Assets/Icon/sunMode.svg";
-import darkMode from "../../Assets/Icon/nightMode.svg";
-
-import Ellipse from "../../Assets/Img/2. SecondPage/Ellipse.svg";
-import Vector from "../../Assets/Img/2. SecondPage/Vectorvector.svg";
-import OrangeLogo from "../../Assets/Img/2. SecondPage/logoOrange.svg";
-import mobileIcon from "../../Assets/Icon/phoneIcon.svg";
-import spiralIcon from "../../Assets/Icon/@.svg";
 
 import infoUpdateStyles from "../Styles/infoUpdate.module.css";
 import CommonStyles from "../Styles/Common.module.css";
@@ -87,18 +77,7 @@ export default function Personal() {
       </MyPersonalContext.Provider>
       <ImgReplayCustom />
       <div className={CommonStyles.skeleton}>
-        <div className={CommonStyles.headline}>
-          <p
-            style={{
-              fontSize: "24px",
-              marginBottom: "12px",
-              fontWeight: "700",
-            }}
-          >
-            {languageChanger("პირადი ინფო", "Personal information")}
-          </p>
-          <p style={{ fontSize: "20px" }}>1/3</p>
-        </div>
+        <HeadlineDivCustom />
         <hr style={{ marginBottom: "69px" }} />
         <div className={infoUpdateStyles.nameUSername}>
           <InputReplayCustomRow />

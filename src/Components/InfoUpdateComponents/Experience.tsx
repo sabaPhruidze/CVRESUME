@@ -5,6 +5,8 @@ import { infoUpdateContext } from "../InfoUpdate";
 import CommonInput from "./CommonInput";
 import CorrectWrongComponent from "./CorrectWrongComponent";
 
+import { ImgReplayCustom } from "../DataMap/Replay";
+
 import georgiaFlag from "../../Assets/Img/common/georgia.png";
 import unitedKingdomFlag from "../../Assets/Img/common/unitedKingdom.png";
 import lightMode from "../../Assets/Icon/sunMode.svg";
@@ -232,48 +234,7 @@ export default function Personal() {
       >
         <CorrectWrongComponent />
       </MyExperienceContext.Provider>
-      <img
-        src={cBGColor ? lightMode : darkMode}
-        alt="light or dark"
-        className={
-          cBGColor
-            ? `${CommonStyles.modeSun} ${CommonStyles.CommonBGCPosition}`
-            : `${CommonStyles.modeMoon} ${CommonStyles.CommonBGCPosition}`
-        }
-        onClick={() => {
-          sBGColor(!cBGColor);
-          localStorage.setItem("cBGColor", cBGColor);
-        }}
-      />
-      <img
-        src={cLanguage !== true ? unitedKingdomFlag : georgiaFlag}
-        alt="language"
-        className={`${CommonStyles.language} ${CommonStyles.CommonlanguagePosition}`}
-        onClick={() => {
-          sLanguage(!cLanguage);
-        }}
-      />
-      <img
-        src={Ellipse}
-        alt="Ellipse"
-        className={
-          cBGColor
-            ? `${CommonStyles.ellipse} ${CommonStyles.ellipseDark}`
-            : CommonStyles.ellipse
-        }
-        onClick={() => useAppContext2.sPage(useAppContext2.cPage - 1)}
-      />
-      <img
-        src={Vector}
-        alt="Vector"
-        className={
-          cBGColor
-            ? `${CommonStyles.vectorDark} ${CommonStyles.vectorLight}`
-            : CommonStyles.vectorDark
-        }
-        onClick={() => useAppContext2.sPage(useAppContext2.cPage - 1)}
-      />
-
+      <ImgReplayCustom />
       <div className={CommonStyles.skeleton}>
         <div className={CommonStyles.headline}>
           <p
