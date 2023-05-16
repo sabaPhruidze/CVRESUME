@@ -458,6 +458,7 @@ export function PersonalTextArea() {
                 (cVisible && data.ref.current.length === 0)
                   ? "1px solid white"
                   : "1px solid black",
+              padding: "13px 16px",
             }}
             ref={data.ref}
           ></textarea>
@@ -764,7 +765,7 @@ export function ExperiencePositionEmployerInput() {
 }
 export function InputReplayExperienceRow() {
   const useAppContext0 = useContext(context);
-  const { cLanguage, sStartDate, cStartDate, cEndDate, sEndDate } =
+  const { cLanguage, sStartDate, cStartDate, cEndDate, sEndDate, cBGColor } =
     useAppContext0;
   const dataMap = [
     {
@@ -804,7 +805,11 @@ export function InputReplayExperienceRow() {
             >
               <label
                 htmlFor={data.labelHtmlFor}
-                style={{ marginBottom: "8px" }}
+                style={{
+                  marginBottom: "8px",
+                  color: cBGColor ? "white" : "black",
+                  fontWeight: "700",
+                }}
               >
                 {data.labelContent}
               </label>
@@ -814,11 +819,88 @@ export function InputReplayExperienceRow() {
                 onChange={data.onChange}
                 value={data.value}
                 id={data.labelHtmlFor}
+                style={{
+                  backgroundColor: !cBGColor ? "white" : "black",
+                  color: cBGColor ? "white" : "black",
+                  border: cBGColor ? "1px solid white" : "1px solid black",
+                }}
               />
             </div>
           );
         })}
       </>
     </div>
+  );
+}
+export function ExperienceTextArea() {
+  const useAppContext0 = useContext(context);
+  const {
+    cBGColor,
+    cLanguage,
+    textAreaRef,
+    textAreaRef1,
+    cDescription,
+    cVisible,
+    sDescription,
+  } = useAppContext0;
+
+  const DataOfTextArea = [
+    {
+      key: 0,
+      htmlFor: "Description",
+      ref: textAreaRef,
+      labelContext: languageChanger(cLanguage, "აღწერა", "Description"),
+      // spanContext: languageChanger(cLanguage, "(არასავალდებულო)", "(optional)"),
+      placeHolder: languageChanger(
+        cLanguage,
+        "როლი თანამდებობაზე და ზოგადი აღწერა",
+        "Role in the position and general description"
+      ),
+      onChange: (e: any) => sDescription(e.target.value),
+      value: cDescription,
+    },
+  ];
+
+  return (
+    <>
+      {DataOfTextArea.map((data: any) => (
+        <div key={data.key}>
+          <label
+            htmlFor={data.htmlFor}
+            className={CommonStyles.labelStandard}
+            style={{ display: "block" }}
+          >
+            {data.labelContext}
+            <span className={CommonStyles.spanStandard}>
+              {data.spanContext}
+            </span>
+          </label>
+          <textarea
+            placeholder={data.placeHolder}
+            id={data.htmlFor}
+            onChange={data.onChange}
+            maxLength={250}
+            style={{
+              backgroundColor: cBGColor ? "black" : "white",
+              color: cBGColor ? "white" : "black",
+              border:
+                (!cVisible && cBGColor) ||
+                (cVisible && data.ref.current.length === 0)
+                  ? "1px solid white"
+                  : "1px solid black",
+              padding: "13px 16px",
+            }}
+            ref={data.ref}
+          ></textarea>
+          <hr
+            style={{
+              width: "100%",
+              height: "1px",
+              marginTop: "59px",
+            }}
+          />
+        </div>
+      ))}
+    </>
   );
 }

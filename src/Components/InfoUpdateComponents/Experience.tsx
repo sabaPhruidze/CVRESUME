@@ -10,6 +10,7 @@ import {
   ImgReplayCustom,
   ExperiencePositionEmployerInput,
   InputReplayExperienceRow,
+  ExperienceTextArea,
 } from "../DataMap/Replay";
 
 import georgiaFlag from "../../Assets/Img/common/georgia.png";
@@ -226,33 +227,7 @@ export default function Personal() {
         </div>
         <InputReplayExperienceRow />
         <div className={infoUpdateStyles.description}>
-          <label htmlFor="Description" className={CommonStyles.labelStandard}>
-            {languageChanger("აღწერა", "Description")}
-          </label>
-          <textarea
-            placeholder={languageChanger(
-              "როლი თანამდებობაზე და ზოგადი აღწერა",
-              "Role in the position and general description"
-            )}
-            id="Description"
-            onChange={(e) => sDescription(e.target.value)}
-            maxLength={250}
-            ref={textAreaRef}
-            style={{
-              backgroundColor: cBGColor ? "black" : "white",
-              color: cBGColor ? "white" : "black",
-              height: "123px",
-              padding: "13px 16px",
-            }}
-            value={cDescription}
-          ></textarea>
-          <hr
-            style={{
-              width: "100%",
-              height: "1px",
-              marginTop: "59px",
-            }}
-          />
+          <ExperienceTextArea />
           {cMoreExperience === 1 ? (
             <>
               <hr style={{ marginBottom: "69px" }} />
