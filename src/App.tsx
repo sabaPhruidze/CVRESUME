@@ -35,6 +35,8 @@ function App() {
   const [cCorrect6, sCorrect6] = useState<boolean>(false);
   const [cCorrect7, sCorrect7] = useState<boolean>(false);
   const [cCorrect8, sCorrect8] = useState<boolean>(false);
+  const [cCorrect9, sCorrect9] = useState<boolean>(false);
+  const [cCorrect10, sCorrect10] = useState<boolean>(false);
   const [cVisible1, sVisible1] = useState<boolean>(false);
 
   const [cMoreExperience, sMoreExperience] = useState<any>(0);
@@ -69,14 +71,16 @@ function App() {
   const [cDescription4, sDescription4] = useState<any>("");
 
   const ExperienceDateStartRef = useRef<any>("");
+  const ExperienceDateStartRef1 = useRef<any>("");
+  const ExperienceDateStartRef2 = useRef<any>("");
   const ExperienceDateEndRef = useRef<any>("");
+  const ExperienceDateEndRef1 = useRef<any>("");
+  const ExperienceDateEndRef2 = useRef<any>("");
   const ExperienceTextAreaRef = useRef<any>("");
+  const ExperienceTextAreaRef1 = useRef<any>("");
+  const ExperienceTextAreaRef2 = useRef<any>("");
   const replayRef = useRef<any>("");
   const [cTop, sTop] = useState<any>(804);
-
-  const [cIValue, sIValue] = useState<any>([]); // set input value and current input value
-
-  const [cArray, sArray] = useState<any>([]);
 
   function changePage() {
     switch (cPage) {
@@ -97,13 +101,15 @@ function App() {
   return (
     <context.Provider
       value={{
-        cIValue,
-        sIValue,
-        cArray,
-        sArray,
         ExperienceDateStartRef,
         ExperienceDateEndRef,
         ExperienceTextAreaRef,
+        ExperienceDateStartRef1,
+        ExperienceDateEndRef1,
+        ExperienceTextAreaRef1,
+        ExperienceDateStartRef2,
+        ExperienceDateEndRef2,
+        ExperienceTextAreaRef2,
         replayRef,
         cTop,
         sTop,
@@ -203,6 +209,10 @@ function App() {
         sCorrect7,
         cCorrect8,
         sCorrect8,
+        cCorrect9,
+        sCorrect9,
+        cCorrect10,
+        sCorrect10,
         cVisible1,
         sVisible1,
       }}
@@ -217,10 +227,10 @@ function App() {
               : cMoreExperience === 2
               ? "calc(1080px + 2 * 631px)"
               : cMoreExperience === 3
-              ? "calc(1080px + 631px * 3)"
+              ? "calc(1080px + 631px * 2)"
               : cPage === 3
               ? "1080px"
-              : "calc(1080px + 631px * 4)",
+              : "calc(1080px + 631px * 2)",
           overflow: cMoreExperience === 0 ? "hidden" : "none",
         }}
       >

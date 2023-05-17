@@ -962,8 +962,8 @@ export function ExperienceButtonReplayskyColor() {
       ),
       key: 1,
       onClick: () => {
-        sMoreExperience(cMoreExperience + 1);
-        sTop(cTop + 600);
+        sMoreExperience(cMoreExperience < 2 ? cMoreExperience + 1 : 2);
+        sTop(cMoreExperience < 2 ? cTop + 600 : 804 * 2 + 400);
       },
     },
   ];

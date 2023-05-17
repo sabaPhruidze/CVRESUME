@@ -28,6 +28,27 @@ export default function Rendered() {
     cPage,
     cMoreExperience,
     cArray,
+    cPosition1,
+    sPosition1,
+    cEmployer1,
+    sEmployer1,
+    cStartDate1,
+    sStartDate1,
+    cEndDate1,
+    sEndDate1,
+    cDescription1,
+    sDescription1,
+
+    cPosition2,
+    sPosition2,
+    cEmployer2,
+    sEmployer2,
+    cStartDate2,
+    sStartDate2,
+    cEndDate2,
+    sEndDate2,
+    cDescription2,
+    sDescription2,
   } = MPCL;
   return (
     <div
@@ -44,9 +65,7 @@ export default function Rendered() {
             ? "calc(1080px + 631px )"
             : cMoreExperience === 2
             ? "calc(1080px + 2 * 631px)"
-            : cMoreExperience === 3
-            ? "calc(1080px + 631px * 3)"
-            : "calc(1080px + 631px * 4)",
+            : "calc(1080px + 631px * 2)",
         overflow: cMoreExperience === 0 ? "hidden" : "none",
       }}
     >
@@ -152,6 +171,84 @@ export default function Rendered() {
             }}
           >
             {cDescription}
+          </div>
+        </>
+      ) : (
+        ""
+      )}
+      {cPage >= 2 &&
+      (cPosition1.length > 0 ||
+        cEmployer1.length > 0 ||
+        cStartDate1.length > 0 ||
+        cEndDate1.length > 0 ||
+        cDescription1.length > 0) ? (
+        <>
+          <hr style={{ marginTop: "19px", width: "calc(100% - 80px)" }} />
+          <p
+            style={{
+              fontSize: "18px",
+              fontWeight: "700",
+              color: "#F93B1D",
+              marginTop: "24px",
+            }}
+          >
+            გამოცდილება
+          </p>
+          <p style={{ marginTop: "15px", fontWeight: "600" }}>
+            {cPosition1}, {cEmployer1}{" "}
+          </p>
+          <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
+            {cStartDate1} - {cEndDate1}
+          </em>
+          <div
+            style={{
+              width: "662px",
+              height: "125px",
+              wordWrap: "break-word",
+              overflow: "hidden",
+              fontSize: "16px",
+            }}
+          >
+            {cDescription1}
+          </div>
+        </>
+      ) : (
+        ""
+      )}
+      {cPage >= 2 &&
+      (cPosition2.length > 0 ||
+        cEmployer2.length > 0 ||
+        cStartDate2.length > 0 ||
+        cEndDate2.length > 0 ||
+        cDescription2.length > 0) ? (
+        <>
+          <hr style={{ marginTop: "19px", width: "calc(100% - 80px)" }} />
+          <p
+            style={{
+              fontSize: "18px",
+              fontWeight: "700",
+              color: "#F93B1D",
+              marginTop: "24px",
+            }}
+          >
+            გამოცდილება
+          </p>
+          <p style={{ marginTop: "15px", fontWeight: "600" }}>
+            {cPosition2}, {cEmployer2}{" "}
+          </p>
+          <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
+            {cStartDate2} - {cEndDate2}
+          </em>
+          <div
+            style={{
+              width: "662px",
+              height: "125px",
+              wordWrap: "break-word",
+              overflow: "hidden",
+              fontSize: "16px",
+            }}
+          >
+            {cDescription2}
           </div>
         </>
       ) : (

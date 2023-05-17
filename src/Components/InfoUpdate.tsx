@@ -32,11 +32,13 @@ export default function InfoUpdate() {
     ExperienceDateStartRef,
     ExperienceDateEndRef,
     ExperienceTextAreaRef,
+    ExperienceDateStartRef1,
+    ExperienceDateEndRef1,
+    ExperienceTextAreaRef1,
+    ExperienceDateStartRef2,
+    ExperienceDateEndRef2,
+    ExperienceTextAreaRef2,
     cTop,
-    cIValue,
-    sIValue,
-    cArray,
-    sArray,
     sTop,
     replayRef,
     cPage,
@@ -132,6 +134,10 @@ export default function InfoUpdate() {
     sCorrect7,
     cCorrect8,
     sCorrect8,
+    cCorrect9,
+    sCorrect9,
+    cCorrect10,
+    sCorrect10,
     cVisible1,
     sVisible1,
   } = useAppContext1;
@@ -139,10 +145,6 @@ export default function InfoUpdate() {
   return (
     <infoUpdateContext.Provider
       value={{
-        cIValue,
-        sIValue,
-        cArray,
-        sArray,
         cPage,
         sPage,
         cTop,
@@ -210,6 +212,12 @@ export default function InfoUpdate() {
         cDescription2,
         sDescription2,
 
+        ExperienceDateStartRef1,
+        ExperienceDateEndRef1,
+        ExperienceTextAreaRef1,
+        ExperienceDateStartRef2,
+        ExperienceDateEndRef2,
+        ExperienceTextAreaRef2,
         cPosition3,
         sPosition3,
         cEmployer3,
@@ -240,6 +248,10 @@ export default function InfoUpdate() {
         sCorrect7,
         cCorrect8,
         sCorrect8,
+        cCorrect9,
+        sCorrect9,
+        cCorrect10,
+        sCorrect10,
         cVisible1,
         sVisible1,
 
@@ -257,12 +269,8 @@ export default function InfoUpdate() {
               : cMoreExperience === 1
               ? "calc(846px * 2)"
               : cMoreExperience === 2
-              ? "calc(846px * 3)"
-              : cMoreExperience === 3
-              ? "calc(846px * 4)"
-              : cPage === 3
-              ? "1080px"
-              : "calc(846px* 5)",
+              ? "calc(846px * 2)"
+              : "calc(846px* 2)",
         }}
       >
         {cPage === 2 ? (

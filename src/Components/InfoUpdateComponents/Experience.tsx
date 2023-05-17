@@ -32,10 +32,6 @@ export const MyExperienceContext = createContext<any>("w");
 export default function Personal() {
   const useAppContext2 = useContext(infoUpdateContext);
   const {
-    cIValue,
-    sIValue,
-    cArray,
-    sArray,
     replayRef,
     cBGColor,
     cVisible,
@@ -139,12 +135,8 @@ export default function Personal() {
             : cMoreExperience === 1
             ? "calc(1080px + 630px * 2)"
             : cMoreExperience === 2
-            ? "calc(1080px + 630px * 3)"
-            : cMoreExperience === 3
-            ? "calc( 1080px + 630px * 4)"
-            : cPage === 3
-            ? "1080px"
-            : "calc( 1080px + 630px * 5)",
+            ? "calc(1080px + 630px * 2)"
+            : "calc(1080px + 630px * 2)",
         overflow: cMoreExperience === 0 ? "hidden" : "none",
       }}
     >
