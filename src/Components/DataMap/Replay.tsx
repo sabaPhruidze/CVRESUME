@@ -646,7 +646,6 @@ export function PersonButtonReplay() {
         cTel,
         cAboutMe,
         cBGColor,
-
         sPage(cPage + 1),
       ];
     }
@@ -888,14 +887,10 @@ export function ExperienceTextArea() {
             style={{
               backgroundColor: cBGColor ? "black" : "white",
               color: cBGColor ? "white" : "black",
-              border:
-                (!cVisible && cBGColor) ||
-                (cVisible && textAreaRef.current.length === 0)
-                  ? "1px solid white"
-                  : "1px solid black",
+              border: "1px solid black",
               padding: "13px 16px",
             }}
-            ref={textAreaRef}
+            ref={data.ref}
           ></textarea>
           <hr
             style={{
