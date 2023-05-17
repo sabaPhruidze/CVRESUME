@@ -2,9 +2,7 @@ import React, { useEffect } from "react";
 import { useContext, createContext, useState, useRef } from "react";
 import { infoUpdateContext } from "../InfoUpdate";
 
-import CorrectWrongComponent, {
-  CorrectWrongComponentExperience,
-} from "./CorrectWrongComponent";
+import CorrectWrongComponent from "./CorrectWrongComponent";
 
 import {
   HeadlineDivCustom,
@@ -188,7 +186,7 @@ export default function Personal() {
           cVisible1,
         }}
       >
-        <CorrectWrongComponentExperience />
+        <CorrectWrongComponent />
       </MyExperienceContext.Provider>
       <ImgReplayCustom />
       <div className={CommonStyles.skeleton}>
