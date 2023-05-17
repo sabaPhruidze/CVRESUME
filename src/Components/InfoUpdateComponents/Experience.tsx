@@ -167,12 +167,12 @@ export default function Personal() {
           cMoreExperience === 0
             ? "1080px"
             : cMoreExperience === 1
-            ? "calc(798px * 2)"
+            ? "calc(1080px + 630px * 2)"
             : cMoreExperience === 2
-            ? "calc(798px * 3)"
+            ? "calc(1080px + 630px * 3)"
             : cMoreExperience === 3
-            ? "calc(798px * 4)"
-            : "calc(798px * 5)",
+            ? "calc( 1080px + 630px * 4)"
+            : "calc( 1080px + 630px * 5)",
         overflow: cMoreExperience === 0 ? "hidden" : "none",
       }}
     >

@@ -40,12 +40,12 @@ export default function Rendered() {
           cMoreExperience === 0
             ? "1080px"
             : cMoreExperience === 1
-            ? "calc(798px * 2)"
+            ? "calc(1080px + 631px )"
             : cMoreExperience === 2
-            ? "calc(798px * 3)"
+            ? "calc(1080px + 2 * 631px)"
             : cMoreExperience === 3
-            ? "calc(798px * 4)"
-            : "calc(798px * 5)",
+            ? "calc(1080px + 631px * 3)"
+            : "calc(1080px + 631px * 4)",
         overflow: cMoreExperience === 0 ? "hidden" : "none",
       }}
     >

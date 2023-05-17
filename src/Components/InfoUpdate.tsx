@@ -32,6 +32,8 @@ export default function InfoUpdate() {
     ExperienceDateStartRef,
     ExperienceDateEndRef,
     ExperienceTextAreaRef,
+    cTop,
+    sTop,
     cPage,
     sPage,
     cLanguage,
@@ -134,6 +136,8 @@ export default function InfoUpdate() {
       value={{
         cPage,
         sPage,
+        cTop,
+        sTop,
         cLanguage,
         sLanguage,
         cBGColor,

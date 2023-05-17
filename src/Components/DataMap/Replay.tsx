@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 
 import { context } from "../../App";
 
@@ -385,17 +385,7 @@ export function InputReplayCustomColumn() {
 }
 export function InputFile() {
   const useAppContext0 = useContext(context);
-  const {
-    cBGColor,
-    sPage,
-    cLanguage,
-    sName,
-    cCorrect,
-    sUsername,
-    cCorrect1,
-    cVisible,
-    sUploadImg,
-  } = useAppContext0;
+  const { cLanguage, sUploadImg } = useAppContext0;
   const dataMap = [
     {
       pContent: languageChanger(
@@ -952,30 +942,44 @@ export function ExperienceTextArea() {
 }
 export function ExperienceButtonReplayskyColor() {
   const useAppContext0 = useContext(context);
-  const { cPage, sPage, cLanguage } = useAppContext0;
+  const {
+    cPage,
+    sPage,
+    cLanguage,
+    cMoreExperience,
+    sMoreExperience,
+    cTop,
+    sTop,
+  } = useAppContext0;
   const buttonDataHome = [
     {
       className: CommonStyles.skyColorButton,
-      // onClick: () => sPage(cPage + 1),
+
       language: languageChanger(
         cLanguage,
         "მეტი გამოცდილების დამატება",
         "Adding more experience"
       ),
       key: 1,
+      onClick: () => {
+        sMoreExperience(cMoreExperience + 1);
+        sTop(cTop + 600);
+      },
     },
   ];
+
   return (
     <>
       {buttonDataHome.map((data) => (
         <button
           className={data.className}
-          // onClick={data.onClick}
+          onClick={data.onClick}
           key={data.key}
           style={{
             position: "absolute",
-            top: "804px",
+            top: cTop - 105 + 45,
             left: "149px",
+            zIndex: 100,
           }}
         >
           {data.language}
@@ -995,6 +999,8 @@ export function ExperienceButtonReplay() {
     ExperienceTextAreaRef,
     sCorrect5,
     sCorrect6,
+    cTop,
+    sTop,
     ExperienceDateStartRef,
     ExperienceDateEndRef,
     sVisible1,
@@ -1006,7 +1012,7 @@ export function ExperienceButtonReplay() {
   } = useAppContext0;
   const buttonDataHome = [
     {
-      className: ` ${CommonStyles.purpleButtonBack} ${CommonStyles.purpleButton}`,
+      className: ` ${CommonStyles.purpleButtonBack} ${CommonStyles.purpleButtonTwice}`,
       onClick: () => {
         sPage(cPage - 1);
         sVisible1(false);
@@ -1015,7 +1021,7 @@ export function ExperienceButtonReplay() {
       key: 0,
     },
     {
-      className: CommonStyles.purpleButton,
+      className: CommonStyles.purpleButtonTwice,
       onClick: () => {
         validateInput1(
           cPosition,
@@ -1113,6 +1119,7 @@ export function ExperienceButtonReplay() {
           className={data.className}
           onClick={data.onClick}
           key={data.key}
+          style={{ position: "absolute", top: cTop + 114, right: "150px" }}
         >
           {data.language}
         </button>
