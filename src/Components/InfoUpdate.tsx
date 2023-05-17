@@ -29,6 +29,9 @@ export default function InfoUpdate() {
   const useAppContext1 = useContext(context);
 
   const {
+    ExperienceDateStartRef,
+    ExperienceDateEndRef,
+    ExperienceTextAreaRef,
     cPage,
     sPage,
     cLanguage,
@@ -225,6 +228,10 @@ export default function InfoUpdate() {
         sCorrect8,
         cVisible1,
         sVisible1,
+
+        ExperienceDateStartRef,
+        ExperienceDateEndRef,
+        ExperienceTextAreaRef,
       }}
     >
       <div

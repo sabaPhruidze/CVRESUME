@@ -68,6 +68,9 @@ function App() {
   const [cEndDate4, sEndDate4] = useState<any>("");
   const [cDescription4, sDescription4] = useState<any>("");
 
+  const ExperienceDateStartRef = useRef<any>("");
+  const ExperienceDateEndRef = useRef<any>("");
+  const ExperienceTextAreaRef = useRef<any>("");
   function changePage() {
     switch (cPage) {
       case 0:
@@ -87,6 +90,9 @@ function App() {
   return (
     <context.Provider
       value={{
+        ExperienceDateStartRef,
+        ExperienceDateEndRef,
+        ExperienceTextAreaRef,
         cPage,
         sPage,
         cLanguage,

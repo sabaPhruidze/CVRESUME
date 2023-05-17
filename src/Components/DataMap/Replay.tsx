@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 
 import { context } from "../../App";
 
@@ -16,7 +16,6 @@ import backgroundDark from "../../Assets/Img/1. FirstPage/backgroundDark.jpg";
 import redBerryBanner from "../../Assets/Img/1. FirstPage/redberryBanner.svg";
 import diploma from "../../Assets/Img/1. FirstPage/diploma.svg";
 // for Home
-
 //for personal-
 import Ellipse from "../../Assets/Img/2. SecondPage/Ellipse.svg";
 import Vector from "../../Assets/Img/2. SecondPage/Vectorvector.svg";
@@ -118,8 +117,16 @@ export function ButtonReplay() {
 // for personal -
 export function ImgReplayCustom() {
   const useAppContext0 = useContext(context);
-  const { cBGColor, sBGColor, cLanguage, sLanguage, sPage, cPage } =
-    useAppContext0;
+  const {
+    cBGColor,
+    sBGColor,
+    cLanguage,
+    sLanguage,
+    sPage,
+    cPage,
+    cVisible1,
+    sVisible1,
+  } = useAppContext0;
   const imgData = [
     {
       src: cBGColor ? lightMode : darkMode,
@@ -143,7 +150,12 @@ export function ImgReplayCustom() {
       className: cBGColor
         ? `${CommonStyles.ellipse} ${CommonStyles.ellipseDark}`
         : CommonStyles.ellipse,
-      onClick: () => sPage(cPage - 1),
+      onClick: () => {
+        sPage(cPage - 1);
+        if (cVisible1) {
+          sVisible1(false);
+        }
+      },
       key: 2,
     },
     {
@@ -152,7 +164,12 @@ export function ImgReplayCustom() {
       className: cBGColor
         ? `${CommonStyles.vectorDark} ${CommonStyles.vectorLight}`
         : CommonStyles.vectorDark,
-      onClick: () => sPage(cPage - 1),
+      onClick: () => {
+        sPage(cPage - 1);
+        if (cVisible1) {
+          sVisible1(false);
+        }
+      },
       key: 3,
     },
   ];
@@ -390,14 +407,15 @@ export function InputFile() {
       labelStyle: !cLanguage ? "3px 0 5px 20px" : "5px 0 5px 30px",
       labelId: "textArea",
       buttonContent: languageChanger(cLanguage, "ატვირთვა", "Upload"),
+      key: 0,
     },
   ];
   return (
     <>
-      {dataMap.map((data: any, idx: number) => {
+      {dataMap.map((data: any) => {
         return (
           <>
-            <p key={idx}>{data.pContent}</p>
+            <p key={data.key}>{data.pContent}</p>
             <label
               htmlFor={data.htmlFor}
               style={{
@@ -666,12 +684,14 @@ export function PersonButtonReplay() {
 }
 
 // Experience
+
+// best written style
 export function ExperiencePositionEmployerInput() {
   const useAppContext0 = useContext(context);
   const {
     cBGColor,
     cLanguage,
-    cVisible,
+    cVisible1,
     cPosition,
     sPosition,
     cCorrect5,
@@ -742,7 +762,7 @@ export function ExperiencePositionEmployerInput() {
               id={data.htmlForId}
               className={CommonStyles.inputStandard}
               style={{
-                border: !cVisible
+                border: !cVisible1
                   ? cBGColor
                     ? "1px solid white"
                     : "1px solid black"
@@ -770,8 +790,16 @@ export function ExperiencePositionEmployerInput() {
 }
 export function InputReplayExperienceRow() {
   const useAppContext0 = useContext(context);
-  const { cLanguage, sStartDate, cStartDate, cEndDate, sEndDate, cBGColor } =
-    useAppContext0;
+  const {
+    cLanguage,
+    sStartDate,
+    cStartDate,
+    cEndDate,
+    sEndDate,
+    cBGColor,
+    ExperienceDateStartRef,
+    ExperienceDateEndRef,
+  } = useAppContext0;
   const dataMap = [
     {
       labelHtmlFor: "startDate",
@@ -783,6 +811,7 @@ export function InputReplayExperienceRow() {
       onChange: (e: any) => sStartDate(e.target.value),
       value: cStartDate,
       key: 0,
+      ref: ExperienceDateStartRef,
     },
     {
       labelHtmlFor: "EndDate",
@@ -794,6 +823,7 @@ export function InputReplayExperienceRow() {
       onChange: (e: any) => sEndDate(e.target.value),
       value: cEndDate,
       key: 1,
+      ref: ExperienceDateEndRef,
     },
   ];
   return (
@@ -829,6 +859,7 @@ export function InputReplayExperienceRow() {
                   color: cBGColor ? "white" : "black",
                   border: cBGColor ? "1px solid white" : "1px solid black",
                 }}
+                ref={data.ref}
               />
             </div>
           );
@@ -842,17 +873,17 @@ export function ExperienceTextArea() {
   const {
     cBGColor,
     cLanguage,
-    textAreaRef,
     cDescription,
-    cVisible,
+    cVisible1,
     sDescription,
+    ExperienceTextAreaRef,
   } = useAppContext0;
 
   const DataOfTextArea = [
     {
       key: 0,
       htmlFor: "Description",
-      ref: textAreaRef,
+      ref: ExperienceTextAreaRef,
       labelContext: languageChanger(cLanguage, "აღწერა", "Description"),
       // spanContext: languageChanger(cLanguage, "(არასავალდებულო)", "(optional)"),
       placeHolder: languageChanger(
@@ -860,7 +891,22 @@ export function ExperienceTextArea() {
         "როლი თანამდებობაზე და ზოგადი აღწერა",
         "Role in the position and general description"
       ),
-      onChange: (e: any) => sDescription(e.target.value),
+      onChange: (e: any) => {
+        sDescription(e.target.value);
+        if (
+          ExperienceTextAreaRef.current.value.length === 0 &&
+          cBGColor === true
+        ) {
+          ExperienceTextAreaRef.current.style.border = "1px solid white";
+        } else if (
+          ExperienceTextAreaRef.current.value.length === 0 &&
+          cBGColor === false
+        ) {
+          ExperienceTextAreaRef.current.style.border = "1px solid black";
+        } else {
+          ExperienceTextAreaRef.current.style.border = "1px solid black";
+        }
+      },
       value: cDescription,
     },
   ];
@@ -945,15 +991,18 @@ export function ExperienceButtonReplay() {
     cPage,
     sPage,
     cLanguage,
+    cBGColor,
+    ExperienceTextAreaRef,
     sCorrect5,
     sCorrect6,
-    cCorrect5,
-    cCorrect6,
+    ExperienceDateStartRef,
+    ExperienceDateEndRef,
     sVisible1,
     cPosition,
     cEmployer,
     cStartDate,
     cEndDate,
+    cDescription,
   } = useAppContext0;
   const buttonDataHome = [
     {
@@ -968,7 +1017,14 @@ export function ExperienceButtonReplay() {
     {
       className: CommonStyles.purpleButton,
       onClick: () => {
-        validateInput1(cPosition, cEmployer, cStartDate, cEndDate);
+        validateInput1(
+          cPosition,
+          cEmployer,
+          cStartDate,
+          cEndDate,
+          cDescription,
+          ExperienceTextAreaRef
+        );
         sVisible1(true);
       },
       language: languageChanger(cLanguage, "შემდეგი", "Next"),
@@ -980,7 +1036,9 @@ export function ExperienceButtonReplay() {
     Position: string | undefined,
     employer: string | undefined,
     startDate: string | undefined,
-    endDate: string | undefined
+    endDate: string | undefined,
+    description: any,
+    ExperienceTextAreaRef: any
   ) {
     const WordsRegex = /.{2}.*/;
     const DateRegex =
@@ -999,17 +1057,33 @@ export function ExperienceButtonReplay() {
     }
 
     if (startDate && DateRegex.test(startDate)) {
-      console.log("start date correct");
+      ExperienceDateStartRef.current.style.border = "1px solid #98E37E";
     } else {
-      console.log("start date incorrect");
+      ExperienceDateStartRef.current.style.border = "1px solid #EF5050";
     }
 
     if (endDate && DateRegex.test(endDate)) {
-      console.log("end date correct");
+      ExperienceDateEndRef.current.style.border = "1px solid #98E37E";
     } else {
-      console.log("end date incorrect");
+      ExperienceDateEndRef.current.style.border = "1px solid #EF5050";
     }
-
+    if (ExperienceTextAreaRef.current.value.length > 0) {
+      ExperienceTextAreaRef.current.style.border = "1px solid #98E37E";
+    } else {
+      if (
+        ExperienceTextAreaRef.current.value.length === 0 &&
+        cBGColor === true
+      ) {
+        ExperienceTextAreaRef.current.style.border = "1px solid white";
+      } else if (
+        ExperienceTextAreaRef.current.value.length === 0 &&
+        cBGColor === false
+      ) {
+        ExperienceTextAreaRef.current.style.border = "1px solid black";
+      } else {
+        ExperienceTextAreaRef.current.style.border = "1px solid black";
+      }
+    }
     if (
       Position &&
       WordsRegex.test(Position) &&
@@ -1020,7 +1094,15 @@ export function ExperienceButtonReplay() {
       endDate &&
       DateRegex.test(endDate)
     ) {
-      return [cPosition, cEmployer, cStartDate, cEndDate, sPage(cPage + 1)];
+      return [
+        sVisible1(false),
+        cPosition,
+        cEmployer,
+        cStartDate,
+        cEndDate,
+        cDescription,
+        sPage(cPage + 1),
+      ];
     }
   }
 
