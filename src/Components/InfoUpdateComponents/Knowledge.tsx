@@ -4,9 +4,7 @@ import { context } from "../../App";
 import { ImgReplayCustom } from "../DataMap/Replay";
 
 import CorrectWrongComponent from "./CorrectWrongComponent";
-
 import CommonStyles from "../Styles/Common.module.css";
-
 import Ellipse from "../../Assets/Img/2. SecondPage/Ellipse.svg";
 import Vector from "../../Assets/Img/2. SecondPage/Vectorvector.svg";
 export const MyPersonalContext = createContext<any>("w");

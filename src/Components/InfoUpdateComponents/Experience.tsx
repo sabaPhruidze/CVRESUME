@@ -32,6 +32,10 @@ export const MyExperienceContext = createContext<any>("w");
 export default function Personal() {
   const useAppContext2 = useContext(infoUpdateContext);
   const {
+    cIValue,
+    sIValue,
+    cArray,
+    sArray,
     replayRef,
     cBGColor,
     cVisible,

@@ -73,6 +73,11 @@ function App() {
   const ExperienceTextAreaRef = useRef<any>("");
   const replayRef = useRef<any>("");
   const [cTop, sTop] = useState<any>(804);
+
+  const [cIValue, sIValue] = useState<any>([]); // set input value and current input value
+
+  const [cArray, sArray] = useState<any>([]);
+
   function changePage() {
     switch (cPage) {
       case 0:
@@ -92,6 +97,10 @@ function App() {
   return (
     <context.Provider
       value={{
+        cIValue,
+        sIValue,
+        cArray,
+        sArray,
         ExperienceDateStartRef,
         ExperienceDateEndRef,
         ExperienceTextAreaRef,

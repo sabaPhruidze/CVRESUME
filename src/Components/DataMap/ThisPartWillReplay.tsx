@@ -13,6 +13,8 @@ export default function ThisPartWillReplay() {
     sPosition,
     cCorrect5,
     cCorrect6,
+    cCorrect7,
+    cCorrect8,
     cEmployer,
     sEmployer,
     replayRef,
@@ -25,6 +27,8 @@ export default function ThisPartWillReplay() {
     ExperienceTextAreaRef,
     ExperienceDateStartRef,
     ExperienceDateEndRef,
+    cMoreExperience,
+    cArray,
   } = useAppContext0;
   const experienceData = [
     {
@@ -233,6 +237,403 @@ export default function ThisPartWillReplay() {
           </>
         </div>
       </div>
+      {cMoreExperience >= 1 ? (
+        <div className={CommonStyles.replayThisPart} ref={replayRef}>
+          <div
+            className={infoUpdateStyles.positionEmployerInput}
+            style={{ marginTop: "270px" }}
+          >
+            <>
+              {experienceData.map((data: any, idx: any) => {
+                return (
+                  <div className={data.fullDivName} key={idx}>
+                    <label
+                      htmlFor={data.htmlForId}
+                      className={CommonStyles.labelStandard}
+                    >
+                      {data.content}
+                    </label>
+                    <input
+                      type="text"
+                      placeholder={data.inputPlaceHolder}
+                      id={data.htmlForId}
+                      className={CommonStyles.inputStandard}
+                      style={{
+                        border: !cVisible1
+                          ? cBGColor
+                            ? "1px solid white"
+                            : "1px solid black"
+                          : data.borderCorrect
+                          ? "1px solid #98E37E"
+                          : "1px solid #EF5050",
+                        backgroundColor: cBGColor ? "black" : "white",
+                        color: cBGColor ? "white" : "black",
+                      }}
+                      value={data.value}
+                      onChange={(event) => data.set(event.target.value)}
+                    />
+                    <span className={CommonStyles.spanStandard}>
+                      {languageChanger(
+                        cLanguage,
+                        "მინიმუმ 2 სიმბოლო",
+                        "At least 2 symbols"
+                      )}
+                    </span>
+                  </div>
+                );
+              })}
+            </>
+          </div>
+          <div className={infoUpdateStyles.dateContainer}>
+            <>
+              {dataMap.map((data: any) => {
+                return (
+                  <div
+                    key={data.key}
+                    style={{
+                      marginRight: data.key === 0 ? "28px" : "",
+                      marginLeft: data.key === 1 ? "28px" : "",
+                    }}
+                  >
+                    <label
+                      htmlFor={data.labelHtmlFor}
+                      style={{
+                        marginBottom: "8px",
+                        color: cBGColor ? "white" : "black",
+                        fontWeight: "700",
+                      }}
+                    >
+                      {data.labelContent}
+                    </label>
+                    <input
+                      type="date"
+                      className={infoUpdateStyles.calendarInput}
+                      onChange={data.onChange}
+                      value={data.value}
+                      id={data.labelHtmlFor}
+                      style={{
+                        backgroundColor: !cBGColor ? "white" : "black",
+                        color: cBGColor ? "white" : "black",
+                        border: cBGColor
+                          ? "1px solid white"
+                          : "1px solid black",
+                      }}
+                      ref={data.ref}
+                    />
+                  </div>
+                );
+              })}
+            </>
+          </div>
+          <div
+            className={infoUpdateStyles.description}
+            style={{ marginTop: "600px" }}
+          >
+            <>
+              {DataOfTextArea.map((data: any) => (
+                <div key={data.key}>
+                  <label
+                    htmlFor={data.htmlFor}
+                    className={CommonStyles.labelStandard}
+                    style={{ display: "block" }}
+                  >
+                    {data.labelContext}
+                    <span className={CommonStyles.spanStandard}>
+                      {data.spanContext}
+                    </span>
+                  </label>
+                  <textarea
+                    placeholder={data.placeHolder}
+                    id={data.htmlFor}
+                    onChange={data.onChange}
+                    maxLength={250}
+                    style={{
+                      backgroundColor: cBGColor ? "black" : "white",
+                      color: cBGColor ? "white" : "black",
+                      border: "1px solid black",
+                      padding: "13px 16px",
+                    }}
+                    ref={data.ref}
+                  ></textarea>
+                  <hr
+                    style={{
+                      width: "100%",
+                      height: "1px",
+                      marginTop: "6px",
+                    }}
+                  />
+                </div>
+              ))}
+            </>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+      {cMoreExperience >= 2 ? (
+        <div className={CommonStyles.replayThisPart} ref={replayRef}>
+          <div
+            className={infoUpdateStyles.positionEmployerInput}
+            style={{ marginTop: "270px" }}
+          >
+            <>
+              {experienceData.map((data: any, idx: any) => {
+                return (
+                  <div className={data.fullDivName} key={idx}>
+                    <label
+                      htmlFor={data.htmlForId}
+                      className={CommonStyles.labelStandard}
+                    >
+                      {data.content}
+                    </label>
+                    <input
+                      type="text"
+                      placeholder={data.inputPlaceHolder}
+                      id={data.htmlForId}
+                      className={CommonStyles.inputStandard}
+                      style={{
+                        border: !cVisible1
+                          ? cBGColor
+                            ? "1px solid white"
+                            : "1px solid black"
+                          : data.borderCorrect
+                          ? "1px solid #98E37E"
+                          : "1px solid #EF5050",
+                        backgroundColor: cBGColor ? "black" : "white",
+                        color: cBGColor ? "white" : "black",
+                      }}
+                      value={data.value}
+                      onChange={(event) => data.set(event.target.value)}
+                    />
+                    <span className={CommonStyles.spanStandard}>
+                      {languageChanger(
+                        cLanguage,
+                        "მინიმუმ 2 სიმბოლო",
+                        "At least 2 symbols"
+                      )}
+                    </span>
+                  </div>
+                );
+              })}
+            </>
+          </div>
+          <div className={infoUpdateStyles.dateContainer}>
+            <>
+              {dataMap.map((data: any) => {
+                return (
+                  <div
+                    key={data.key}
+                    style={{
+                      marginRight: data.key === 0 ? "28px" : "",
+                      marginLeft: data.key === 1 ? "28px" : "",
+                    }}
+                  >
+                    <label
+                      htmlFor={data.labelHtmlFor}
+                      style={{
+                        marginBottom: "8px",
+                        color: cBGColor ? "white" : "black",
+                        fontWeight: "700",
+                      }}
+                    >
+                      {data.labelContent}
+                    </label>
+                    <input
+                      type="date"
+                      className={infoUpdateStyles.calendarInput}
+                      onChange={data.onChange}
+                      value={data.value}
+                      id={data.labelHtmlFor}
+                      style={{
+                        backgroundColor: !cBGColor ? "white" : "black",
+                        color: cBGColor ? "white" : "black",
+                        border: cBGColor
+                          ? "1px solid white"
+                          : "1px solid black",
+                      }}
+                      ref={data.ref}
+                    />
+                  </div>
+                );
+              })}
+            </>
+          </div>
+          <div
+            className={infoUpdateStyles.description}
+            style={{
+              position: "absolute",
+
+              top: "calc(1209px + 450px)",
+            }}
+          >
+            <>
+              {DataOfTextArea.map((data: any) => (
+                <div key={data.key}>
+                  <label
+                    htmlFor={data.htmlFor}
+                    className={CommonStyles.labelStandard}
+                    style={{ display: "block" }}
+                  >
+                    {data.labelContext}
+                    <span className={CommonStyles.spanStandard}>
+                      {data.spanContext}
+                    </span>
+                  </label>
+                  <textarea
+                    placeholder={data.placeHolder}
+                    id={data.htmlFor}
+                    onChange={data.onChange}
+                    maxLength={250}
+                    style={{
+                      backgroundColor: cBGColor ? "black" : "white",
+                      color: cBGColor ? "white" : "black",
+                      border: "1px solid black",
+                      padding: "13px 16px",
+                    }}
+                    ref={data.ref}
+                  ></textarea>
+                  <hr
+                    style={{
+                      width: "100%",
+                      height: "1px",
+                      marginTop: "6px",
+                    }}
+                  />
+                </div>
+              ))}
+            </>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+      {cMoreExperience >= 3 ? (
+        <div className={CommonStyles.replayThisPart} ref={replayRef}>
+          <div className={infoUpdateStyles.positionEmployerInput}>
+            <>
+              {experienceData.map((data: any, idx: any) => {
+                return (
+                  <div className={data.fullDivName} key={idx}>
+                    <label
+                      htmlFor={data.htmlForId}
+                      className={CommonStyles.labelStandard}
+                    >
+                      {data.content}
+                    </label>
+                    <input
+                      type="text"
+                      placeholder={data.inputPlaceHolder}
+                      id={data.htmlForId}
+                      className={CommonStyles.inputStandard}
+                      style={{
+                        border: !cVisible1
+                          ? cBGColor
+                            ? "1px solid white"
+                            : "1px solid black"
+                          : data.borderCorrect
+                          ? "1px solid #98E37E"
+                          : "1px solid #EF5050",
+                        backgroundColor: cBGColor ? "black" : "white",
+                        color: cBGColor ? "white" : "black",
+                      }}
+                      value={data.value}
+                      onChange={(event) => data.set(event.target.value)}
+                    />
+                    <span className={CommonStyles.spanStandard}>
+                      {languageChanger(
+                        cLanguage,
+                        "მინიმუმ 2 სიმბოლო",
+                        "At least 2 symbols"
+                      )}
+                    </span>
+                  </div>
+                );
+              })}
+            </>
+          </div>
+          <div className={infoUpdateStyles.dateContainer}>
+            <>
+              {dataMap.map((data: any) => {
+                return (
+                  <div
+                    key={data.key}
+                    style={{
+                      marginRight: data.key === 0 ? "28px" : "",
+                      marginLeft: data.key === 1 ? "28px" : "",
+                    }}
+                  >
+                    <label
+                      htmlFor={data.labelHtmlFor}
+                      style={{
+                        marginBottom: "8px",
+                        color: cBGColor ? "white" : "black",
+                        fontWeight: "700",
+                      }}
+                    >
+                      {data.labelContent}
+                    </label>
+                    <input
+                      type="date"
+                      className={infoUpdateStyles.calendarInput}
+                      onChange={data.onChange}
+                      value={data.value}
+                      id={data.labelHtmlFor}
+                      style={{
+                        backgroundColor: !cBGColor ? "white" : "black",
+                        color: cBGColor ? "white" : "black",
+                        border: cBGColor
+                          ? "1px solid white"
+                          : "1px solid black",
+                      }}
+                      ref={data.ref}
+                    />
+                  </div>
+                );
+              })}
+            </>
+          </div>
+          <div className={infoUpdateStyles.description}>
+            <>
+              {DataOfTextArea.map((data: any) => (
+                <div key={data.key}>
+                  <label
+                    htmlFor={data.htmlFor}
+                    className={CommonStyles.labelStandard}
+                    style={{ display: "block" }}
+                  >
+                    {data.labelContext}
+                    <span className={CommonStyles.spanStandard}>
+                      {data.spanContext}
+                    </span>
+                  </label>
+                  <textarea
+                    placeholder={data.placeHolder}
+                    id={data.htmlFor}
+                    onChange={data.onChange}
+                    maxLength={250}
+                    style={{
+                      backgroundColor: cBGColor ? "black" : "white",
+                      color: cBGColor ? "white" : "black",
+                      border: "1px solid black",
+                      padding: "13px 16px",
+                    }}
+                    ref={data.ref}
+                  ></textarea>
+                  <hr
+                    style={{
+                      width: "100%",
+                      height: "1px",
+                      marginTop: "6px",
+                    }}
+                  />
+                </div>
+              ))}
+            </>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
     </>
   );
 }

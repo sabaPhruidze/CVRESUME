@@ -33,6 +33,10 @@ export default function InfoUpdate() {
     ExperienceDateEndRef,
     ExperienceTextAreaRef,
     cTop,
+    cIValue,
+    sIValue,
+    cArray,
+    sArray,
     sTop,
     replayRef,
     cPage,
@@ -135,6 +139,10 @@ export default function InfoUpdate() {
   return (
     <infoUpdateContext.Provider
       value={{
+        cIValue,
+        sIValue,
+        cArray,
+        sArray,
         cPage,
         sPage,
         cTop,

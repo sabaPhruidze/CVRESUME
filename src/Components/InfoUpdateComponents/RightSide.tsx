@@ -27,6 +27,7 @@ export default function Rendered() {
     cEndDate,
     cPage,
     cMoreExperience,
+    cArray,
   } = MPCL;
   return (
     <div
