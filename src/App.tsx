@@ -71,7 +71,7 @@ function App() {
   const ExperienceDateStartRef = useRef<any>("");
   const ExperienceDateEndRef = useRef<any>("");
   const ExperienceTextAreaRef = useRef<any>("");
-
+  const replayRef = useRef<any>("");
   const [cTop, sTop] = useState<any>(804);
   function changePage() {
     switch (cPage) {
@@ -95,6 +95,7 @@ function App() {
         ExperienceDateStartRef,
         ExperienceDateEndRef,
         ExperienceTextAreaRef,
+        replayRef,
         cTop,
         sTop,
         cPage,
@@ -208,6 +209,8 @@ function App() {
               ? "calc(1080px + 2 * 631px)"
               : cMoreExperience === 3
               ? "calc(1080px + 631px * 3)"
+              : cPage === 3
+              ? "1080px"
               : "calc(1080px + 631px * 4)",
           overflow: cMoreExperience === 0 ? "hidden" : "none",
         }}

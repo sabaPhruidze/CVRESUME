@@ -34,6 +34,7 @@ export default function InfoUpdate() {
     ExperienceTextAreaRef,
     cTop,
     sTop,
+    replayRef,
     cPage,
     sPage,
     cLanguage,
@@ -138,6 +139,7 @@ export default function InfoUpdate() {
         sPage,
         cTop,
         sTop,
+        replayRef,
         cLanguage,
         sLanguage,
         cBGColor,
@@ -250,6 +252,8 @@ export default function InfoUpdate() {
               ? "calc(846px * 3)"
               : cMoreExperience === 3
               ? "calc(846px * 4)"
+              : cPage === 3
+              ? "1080px"
               : "calc(846px* 5)",
         }}
       >

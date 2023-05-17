@@ -7,12 +7,13 @@ import CorrectWrongComponent from "./CorrectWrongComponent";
 import {
   HeadlineDivCustom,
   ImgReplayCustom,
-  ExperiencePositionEmployerInput,
-  InputReplayExperienceRow,
-  ExperienceTextArea,
+  // ExperiencePositionEmployerInput,
+  // InputReplayExperienceRow,
+  // ExperienceTextArea,
   ExperienceButtonReplay,
   ExperienceButtonReplayskyColor,
 } from "../DataMap/Replay";
+import ThisPartWillReplay from "../DataMap/ThisPartWillReplay";
 
 import georgiaFlag from "../../Assets/Img/common/georgia.png";
 import unitedKingdomFlag from "../../Assets/Img/common/unitedKingdom.png";
@@ -31,48 +32,13 @@ export const MyExperienceContext = createContext<any>("w");
 export default function Personal() {
   const useAppContext2 = useContext(infoUpdateContext);
   const {
-    cPage,
-    sPage,
-    cLanguage,
-    sLanguage,
+    replayRef,
     cBGColor,
-    sBGColor,
-    cName,
-    sName,
-    cUsername,
-    sUsername,
-    cUploadImg,
-    sUploadImg,
-    cEmail,
-    sEmail,
-    cTel,
-    sTel,
-    cAboutMe,
-    sAboutMe,
-    cCorrect,
-    sCorrect,
-    cCorrect1,
-    sCorrect1,
-    cCorrect2,
-    sCorrect2,
-    cCorrect3,
-    sCorrect3,
     cVisible,
     sVisible,
-    cPosition,
-    sPosition,
-    cEmployer,
-    sEmployer,
-    cStartDate,
-    sStartDate,
-    cEndDate,
-    sEndDate,
-    cDescription,
-    sDescription,
-
     cMoreExperience,
     sMoreExperience,
-
+    cPage,
     cPosition1,
     sPosition1,
     cEmployer1,
@@ -172,6 +138,8 @@ export default function Personal() {
             ? "calc(1080px + 630px * 3)"
             : cMoreExperience === 3
             ? "calc( 1080px + 630px * 4)"
+            : cPage === 3
+            ? "1080px"
             : "calc( 1080px + 630px * 5)",
         overflow: cMoreExperience === 0 ? "hidden" : "none",
       }}
@@ -191,15 +159,7 @@ export default function Personal() {
       <ImgReplayCustom />
       <div className={CommonStyles.skeleton}>
         <HeadlineDivCustom />
-        <div className={CommonStyles.replayThisPart}>
-          <div className={infoUpdateStyles.positionEmployerInput}>
-            <ExperiencePositionEmployerInput />
-          </div>
-          <InputReplayExperienceRow />
-          <div className={infoUpdateStyles.description}>
-            <ExperienceTextArea />
-          </div>
-        </div>
+        <ThisPartWillReplay />
       </div>
       <ExperienceButtonReplay />
     </div>

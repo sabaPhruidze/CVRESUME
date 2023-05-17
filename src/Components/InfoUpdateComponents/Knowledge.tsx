@@ -53,6 +53,7 @@ export default function Knowledge() {
           ? `${CommonStyles.infoContainer} ${CommonStyles.infoContainerDark}`
           : CommonStyles.infoContainer
       }
+      style={{ overflow: "hidden" }}
     >
       <MyPersonalContext.Provider
         value={{
