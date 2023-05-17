@@ -136,7 +136,16 @@ least for 2 page */
     transition: 0.5s ease;
     font-size:18px;
 }
-.purpleButton:focus {
+.skyColorButton {
+  background-color:#62A1EB;
+  padding: 14px 21px;
+  color:white;
+  cursor: pointer;
+  transition: 0.5s ease;
+  font-size:18px;
+  z-index: 3;
+}
+.purpleButton:focus, .skyColorButton:focus {
     transform: scale(0.95);
 }
 .purpleButtonBack {

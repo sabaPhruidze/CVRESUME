@@ -896,7 +896,7 @@ export function ExperienceTextArea() {
             style={{
               width: "100%",
               height: "1px",
-              marginTop: "59px",
+              marginTop: "6px",
             }}
           />
         </div>
@@ -904,23 +904,126 @@ export function ExperienceTextArea() {
     </>
   );
 }
-export function ExperienceButtonReplay() {
+export function ExperienceButtonReplayskyColor() {
   const useAppContext0 = useContext(context);
   const { cPage, sPage, cLanguage } = useAppContext0;
   const buttonDataHome = [
     {
+      className: CommonStyles.skyColorButton,
+      // onClick: () => sPage(cPage + 1),
+      language: languageChanger(
+        cLanguage,
+        "მეტი გამოცდილების დამატება",
+        "Adding more experience"
+      ),
+      key: 1,
+    },
+  ];
+  return (
+    <>
+      {buttonDataHome.map((data) => (
+        <button
+          className={data.className}
+          // onClick={data.onClick}
+          key={data.key}
+          style={{
+            position: "absolute",
+            top: "804px",
+            left: "149px",
+          }}
+        >
+          {data.language}
+        </button>
+      ))}
+    </>
+  );
+}
+
+export function ExperienceButtonReplay() {
+  const useAppContext0 = useContext(context);
+  const {
+    cPage,
+    sPage,
+    cLanguage,
+    sCorrect5,
+    sCorrect6,
+    cCorrect5,
+    cCorrect6,
+    sVisible1,
+    cPosition,
+    cEmployer,
+    cStartDate,
+    cEndDate,
+  } = useAppContext0;
+  const buttonDataHome = [
+    {
       className: ` ${CommonStyles.purpleButtonBack} ${CommonStyles.purpleButton}`,
-      onClick: () => sPage(cPage - 1),
+      onClick: () => {
+        sPage(cPage - 1);
+        sVisible1(false);
+      },
       language: languageChanger(cLanguage, "უკან", "Back"),
       key: 0,
     },
     {
       className: CommonStyles.purpleButton,
-      onClick: () => sPage(cPage + 1),
+      onClick: () => {
+        validateInput1(cPosition, cEmployer, cStartDate, cEndDate);
+        sVisible1(true);
+      },
       language: languageChanger(cLanguage, "შემდეგი", "Next"),
       key: 1,
     },
   ];
+
+  function validateInput1(
+    Position: string | undefined,
+    employer: string | undefined,
+    startDate: string | undefined,
+    endDate: string | undefined
+  ) {
+    const WordsRegex = /.{2}.*/;
+    const DateRegex =
+      /^(((19[8-9]\d)|20[0-1]\d|202[0-3])-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/; //the year must be between 1980-2023
+
+    if (Position && WordsRegex.test(Position)) {
+      sCorrect5(true);
+    } else {
+      sCorrect5(false);
+    }
+
+    if (employer && WordsRegex.test(employer)) {
+      sCorrect6(true);
+    } else {
+      sCorrect6(false);
+    }
+
+    if (startDate && DateRegex.test(startDate)) {
+      console.log("start date correct");
+    } else {
+      console.log("start date incorrect");
+    }
+
+    if (endDate && DateRegex.test(endDate)) {
+      console.log("end date correct");
+    } else {
+      console.log("end date incorrect");
+    }
+
+    if (
+      Position &&
+      WordsRegex.test(Position) &&
+      employer &&
+      WordsRegex.test(employer) &&
+      startDate &&
+      DateRegex.test(startDate) &&
+      endDate &&
+      DateRegex.test(endDate)
+    ) {
+      return [cPosition, cEmployer, cStartDate, cEndDate, sPage(cPage + 1)];
+    }
+  }
+
   return (
     <>
       {buttonDataHome.map((data) => (

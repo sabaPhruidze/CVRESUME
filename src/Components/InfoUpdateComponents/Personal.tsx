@@ -19,36 +19,8 @@ import CommonStyles from "../Styles/Common.module.css";
 export const MyPersonalContext = createContext<any>("w");
 export default function Personal() {
   const useAppContext1 = useContext(infoUpdateContext);
-  const {
-    cPage,
-    sPage,
-    cLanguage,
-    sLanguage,
-    cBGColor,
-    sBGColor,
-    cName,
-    sName,
-    cUsername,
-    sUsername,
-    cUploadImg,
-    sUploadImg,
-    cEmail,
-    sEmail,
-    cTel,
-    sTel,
-    cAboutMe,
-    sAboutMe,
-    cCorrect,
-    sCorrect,
-    cCorrect1,
-    sCorrect1,
-    cCorrect2,
-    sCorrect2,
-    cCorrect3,
-    sCorrect3,
-    cVisible,
-    sVisible,
-  } = useAppContext1;
+  const { cBGColor, cCorrect, cCorrect1, cCorrect2, cCorrect3, cVisible } =
+    useAppContext1;
   //I am just using ref to test it.Even trougth I can solve most of the tasks using useState I think sometimes useRef is also helpful
   return (
     <div

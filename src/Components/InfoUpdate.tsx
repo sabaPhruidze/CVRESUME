@@ -114,6 +114,16 @@ export default function InfoUpdate() {
     sEndDate4,
     cDescription4,
     sDescription4,
+    cCorrect5,
+    sCorrect5,
+    cCorrect6,
+    sCorrect6,
+    cCorrect7,
+    sCorrect7,
+    cCorrect8,
+    sCorrect8,
+    cVisible1,
+    sVisible1,
   } = useAppContext1;
 
   return (
@@ -204,6 +214,17 @@ export default function InfoUpdate() {
         sEndDate4,
         cDescription4,
         sDescription4,
+
+        cCorrect5,
+        sCorrect5,
+        cCorrect6,
+        sCorrect6,
+        cCorrect7,
+        sCorrect7,
+        cCorrect8,
+        sCorrect8,
+        cVisible1,
+        sVisible1,
       }}
     >
       <div

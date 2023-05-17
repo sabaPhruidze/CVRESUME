@@ -11,7 +11,7 @@ import InfoUpdate from "./Components/InfoUpdate";
 export const context = createContext<any>(null);
 
 function App() {
-  const [cPage, sPage] = useState<number>(0); // current page ,set page
+  const [cPage, sPage] = useState<number>(2); // current page ,set page
   const [cLanguage, sLanguage] = useState<boolean>(false); //if false than georgian else english
   const [cBGColor, sBGColor] = useState<boolean>(false); //if false than white, if true than black {BG- means background color}
 
@@ -30,6 +30,12 @@ function App() {
   const [cCorrect2, sCorrect2] = useState<boolean>(false);
   const [cCorrect3, sCorrect3] = useState<boolean>(false);
   const [cVisible, sVisible] = useState<boolean>(false);
+
+  const [cCorrect5, sCorrect5] = useState<boolean>(false);
+  const [cCorrect6, sCorrect6] = useState<boolean>(false);
+  const [cCorrect7, sCorrect7] = useState<boolean>(false);
+  const [cCorrect8, sCorrect8] = useState<boolean>(false);
+  const [cVisible1, sVisible1] = useState<boolean>(false);
 
   const [cMoreExperience, sMoreExperience] = useState<any>(0);
   const [cPosition, sPosition] = useState<any>("");
@@ -168,6 +174,17 @@ function App() {
         sEndDate4,
         cDescription4,
         sDescription4,
+
+        cCorrect5,
+        sCorrect5,
+        cCorrect6,
+        sCorrect6,
+        cCorrect7,
+        sCorrect7,
+        cCorrect8,
+        sCorrect8,
+        cVisible1,
+        sVisible1,
       }}
     >
       <div

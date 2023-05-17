@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import { useContext, createContext, useState, useRef } from "react";
 import { infoUpdateContext } from "../InfoUpdate";
 
-import CommonInput from "./CommonInput";
-import CorrectWrongComponent from "./CorrectWrongComponent";
+import CorrectWrongComponent, {
+  CorrectWrongComponentExperience,
+} from "./CorrectWrongComponent";
 
 import {
   HeadlineDivCustom,
@@ -12,6 +13,7 @@ import {
   InputReplayExperienceRow,
   ExperienceTextArea,
   ExperienceButtonReplay,
+  ExperienceButtonReplayskyColor,
 } from "../DataMap/Replay";
 
 import georgiaFlag from "../../Assets/Img/common/georgia.png";
@@ -116,49 +118,18 @@ export default function Personal() {
     sEndDate4,
     cDescription4,
     sDescription4,
+    cCorrect5,
+    sCorrect5,
+    cCorrect6,
+    sCorrect6,
+    cCorrect7,
+    sCorrect7,
+    cCorrect8,
+    sCorrect8,
+    cVisible1,
+    sVisible1,
   } = useAppContext2;
-  function languageChanger(geo: string, eng: string) {
-    return !cLanguage ? geo : eng;
-  }
-  function validateInput(
-    Position: string | undefined,
-    employer: string | undefined,
-    startDate: number | undefined,
-    endDate: number | undefined
-  ) {
-    const georgianWordsRegex = /.{2}.*/;
-    if (Position && georgianWordsRegex.test(Position)) {
-      sCorrect(true);
-    } else {
-      sCorrect(false);
-    }
-    if (employer && georgianWordsRegex.test(employer)) {
-      sCorrect1(true);
-    } else {
-      sCorrect1(false);
-    }
-    if (
-      Position &&
-      georgianWordsRegex.test(Position) &&
-      employer &&
-      georgianWordsRegex.test(employer)
-    ) {
-      return [
-        cPosition,
-        cEmployer,
-        localStorage.setItem("Position", Position),
-        localStorage.setItem("employer", employer),
-        useAppContext2.sPage(useAppContext2.cPage + 1),
-      ];
-    }
-    //ესაა მთავარი რომ თუ ყველაფერი სწორადაა შევსებული ამ შემთხვევაში გადავიდეს შემდეგ გვერდზე
-  }
-  //I am just using ref to test it.Even trougth I can solve most of the tasks using useState I think sometimes useRef is also helpful
-  // const textAreaRef = useRef<any>("");
-  const textAreaRef1 = useRef<any>("");
-  const textAreaRef2 = useRef<any>("");
-  const textAreaRef3 = useRef<any>("");
-  const addMoreExperienceRef = useRef<any>("");
+
   // const experienceData = [
   //   {
   //     fullDivName: infoUpdateStyles.position,
@@ -207,169 +178,32 @@ export default function Personal() {
         overflow: cMoreExperience === 0 ? "hidden" : "none",
       }}
     >
+      <ExperienceButtonReplayskyColor />
       <MyExperienceContext.Provider
         value={{
-          cCorrect,
-          cCorrect1,
-          cCorrect2,
-          cCorrect3,
+          cCorrect6,
+          cCorrect5,
           cVisible,
           cBGColor,
-          cPage,
+          cVisible1,
         }}
       >
-        <CorrectWrongComponent />
+        <CorrectWrongComponentExperience />
       </MyExperienceContext.Provider>
       <ImgReplayCustom />
       <div className={CommonStyles.skeleton}>
         <HeadlineDivCustom />
-        <div className={infoUpdateStyles.positionEmployerInput}>
-          <ExperiencePositionEmployerInput />
-        </div>
-        <InputReplayExperienceRow />
-        <div className={infoUpdateStyles.description}>
-          <ExperienceTextArea />
-          {cMoreExperience === 1 ? (
-            <>
-              <hr style={{ marginBottom: "69px" }} />
-              {/* <div className={infoUpdateStyles.positionEmployerInput}>
-                {experienceData1.map((data: any, idx: any) => {
-                  return (
-                    <div className={data.fullDivName} key={idx}>
-                      <label
-                        htmlFor={data.htmlForId}
-                        className={CommonStyles.labelStandard}
-                      >
-                        {data.content}
-                      </label>
-                      <input
-                        type="text"
-                        placeholder={data.inputPlaceHolder}
-                        id={data.htmlForId}
-                        className={CommonStyles.inputStandard}
-                        style={{
-                          border: !cVisible
-                            ? cBGColor
-                              ? "1px solid white"
-                              : "1px solid black"
-                            : data.borderCorrect
-                            ? "1px solid #98E37E"
-                            : "1px solid #EF5050",
-                          backgroundColor: cBGColor ? "black" : "white",
-                          color: cBGColor ? "white" : "black",
-                        }}
-                        value={data.value}
-                        onChange={(event) => data.set(event.target.value)}
-                      />
-                      <span className={CommonStyles.spanStandard}>
-                        {!cLanguage
-                          ? "მინიმუმ 2 ასო, ქართული ასოები"
-                          : "At least 2 letters, Georgian letters"}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div> */}
-              <div className={infoUpdateStyles.dateContainer}>
-                <input
-                  type="date"
-                  className={infoUpdateStyles.calendarInput}
-                  onChange={(e) => {
-                    sStartDate(e.target.value);
-                  }}
-                  value={cStartDate1}
-                />
-                <input
-                  type="date"
-                  className={infoUpdateStyles.calendarInput}
-                  onChange={(e) => {
-                    sEndDate(e.target.value);
-                  }}
-                  value={cEndDate1}
-                />
-              </div>
-              <div className={infoUpdateStyles.descriptionAdded}>
-                <label
-                  htmlFor="Description"
-                  className={CommonStyles.labelStandard}
-                >
-                  {languageChanger("აღწერა", "Description")}
-                </label>
-                <textarea
-                  placeholder={languageChanger(
-                    "როლი თანამდებობაზე და ზოგადი აღწერა",
-                    "Role in the position and general description"
-                  )}
-                  id="Description"
-                  onChange={(e) => sDescription1(e.target.value)}
-                  maxLength={250}
-                  ref={textAreaRef1}
-                  style={{
-                    backgroundColor: cBGColor ? "black" : "white",
-                    color: cBGColor ? "white" : "black",
-                    height: "123px",
-                    padding: "13px 16px",
-                  }}
-                  value={cDescription1}
-                ></textarea>
-                <hr
-                  style={{
-                    width: "100%",
-                    height: "1px",
-                    marginTop: "59px",
-                  }}
-                />
-              </div>
-            </>
-          ) : (
-            ""
-          )}
-          <button
-            // When I click here It must repeat same
-            className="moreExperienceAdd"
-            style={{
-              marginTop: "45px",
-              width: "289px",
-              // height: 48, I do not get it why height doesnot work
-              boxSizing: "border-box",
-              fontSize: "16px",
-              backgroundColor: "#62A1EB",
-              color: "white",
-              padding: "calc((48px - 16px) / 2)",
-            }}
-            onClick={() => {
-              sMoreExperience(cMoreExperience + 1);
-              console.log(cMoreExperience);
-            }}
-          >
-            {languageChanger(
-              "მეტი გამოცდილების დამატება",
-              "Adding more experience"
-            )}
-          </button>
+        <div className={CommonStyles.replayThisPart}>
+          <div className={infoUpdateStyles.positionEmployerInput}>
+            <ExperiencePositionEmployerInput />
+          </div>
+          <InputReplayExperienceRow />
+          <div className={infoUpdateStyles.description}>
+            <ExperienceTextArea />
+          </div>
         </div>
       </div>
       <ExperienceButtonReplay />
-      {/* <button
-        className={CommonStyles.purpleButton}
-        onClick={() => {
-          validateInput(cPosition, cEmployer, cStartDate, cEndDate);
-          if (
-            (textAreaRef.current.value.length > 0 && !cBGColor) ||
-            (textAreaRef.current.value.length > 0 && cBGColor)
-          ) {
-            textAreaRef.current.style.border = "1px solid #98E37E";
-          } else if (textAreaRef.current.value.length < 0 && !cBGColor) {
-            textAreaRef.current.style.border = "1px solid black"; //it will not become red because writing this line is not nessesary
-            // according to the figma
-          } else if (textAreaRef.current.value.length < 0 && cBGColor) {
-            textAreaRef.current.style.border = "1px solid white";
-          } else {
-            return "";
-          }
-        }}
-      >
-      </button> */}
     </div>
   );
 }
