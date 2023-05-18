@@ -94,29 +94,6 @@ export default function Personal() {
     sVisible1,
   } = useAppContext2;
 
-  // const experienceData = [
-  //   {
-  //     fullDivName: infoUpdateStyles.position,
-  //     content: !cLanguage ? "თანამდებობა" : "Position",
-  //     htmlForId: "position",
-  //     set: sPosition,
-  //     value: cPosition,
-  //     inputPlaceHolder: !cLanguage
-  //       ? "დეველოპერი, დიზაინერი, ა.შ."
-  //       : "Developer, designer, etc.",
-  //     borderCorrect: cCorrect,
-  //   },
-  //   {
-  //     fullDivName: infoUpdateStyles.employer,
-  //     content: !cLanguage ? "დამსაქმებელი" : "Employer",
-  //     htmlForId: "employer",
-  //     set: sEmployer,
-  //     value: cEmployer,
-  //     inputPlaceHolder: !cLanguage ? "დამსაქმებელი" : "Employer",
-  //     borderCorrect: cCorrect,
-  //   },
-  // ];
-
   useEffect(() => {
     sVisible(false);
   }, []);
