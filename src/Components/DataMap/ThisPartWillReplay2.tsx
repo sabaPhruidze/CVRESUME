@@ -131,14 +131,14 @@ export default function ThisPartWillReplay() {
   };
   const dataMap = [
     {
-      labelHtmlFor: "EndDate",
+      labelHtmlFor: "finishDate",
       labelContent: languageChanger(
         cLanguage,
         "დამთავრების რიცხვი",
         "End date"
       ),
-      onChange: (e: any) => sEndDate(e.target.value),
-      value: cEndDate,
+      onChange: (e: any) => sFinishDate(e.target.value),
+      value: cFinishDate,
       key: 1,
       ref: ExperienceDateEndRef,
     },
@@ -174,17 +174,17 @@ export default function ThisPartWillReplay() {
   const DataOfTextArea = [
     {
       key: 0,
-      htmlFor: "Description",
+      htmlFor: "Describe",
       ref: ExperienceTextAreaRef,
-      labelContext: languageChanger(cLanguage, "აღწერა", "Description"),
+      labelContext: languageChanger(cLanguage, "აღწერა", "Describe"),
       // spanContext: languageChanger(cLanguage, "(არასავალდებულო)", "(optional)"),
       placeHolder: languageChanger(
         cLanguage,
-        "როლი თანამდებობაზე და ზოგადი აღწერა",
-        "Role in the position and general description"
+        "განათლების აღწერა",
+        "Describe the knowledge"
       ),
       onChange: (e: any) => {
-        sDescription(e.target.value);
+        sDOE(e.target.value);
         if (
           ExperienceTextAreaRef.current.value.length === 0 &&
           cBGColor === true
@@ -199,7 +199,7 @@ export default function ThisPartWillReplay() {
           ExperienceTextAreaRef.current.style.border = "1px solid black";
         }
       },
-      value: cDescription,
+      value: cDOE,
     },
   ];
   const DataOfTextArea1 = [
@@ -346,7 +346,7 @@ export default function ThisPartWillReplay() {
                   <option
                     key={index}
                     value={option}
-                    style={{ width: "calc(100% - 28px)" }}
+                    style={{ cursor: "pointer" }}
                   >
                     {option}
                   </option>
@@ -358,8 +358,7 @@ export default function ThisPartWillReplay() {
                 <div
                   key={data.key}
                   style={{
-                    marginRight: data.key === 0 ? "28px" : "",
-                    marginLeft: data.key === 1 ? "28px" : "",
+                    marginLeft: "28px",
                   }}
                 >
                   <label

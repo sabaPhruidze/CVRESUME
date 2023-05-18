@@ -83,9 +83,9 @@ function App() {
   const [cTop, sTop] = useState<any>(804);
 
   //knowledge
-  const [cCourse, sCourse] = useState<string | null | undefined>("");
+  const [cCourse, sCourse] = useState<string>("");
   const [cQuality, sQuality] = useState<any>("");
-  const [cFinishDate, sFinishDate] = useState<number>();
+  const [cFinishDate, sFinishDate] = useState<any>();
   const [cDOE, sDOE] = useState<any>(""); //description of knowledge
   function changePage() {
     switch (cPage) {

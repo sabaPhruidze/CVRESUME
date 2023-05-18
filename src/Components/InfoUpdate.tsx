@@ -141,6 +141,10 @@ export default function InfoUpdate() {
     sCorrect10,
     cVisible1,
     sVisible1,
+    cCourse,
+    cQuality,
+    cFinishDate,
+    cDOE,
   } = useAppContext1;
 
   return (
@@ -260,6 +264,10 @@ export default function InfoUpdate() {
         ExperienceDateStartRef,
         ExperienceDateEndRef,
         ExperienceTextAreaRef,
+        cCourse,
+        cQuality,
+        cFinishDate,
+        cDOE,
       }}
     >
       <div
