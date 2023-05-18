@@ -452,13 +452,11 @@ export default function ThisPartWillReplay() {
                       id={data.htmlForId}
                       className={CommonStyles.inputStandard}
                       style={{
-                        border: !cVisible1
-                          ? cBGColor
+                        border:
+                          !cVisible1 && cBGColor
                             ? "1px solid white"
-                            : "1px solid black"
-                          : data.borderCorrect
-                          ? "1px solid #98E37E"
-                          : "1px solid #EF5050",
+                            : "1px solid black",
+
                         backgroundColor: cBGColor ? "black" : "white",
                         color: cBGColor ? "white" : "black",
                       }}
@@ -585,13 +583,10 @@ export default function ThisPartWillReplay() {
                       id={data.htmlForId}
                       className={CommonStyles.inputStandard}
                       style={{
-                        border: !cVisible1
-                          ? cBGColor
+                        border:
+                          !cVisible1 && cBGColor
                             ? "1px solid white"
-                            : "1px solid black"
-                          : data.borderCorrect
-                          ? "1px solid #98E37E"
-                          : "1px solid #EF5050",
+                            : "1px solid black",
                         backgroundColor: cBGColor ? "black" : "white",
                         color: cBGColor ? "white" : "black",
                       }}

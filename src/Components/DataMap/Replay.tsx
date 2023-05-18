@@ -470,17 +470,18 @@ export function PersonalTextArea() {
             id={data.htmlFor}
             onChange={data.onChange}
             maxLength={250}
+            ref={aboutMeRef}
             style={{
               backgroundColor: cBGColor ? "black" : "white",
               color: cBGColor ? "white" : "black",
+
               border:
                 (!cVisible && cBGColor) ||
-                (cVisible && data.ref.current.length === 0)
+                (cVisible && aboutMeRef.current.length === 0)
                   ? "1px solid white"
                   : "1px solid black",
               padding: "13px 16px",
             }}
-            ref={data.ref}
           ></textarea>
         </div>
       ))}
@@ -999,16 +1000,35 @@ export function ExperienceButtonReplay() {
     ExperienceTextAreaRef,
     sCorrect5,
     sCorrect6,
+    sCorrect7,
+    sCorrect8,
+    sCorrect9,
+    sCorrect10,
     cTop,
     sTop,
     ExperienceDateStartRef,
     ExperienceDateEndRef,
+    ExperienceDateStartRef1,
+    ExperienceDateEndRef1,
+    ExperienceDateStartRef2,
+    ExperienceDateEndRef2,
+    ExperienceTextAreaRef1,
+    ExperienceTextAreaRef2,
     sVisible1,
     cPosition,
     cEmployer,
     cStartDate,
     cEndDate,
+    cPosition1,
+    cEmployer1,
+    cStartDate1,
+    cEndDate1,
+    cPosition2,
+    cEmployer2,
+    cStartDate2,
+    cEndDate2,
     cDescription,
+    cMoreExperience,
   } = useAppContext0;
   const buttonDataHome = [
     {
@@ -1061,6 +1081,28 @@ export function ExperienceButtonReplay() {
     } else {
       sCorrect6(false);
     }
+    // if (cPosition1 && WordsRegex.test(cPosition1)) {
+    //   sCorrect7(true);
+    // } else {
+    //   sCorrect7(false);
+    // }
+
+    // if (cEmployer1 && WordsRegex.test(cEmployer1)) {
+    //   sCorrect8(true);
+    // } else {
+    //   sCorrect8(false);
+    // }
+    // if (cPosition2 && WordsRegex.test(cPosition2)) {
+    //   sCorrect9(true);
+    // } else {
+    //   sCorrect9(false);
+    // }
+
+    // if (cEmployer2 && WordsRegex.test(cEmployer2)) {
+    //   sCorrect10(true);
+    // } else {
+    //   sCorrect10(false);
+    // }
 
     if (startDate && DateRegex.test(startDate)) {
       ExperienceDateStartRef.current.style.border = "1px solid #98E37E";
@@ -1072,23 +1114,6 @@ export function ExperienceButtonReplay() {
       ExperienceDateEndRef.current.style.border = "1px solid #98E37E";
     } else {
       ExperienceDateEndRef.current.style.border = "1px solid #EF5050";
-    }
-    if (ExperienceTextAreaRef.current.value.length > 0) {
-      ExperienceTextAreaRef.current.style.border = "1px solid #98E37E";
-    } else {
-      if (
-        ExperienceTextAreaRef.current.value.length === 0 &&
-        cBGColor === true
-      ) {
-        ExperienceTextAreaRef.current.style.border = "1px solid white";
-      } else if (
-        ExperienceTextAreaRef.current.value.length === 0 &&
-        cBGColor === false
-      ) {
-        ExperienceTextAreaRef.current.style.border = "1px solid black";
-      } else {
-        ExperienceTextAreaRef.current.style.border = "1px solid black";
-      }
     }
     if (
       Position &&
@@ -1104,9 +1129,21 @@ export function ExperienceButtonReplay() {
         sVisible1(false),
         cPosition,
         cEmployer,
+        cPosition1,
+        cEmployer1,
+        cPosition2,
+        cEmployer2,
         cStartDate,
         cEndDate,
         cDescription,
+
+        cMoreExperience >= 1
+          ? `${ExperienceTextAreaRef1} ${ExperienceDateStartRef1} ${ExperienceDateEndRef1}`
+          : "",
+        cMoreExperience >= 2
+          ? `${ExperienceTextAreaRef2} ${ExperienceDateStartRef2} ${ExperienceDateEndRef2}`
+          : "",
+
         sPage(cPage + 1),
       ];
     }
