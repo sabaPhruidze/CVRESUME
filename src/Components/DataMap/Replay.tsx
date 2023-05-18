@@ -127,7 +127,7 @@ export function ImgReplayCustom() {
     cVisible1,
     sVisible1,
   } = useAppContext0;
-  const imgData = [
+  const imgData1 = [
     {
       src: cBGColor ? lightMode : darkMode,
       alt: "light or dark",
@@ -175,7 +175,7 @@ export function ImgReplayCustom() {
   ];
   return (
     <>
-      {imgData.map((data) => (
+      {imgData1.map((data) => (
         <div key={data.key}>
           <img
             src={data.src}
@@ -451,6 +451,7 @@ export function PersonalTextArea() {
       ),
       onChange: (e: any) => {
         sAboutMe(e.target.value);
+        aboutMeRef.current = e.target;
       },
     },
   ];
@@ -978,7 +979,7 @@ export function ExperienceButtonReplayskyColor() {
           key={data.key}
           style={{
             position: "absolute",
-            top: cTop - 105 + 45,
+            top: cMoreExperience > 0 ? cTop - 105 + 45 : 804,
             left: "149px",
             zIndex: 100,
           }}
@@ -997,6 +998,7 @@ export function ExperienceButtonReplay() {
     sPage,
     cLanguage,
     cBGColor,
+    sMoreExperience,
     ExperienceTextAreaRef,
     sCorrect5,
     sCorrect6,
@@ -1081,29 +1083,6 @@ export function ExperienceButtonReplay() {
     } else {
       sCorrect6(false);
     }
-    // if (cPosition1 && WordsRegex.test(cPosition1)) {
-    //   sCorrect7(true);
-    // } else {
-    //   sCorrect7(false);
-    // }
-
-    // if (cEmployer1 && WordsRegex.test(cEmployer1)) {
-    //   sCorrect8(true);
-    // } else {
-    //   sCorrect8(false);
-    // }
-    // if (cPosition2 && WordsRegex.test(cPosition2)) {
-    //   sCorrect9(true);
-    // } else {
-    //   sCorrect9(false);
-    // }
-
-    // if (cEmployer2 && WordsRegex.test(cEmployer2)) {
-    //   sCorrect10(true);
-    // } else {
-    //   sCorrect10(false);
-    // }
-
     if (startDate && DateRegex.test(startDate)) {
       ExperienceDateStartRef.current.style.border = "1px solid #98E37E";
     } else {
@@ -1145,6 +1124,7 @@ export function ExperienceButtonReplay() {
           : "",
 
         sPage(cPage + 1),
+        sMoreExperience(0),
       ];
     }
   }
@@ -1156,7 +1136,143 @@ export function ExperienceButtonReplay() {
           className={data.className}
           onClick={data.onClick}
           key={data.key}
-          style={{ position: "absolute", top: cTop + 114, right: "150px" }}
+          style={{
+            position: "absolute",
+            top: cMoreExperience > 0 ? cTop + 114 : 918,
+            right: "150px",
+          }}
+        >
+          {data.language}
+        </button>
+      ))}
+    </>
+  );
+}
+// for knowledge
+
+export function KnowledgeButtonReplay() {
+  const useAppContext0 = useContext(context);
+  const {
+    cPage,
+    sPage,
+    cLanguage,
+    cBGColor,
+    sMoreExperience,
+    ExperienceTextAreaRef,
+    sCorrect5,
+    sCorrect6,
+    sCorrect7,
+    sCorrect8,
+    sCorrect9,
+    sCorrect10,
+    cTop,
+    sTop,
+    ExperienceDateStartRef,
+    ExperienceDateEndRef,
+    ExperienceDateStartRef1,
+    ExperienceDateEndRef1,
+    ExperienceDateStartRef2,
+    ExperienceDateEndRef2,
+    ExperienceTextAreaRef1,
+    ExperienceTextAreaRef2,
+    sVisible1,
+    cPosition,
+    cEmployer,
+    cStartDate,
+    cEndDate,
+    cPosition1,
+    cEmployer1,
+    cStartDate1,
+    cEndDate1,
+    cPosition2,
+    cEmployer2,
+    cStartDate2,
+    cEndDate2,
+    cDescription,
+    cMoreExperience,
+  } = useAppContext0;
+  const buttonDataHome = [
+    {
+      className: ` ${CommonStyles.purpleButtonBack} ${CommonStyles.purpleButtonTwice}`,
+      onClick: () => {
+        sPage(cPage - 1);
+        sVisible1(true);
+      },
+      language: languageChanger(cLanguage, "უკან", "Back"),
+      key: 0,
+    },
+    {
+      className: CommonStyles.purpleButtonTwice,
+      onClick: () => {
+        sPage(cPage + 1);
+        sVisible1(false);
+      },
+      language: languageChanger(cLanguage, "შემდეგი", "Next"),
+      key: 1,
+    },
+  ];
+
+  return (
+    <>
+      {buttonDataHome.map((data) => (
+        <button
+          className={data.className}
+          onClick={data.onClick}
+          key={data.key}
+          style={{
+            position: "absolute",
+            top: cMoreExperience > 0 ? cTop + 114 : 918,
+            right: "150px",
+          }}
+        >
+          {data.language}
+        </button>
+      ))}
+    </>
+  );
+}
+
+export function KnowledgeButtonReplayskyColor() {
+  const useAppContext0 = useContext(context);
+  const {
+    cPage,
+    sPage,
+    cLanguage,
+    cMoreExperience,
+    sMoreExperience,
+    cTop,
+    sTop,
+  } = useAppContext0;
+  const buttonDataHome = [
+    {
+      className: CommonStyles.skyColorButton,
+
+      language: languageChanger(
+        cLanguage,
+        "მეტი გამოცდილების დამატება",
+        "Adding more experience"
+      ),
+      key: 1,
+      onClick: () => {
+        sMoreExperience(cMoreExperience < 2 ? cMoreExperience + 1 : 2);
+        sTop(cMoreExperience < 2 ? cTop + 600 : 804 * 2 + 400);
+      },
+    },
+  ];
+
+  return (
+    <>
+      {buttonDataHome.map((data) => (
+        <button
+          className={data.className}
+          onClick={data.onClick}
+          key={data.key}
+          style={{
+            position: "absolute",
+            top: cMoreExperience > 0 ? cTop - 105 + 45 : 804,
+            left: "149px",
+            zIndex: 100,
+          }}
         >
           {data.language}
         </button>

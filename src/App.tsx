@@ -11,7 +11,7 @@ import InfoUpdate from "./Components/InfoUpdate";
 export const context = createContext<any>(null);
 
 function App() {
-  const [cPage, sPage] = useState<number>(2); // current page ,set page
+  const [cPage, sPage] = useState<number>(3); // current page ,set page
   const [cLanguage, sLanguage] = useState<boolean>(false); //if false than georgian else english
   const [cBGColor, sBGColor] = useState<boolean>(false); //if false than white, if true than black {BG- means background color}
 
@@ -82,6 +82,11 @@ function App() {
   const replayRef = useRef<any>("");
   const [cTop, sTop] = useState<any>(804);
 
+  //knowledge
+  const [cCourse, sCourse] = useState<string | null | undefined>("");
+  const [cQuality, sQuality] = useState<any>("");
+  const [cFinishDate, sFinishDate] = useState<number>();
+  const [cDOE, sDOE] = useState<any>(""); //description of knowledge
   function changePage() {
     switch (cPage) {
       case 0:
@@ -101,6 +106,14 @@ function App() {
   return (
     <context.Provider
       value={{
+        cCourse,
+        sCourse,
+        cQuality,
+        sQuality,
+        cFinishDate,
+        sFinishDate,
+        cDOE,
+        sDOE,
         ExperienceDateStartRef,
         ExperienceDateEndRef,
         ExperienceTextAreaRef,

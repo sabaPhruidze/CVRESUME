@@ -65,6 +65,8 @@ export default function Rendered() {
             ? "calc(1080px + 631px )"
             : cMoreExperience === 2
             ? "calc(1080px + 2 * 631px)"
+            : cPage === 3
+            ? "1080px"
             : "calc(1080px + 631px * 2)",
         overflow: cMoreExperience === 0 ? "hidden" : "none",
       }}

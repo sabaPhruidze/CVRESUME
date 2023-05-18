@@ -1,13 +1,19 @@
 import React from "react";
-import { useContext, createContext } from "react";
+import { useContext, createContext, useEffect } from "react";
 import { context } from "../../App";
-import { ImgReplayCustom } from "../DataMap/Replay";
-
+import {
+  ImgReplayCustom,
+  HeadlineDivCustom,
+  KnowledgeButtonReplayskyColor,
+} from "../DataMap/Replay";
+import ThisPartWillReplay2 from "../DataMap/ThisPartWillReplay2";
 import CorrectWrongComponent from "./CorrectWrongComponent";
 import CommonStyles from "../Styles/Common.module.css";
 import Ellipse from "../../Assets/Img/2. SecondPage/Ellipse.svg";
 import Vector from "../../Assets/Img/2. SecondPage/Vectorvector.svg";
-export const MyPersonalContext = createContext<any>("w");
+
+import { KnowledgeButtonReplay } from "../DataMap/Replay";
+export const MyKnowledgeContext = createContext<any>("w");
 
 export default function Knowledge() {
   const useAppContext3 = useContext(context);
@@ -40,10 +46,15 @@ export default function Knowledge() {
     sCorrect3,
     cVisible,
     sVisible,
+    sVisible1,
+    cMoreExperience,
   } = useAppContext3;
   function languageChanger(geo: string, eng: string) {
     return !cLanguage ? geo : eng;
   }
+  useEffect(() => {
+    sVisible1(false);
+  }, []);
   return (
     <div
       className={
@@ -51,39 +62,33 @@ export default function Knowledge() {
           ? `${CommonStyles.infoContainer} ${CommonStyles.infoContainerDark}`
           : CommonStyles.infoContainer
       }
-      style={{ overflow: "hidden" }}
+      style={{
+        height:
+          cMoreExperience === 0
+            ? "1080px"
+            : cMoreExperience === 1
+            ? "calc(1080px + 630px * 2)"
+            : cMoreExperience === 2
+            ? "calc(1080px + 630px * 2)"
+            : "calc(1080px + 630px * 2)",
+        overflow: cMoreExperience === 0 ? "hidden" : "none",
+      }}
     >
-      <MyPersonalContext.Provider
+      <KnowledgeButtonReplayskyColor />
+      <MyKnowledgeContext.Provider
         value={{
-          cCorrect,
-          cCorrect1,
-          cCorrect2,
-          cCorrect3,
           cVisible,
           cBGColor,
         }}
       >
         <CorrectWrongComponent />
-      </MyPersonalContext.Provider>
+      </MyKnowledgeContext.Provider>
       <ImgReplayCustom />
       <div className={CommonStyles.skeleton}>
-        <div className={CommonStyles.headline}>
-          <p
-            style={{
-              fontSize: "24px",
-              marginBottom: "12px",
-              fontWeight: "700",
-            }}
-          >
-            {languageChanger("პირადი ინფო", "Personal information")}
-          </p>
-          <p style={{ fontSize: "20px" }}>1/3</p>
-        </div>
-        <hr style={{ marginBottom: "69px" }} />
+        <HeadlineDivCustom />
+        <ThisPartWillReplay2 />
       </div>
-      <button className={CommonStyles.purpleButton}>
-        {languageChanger("შემდეგი", "Next")}
-      </button>
+      <KnowledgeButtonReplay />
     </div>
   );
 }

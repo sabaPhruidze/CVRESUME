@@ -6,6 +6,14 @@ import { context } from "../../App";
 export default function ThisPartWillReplay() {
   const useAppContext0 = useContext(context);
   const {
+    cCourse,
+    sCourse,
+    cQuality,
+    sQuality,
+    cFinishDate,
+    sFinishDate,
+    cDOE,
+    sDOE,
     cBGColor,
     cLanguage,
     cVisible1,
@@ -65,88 +73,63 @@ export default function ThisPartWillReplay() {
   const experienceData = [
     {
       fullDivName: infoUpdateStyles.position,
-      content: languageChanger(cLanguage, "თანამდებობა", "Position"),
-      htmlForId: "position",
-      set: sPosition,
-      value: cPosition,
+      content: languageChanger(cLanguage, "სასწავლებელი", "Study place"),
+      htmlForId: "Studyplace",
+      set: sCourse,
+      value: cCourse,
       inputPlaceHolder: languageChanger(
         cLanguage,
-        "დეველოპერი, დიზაინერი, ა.შ.",
-        "Developer, designer, etc."
+        "სასწავლებელი",
+        "Study place"
       ),
-      borderCorrect: cCorrect5,
-    },
-    {
-      fullDivName: infoUpdateStyles.employer,
-      content: !cLanguage ? "დამსაქმებელი" : "Employer",
-      htmlForId: "employer",
-      set: sEmployer,
-      value: cEmployer,
-      inputPlaceHolder: !cLanguage ? "დამსაქმებელი" : "Employer",
-      borderCorrect: cCorrect6,
+      borderCorrect: "cCorrect5", // ააააააააააააააააააააააააქ
     },
   ];
   const experienceData1 = [
     {
       fullDivName: infoUpdateStyles.position,
-      content: languageChanger(cLanguage, "თანამდებობა", "Position"),
-      htmlForId: "position",
-      set: sPosition1,
-      value: cPosition1,
+      content: languageChanger(cLanguage, "სასწავლებელი", "Study place"),
+      htmlForId: "Studyplace",
+      set: sCourse,
+      value: cCourse,
       inputPlaceHolder: languageChanger(
         cLanguage,
-        "დეველოპერი, დიზაინერი, ა.შ.",
-        "Developer, designer, etc."
+        "სასწავლებელი",
+        "Study place"
       ),
-      borderCorrect: cCorrect7,
-    },
-    {
-      fullDivName: infoUpdateStyles.employer,
-      content: !cLanguage ? "დამსაქმებელი" : "Employer",
-      htmlForId: "employer",
-      set: sEmployer1,
-      value: cEmployer1,
-      inputPlaceHolder: !cLanguage ? "დამსაქმებელი" : "Employer",
-      borderCorrect: cCorrect8,
+      borderCorrect: "cCorrect5", // ააააააააააააააააააააააააქ
     },
   ];
   const experienceData2 = [
     {
       fullDivName: infoUpdateStyles.position,
-      content: languageChanger(cLanguage, "თანამდებობა", "Position"),
-      htmlForId: "position",
-      set: sPosition2,
-      value: cPosition2,
+      content: languageChanger(cLanguage, "სასწავლებელი", "Study place"),
+      htmlForId: "Studyplace",
+      set: sCourse,
+      value: cCourse,
       inputPlaceHolder: languageChanger(
         cLanguage,
-        "დეველოპერი, დიზაინერი, ა.შ.",
-        "Developer, designer, etc."
+        "სასწავლებელი",
+        "Study place"
       ),
-      borderCorrect: cCorrect9,
-    },
-    {
-      fullDivName: infoUpdateStyles.employer,
-      content: !cLanguage ? "დამსაქმებელი" : "Employer",
-      htmlForId: "employer",
-      set: sEmployer2,
-      value: cEmployer2,
-      inputPlaceHolder: !cLanguage ? "დამსაქმებელი" : "Employer",
-      borderCorrect: cCorrect10,
+      borderCorrect: "cCorrect5", // ააააააააააააააააააააააააქ
     },
   ];
+  const options = [
+    "აირჩიეთ ხარისხი",
+    "საშუალო სკოლის დიპლომი",
+    "ზოგადსაგანმანათლებლო დიპლომი",
+    "ბაკალავრი",
+    "მაგისტრი",
+    "ასოცირებული ხარისხი",
+    "სტუდენტი",
+    "კოლეჯის ხარისხის გარეშე",
+    "სხვა",
+  ];
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    sQuality(e.target.value);
+  };
   const dataMap = [
-    {
-      labelHtmlFor: "startDate",
-      labelContent: languageChanger(
-        cLanguage,
-        "დაწყების რიცხვი",
-        "Start number"
-      ),
-      onChange: (e: any) => sStartDate(e.target.value),
-      value: cStartDate,
-      key: 0,
-      ref: ExperienceDateStartRef,
-    },
     {
       labelHtmlFor: "EndDate",
       labelContent: languageChanger(
@@ -162,18 +145,6 @@ export default function ThisPartWillReplay() {
   ];
   const dataMap1 = [
     {
-      labelHtmlFor: "startDate1",
-      labelContent: languageChanger(
-        cLanguage,
-        "დაწყების რიცხვი",
-        "Start number"
-      ),
-      onChange: (e: any) => sStartDate1(e.target.value),
-      value: cStartDate1,
-      key: 0,
-      ref: ExperienceDateStartRef1,
-    },
-    {
       labelHtmlFor: "EndDate1",
       labelContent: languageChanger(
         cLanguage,
@@ -187,18 +158,6 @@ export default function ThisPartWillReplay() {
     },
   ];
   const dataMap2 = [
-    {
-      labelHtmlFor: "startDate2",
-      labelContent: languageChanger(
-        cLanguage,
-        "დაწყების რიცხვი",
-        "Start number"
-      ),
-      onChange: (e: any) => sStartDate2(e.target.value),
-      value: cStartDate2,
-      key: 0,
-      ref: ExperienceDateStartRef2,
-    },
     {
       labelHtmlFor: "EndDate2",
       labelContent: languageChanger(
@@ -310,8 +269,8 @@ export default function ThisPartWillReplay() {
   }
   return (
     <>
-      <div className={CommonStyles.replayThisPart} ref={replayRef}>
-        <div className={infoUpdateStyles.positionEmployerInput}>
+      <div className={CommonStyles.replayThisPart}>
+        <div className={infoUpdateStyles.positionKnowledgeInput}>
           <>
             {experienceData.map((data: any, idx: any) => {
               return (
@@ -355,6 +314,45 @@ export default function ThisPartWillReplay() {
         </div>
         <div className={infoUpdateStyles.dateContainer}>
           <>
+            <div
+              style={{
+                marginRight: "28px",
+                width: "100%",
+              }}
+            >
+              <label
+                htmlFor="quality"
+                style={{
+                  marginBottom: "8px",
+                  color: cBGColor ? "white" : "black",
+                  fontWeight: "700",
+                }}
+              >
+                ხარისხი
+              </label>
+              <select
+                id="quality"
+                value={cQuality}
+                onChange={handleChange}
+                className={infoUpdateStyles.options}
+                style={{
+                  backgroundColor: cBGColor ? "black" : "white",
+                  color: cBGColor ? "white" : "black",
+                  border: "1px solid black",
+                  paddingLeft: 16,
+                }}
+              >
+                {options.map((option, index) => (
+                  <option
+                    key={index}
+                    value={option}
+                    style={{ width: "calc(100% - 28px)" }}
+                  >
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
             {dataMap.map((data: any) => {
               return (
                 <div
@@ -393,7 +391,7 @@ export default function ThisPartWillReplay() {
             })}
           </>
         </div>
-        <div className={infoUpdateStyles.description}>
+        <div className={infoUpdateStyles.descriptionKnowledge}>
           <>
             {DataOfTextArea.map((data: any) => (
               <div key={data.key}>
@@ -417,6 +415,8 @@ export default function ThisPartWillReplay() {
                     color: cBGColor ? "white" : "black",
                     border: "1px solid black",
                     padding: "13px 16px",
+                    width: "100%",
+                    height: 123,
                   }}
                   ref={data.ref}
                 ></textarea>
@@ -424,7 +424,7 @@ export default function ThisPartWillReplay() {
                   style={{
                     width: "100%",
                     height: "1px",
-                    marginTop: "6px",
+                    marginTop: "54px",
                   }}
                 />
               </div>
@@ -433,9 +433,9 @@ export default function ThisPartWillReplay() {
         </div>
       </div>
       {cMoreExperience >= 1 ? (
-        <div className={CommonStyles.replayThisPart} ref={replayRef}>
+        <div className={CommonStyles.replayThisPart}>
           <div
-            className={infoUpdateStyles.positionEmployerInput}
+            className={infoUpdateStyles.positionKnowledgeInput}
             style={{ marginTop: "270px" }}
           >
             <>
@@ -510,7 +510,6 @@ export default function ThisPartWillReplay() {
                         border: cBGColor
                           ? "1px solid white"
                           : "1px solid black",
-                        paddingLeft: 16,
                       }}
                       ref={data.ref}
                     />
@@ -565,9 +564,9 @@ export default function ThisPartWillReplay() {
         ""
       )}
       {cMoreExperience >= 2 ? (
-        <div className={CommonStyles.replayThisPart} ref={replayRef}>
+        <div className={CommonStyles.replayThisPart}>
           <div
-            className={infoUpdateStyles.positionEmployerInput}
+            className={infoUpdateStyles.positionKnowledgeInput}
             style={{ marginTop: "270px" }}
           >
             <>
@@ -641,7 +640,6 @@ export default function ThisPartWillReplay() {
                         border: cBGColor
                           ? "1px solid white"
                           : "1px solid black",
-                        paddingLeft: 16,
                       }}
                       ref={data.ref}
                     />

@@ -272,6 +272,8 @@ export default function InfoUpdate() {
               ? "calc(846px * 2)"
               : cMoreExperience === 2
               ? "calc(846px * 2)"
+              : cPage === 3
+              ? "1080px"
               : "calc(846px* 2)",
         }}
       >
