@@ -4,7 +4,7 @@ import { infoUpdateContext } from "../InfoUpdate";
 
 import CorrectWrongComponent from "./CorrectWrongComponent";
 import {
-  ImgReplayCustom,
+  ImgReplay,
   InputReplayCustomRow,
   InputFile,
   PersonalTextArea,
@@ -42,7 +42,7 @@ export default function Personal() {
       >
         <CorrectWrongComponent />
       </MyPersonalContext.Provider>
-      <ImgReplayCustom />
+      <ImgReplay />
       <div className={CommonStyles.skeleton}>
         <HeadlineDivCustom />
         <div className={infoUpdateStyles.nameUSername}>

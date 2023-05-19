@@ -1,17 +1,14 @@
 import React from "react";
 import "./App.css";
 import { useState, createContext, useRef } from "react";
-
-import Experience from "./Components/InfoUpdateComponents/Experience";
 import FinalResume from "./Components/FinalResume";
 import Home from "./Components/Home";
-import Knowledge from "./Components/InfoUpdateComponents/Knowledge";
 import InfoUpdate from "./Components/InfoUpdate";
 
 export const context = createContext<any>(null);
 
 function App() {
-  const [cPage, sPage] = useState<number>(3); // current page ,set page
+  const [cPage, sPage] = useState<number>(0); // current page ,set page
   const [cLanguage, sLanguage] = useState<boolean>(false); //if false than georgian else english
   const [cBGColor, sBGColor] = useState<boolean>(false); //if false than white, if true than black {BG- means background color}
 

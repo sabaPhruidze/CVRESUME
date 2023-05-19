@@ -1,9 +1,9 @@
 /* In this styles only will be a classnames which are common for all pages, or at
 least for 2 page */
 @font-face {
-    font-family: RobotoBold;
-    src: url(../../Assets/Font/Roboto-Medium.ttf);
-  }
+  font-family: "Arial GEO", sans-serif;
+  src: url(../../Assets/Font/arial-geo-webfont.ttf);
+}
 @font-face {
     font-family: light;
     src: url(../../Assets/Font/Roboto-Light.ttf);
@@ -13,11 +13,11 @@ least for 2 page */
     width:1920px;
     height:1080px;
     box-sizing: border-box;
-    background-color: rgb(55, 48, 48);
+    background-color: #f9f9f9;
     color:black;
     position: relative;
     box-sizing: border-box;
-    font-family: RobotoBold;
+    font-family: "Arial GEO", sans-serif;
 }
 
 .flexRow, .mobileContainer, .emailContainer {

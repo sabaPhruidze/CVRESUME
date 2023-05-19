@@ -16,15 +16,24 @@ import backgroundDark from "../../Assets/Img/1. FirstPage/backgroundDark.jpg";
 import redBerryBanner from "../../Assets/Img/1. FirstPage/redberryBanner.svg";
 import diploma from "../../Assets/Img/1. FirstPage/diploma.svg";
 // for Home
-//for personal-
+//for infoUpdate
 import Ellipse from "../../Assets/Img/2. SecondPage/Ellipse.svg";
 import Vector from "../../Assets/Img/2. SecondPage/Vectorvector.svg";
-// for personal-
+// for infoUpdate
 
-// for Home
+// for Custom
 export function ImgReplay() {
   const useAppContext0 = useContext(context);
-  const { cBGColor, sBGColor, cLanguage, sLanguage } = useAppContext0;
+  const {
+    cBGColor,
+    sBGColor,
+    cLanguage,
+    sLanguage,
+    sPage,
+    cPage,
+    cVisible1,
+    sVisible1,
+  } = useAppContext0;
 
   const imgData = [
     {
@@ -66,67 +75,6 @@ export function ImgReplay() {
       key: 4,
     },
   ];
-  return (
-    <>
-      {imgData.map((data) => (
-        <div key={data.key}>
-          <img
-            src={data.src}
-            alt={data.alt}
-            className={data.className}
-            onClick={data.onClick}
-          />
-        </div>
-      ))}
-    </>
-  );
-}
-// for many things
-function languageChanger(changeReason: boolean, geo: string, eng: string) {
-  return !changeReason ? geo : eng;
-}
-export function ButtonReplay() {
-  const useAppContext0 = useContext(context);
-  const { cBGColor, sPage, cLanguage } = useAppContext0;
-  const buttonDataHome = [
-    {
-      className: cBGColor
-        ? `${HomeStyles.buttonDark} ${HomeStyles.button}`
-        : HomeStyles.button,
-      onClick: () => sPage(1),
-      language: languageChanger(cLanguage, "რეზიუმეს დამატება", "Add resume"),
-      key: 0,
-    },
-  ];
-  return (
-    <>
-      {buttonDataHome.map((data) => (
-        <button
-          className={data.className}
-          onClick={data.onClick}
-          key={data.key}
-        >
-          {data.language}
-        </button>
-      ))}
-    </>
-  );
-}
-// for Home
-
-// for personal -
-export function ImgReplayCustom() {
-  const useAppContext0 = useContext(context);
-  const {
-    cBGColor,
-    sBGColor,
-    cLanguage,
-    sLanguage,
-    sPage,
-    cPage,
-    cVisible1,
-    sVisible1,
-  } = useAppContext0;
   const imgData1 = [
     {
       src: cBGColor ? lightMode : darkMode,
@@ -173,9 +121,10 @@ export function ImgReplayCustom() {
       key: 3,
     },
   ];
+  const imgList = cPage === 0 ? imgData : imgData1;
   return (
     <>
-      {imgData1.map((data) => (
+      {imgList.map((data) => (
         <div key={data.key}>
           <img
             src={data.src}
@@ -188,6 +137,40 @@ export function ImgReplayCustom() {
     </>
   );
 }
+// for many things
+function languageChanger(changeReason: boolean, geo: string, eng: string) {
+  return !changeReason ? geo : eng;
+}
+export function ButtonReplay() {
+  const useAppContext0 = useContext(context);
+  const { cBGColor, sPage, cLanguage } = useAppContext0;
+  const buttonDataHome = [
+    {
+      className: cBGColor
+        ? `${HomeStyles.buttonDark} ${HomeStyles.button}`
+        : HomeStyles.button,
+      onClick: () => sPage(1),
+      language: languageChanger(cLanguage, "რეზიუმეს დამატება", "Add resume"),
+      key: 0,
+    },
+  ];
+  return (
+    <>
+      {buttonDataHome.map((data) => (
+        <button
+          className={data.className}
+          onClick={data.onClick}
+          key={data.key}
+        >
+          {data.language}
+        </button>
+      ))}
+    </>
+  );
+}
+// for Home
+
+// for personal -
 export function HeadlineDivCustom() {
   const useAppContext0 = useContext(context);
   const { cLanguage, cPage } = useAppContext0;

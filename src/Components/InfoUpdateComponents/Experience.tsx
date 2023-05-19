@@ -6,7 +6,7 @@ import CorrectWrongComponent from "./CorrectWrongComponent";
 
 import {
   HeadlineDivCustom,
-  ImgReplayCustom,
+  ImgReplay,
   // ExperiencePositionEmployerInput,
   // InputReplayExperienceRow,
   // ExperienceTextArea,
@@ -129,7 +129,7 @@ export default function Personal() {
       >
         <CorrectWrongComponent />
       </MyExperienceContext.Provider>
-      <ImgReplayCustom />
+      <ImgReplay />
       <div className={CommonStyles.skeleton}>
         <HeadlineDivCustom />
         <ThisPartWillReplay />

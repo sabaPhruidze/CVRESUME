@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "Arial GEO", sans-serif;
+  src: url(../../Assets//Font/arial-geo-webfont.ttf);
+}
 .bgImage {
     width:1920px;
     height:1080px;
@@ -46,6 +50,11 @@
     border-radius: 8px;
     border: 0;
     outline: 0;
+    font-family: "Arial GEO", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
   }
   .buttonDark {
     background-color: rgb(255, 255, 255);

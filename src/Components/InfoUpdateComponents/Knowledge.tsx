@@ -2,7 +2,7 @@ import React from "react";
 import { useContext, createContext, useEffect } from "react";
 import { context } from "../../App";
 import {
-  ImgReplayCustom,
+  ImgReplay,
   HeadlineDivCustom,
   KnowledgeButtonReplayskyColor,
 } from "../DataMap/Replay";
@@ -83,7 +83,7 @@ export default function Knowledge() {
       >
         <CorrectWrongComponent />
       </MyKnowledgeContext.Provider>
-      <ImgReplayCustom />
+      <ImgReplay />
       <div className={CommonStyles.skeleton}>
         <HeadlineDivCustom />
         <ThisPartWillReplay2 />
