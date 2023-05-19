@@ -159,6 +159,39 @@ export function ButtonReplay() {
     sCorrect3,
     cAboutMe,
     aboutMeRef,
+    sMoreExperience,
+    ExperienceTextAreaRef,
+    sCorrect5,
+    sCorrect6,
+    sCorrect7,
+    sCorrect8,
+    sCorrect9,
+    sCorrect10,
+    cTop,
+    sTop,
+    ExperienceDateStartRef,
+    ExperienceDateEndRef,
+    ExperienceDateStartRef1,
+    ExperienceDateEndRef1,
+    ExperienceDateStartRef2,
+    ExperienceDateEndRef2,
+    ExperienceTextAreaRef1,
+    ExperienceTextAreaRef2,
+    sVisible1,
+    cPosition,
+    cEmployer,
+    cStartDate,
+    cEndDate,
+    cPosition1,
+    cEmployer1,
+    cStartDate1,
+    cEndDate1,
+    cPosition2,
+    cEmployer2,
+    cStartDate2,
+    cEndDate2,
+    cDescription,
+    cMoreExperience,
   } = useAppContext0;
   const buttonDataHome = [
     {
@@ -174,15 +207,47 @@ export function ButtonReplay() {
     {
       className: CommonStyles.purpleButton,
       onClick: () => {
-        validateInput(cName, cUsername, cUploadImg, cEmail, cTel);
+        validateInputPersonal(cName, cUsername, cUploadImg, cEmail, cTel);
         sVisible(true);
       },
       language: languageChanger(cLanguage, "შემდეგი", "Next"),
       key: 0,
     },
   ];
-  const properButton = cPage === 0 ? buttonDataHome : buttonDataPersonal;
-  function validateInput(
+  const buttonDataExperience = [
+    {
+      className: ` ${CommonStyles.purpleButtonBack} ${CommonStyles.purpleButtonTwice}`,
+      onClick: () => {
+        sPage(cPage - 1);
+        sVisible1(false);
+      },
+      language: languageChanger(cLanguage, "უკან", "Back"),
+      key: 0,
+    },
+    {
+      className: CommonStyles.purpleButtonTwice,
+      onClick: () => {
+        validateInput1(
+          cPosition,
+          cEmployer,
+          cStartDate,
+          cEndDate,
+          cDescription,
+          ExperienceTextAreaRef
+        );
+        sVisible1(true);
+      },
+      language: languageChanger(cLanguage, "შემდეგი", "Next"),
+      key: 1,
+    },
+  ];
+  const properButton =
+    cPage === 0
+      ? buttonDataHome
+      : cPage === 1
+      ? buttonDataPersonal
+      : buttonDataExperience;
+  function validateInputPersonal(
     name: string | undefined,
     username: string | undefined,
     img: any,
@@ -244,6 +309,74 @@ export function ButtonReplay() {
       ];
     }
   }
+  function validateInput1(
+    Position: string | undefined,
+    employer: string | undefined,
+    startDate: string | undefined,
+    endDate: string | undefined,
+    description: any,
+    ExperienceTextAreaRef: any
+  ) {
+    const WordsRegex = /.{2}.*/;
+    const DateRegex =
+      /^(((19[8-9]\d)|20[0-1]\d|202[0-3])-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/; //the year must be between 1980-2023
+
+    if (Position && WordsRegex.test(Position)) {
+      sCorrect5(true);
+    } else {
+      sCorrect5(false);
+    }
+
+    if (employer && WordsRegex.test(employer)) {
+      sCorrect6(true);
+    } else {
+      sCorrect6(false);
+    }
+    if (startDate && DateRegex.test(startDate)) {
+      ExperienceDateStartRef.current.style.border = "1px solid #98E37E";
+    } else {
+      ExperienceDateStartRef.current.style.border = "1px solid #EF5050";
+    }
+
+    if (endDate && DateRegex.test(endDate)) {
+      ExperienceDateEndRef.current.style.border = "1px solid #98E37E";
+    } else {
+      ExperienceDateEndRef.current.style.border = "1px solid #EF5050";
+    }
+    if (
+      Position &&
+      WordsRegex.test(Position) &&
+      employer &&
+      WordsRegex.test(employer) &&
+      startDate &&
+      DateRegex.test(startDate) &&
+      endDate &&
+      DateRegex.test(endDate)
+    ) {
+      return [
+        sVisible1(false),
+        cPosition,
+        cEmployer,
+        cPosition1,
+        cEmployer1,
+        cPosition2,
+        cEmployer2,
+        cStartDate,
+        cEndDate,
+        cDescription,
+
+        cMoreExperience >= 1
+          ? `${ExperienceTextAreaRef1} ${ExperienceDateStartRef1} ${ExperienceDateEndRef1}`
+          : "",
+        cMoreExperience >= 2
+          ? `${ExperienceTextAreaRef2} ${ExperienceDateStartRef2} ${ExperienceDateEndRef2}`
+          : "",
+
+        sPage(cPage + 1),
+        sMoreExperience(0),
+      ];
+    }
+  }
 
   return (
     <>
@@ -252,6 +385,15 @@ export function ButtonReplay() {
           className={data.className}
           onClick={data.onClick}
           key={data.key}
+          style={
+            cPage === 2
+              ? {
+                  position: "absolute",
+                  top: cMoreExperience > 0 ? cTop + 114 : 918,
+                  right: "150px",
+                }
+              : {}
+          }
         >
           {data.language}
         </button>
@@ -957,163 +1099,159 @@ export function ExperienceButtonReplayskyColor() {
   );
 }
 
-export function ExperienceButtonReplay() {
-  const useAppContext0 = useContext(context);
-  const {
-    cPage,
-    sPage,
-    cLanguage,
-    cBGColor,
-    sMoreExperience,
-    ExperienceTextAreaRef,
-    sCorrect5,
-    sCorrect6,
-    sCorrect7,
-    sCorrect8,
-    sCorrect9,
-    sCorrect10,
-    cTop,
-    sTop,
-    ExperienceDateStartRef,
-    ExperienceDateEndRef,
-    ExperienceDateStartRef1,
-    ExperienceDateEndRef1,
-    ExperienceDateStartRef2,
-    ExperienceDateEndRef2,
-    ExperienceTextAreaRef1,
-    ExperienceTextAreaRef2,
-    sVisible1,
-    cPosition,
-    cEmployer,
-    cStartDate,
-    cEndDate,
-    cPosition1,
-    cEmployer1,
-    cStartDate1,
-    cEndDate1,
-    cPosition2,
-    cEmployer2,
-    cStartDate2,
-    cEndDate2,
-    cDescription,
-    cMoreExperience,
-  } = useAppContext0;
-  const buttonDataHome = [
-    {
-      className: ` ${CommonStyles.purpleButtonBack} ${CommonStyles.purpleButtonTwice}`,
-      onClick: () => {
-        sPage(cPage - 1);
-        sVisible1(false);
-      },
-      language: languageChanger(cLanguage, "უკან", "Back"),
-      key: 0,
-    },
-    {
-      className: CommonStyles.purpleButtonTwice,
-      onClick: () => {
-        validateInput1(
-          cPosition,
-          cEmployer,
-          cStartDate,
-          cEndDate,
-          cDescription,
-          ExperienceTextAreaRef
-        );
-        sVisible1(true);
-      },
-      language: languageChanger(cLanguage, "შემდეგი", "Next"),
-      key: 1,
-    },
-  ];
+// export function ExperienceButtonReplay() {
+//   const useAppContext0 = useContext(context);
+//   const {
+//     cPage,
+//     sPage,
+//     cLanguage,
+//     cBGColor,
+//     sMoreExperience,
+//     ExperienceTextAreaRef,
+//     sCorrect5,
+//     sCorrect6,
+//     sCorrect7,
+//     sCorrect8,
+//     sCorrect9,
+//     sCorrect10,
+//     cTop,
+//     sTop,
+//     ExperienceDateStartRef,
+//     ExperienceDateEndRef,
+//     ExperienceDateStartRef1,
+//     ExperienceDateEndRef1,
+//     ExperienceDateStartRef2,
+//     ExperienceDateEndRef2,
+//     ExperienceTextAreaRef1,
+//     ExperienceTextAreaRef2,
+//     sVisible1,
+//     cPosition,
+//     cEmployer,
+//     cStartDate,
+//     cEndDate,
+//     cPosition1,
+//     cEmployer1,
+//     cStartDate1,
+//     cEndDate1,
+//     cPosition2,
+//     cEmployer2,
+//     cStartDate2,
+//     cEndDate2,
+//     cDescription,
+//     cMoreExperience,
+//   } = useAppContext0;
+//   const buttonDataHome = [
+//     {
+//       className: ` ${CommonStyles.purpleButtonBack} ${CommonStyles.purpleButtonTwice}`,
+//       onClick: () => {
+//         sPage(cPage - 1);
+//         sVisible1(false);
+//       },
+//       language: languageChanger(cLanguage, "უკან", "Back"),
+//       key: 0,
+//     },
+//     {
+//       className: CommonStyles.purpleButtonTwice,
+//       onClick: () => {
+//         validateInput1(
+//           cPosition,
+//           cEmployer,
+//           cStartDate,
+//           cEndDate,
+//           cDescription,
+//           ExperienceTextAreaRef
+//         );
+//         sVisible1(true);
+//       },
+//       language: languageChanger(cLanguage, "შემდეგი", "Next"),
+//       key: 1,
+//     },
+//   ];
 
-  function validateInput1(
-    Position: string | undefined,
-    employer: string | undefined,
-    startDate: string | undefined,
-    endDate: string | undefined,
-    description: any,
-    ExperienceTextAreaRef: any
-  ) {
-    const WordsRegex = /.{2}.*/;
-    const DateRegex =
-      /^(((19[8-9]\d)|20[0-1]\d|202[0-3])-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/; //the year must be between 1980-2023
+//   function validateInput1(
+//     Position: string | undefined,
+//     employer: string | undefined,
+//     startDate: string | undefined,
+//     endDate: string | undefined,
+//     description: any,
+//     ExperienceTextAreaRef: any
+//   ) {
+//     const WordsRegex = /.{2}.*/;
+//     const DateRegex =
+//       /^(((19[8-9]\d)|20[0-1]\d|202[0-3])-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/; //the year must be between 1980-2023
 
-    if (Position && WordsRegex.test(Position)) {
-      sCorrect5(true);
-    } else {
-      sCorrect5(false);
-    }
+//     if (Position && WordsRegex.test(Position)) {
+//       sCorrect5(true);
+//     } else {
+//       sCorrect5(false);
+//     }
 
-    if (employer && WordsRegex.test(employer)) {
-      sCorrect6(true);
-    } else {
-      sCorrect6(false);
-    }
-    if (startDate && DateRegex.test(startDate)) {
-      ExperienceDateStartRef.current.style.border = "1px solid #98E37E";
-    } else {
-      ExperienceDateStartRef.current.style.border = "1px solid #EF5050";
-    }
+//     if (employer && WordsRegex.test(employer)) {
+//       sCorrect6(true);
+//     } else {
+//       sCorrect6(false);
+//     }
+//     if (startDate && DateRegex.test(startDate)) {
+//       ExperienceDateStartRef.current.style.border = "1px solid #98E37E";
+//     } else {
+//       ExperienceDateStartRef.current.style.border = "1px solid #EF5050";
+//     }
 
-    if (endDate && DateRegex.test(endDate)) {
-      ExperienceDateEndRef.current.style.border = "1px solid #98E37E";
-    } else {
-      ExperienceDateEndRef.current.style.border = "1px solid #EF5050";
-    }
-    if (
-      Position &&
-      WordsRegex.test(Position) &&
-      employer &&
-      WordsRegex.test(employer) &&
-      startDate &&
-      DateRegex.test(startDate) &&
-      endDate &&
-      DateRegex.test(endDate)
-    ) {
-      return [
-        sVisible1(false),
-        cPosition,
-        cEmployer,
-        cPosition1,
-        cEmployer1,
-        cPosition2,
-        cEmployer2,
-        cStartDate,
-        cEndDate,
-        cDescription,
+//     if (endDate && DateRegex.test(endDate)) {
+//       ExperienceDateEndRef.current.style.border = "1px solid #98E37E";
+//     } else {
+//       ExperienceDateEndRef.current.style.border = "1px solid #EF5050";
+//     }
+//     if (
+//       Position &&
+//       WordsRegex.test(Position) &&
+//       employer &&
+//       WordsRegex.test(employer) &&
+//       startDate &&
+//       DateRegex.test(startDate) &&
+//       endDate &&
+//       DateRegex.test(endDate)
+//     ) {
+//       return [
+//         sVisible1(false),
+//         cPosition,
+//         cEmployer,
+//         cPosition1,
+//         cEmployer1,
+//         cPosition2,
+//         cEmployer2,
+//         cStartDate,
+//         cEndDate,
+//         cDescription,
 
-        cMoreExperience >= 1
-          ? `${ExperienceTextAreaRef1} ${ExperienceDateStartRef1} ${ExperienceDateEndRef1}`
-          : "",
-        cMoreExperience >= 2
-          ? `${ExperienceTextAreaRef2} ${ExperienceDateStartRef2} ${ExperienceDateEndRef2}`
-          : "",
+//         cMoreExperience >= 1
+//           ? `${ExperienceTextAreaRef1} ${ExperienceDateStartRef1} ${ExperienceDateEndRef1}`
+//           : "",
+//         cMoreExperience >= 2
+//           ? `${ExperienceTextAreaRef2} ${ExperienceDateStartRef2} ${ExperienceDateEndRef2}`
+//           : "",
 
-        sPage(cPage + 1),
-        sMoreExperience(0),
-      ];
-    }
-  }
+//         sPage(cPage + 1),
+//         sMoreExperience(0),
+//       ];
+//     }
+//   }
 
-  return (
-    <>
-      {buttonDataHome.map((data) => (
-        <button
-          className={data.className}
-          onClick={data.onClick}
-          key={data.key}
-          style={{
-            position: "absolute",
-            top: cMoreExperience > 0 ? cTop + 114 : 918,
-            right: "150px",
-          }}
-        >
-          {data.language}
-        </button>
-      ))}
-    </>
-  );
-}
+//   return (
+//     <>
+//       {buttonDataHome.map((data) => (
+//         <button
+//           className={data.className}
+//           onClick={data.onClick}
+//           key={data.key}
+
+//         >
+//           {data.language}
+//         </button>
+//       ))}
+//     </>
+//   );
+// }
 // for knowledge
 
 export function KnowledgeButtonReplay() {

@@ -10,7 +10,7 @@ import {
   // ExperiencePositionEmployerInput,
   // InputReplayExperienceRow,
   // ExperienceTextArea,
-  ExperienceButtonReplay,
+  ButtonReplay,
   ExperienceButtonReplayskyColor,
 } from "../DataMap/Replay";
 import ThisPartWillReplay from "../DataMap/ThisPartWillReplay";
@@ -134,7 +134,7 @@ export default function Personal() {
         <HeadlineDivCustom />
         <ThisPartWillReplay />
       </div>
-      <ExperienceButtonReplay />
+      <ButtonReplay />
     </div>
   );
 }
