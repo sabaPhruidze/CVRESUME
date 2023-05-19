@@ -286,8 +286,8 @@ export function InputReplayCustomRow() {
               style={{
                 border: !cVisible
                   ? cBGColor
-                    ? "1px solid white"
-                    : "1px solid black"
+                    ? "1px solid #BCBCBC"
+                    : "1px solid #BCBCBC"
                   : data.borderCorrect
                   ? "1px solid #98E37E"
                   : "1px solid #EF5050",

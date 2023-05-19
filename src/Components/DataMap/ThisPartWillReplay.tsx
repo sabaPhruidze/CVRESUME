@@ -411,7 +411,7 @@ export default function ThisPartWillReplay() {
                   placeholder={data.placeHolder}
                   id={data.htmlFor}
                   onChange={data.onChange}
-                  maxLength={250}
+                  maxLength={280}
                   style={{
                     backgroundColor: cBGColor ? "black" : "white",
                     color: cBGColor ? "white" : "black",

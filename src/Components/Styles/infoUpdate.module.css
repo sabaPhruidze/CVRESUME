@@ -113,10 +113,7 @@
     height: 148px;
     display: flex;
     flex-direction: column;
-    position: absolute;
-    z-index: 3;
-    top:360px;
-    left:0px;
+    
 }
 .descriptionAdded {
     width: 100%;

@@ -87,6 +87,16 @@ function App() {
   const [cQuality, sQuality] = useState<any>("");
   const [cFinishDate, sFinishDate] = useState<any>();
   const [cDOE, sDOE] = useState<any>(""); //description of knowledge
+
+  const [cCourse1, sCourse1] = useState<string>("");
+  const [cQuality1, sQuality1] = useState<any>("");
+  const [cFinishDate1, sFinishDate1] = useState<any>();
+  const [cDOE1, sDOE1] = useState<any>(""); //description of knowledge
+
+  const [cCourse2, sCourse2] = useState<string>("");
+  const [cQuality2, sQuality2] = useState<any>("");
+  const [cFinishDate2, sFinishDate2] = useState<any>();
+  const [cDOE2, sDOE2] = useState<any>(""); //description of knowledge
   function changePage() {
     switch (cPage) {
       case 0:
@@ -114,6 +124,22 @@ function App() {
         sFinishDate,
         cDOE,
         sDOE,
+        cCourse1,
+        sCourse1,
+        cQuality1,
+        sQuality1,
+        cFinishDate1,
+        sFinishDate1,
+        cDOE1,
+        sDOE1,
+        cCourse2,
+        sCourse2,
+        cQuality2,
+        sQuality2,
+        cFinishDate2,
+        sFinishDate2,
+        cDOE2,
+        sDOE2,
         ExperienceDateStartRef,
         ExperienceDateEndRef,
         ExperienceTextAreaRef,

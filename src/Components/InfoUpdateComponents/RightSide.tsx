@@ -53,6 +53,14 @@ export default function Rendered() {
     cQuality,
     cFinishDate,
     cDOE,
+    cCourse1,
+    cQuality1,
+    cFinishDate1,
+    cDOE1,
+    cCourse2,
+    cQuality2,
+    cFinishDate2,
+    cDOE2,
   } = MPCL;
   return (
     <div
@@ -169,7 +177,7 @@ export default function Rendered() {
           <div
             style={{
               width: "662px",
-              height: "125px",
+              height: "100px",
               wordWrap: "break-word",
               overflow: "hidden",
               fontSize: "16px",
@@ -207,7 +215,7 @@ export default function Rendered() {
           <div
             style={{
               width: "662px",
-              height: "125px",
+              height: "100px",
               wordWrap: "break-word",
               overflow: "hidden",
               fontSize: "16px",
@@ -245,7 +253,7 @@ export default function Rendered() {
           <div
             style={{
               width: "662px",
-              height: "125px",
+              height: "100px",
               wordWrap: "break-word",
               overflow: "hidden",
               fontSize: "16px",
@@ -279,13 +287,81 @@ export default function Rendered() {
           <div
             style={{
               width: "662px",
-              height: "125px",
+              height: "210px",
               wordWrap: "break-word",
               overflow: "hidden",
               fontSize: "16px",
             }}
           >
             {cDOE}
+          </div>
+        </>
+      ) : (
+        ""
+      )}
+      {cCourse1.length > 0 || cQuality1.length > 0 || cDOE1.length > 0 ? (
+        <>
+          <hr style={{ marginTop: "19px", width: "calc(100% - 80px)" }} />
+          <p
+            style={{
+              fontSize: "18px",
+              fontWeight: "700",
+              color: "#F93B1D",
+              marginTop: "24px",
+            }}
+          >
+            განათლება
+          </p>
+          <p style={{ marginTop: "15px", fontWeight: "600" }}>
+            {cCourse1}, {cQuality1}{" "}
+          </p>
+          <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
+            {cFinishDate1}
+          </em>
+          <div
+            style={{
+              width: "662px",
+              height: "210px",
+              wordWrap: "break-word",
+              overflow: "hidden",
+              fontSize: "16px",
+            }}
+          >
+            {cDOE1}
+          </div>
+        </>
+      ) : (
+        ""
+      )}
+      {cCourse2.length > 0 || cQuality2.length > 0 || cDOE2.length > 0 ? (
+        <>
+          <hr style={{ marginTop: "19px", width: "calc(100% - 80px)" }} />
+          <p
+            style={{
+              fontSize: "18px",
+              fontWeight: "700",
+              color: "#F93B1D",
+              marginTop: "24px",
+            }}
+          >
+            განათლება
+          </p>
+          <p style={{ marginTop: "15px", fontWeight: "600" }}>
+            {cCourse2}, {cQuality2}{" "}
+          </p>
+          <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
+            {cFinishDate2}
+          </em>
+          <div
+            style={{
+              width: "662px",
+              height: "210px",
+              wordWrap: "break-word",
+              overflow: "hidden",
+              fontSize: "16px",
+            }}
+          >
+            {cDOE2}
           </div>
         </>
       ) : (
