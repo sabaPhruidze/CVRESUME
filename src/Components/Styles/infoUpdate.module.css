@@ -77,6 +77,22 @@
   /* I do not know why but the justify content and the text-align*/
   font-family: RobotoBold;
 }
+.uploadDark label {
+    width: 107px;
+    height: 27px;
+    background-color: #032638;
+    color: white;
+    font-size: 14px;
+    transition: transform 0.5s;
+    cursor: pointer;
+    display: flex;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding-left: calc((107px - 69px) / 2 );
+    /* I do not know why but the justify content and the text-align*/
+    font-family: RobotoBold;
+  }
 .upload input {
     visibility: hidden;
     border-radius:5px;

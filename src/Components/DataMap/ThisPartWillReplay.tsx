@@ -90,7 +90,7 @@ export default function ThisPartWillReplay() {
     {
       fullDivName: infoUpdateStyles.position,
       content: languageChanger(cLanguage, "თანამდებობა", "Position"),
-      htmlForId: "position",
+      htmlForId: "position1",
       set: sPosition1,
       value: cPosition1,
       inputPlaceHolder: languageChanger(
@@ -103,7 +103,7 @@ export default function ThisPartWillReplay() {
     {
       fullDivName: infoUpdateStyles.employer,
       content: !cLanguage ? "დამსაქმებელი" : "Employer",
-      htmlForId: "employer",
+      htmlForId: "employer1",
       set: sEmployer1,
       value: cEmployer1,
       inputPlaceHolder: !cLanguage ? "დამსაქმებელი" : "Employer",
@@ -114,7 +114,7 @@ export default function ThisPartWillReplay() {
     {
       fullDivName: infoUpdateStyles.position,
       content: languageChanger(cLanguage, "თანამდებობა", "Position"),
-      htmlForId: "position",
+      htmlForId: "position2",
       set: sPosition2,
       value: cPosition2,
       inputPlaceHolder: languageChanger(
@@ -127,7 +127,7 @@ export default function ThisPartWillReplay() {
     {
       fullDivName: infoUpdateStyles.employer,
       content: !cLanguage ? "დამსაქმებელი" : "Employer",
-      htmlForId: "employer",
+      htmlForId: "employer2",
       set: sEmployer2,
       value: cEmployer2,
       inputPlaceHolder: !cLanguage ? "დამსაქმებელი" : "Employer",
@@ -226,19 +226,6 @@ export default function ThisPartWillReplay() {
       ),
       onChange: (e: any) => {
         sDescription(e.target.value);
-        if (
-          ExperienceTextAreaRef.current.value.length === 0 &&
-          cBGColor === true
-        ) {
-          ExperienceTextAreaRef.current.style.border = "1px solid white";
-        } else if (
-          ExperienceTextAreaRef.current.value.length === 0 &&
-          cBGColor === false
-        ) {
-          ExperienceTextAreaRef.current.style.border = "1px solid black";
-        } else {
-          ExperienceTextAreaRef.current.style.border = "1px solid black";
-        }
       },
       value: cDescription,
     },
@@ -247,7 +234,7 @@ export default function ThisPartWillReplay() {
     {
       key: 0,
       htmlFor: "Description1",
-      ref: ExperienceTextAreaRef1,
+
       labelContext: languageChanger(cLanguage, "აღწერა", "Description"),
       // spanContext: languageChanger(cLanguage, "(არასავალდებულო)", "(optional)"),
       placeHolder: languageChanger(
@@ -257,19 +244,6 @@ export default function ThisPartWillReplay() {
       ),
       onChange: (e: any) => {
         sDescription1(e.target.value);
-        if (
-          ExperienceTextAreaRef1.current.value.length === 0 &&
-          cBGColor === true
-        ) {
-          ExperienceTextAreaRef1.current.style.border = "1px solid white";
-        } else if (
-          ExperienceTextAreaRef1.current.value.length === 0 &&
-          cBGColor === false
-        ) {
-          ExperienceTextAreaRef1.current.style.border = "1px solid black";
-        } else {
-          ExperienceTextAreaRef1.current.style.border = "1px solid black";
-        }
       },
       value: cDescription1,
     },
@@ -278,7 +252,6 @@ export default function ThisPartWillReplay() {
     {
       key: 0,
       htmlFor: "Description2",
-      ref: ExperienceTextAreaRef2,
       labelContext: languageChanger(cLanguage, "აღწერა", "Description"),
       // spanContext: languageChanger(cLanguage, "(არასავალდებულო)", "(optional)"),
       placeHolder: languageChanger(
@@ -288,19 +261,6 @@ export default function ThisPartWillReplay() {
       ),
       onChange: (e: any) => {
         sDescription2(e.target.value);
-        if (
-          ExperienceTextAreaRef2.current.value.length === 0 &&
-          cBGColor === true
-        ) {
-          ExperienceTextAreaRef2.current.style.border = "1px solid white";
-        } else if (
-          ExperienceTextAreaRef2.current.value.length === 0 &&
-          cBGColor === false
-        ) {
-          ExperienceTextAreaRef2.current.style.border = "1px solid black";
-        } else {
-          ExperienceTextAreaRef2.current.style.border = "1px solid black";
-        }
       },
       value: cDescription2,
     },
@@ -328,13 +288,11 @@ export default function ThisPartWillReplay() {
                     id={data.htmlForId}
                     className={CommonStyles.inputStandard}
                     style={{
-                      border: !cVisible1
-                        ? cBGColor
-                          ? "1px solid white"
-                          : "1px solid black"
-                        : data.borderCorrect
-                        ? "1px solid #98E37E"
-                        : "1px solid #EF5050",
+                      border: cVisible1
+                        ? data.borderCorrect
+                          ? "1px solid #98E37E"
+                          : "1px solid #EF5050"
+                        : "1px solid #BCBCBC",
                       backgroundColor: cBGColor ? "black" : "white",
                       color: cBGColor ? "white" : "black",
                     }}
@@ -383,7 +341,9 @@ export default function ThisPartWillReplay() {
                     style={{
                       backgroundColor: !cBGColor ? "white" : "black",
                       color: cBGColor ? "white" : "black",
-                      border: cBGColor ? "1px solid white" : "1px solid black",
+                      border: cBGColor
+                        ? "1px solid white"
+                        : "1px solid #BCBCBC",
                       paddingLeft: 16,
                     }}
                     ref={data.ref}
@@ -415,7 +375,7 @@ export default function ThisPartWillReplay() {
                   style={{
                     backgroundColor: cBGColor ? "black" : "white",
                     color: cBGColor ? "white" : "black",
-                    border: "1px solid black",
+                    border: "1px solid #BCBCBC",
                     padding: "13px 16px",
                   }}
                   ref={data.ref}
@@ -454,10 +414,7 @@ export default function ThisPartWillReplay() {
                       id={data.htmlForId}
                       className={CommonStyles.inputStandard}
                       style={{
-                        border:
-                          !cVisible1 && cBGColor
-                            ? "1px solid white"
-                            : "1px solid black",
+                        border: "1px solid #BCBCBC",
 
                         backgroundColor: cBGColor ? "black" : "white",
                         color: cBGColor ? "white" : "black",
@@ -507,9 +464,7 @@ export default function ThisPartWillReplay() {
                       style={{
                         backgroundColor: !cBGColor ? "white" : "black",
                         color: cBGColor ? "white" : "black",
-                        border: cBGColor
-                          ? "1px solid white"
-                          : "1px solid black",
+                        border: "1px solid #BCBCBC",
                         paddingLeft: 16,
                       }}
                       ref={data.ref}
@@ -544,10 +499,9 @@ export default function ThisPartWillReplay() {
                     style={{
                       backgroundColor: cBGColor ? "black" : "white",
                       color: cBGColor ? "white" : "black",
-                      border: "1px solid black",
+                      border: "1px solid #BCBCBC",
                       padding: "13px 16px",
                     }}
-                    ref={data.ref}
                   ></textarea>
                   <hr
                     style={{
@@ -586,10 +540,7 @@ export default function ThisPartWillReplay() {
                       id={data.htmlForId}
                       className={CommonStyles.inputStandard}
                       style={{
-                        border:
-                          !cVisible1 && cBGColor
-                            ? "1px solid white"
-                            : "1px solid black",
+                        border: "1px solid #BCBCBC",
                         backgroundColor: cBGColor ? "black" : "white",
                         color: cBGColor ? "white" : "black",
                       }}
@@ -638,9 +589,7 @@ export default function ThisPartWillReplay() {
                       style={{
                         backgroundColor: !cBGColor ? "white" : "black",
                         color: cBGColor ? "white" : "black",
-                        border: cBGColor
-                          ? "1px solid white"
-                          : "1px solid black",
+                        border: "1px solid #BCBCBC",
                         paddingLeft: 16,
                       }}
                       ref={data.ref}
@@ -675,10 +624,9 @@ export default function ThisPartWillReplay() {
                     style={{
                       backgroundColor: cBGColor ? "black" : "white",
                       color: cBGColor ? "white" : "black",
-                      border: "1px solid black",
+                      border: "1px solid #BCBCBC",
                       padding: "13px 16px",
                     }}
-                    ref={data.ref}
                   ></textarea>
                   <hr
                     style={{

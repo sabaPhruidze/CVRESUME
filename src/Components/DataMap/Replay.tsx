@@ -148,7 +148,7 @@ export function ButtonReplay() {
     cLanguage,
     cPage,
     cName,
-
+    sTop,
     cUsername,
     cUploadImg,
     cEmail,
@@ -197,7 +197,9 @@ export function ButtonReplay() {
   ];
   const buttonDataPersonal = [
     {
-      className: CommonStyles.purpleButton,
+      className: cBGColor
+        ? `${CommonStyles.purpleButtonDark} ${CommonStyles.purpleButton}`
+        : CommonStyles.purpleButton,
       onClick: () => {
         validateInputPersonal(cName, cUsername, cUploadImg, cEmail, cTel);
         sVisible(true);
@@ -208,7 +210,9 @@ export function ButtonReplay() {
   ];
   const buttonDataExperience = [
     {
-      className: ` ${CommonStyles.purpleButtonBack} ${CommonStyles.purpleButtonTwice}`,
+      className: cBGColor
+        ? `${CommonStyles.purpleButtonBack} ${CommonStyles.purpleButtonTwiceDark}`
+        : ` ${CommonStyles.purpleButtonTwice} ${CommonStyles.purpleButtonBack}`,
       onClick: () => {
         sPage(cPage - 1);
         sVisible1(false);
@@ -217,7 +221,9 @@ export function ButtonReplay() {
       key: 0,
     },
     {
-      className: CommonStyles.purpleButtonTwice,
+      className: cBGColor
+        ? `${CommonStyles.purpleButtonTwiceDark}`
+        : `${CommonStyles.purpleButtonTwice}`,
       onClick: () => {
         validateInput1(
           cPosition,
@@ -331,6 +337,11 @@ export function ButtonReplay() {
     } else {
       ExperienceDateEndRef.current.style.border = "1px solid #EF5050";
     }
+    if (cDescription && cDescription.length > 0) {
+      ExperienceTextAreaRef.current.style.border = "1px solid #98E37E";
+    } else {
+      ExperienceTextAreaRef.current.style.border = "1px solid #BCBCBC";
+    }
     if (
       Position &&
       WordsRegex.test(Position) &&
@@ -389,7 +400,7 @@ export function ButtonReplay() {
     </>
   );
 }
-// for Home
+// for custom
 
 // for personal -
 export function HeadlineDivCustom() {
@@ -454,7 +465,7 @@ export function InputReplayCustomRow() {
       fullDivName: infoUpdateStyles.namePart,
       content: languageChanger(cLanguage, "სახელი", "Name"),
       htmlForId: "name",
-      onChange: sName,
+      set: sName,
       inputPlaceHolder: !cLanguage ? "ანზორ" : "Anzor",
       borderCorrect: cCorrect,
     },
@@ -462,7 +473,7 @@ export function InputReplayCustomRow() {
       fullDivName: infoUpdateStyles.lastNamePart,
       content: !cLanguage ? "გვარი" : "Username",
       htmlForId: "userName",
-      onChange: sUsername,
+      set: sUsername,
       inputPlaceHolder: languageChanger(cLanguage, "მუმლაძე", "Mumladze"),
       borderCorrect: cCorrect1,
     },
@@ -484,16 +495,14 @@ export function InputReplayCustomRow() {
               id={data.htmlForId}
               className={CommonStyles.inputStandard}
               onChange={(e) => {
-                data.onChange(e.target.value);
+                data.set(e.target.value);
               }}
               style={{
-                border: !cVisible
-                  ? cBGColor
-                    ? "1px solid #BCBCBC"
-                    : "1px solid #BCBCBC"
-                  : data.borderCorrect
-                  ? "1px solid #98E37E"
-                  : "1px solid #EF5050",
+                border: cVisible
+                  ? data.borderCorrect
+                    ? "1px solid #98E37E"
+                    : "1px solid #EF5050"
+                  : "1px solid #BCBCBC",
                 backgroundColor: cBGColor ? "black" : "white",
                 color: cBGColor ? "white" : "black",
               }}
@@ -512,7 +521,7 @@ export function InputReplayCustomRow() {
 // for personal -
 export function InputFile() {
   const useAppContext0 = useContext(context);
-  const { cLanguage, sUploadImg } = useAppContext0;
+  const { cLanguage, sUploadImg, cBGColor } = useAppContext0;
   const dataMap = [
     {
       pContent: languageChanger(
@@ -530,7 +539,14 @@ export function InputFile() {
   return (
     <>
       {dataMap.map((data) => (
-        <div key={data.key} className={infoUpdateStyles.upload}>
+        <div
+          key={data.key}
+          className={
+            cBGColor
+              ? `${infoUpdateStyles.upload} ${infoUpdateStyles.uploadDark}`
+              : infoUpdateStyles.upload
+          }
+        >
           <p>{data.pContent}</p>
           <label
             htmlFor={data.htmlFor}
@@ -559,10 +575,19 @@ export function InputFile() {
 }
 export function PersonalTextArea() {
   const useAppContext0 = useContext(context);
-  const { cBGColor, cLanguage, sAboutMe, cVisible, aboutMeRef, cAboutMe } =
-    useAppContext0;
+  const {
+    cBGColor,
+    cLanguage,
+    sAboutMe,
+    cAboutMe,
+    aboutMeRef,
+    cDescription,
+    sDescription,
+    ExperienceTextAreaRef,
+    cPage,
+  } = useAppContext0;
 
-  const DataOfTextArea = [
+  const PersonalTextArea = [
     {
       key: 0,
       htmlFor: "aboutMe",
@@ -577,12 +602,12 @@ export function PersonalTextArea() {
       onChange: (e: any) => {
         sAboutMe(e.target.value);
       },
+      value: cAboutMe,
     },
   ];
-
   return (
     <>
-      {DataOfTextArea.map((data: any) => (
+      {PersonalTextArea.map((data: any) => (
         <div key={data.key}>
           <label htmlFor={data.htmlFor} className={CommonStyles.labelStandard}>
             {data.labelContext}
@@ -595,19 +620,22 @@ export function PersonalTextArea() {
             id={data.htmlFor}
             onChange={data.onChange}
             maxLength={250}
-            ref={aboutMeRef}
+            ref={data.ref}
             style={{
               backgroundColor: cBGColor ? "black" : "white",
               color: cBGColor ? "white" : "black",
               border: "1px solid #BCBCBC",
               padding: "13px 16px",
+              marginTop: 8,
             }}
+            value={data.value}
           ></textarea>
         </div>
       ))}
     </>
   );
 }
+// I can join PersonalMailtelephone to the InputReplayCustomRow by using if else and changing their spaces ,but it is an additional work which I think is not nessesary currently
 export function PersonalMailTelephone() {
   const useAppContext0 = useContext(context);
   const { cBGColor, sEmail, cLanguage, cCorrect2, sTel, cCorrect3, cVisible } =
@@ -652,7 +680,13 @@ export function PersonalMailTelephone() {
     <>
       {dataMap.map((data: any) => {
         return (
-          <div className={data.fullDivName} key={data.key}>
+          <div
+            className={data.fullDivName}
+            key={data.key}
+            style={{
+              marginTop: 50,
+            }}
+          >
             <label
               htmlFor={data.htmlForId}
               className={CommonStyles.labelStandard}
@@ -668,13 +702,11 @@ export function PersonalMailTelephone() {
                 data.onChange(e.target.value);
               }}
               style={{
-                border: !cVisible
-                  ? cBGColor
-                    ? "1px solid white"
-                    : "1px solid black"
-                  : data.borderCorrect
-                  ? "1px solid #98E37E"
-                  : "1px solid #EF5050",
+                border: cVisible
+                  ? data.borderCorrect
+                    ? "1px solid #98E37E"
+                    : "1px solid #EF5050"
+                  : "1px solid #BCBCBC",
                 backgroundColor: cBGColor ? "black" : "white",
                 color: cBGColor ? "white" : "black",
               }}
@@ -686,278 +718,13 @@ export function PersonalMailTelephone() {
     </>
   );
 }
-// Experience
-
-// best written style
-export function ExperiencePositionEmployerInput() {
-  const useAppContext0 = useContext(context);
-  const {
-    cBGColor,
-    cLanguage,
-    cVisible1,
-    cPosition,
-    sPosition,
-    cCorrect5,
-    cCorrect6,
-    cEmployer,
-    sEmployer,
-  } = useAppContext0;
-  const experienceData = [
-    {
-      fullDivName: infoUpdateStyles.position,
-      content: languageChanger(cLanguage, "თანამდებობა", "Position"),
-      htmlForId: "position",
-      set: sPosition,
-      value: cPosition,
-      inputPlaceHolder: languageChanger(
-        cLanguage,
-        "დეველოპერი, დიზაინერი, ა.შ.",
-        "Developer, designer, etc."
-      ),
-      borderCorrect: cCorrect5,
-    },
-    {
-      fullDivName: infoUpdateStyles.employer,
-      content: !cLanguage ? "დამსაქმებელი" : "Employer",
-      htmlForId: "employer",
-      set: sEmployer,
-      value: cEmployer,
-      inputPlaceHolder: !cLanguage ? "დამსაქმებელი" : "Employer",
-      borderCorrect: cCorrect6,
-    },
-  ];
-  // const experienceData1 = [
-  //   {
-  //     fullDivName: infoUpdateStyles.position,
-  //     content: !cLanguage ? "თანამდებობა" : "Position",
-  //     htmlForId: "position",
-  //     set: sPosition1,
-  //     value: cPosition1,
-  //     inputPlaceHolder: !cLanguage
-  //       ? "დეველოპერი, დიზაინერი, ა.შ."
-  //       : "Developer, designer, etc.",
-  //     borderCorrect: cCorrect,
-  //   },
-  //   {
-  //     fullDivName: infoUpdateStyles.employer,
-  //     content: !cLanguage ? "დამსაქმებელი" : "Employer",
-  //     htmlForId: "employer",
-  //     set: sEmployer1,
-  //     value: cEmployer1,
-  //     inputPlaceHolder: !cLanguage ? "დამსაქმებელი" : "Employer",
-  //     borderCorrect: cCorrect,
-  //   },
-  // ];
-  return (
-    <>
-      {experienceData.map((data: any, idx: any) => {
-        return (
-          <div className={data.fullDivName} key={idx}>
-            <label
-              htmlFor={data.htmlForId}
-              className={CommonStyles.labelStandard}
-            >
-              {data.content}
-            </label>
-            <input
-              type="text"
-              placeholder={data.inputPlaceHolder}
-              id={data.htmlForId}
-              className={CommonStyles.inputStandard}
-              style={{
-                border: !cVisible1
-                  ? cBGColor
-                    ? "1px solid white"
-                    : "1px solid black"
-                  : data.borderCorrect
-                  ? "1px solid #98E37E"
-                  : "1px solid #EF5050",
-                backgroundColor: cBGColor ? "black" : "white",
-                color: cBGColor ? "white" : "black",
-              }}
-              value={data.value}
-              onChange={(event) => data.set(event.target.value)}
-            />
-            <span className={CommonStyles.spanStandard}>
-              {languageChanger(
-                cLanguage,
-                "მინიმუმ 2 სიმბოლო",
-                "At least 2 symbols"
-              )}
-            </span>
-          </div>
-        );
-      })}
-    </>
-  );
-}
-export function InputReplayExperienceRow() {
-  const useAppContext0 = useContext(context);
-  const {
-    cLanguage,
-    sStartDate,
-    cStartDate,
-    cEndDate,
-    sEndDate,
-    cBGColor,
-    ExperienceDateStartRef,
-    ExperienceDateEndRef,
-  } = useAppContext0;
-  const dataMap = [
-    {
-      labelHtmlFor: "startDate",
-      labelContent: languageChanger(
-        cLanguage,
-        "დაწყების რიცხვი",
-        "Start number"
-      ),
-      onChange: (e: any) => sStartDate(e.target.value),
-      value: cStartDate,
-      key: 0,
-      ref: ExperienceDateStartRef,
-    },
-    {
-      labelHtmlFor: "EndDate",
-      labelContent: languageChanger(
-        cLanguage,
-        "დამთავრების რიცხვი",
-        "End date"
-      ),
-      onChange: (e: any) => sEndDate(e.target.value),
-      value: cEndDate,
-      key: 1,
-      ref: ExperienceDateEndRef,
-    },
-  ];
-  return (
-    <div className={infoUpdateStyles.dateContainer}>
-      <>
-        {dataMap.map((data: any) => {
-          return (
-            <div
-              key={data.key}
-              style={{
-                marginRight: data.key === 0 ? "28px" : "",
-                marginLeft: data.key === 1 ? "28px" : "",
-              }}
-            >
-              <label
-                htmlFor={data.labelHtmlFor}
-                style={{
-                  marginBottom: "8px",
-                  color: cBGColor ? "white" : "black",
-                  fontWeight: "700",
-                }}
-              >
-                {data.labelContent}
-              </label>
-              <input
-                type="date"
-                className={infoUpdateStyles.calendarInput}
-                onChange={data.onChange}
-                value={data.value}
-                id={data.labelHtmlFor}
-                style={{
-                  backgroundColor: !cBGColor ? "white" : "black",
-                  color: cBGColor ? "white" : "black",
-                  border: cBGColor ? "1px solid white" : "1px solid black",
-                }}
-                ref={data.ref}
-              />
-            </div>
-          );
-        })}
-      </>
-    </div>
-  );
-}
-export function ExperienceTextArea() {
-  const useAppContext0 = useContext(context);
-  const {
-    cBGColor,
-    cLanguage,
-    cDescription,
-    cVisible1,
-    sDescription,
-    ExperienceTextAreaRef,
-  } = useAppContext0;
-
-  const DataOfTextArea = [
-    {
-      key: 0,
-      htmlFor: "Description",
-      ref: ExperienceTextAreaRef,
-      labelContext: languageChanger(cLanguage, "აღწერა", "Description"),
-      // spanContext: languageChanger(cLanguage, "(არასავალდებულო)", "(optional)"),
-      placeHolder: languageChanger(
-        cLanguage,
-        "როლი თანამდებობაზე და ზოგადი აღწერა",
-        "Role in the position and general description"
-      ),
-      onChange: (e: any) => {
-        sDescription(e.target.value);
-        if (
-          ExperienceTextAreaRef.current.value.length === 0 &&
-          cBGColor === true
-        ) {
-          ExperienceTextAreaRef.current.style.border = "1px solid white";
-        } else if (
-          ExperienceTextAreaRef.current.value.length === 0 &&
-          cBGColor === false
-        ) {
-          ExperienceTextAreaRef.current.style.border = "1px solid black";
-        } else {
-          ExperienceTextAreaRef.current.style.border = "1px solid black";
-        }
-      },
-      value: cDescription,
-    },
-  ];
-
-  return (
-    <>
-      {DataOfTextArea.map((data: any) => (
-        <div key={data.key}>
-          <label
-            htmlFor={data.htmlFor}
-            className={CommonStyles.labelStandard}
-            style={{ display: "block" }}
-          >
-            {data.labelContext}
-            <span className={CommonStyles.spanStandard}>
-              {data.spanContext}
-            </span>
-          </label>
-          <textarea
-            placeholder={data.placeHolder}
-            id={data.htmlFor}
-            onChange={data.onChange}
-            maxLength={250}
-            style={{
-              backgroundColor: cBGColor ? "black" : "white",
-              color: cBGColor ? "white" : "black",
-              border: "1px solid black",
-              padding: "13px 16px",
-            }}
-            ref={data.ref}
-          ></textarea>
-          <hr
-            style={{
-              width: "100%",
-              height: "1px",
-              marginTop: "6px",
-            }}
-          />
-        </div>
-      ))}
-    </>
-  );
-}
+//I prefer to stay this like it is
 export function ExperienceButtonReplayskyColor() {
   const useAppContext0 = useContext(context);
   const {
     cPage,
     sPage,
+    cBGColor,
     cLanguage,
     cMoreExperience,
     sMoreExperience,
@@ -966,7 +733,9 @@ export function ExperienceButtonReplayskyColor() {
   } = useAppContext0;
   const buttonDataHome = [
     {
-      className: CommonStyles.skyColorButton,
+      className: cBGColor
+        ? `${CommonStyles.skyColorButton} ${CommonStyles.skyColorButtonDark}`
+        : CommonStyles.skyColorButton,
 
       language: languageChanger(
         cLanguage,

@@ -52,10 +52,12 @@ least for 2 page */
     left:48px;
     z-index: 2;
     cursor: pointer;
+    transition: 0.5s ease;
 }
 .ellipseDark {
   
   filter: brightness(0%);
+  
 }
 .vectorDark {
     width: 9.21px;
@@ -66,6 +68,7 @@ least for 2 page */
     z-index: 3;
     cursor: pointer;
     filter: brightness(0%);
+    transition: 0.5s ease;
 }
 .vectorLight {
   filter: invert(99%) sepia(7%) saturate(3%) hue-rotate(73deg) brightness(107%) contrast(100%);
@@ -78,13 +81,12 @@ least for 2 page */
     z-index: 1;
     top:0;
     left:0;
-    color:black
+    color:black;
+    
 }
 .infoContainerDark {
   background-color: #090909;
   color:white;
-  
-  
 }
 .skeleton {
     width:calc(1098px - 300px);
@@ -116,6 +118,7 @@ least for 2 page */
   color: #ffffff;
   background-color: #000000;
   border: 1px solid white;
+  transition: 0.5s ease;
 }
 .spanStandard {
     font-size: 14px;
@@ -133,6 +136,10 @@ least for 2 page */
     transition: 0.5s ease;
     font-size:18px;
 }
+.purpleButtonDark {
+  background-color:#180352 ;
+  border:1px solid black
+}
 .purpleButtonTwice {
   padding:14px 35px;
   background-color:#6B40E3 ;
@@ -141,6 +148,17 @@ least for 2 page */
   transition: 0.5s ease;
   font-size:18px;
 }
+.purpleButtonTwiceDark {
+  padding:14px 35px;
+  
+  cursor: pointer;
+  transition: 0.5s ease;
+  font-size:18px;
+  background-color:#180352 ;
+  border:1px solid black;
+  color:white;
+}
+
 .skyColorButton {
   background-color:#62A1EB;
   padding: 14px 21px;
@@ -149,6 +167,10 @@ least for 2 page */
   transition: 0.5s ease;
   font-size:18px;
   z-index: 3;
+}
+.skyColorButtonDark{
+  background-color:#032750;
+  border:1px solid black
 }
 .purpleButton:focus, .skyColorButton:focus {
     transform: scale(0.95);

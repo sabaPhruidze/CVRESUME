@@ -22,8 +22,8 @@ export default function CorrectWrongComponent() {
   const DataOfCorrectIncorrect = [
     { value: cCorrect, top: "190px", left: cCorrect ? "489px" : "535px" },
     { value: cCorrect1, top: "190px", left: cCorrect1 ? "916px" : "961px" },
-    { value: cCorrect2, top: "595px", left: cCorrect2 ? "916px" : "961px" },
-    { value: cCorrect3, top: "710px", left: cCorrect3 ? "916px" : "961px" },
+    { value: cCorrect2, top: "645px", left: cCorrect2 ? "916px" : "961px" },
+    { value: cCorrect3, top: "795px", left: cCorrect3 ? "916px" : "961px" },
     { value: cCorrect5, top: "190px", left: cCorrect5 ? "916px" : "961px" },
     { value: cCorrect6, top: "315px", left: cCorrect6 ? "916px" : "961px" },
   ];

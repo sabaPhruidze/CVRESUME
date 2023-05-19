@@ -7,6 +7,7 @@
     height:1080px;
     position: relative;
     z-index: 0;
+    transition: 0.5s ease;
 }
 .banner {
     width:236px;
@@ -92,4 +93,5 @@
     z-index: 2;
     top:calc(89px + 10px);
     right:calc(70px + 40px);
+    transition: 0.5s ease;
   }
