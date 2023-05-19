@@ -19,8 +19,9 @@ function App() {
   const [cEmail, sEmail] = useState<string | undefined>();
   const [cTel, sTel] = useState<string>();
   const [cAboutMe, sAboutMe] = useState<string | undefined>();
-  const aboutMeRef = useRef<any>("");
+  const aboutMeRef = useRef<any>(0);
   const textAreaRef = useRef<string | null | undefined>("");
+  const [cButtonClicked, sButtonClicked] = useState<boolean>(true);
 
   const [cCorrect, sCorrect] = useState<boolean>(false);
   const [cCorrect1, sCorrect1] = useState<boolean>(false);

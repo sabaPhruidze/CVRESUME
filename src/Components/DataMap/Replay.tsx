@@ -148,6 +148,8 @@ export function ButtonReplay() {
     cLanguage,
     cPage,
     cName,
+    cButtonClicked,
+    sButtonClicked,
     cUsername,
     cUploadImg,
     cEmail,
@@ -200,6 +202,7 @@ export function ButtonReplay() {
       onClick: () => {
         validateInputPersonal(cName, cUsername, cUploadImg, cEmail, cTel);
         sVisible(true);
+        sButtonClicked(true);
       },
       language: languageChanger(cLanguage, "შემდეგი", "Next"),
       key: 0,
@@ -268,14 +271,10 @@ export function ButtonReplay() {
     } else {
       sCorrect3(false);
     }
-    if (aboutMeRef.current.value.length > 0) {
+    if (cAboutMe && cAboutMe.length > 0) {
       aboutMeRef.current.style.border = "1px solid #98E37E";
-    } else if (aboutMeRef.current.value.length === 0 && cBGColor) {
-      aboutMeRef.current.style.border = "1px solid white";
-    } else if (aboutMeRef.current.value.length === 0 && !cBGColor) {
-      aboutMeRef.current.style.border = "1px solid black";
     } else {
-      aboutMeRef.current.style.border = "1px solid black";
+      aboutMeRef.current.style.border = "1px solid #BCBCBC";
     }
     if (
       name &&
@@ -513,7 +512,6 @@ export function InputReplayCustomRow() {
   );
 }
 // for personal -
-
 export function InputFile() {
   const useAppContext0 = useContext(context);
   const { cLanguage, sUploadImg } = useAppContext0;
@@ -561,10 +559,9 @@ export function InputFile() {
     </>
   );
 }
-
 export function PersonalTextArea() {
   const useAppContext0 = useContext(context);
-  const { cBGColor, cLanguage, sAboutMe, cVisible, aboutMeRef } =
+  const { cBGColor, cLanguage, sAboutMe, cVisible, aboutMeRef, cAboutMe } =
     useAppContext0;
 
   const DataOfTextArea = [
@@ -581,7 +578,6 @@ export function PersonalTextArea() {
       ),
       onChange: (e: any) => {
         sAboutMe(e.target.value);
-        aboutMeRef.current = e.target;
       },
     },
   ];
@@ -605,12 +601,7 @@ export function PersonalTextArea() {
             style={{
               backgroundColor: cBGColor ? "black" : "white",
               color: cBGColor ? "white" : "black",
-
-              border:
-                (!cVisible && cBGColor) ||
-                (cVisible && aboutMeRef.current.length === 0)
-                  ? "1px solid white"
-                  : "1px solid black",
+              border: "1px solid #BCBCBC",
               padding: "13px 16px",
             }}
           ></textarea>

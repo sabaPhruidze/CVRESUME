@@ -182,6 +182,7 @@ export default function InfoUpdate() {
         cUploadImg,
         sUploadImg,
         aboutMeRef,
+
         cEmail,
         sEmail,
         cTel,
