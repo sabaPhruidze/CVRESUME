@@ -48,7 +48,7 @@ export default function Personal() {
         <div className={infoUpdateStyles.nameUSername}>
           <InputReplayCustomRow />
         </div>
-        <div className={infoUpdateStyles.upload}>
+        <div className={infoUpdateStyles.uploading}>
           <InputFile />
         </div>
         <div className={infoUpdateStyles.aboutUs}>

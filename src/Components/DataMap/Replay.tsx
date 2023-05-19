@@ -163,12 +163,7 @@ export function ButtonReplay() {
     ExperienceTextAreaRef,
     sCorrect5,
     sCorrect6,
-    sCorrect7,
-    sCorrect8,
-    sCorrect9,
-    sCorrect10,
     cTop,
-    sTop,
     ExperienceDateStartRef,
     ExperienceDateEndRef,
     ExperienceDateStartRef1,
@@ -184,12 +179,8 @@ export function ButtonReplay() {
     cEndDate,
     cPosition1,
     cEmployer1,
-    cStartDate1,
-    cEndDate1,
     cPosition2,
     cEmployer2,
-    cStartDate2,
-    cEndDate2,
     cDescription,
     cMoreExperience,
   } = useAppContext0;
@@ -454,7 +445,6 @@ export function InputReplayCustomRow() {
   const useAppContext0 = useContext(context);
   const {
     cBGColor,
-    sPage,
     cLanguage,
     sName,
     cCorrect,
@@ -523,82 +513,7 @@ export function InputReplayCustomRow() {
   );
 }
 // for personal -
-export function InputReplayCustomColumn() {
-  const useAppContext0 = useContext(context);
-  const {
-    cBGColor,
-    sPage,
-    cLanguage,
-    cName,
-    sName,
-    cCorrect,
-    sUsername,
-    cUsername,
-    cCorrect1,
-    cVisible,
-  } = useAppContext0;
-  const dataMap = [
-    {
-      fullDivName: infoUpdateStyles.namePart,
-      content: languageChanger(!cLanguage, "სახელი", "Name"),
-      htmlForId: "name",
-      onChange: sName,
-      inputPlaceHolder: !cLanguage ? "ანზორ" : "Anzor",
-      borderCorrect: cCorrect,
-      key: 0,
-    },
-    {
-      fullDivName: infoUpdateStyles.lastNamePart,
-      content: !cLanguage ? "გვარი" : "Username",
-      htmlForId: "userName",
-      onChange: sUsername,
-      inputPlaceHolder: languageChanger(!cLanguage, "მუმლაძე", "Mumladze"),
-      borderCorrect: cCorrect1,
-      key: 1,
-    },
-  ];
-  return (
-    <>
-      {dataMap.map((data: any) => {
-        return (
-          <div className={data.fullDivName} key={data.key}>
-            <label
-              htmlFor={data.htmlForId}
-              className={CommonStyles.labelStandard}
-            >
-              {data.content}
-            </label>
-            <input
-              type="text"
-              placeholder={data.inputPlaceHolder}
-              id={data.htmlForId}
-              className={CommonStyles.inputStandard}
-              onChange={(e) => {
-                data.onChange(e.target.value);
-              }}
-              style={{
-                border: !cVisible
-                  ? cBGColor
-                    ? "1px solid white"
-                    : "1px solid black"
-                  : data.borderCorrect
-                  ? "1px solid #98E37E"
-                  : "1px solid #EF5050",
-                backgroundColor: cBGColor ? "black" : "white",
-                color: cBGColor ? "white" : "black",
-              }}
-            />
-            <span className={CommonStyles.spanStandard}>
-              {!cLanguage
-                ? "მინიმუმ 2 ასო, ქართული ასოები"
-                : "At least 2 letters, Georgian letters"}
-            </span>
-          </div>
-        );
-      })}
-    </>
-  );
-}
+
 export function InputFile() {
   const useAppContext0 = useContext(context);
   const { cLanguage, sUploadImg } = useAppContext0;
@@ -618,36 +533,35 @@ export function InputFile() {
   ];
   return (
     <>
-      {dataMap.map((data: any) => {
-        return (
-          <>
-            <p key={data.key}>{data.pContent}</p>
-            <label
-              htmlFor={data.htmlFor}
-              style={{
-                padding: data.labelStyle,
+      {dataMap.map((data) => (
+        <div key={data.key} className={infoUpdateStyles.upload}>
+          <p>{data.pContent}</p>
+          <label
+            htmlFor={data.htmlFor}
+            style={{
+              padding: data.labelStyle,
+            }}
+            id={data.labelId}
+          >
+            {data.buttonContent}
+            <input
+              type="file"
+              alt="upload photo"
+              accept="image/*"
+              id={data.htmlFor}
+              onChange={(e) => {
+                sUploadImg(e.target.files?.[0]);
+                //if something is uploaded it will be save in sUploadImg
               }}
-              id={data.labelId}
-            >
-              {data.buttonContent}
-              <input
-                type="file"
-                alt="upload photo"
-                accept="image/*"
-                id={data.htmlFor}
-                onChange={(e) => {
-                  sUploadImg(e.target.files?.[0]);
-                  //if something is uploaded it will be save in sUploadImg
-                }}
-              />
-              {/* allowing only Images */}
-            </label>
-          </>
-        );
-      })}
+            />
+            {/* allowing only Images */}
+          </label>
+        </div>
+      ))}
     </>
   );
 }
+
 export function PersonalTextArea() {
   const useAppContext0 = useContext(context);
   const { cBGColor, cLanguage, sAboutMe, cVisible, aboutMeRef } =
@@ -1099,161 +1013,7 @@ export function ExperienceButtonReplayskyColor() {
   );
 }
 
-// export function ExperienceButtonReplay() {
-//   const useAppContext0 = useContext(context);
-//   const {
-//     cPage,
-//     sPage,
-//     cLanguage,
-//     cBGColor,
-//     sMoreExperience,
-//     ExperienceTextAreaRef,
-//     sCorrect5,
-//     sCorrect6,
-//     sCorrect7,
-//     sCorrect8,
-//     sCorrect9,
-//     sCorrect10,
-//     cTop,
-//     sTop,
-//     ExperienceDateStartRef,
-//     ExperienceDateEndRef,
-//     ExperienceDateStartRef1,
-//     ExperienceDateEndRef1,
-//     ExperienceDateStartRef2,
-//     ExperienceDateEndRef2,
-//     ExperienceTextAreaRef1,
-//     ExperienceTextAreaRef2,
-//     sVisible1,
-//     cPosition,
-//     cEmployer,
-//     cStartDate,
-//     cEndDate,
-//     cPosition1,
-//     cEmployer1,
-//     cStartDate1,
-//     cEndDate1,
-//     cPosition2,
-//     cEmployer2,
-//     cStartDate2,
-//     cEndDate2,
-//     cDescription,
-//     cMoreExperience,
-//   } = useAppContext0;
-//   const buttonDataHome = [
-//     {
-//       className: ` ${CommonStyles.purpleButtonBack} ${CommonStyles.purpleButtonTwice}`,
-//       onClick: () => {
-//         sPage(cPage - 1);
-//         sVisible1(false);
-//       },
-//       language: languageChanger(cLanguage, "უკან", "Back"),
-//       key: 0,
-//     },
-//     {
-//       className: CommonStyles.purpleButtonTwice,
-//       onClick: () => {
-//         validateInput1(
-//           cPosition,
-//           cEmployer,
-//           cStartDate,
-//           cEndDate,
-//           cDescription,
-//           ExperienceTextAreaRef
-//         );
-//         sVisible1(true);
-//       },
-//       language: languageChanger(cLanguage, "შემდეგი", "Next"),
-//       key: 1,
-//     },
-//   ];
-
-//   function validateInput1(
-//     Position: string | undefined,
-//     employer: string | undefined,
-//     startDate: string | undefined,
-//     endDate: string | undefined,
-//     description: any,
-//     ExperienceTextAreaRef: any
-//   ) {
-//     const WordsRegex = /.{2}.*/;
-//     const DateRegex =
-//       /^(((19[8-9]\d)|20[0-1]\d|202[0-3])-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/; //the year must be between 1980-2023
-
-//     if (Position && WordsRegex.test(Position)) {
-//       sCorrect5(true);
-//     } else {
-//       sCorrect5(false);
-//     }
-
-//     if (employer && WordsRegex.test(employer)) {
-//       sCorrect6(true);
-//     } else {
-//       sCorrect6(false);
-//     }
-//     if (startDate && DateRegex.test(startDate)) {
-//       ExperienceDateStartRef.current.style.border = "1px solid #98E37E";
-//     } else {
-//       ExperienceDateStartRef.current.style.border = "1px solid #EF5050";
-//     }
-
-//     if (endDate && DateRegex.test(endDate)) {
-//       ExperienceDateEndRef.current.style.border = "1px solid #98E37E";
-//     } else {
-//       ExperienceDateEndRef.current.style.border = "1px solid #EF5050";
-//     }
-//     if (
-//       Position &&
-//       WordsRegex.test(Position) &&
-//       employer &&
-//       WordsRegex.test(employer) &&
-//       startDate &&
-//       DateRegex.test(startDate) &&
-//       endDate &&
-//       DateRegex.test(endDate)
-//     ) {
-//       return [
-//         sVisible1(false),
-//         cPosition,
-//         cEmployer,
-//         cPosition1,
-//         cEmployer1,
-//         cPosition2,
-//         cEmployer2,
-//         cStartDate,
-//         cEndDate,
-//         cDescription,
-
-//         cMoreExperience >= 1
-//           ? `${ExperienceTextAreaRef1} ${ExperienceDateStartRef1} ${ExperienceDateEndRef1}`
-//           : "",
-//         cMoreExperience >= 2
-//           ? `${ExperienceTextAreaRef2} ${ExperienceDateStartRef2} ${ExperienceDateEndRef2}`
-//           : "",
-
-//         sPage(cPage + 1),
-//         sMoreExperience(0),
-//       ];
-//     }
-//   }
-
-//   return (
-//     <>
-//       {buttonDataHome.map((data) => (
-//         <button
-//           className={data.className}
-//           onClick={data.onClick}
-//           key={data.key}
-
-//         >
-//           {data.language}
-//         </button>
-//       ))}
-//     </>
-//   );
-// }
-// for knowledge
-
+// for current moment I didnot made the regex for the button so I will stay it until I make it
 export function KnowledgeButtonReplay() {
   const useAppContext0 = useContext(context);
   const {
