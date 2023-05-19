@@ -9,7 +9,7 @@ import {
   InputFile,
   PersonalTextArea,
   PersonalMailTelephone,
-  PersonButtonReplay,
+  ButtonReplay,
   HeadlineDivCustom,
 } from "../DataMap/Replay";
 
@@ -56,7 +56,7 @@ export default function Personal() {
         </div>
         <PersonalMailTelephone />
       </div>
-      <PersonButtonReplay />
+      <ButtonReplay />
     </div>
   );
 }

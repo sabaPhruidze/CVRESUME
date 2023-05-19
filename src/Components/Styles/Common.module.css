@@ -1,13 +1,10 @@
 /* In this styles only will be a classnames which are common for all pages, or at
 least for 2 page */
 @font-face {
-  font-family: "Arial GEO", sans-serif;
+  font-family: "Arial GEO";
   src: url(../../Assets/Font/arial-geo-webfont.ttf);
 }
-@font-face {
-    font-family: light;
-    src: url(../../Assets/Font/Roboto-Light.ttf);
-  }
+
   /* left side */
 .container {
     width:1920px;
@@ -17,7 +14,7 @@ least for 2 page */
     color:black;
     position: relative;
     box-sizing: border-box;
-    font-family: "Arial GEO", sans-serif;
+    font-family: "Arial GEO";
 }
 
 .flexRow, .mobileContainer, .emailContainer {
