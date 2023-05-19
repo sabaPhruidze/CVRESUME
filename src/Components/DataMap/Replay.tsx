@@ -148,8 +148,7 @@ export function ButtonReplay() {
     cLanguage,
     cPage,
     cName,
-    cButtonClicked,
-    sButtonClicked,
+
     cUsername,
     cUploadImg,
     cEmail,
@@ -202,7 +201,6 @@ export function ButtonReplay() {
       onClick: () => {
         validateInputPersonal(cName, cUsername, cUploadImg, cEmail, cTel);
         sVisible(true);
-        sButtonClicked(true);
       },
       language: languageChanger(cLanguage, "შემდეგი", "Next"),
       key: 0,
