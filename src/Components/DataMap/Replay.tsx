@@ -137,13 +137,29 @@ export function ImgReplay() {
     </>
   );
 }
-// for many things
 function languageChanger(changeReason: boolean, geo: string, eng: string) {
   return !changeReason ? geo : eng;
 }
 export function ButtonReplay() {
   const useAppContext0 = useContext(context);
-  const { cBGColor, sPage, cLanguage } = useAppContext0;
+  const {
+    cBGColor,
+    sPage,
+    cLanguage,
+    cPage,
+    cName,
+    cUsername,
+    cUploadImg,
+    cEmail,
+    cTel,
+    sVisible,
+    sCorrect,
+    sCorrect1,
+    sCorrect2,
+    sCorrect3,
+    cAboutMe,
+    aboutMeRef,
+  } = useAppContext0;
   const buttonDataHome = [
     {
       className: cBGColor
@@ -154,9 +170,84 @@ export function ButtonReplay() {
       key: 0,
     },
   ];
+  const buttonDataPersonal = [
+    {
+      className: CommonStyles.purpleButton,
+      onClick: () => {
+        validateInput(cName, cUsername, cUploadImg, cEmail, cTel);
+        sVisible(true);
+      },
+      language: languageChanger(cLanguage, "შემდეგი", "Next"),
+      key: 0,
+    },
+  ];
+  const properButton = cPage === 0 ? buttonDataHome : buttonDataPersonal;
+  function validateInput(
+    name: string | undefined,
+    username: string | undefined,
+    img: any,
+    email: string | undefined,
+    phone: any
+  ) {
+    const georgianWordsRegex = /^(?:.*[ა-ჰ]){2,}.*$/;
+    const mailRegex = /.*@redberry\.ge$/;
+    const telNumber = /^\+995 \d{3} \d{2} \d{2} \d{2}$/;
+    if (name && georgianWordsRegex.test(name)) {
+      sCorrect(true);
+    } else {
+      sCorrect(false);
+    }
+    if (username && georgianWordsRegex.test(username)) {
+      sCorrect1(true);
+    } else {
+      sCorrect1(false);
+    }
+    if (email && mailRegex.test(email)) {
+      sCorrect2(true);
+    } else {
+      sCorrect2(false);
+    }
+    if (phone && telNumber.test(phone)) {
+      sCorrect3(true);
+    } else {
+      sCorrect3(false);
+    }
+    if (aboutMeRef.current.value.length > 0) {
+      aboutMeRef.current.style.border = "1px solid #98E37E";
+    } else if (aboutMeRef.current.value.length === 0 && cBGColor) {
+      aboutMeRef.current.style.border = "1px solid white";
+    } else if (aboutMeRef.current.value.length === 0 && !cBGColor) {
+      aboutMeRef.current.style.border = "1px solid black";
+    } else {
+      aboutMeRef.current.style.border = "1px solid black";
+    }
+    if (
+      name &&
+      georgianWordsRegex.test(name) &&
+      username &&
+      georgianWordsRegex.test(username) &&
+      img &&
+      email &&
+      mailRegex.test(email) &&
+      phone &&
+      telNumber.test(phone)
+    ) {
+      return [
+        cName,
+        cUsername,
+        cUploadImg,
+        cEmail,
+        cTel,
+        cAboutMe,
+        cBGColor,
+        sPage(cPage + 1),
+      ];
+    }
+  }
+
   return (
     <>
-      {buttonDataHome.map((data) => (
+      {properButton.map((data) => (
         <button
           className={data.className}
           onClick={data.onClick}
@@ -550,114 +641,6 @@ export function PersonalMailTelephone() {
     </>
   );
 }
-export function PersonButtonReplay() {
-  const useAppContext0 = useContext(context);
-  const {
-    cBGColor,
-    cPage,
-    sPage,
-    cLanguage,
-    cName,
-    cUsername,
-    cUploadImg,
-    cEmail,
-    cTel,
-    sVisible,
-    sCorrect,
-    sCorrect1,
-    sCorrect2,
-    sCorrect3,
-    cAboutMe,
-    aboutMeRef,
-  } = useAppContext0;
-  const buttonDataHome = [
-    {
-      className: CommonStyles.purpleButton,
-      onClick: () => {
-        validateInput(cName, cUsername, cUploadImg, cEmail, cTel);
-        sVisible(true);
-      },
-      language: languageChanger(cLanguage, "შემდეგი", "Next"),
-      key: 0,
-    },
-  ];
-  function validateInput(
-    name: string | undefined,
-    username: string | undefined,
-    img: any,
-    email: string | undefined,
-    phone: any
-  ) {
-    const georgianWordsRegex = /^(?:.*[ა-ჰ]){2,}.*$/;
-    const mailRegex = /.*@redberry\.ge$/;
-    const telNumber = /^\+995 \d{3} \d{2} \d{2} \d{2}$/;
-    if (name && georgianWordsRegex.test(name)) {
-      sCorrect(true);
-    } else {
-      sCorrect(false);
-    }
-    if (username && georgianWordsRegex.test(username)) {
-      sCorrect1(true);
-    } else {
-      sCorrect1(false);
-    }
-    if (email && mailRegex.test(email)) {
-      sCorrect2(true);
-    } else {
-      sCorrect2(false);
-    }
-    if (phone && telNumber.test(phone)) {
-      sCorrect3(true);
-    } else {
-      sCorrect3(false);
-    }
-    if (aboutMeRef.current.value.length > 0) {
-      aboutMeRef.current.style.border = "1px solid #98E37E";
-    } else if (aboutMeRef.current.value.length === 0 && cBGColor) {
-      aboutMeRef.current.style.border = "1px solid white";
-    } else if (aboutMeRef.current.value.length === 0 && !cBGColor) {
-      aboutMeRef.current.style.border = "1px solid black";
-    } else {
-      aboutMeRef.current.style.border = "1px solid black";
-    }
-    if (
-      name &&
-      georgianWordsRegex.test(name) &&
-      username &&
-      georgianWordsRegex.test(username) &&
-      img &&
-      email &&
-      mailRegex.test(email) &&
-      phone &&
-      telNumber.test(phone)
-    ) {
-      return [
-        cName,
-        cUsername,
-        cUploadImg,
-        cEmail,
-        cTel,
-        cAboutMe,
-        cBGColor,
-        sPage(cPage + 1),
-      ];
-    }
-  }
-  return (
-    <>
-      {buttonDataHome.map((data) => (
-        <button
-          className={data.className}
-          onClick={data.onClick}
-          key={data.key}
-        >
-          {data.language}
-        </button>
-      ))}
-    </>
-  );
-}
-
 // Experience
 
 // best written style
