@@ -85,6 +85,7 @@ export default function ThisPartWillReplay() {
     sFinishDate2,
     cDOE2,
     sDOE2,
+    cVisible2,
   } = useAppContext0;
   const experienceData = [
     {
@@ -98,7 +99,7 @@ export default function ThisPartWillReplay() {
         "სასწავლებელი",
         "Study place"
       ),
-      borderCorrect: "cCorrect5", // ააააააააააააააააააააააააქ
+      borderCorrect: cCorrect7,
     },
   ];
   const experienceData1 = [
@@ -113,7 +114,6 @@ export default function ThisPartWillReplay() {
         "სასწავლებელი",
         "Study place"
       ),
-      borderCorrect: "cCorrect5", // ააააააააააააააააააააააააქ
     },
   ];
   const experienceData2 = [
@@ -128,7 +128,6 @@ export default function ThisPartWillReplay() {
         "სასწავლებელი",
         "Study place"
       ),
-      borderCorrect: "cCorrect5", // ააააააააააააააააააააააააქ
     },
   ];
   const options = [
@@ -289,12 +288,11 @@ export default function ThisPartWillReplay() {
                     id={data.htmlForId}
                     className={CommonStyles.inputStandard}
                     style={{
-                      border:
-                        !cVisible1 && (cBGColor || !cBGColor)
-                          ? "1px solid #BCBCBC"
-                          : data.borderCorrect
+                      border: cVisible2
+                        ? data.borderCorrect
                           ? "1px solid #98E37E"
-                          : "1px solid #EF5050",
+                          : "1px solid #EF5050"
+                        : "1px solid #BCBCBC",
                       backgroundColor: cBGColor ? "black" : "white",
                       color: cBGColor ? "white" : "black",
                     }}

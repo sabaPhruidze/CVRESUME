@@ -148,7 +148,12 @@ export function ButtonReplay() {
     cLanguage,
     cPage,
     cName,
+    sCorrect7,
     sTop,
+    cCourse,
+    cQuality,
+    cFinishDate,
+    sVisible2,
     cUsername,
     cUploadImg,
     cEmail,
@@ -183,6 +188,7 @@ export function ButtonReplay() {
     cPosition2,
     cEmployer2,
     cDescription,
+    cDOE,
     cMoreExperience,
   } = useAppContext0;
   const buttonDataHome = [
@@ -234,6 +240,27 @@ export function ButtonReplay() {
           ExperienceTextAreaRef
         );
         sVisible1(true);
+      },
+      language: languageChanger(cLanguage, "შემდეგი", "Next"),
+      key: 1,
+    },
+  ];
+  const buttonDataKnowledge = [
+    {
+      className: ` ${CommonStyles.purpleButtonBack} ${CommonStyles.purpleButtonTwice}`,
+      onClick: () => {
+        sPage(cPage - 1);
+        sVisible1(true);
+      },
+      language: languageChanger(cLanguage, "უკან", "Back"),
+      key: 0,
+    },
+    {
+      className: CommonStyles.purpleButtonTwice,
+      onClick: () => {
+        // validateInput2(cCourse, cQuality, cFinishDate, cDOE);
+        sVisible1(false);
+        sVisible2(true);
       },
       language: languageChanger(cLanguage, "შემდეგი", "Next"),
       key: 1,
@@ -311,10 +338,9 @@ export function ButtonReplay() {
     description: any,
     ExperienceTextAreaRef: any
   ) {
-    const WordsRegex = /.{2}.*/;
     const DateRegex =
       /^(((19[8-9]\d)|20[0-1]\d|202[0-3])-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/; //the year must be between 1980-2023
-
+    const WordsRegex = /.{2}.*/;
     if (Position && WordsRegex.test(Position)) {
       sCorrect5(true);
     } else {
@@ -376,6 +402,60 @@ export function ButtonReplay() {
       ];
     }
   }
+  // function validateInput2(
+  //   course: string,
+  //   quality: string,
+  //   finishDate: Number,
+  //   knowledgeDescription: string
+  // ) {
+  //   const WordsRegex = /.{2,}/;
+  //   if (course && course.length > 0) {
+  //     ExperienceTextAreaRef.current.style.border = "1px solid #98E37E";
+  //   } else {
+  //     ExperienceTextAreaRef.current.style.border = "1px solid #BCBCBC";
+  //   }
+  //   if (quality && quality.length > 0) {
+  //     ExperienceTextAreaRef.current.style.border = "1px solid #98E37E";
+  //   } else {
+  //     ExperienceTextAreaRef.current.style.border = "1px solid #BCBCBC";
+  //   }
+  //   if (finishDate) {
+  //     ExperienceTextAreaRef.current.style.border = "1px solid #98E37E";
+  //   } else {
+  //     ExperienceTextAreaRef.current.style.border = "1px solid #BCBCBC";
+  //   }
+  //   if (knowledgeDescription && knowledgeDescription.length > 0) {
+  //     ExperienceTextAreaRef.current.style.border = "1px solid #98E37E";
+  //   } else {
+  //     ExperienceTextAreaRef.current.style.border = "1px solid #BCBCBC";
+  //   }
+  //   if (
+  //     course &&
+  //     WordsRegex.test(course) &&
+  //     quality &&
+  //     WordsRegex.test(quality) &&
+  //     finishDate &&
+  //     knowledgeDescription
+  //   ) {
+  //     return [
+  //       sVisible2(false),
+  //       course,
+  //       quality,
+  //       finishDate,
+  //       knowledgeDescription,
+
+  //       cMoreExperience >= 1
+  //         ? `${ExperienceTextAreaRef1} ${ExperienceDateStartRef1} ${ExperienceDateEndRef1}`
+  //         : "",
+  //       cMoreExperience >= 2
+  //         ? `${ExperienceTextAreaRef2} ${ExperienceDateStartRef2} ${ExperienceDateEndRef2}`
+  //         : "",
+
+  //       sPage(cPage + 1),
+  //       sMoreExperience(0),
+  //     ];
+  //   }
+  // }
 
   return (
     <>
@@ -778,41 +858,14 @@ export function KnowledgeButtonReplay() {
     cPage,
     sPage,
     cLanguage,
-    cBGColor,
-    sMoreExperience,
-    ExperienceTextAreaRef,
-    sCorrect5,
-    sCorrect6,
     sCorrect7,
-    sCorrect8,
-    sCorrect9,
-    sCorrect10,
     cTop,
     sTop,
-    ExperienceDateStartRef,
-    ExperienceDateEndRef,
-    ExperienceDateStartRef1,
-    ExperienceDateEndRef1,
-    ExperienceDateStartRef2,
-    ExperienceDateEndRef2,
-    ExperienceTextAreaRef1,
-    ExperienceTextAreaRef2,
     sVisible1,
-    cPosition,
-    cEmployer,
-    cStartDate,
-    cEndDate,
-    cPosition1,
-    cEmployer1,
-    cStartDate1,
-    cEndDate1,
-    cPosition2,
-    cEmployer2,
-    cStartDate2,
-    cEndDate2,
-    cDescription,
+    sVisible2,
     cMoreExperience,
   } = useAppContext0;
+
   const buttonDataHome = [
     {
       className: ` ${CommonStyles.purpleButtonBack} ${CommonStyles.purpleButtonTwice}`,
@@ -828,6 +881,7 @@ export function KnowledgeButtonReplay() {
       onClick: () => {
         sPage(cPage + 1);
         sVisible1(false);
+        sVisible2(true);
       },
       language: languageChanger(cLanguage, "შემდეგი", "Next"),
       key: 1,

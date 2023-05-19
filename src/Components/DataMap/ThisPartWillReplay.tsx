@@ -98,7 +98,6 @@ export default function ThisPartWillReplay() {
         "დეველოპერი, დიზაინერი, ა.შ.",
         "Developer, designer, etc."
       ),
-      borderCorrect: cCorrect7,
     },
     {
       fullDivName: infoUpdateStyles.employer,
@@ -107,7 +106,6 @@ export default function ThisPartWillReplay() {
       set: sEmployer1,
       value: cEmployer1,
       inputPlaceHolder: !cLanguage ? "დამსაქმებელი" : "Employer",
-      borderCorrect: cCorrect8,
     },
   ];
   const experienceData2 = [
@@ -122,7 +120,6 @@ export default function ThisPartWillReplay() {
         "დეველოპერი, დიზაინერი, ა.შ.",
         "Developer, designer, etc."
       ),
-      borderCorrect: cCorrect9,
     },
     {
       fullDivName: infoUpdateStyles.employer,
@@ -131,7 +128,6 @@ export default function ThisPartWillReplay() {
       set: sEmployer2,
       value: cEmployer2,
       inputPlaceHolder: !cLanguage ? "დამსაქმებელი" : "Employer",
-      borderCorrect: cCorrect10,
     },
   ];
   const dataMap = [

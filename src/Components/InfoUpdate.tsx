@@ -159,6 +159,8 @@ export default function InfoUpdate() {
     sQuality2,
     cFinishDate2,
     sFinishDate2,
+    cVisible2,
+    sVisible2,
     cDOE2,
     sDOE2,
   } = useAppContext1;
@@ -182,7 +184,8 @@ export default function InfoUpdate() {
         cUploadImg,
         sUploadImg,
         aboutMeRef,
-
+        cVisible2,
+        sVisible2,
         cEmail,
         sEmail,
         cTel,

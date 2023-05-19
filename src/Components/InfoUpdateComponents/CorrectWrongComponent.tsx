@@ -17,6 +17,8 @@ export default function CorrectWrongComponent() {
     cVisible1,
     cCorrect5,
     cCorrect6,
+    cCorrerct7,
+    cVisible2,
   } = MPCL;
 
   const DataOfCorrectIncorrect = [
@@ -26,6 +28,7 @@ export default function CorrectWrongComponent() {
     { value: cCorrect3, top: "795px", left: cCorrect3 ? "916px" : "961px" },
     { value: cCorrect5, top: "190px", left: cCorrect5 ? "916px" : "961px" },
     { value: cCorrect6, top: "315px", left: cCorrect6 ? "916px" : "961px" },
+    { value: cCorrerct7, top: "190px", left: cCorrect6 ? "916px" : "961px" },
   ];
 
   return (
@@ -33,7 +36,9 @@ export default function CorrectWrongComponent() {
       {DataOfCorrectIncorrect.map((item, idx) => {
         const { value, top, left } = item;
         const isVisible =
-          (cVisible && idx < 4) || (cVisible1 && (idx === 4 || idx === 5));
+          (cVisible && idx < 4) ||
+          (cVisible1 && (idx === 4 || idx === 5)) ||
+          (cVisible2 && idx === 6);
 
         return (
           <img

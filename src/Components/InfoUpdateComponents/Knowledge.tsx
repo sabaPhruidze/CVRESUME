@@ -46,6 +46,7 @@ export default function Knowledge() {
     sCorrect3,
     cVisible,
     sVisible,
+    cCorrect7,
     sVisible1,
     cMoreExperience,
   } = useAppContext3;
@@ -79,6 +80,7 @@ export default function Knowledge() {
         value={{
           cVisible,
           cBGColor,
+          cCorrect7,
         }}
       >
         <CorrectWrongComponent />
