@@ -195,7 +195,7 @@ export default function Rendered() {
       cEndDate1.length > 0 ||
       cDescription1.length > 0 ? (
         <>
-          <p style={{ marginTop: "30px", fontWeight: "600" }}>
+          <p style={{ marginTop: "-15px", fontWeight: "600" }}>
             {cPosition1}, {cEmployer1}{" "}
           </p>
           <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>

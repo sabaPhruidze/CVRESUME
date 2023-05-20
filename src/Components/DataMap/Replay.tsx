@@ -914,14 +914,19 @@ export function KnowledgeButtonReplay() {
       onClick: () => {
         // sPage(cPage + 1);
         // sVisible1(false);
-        validateInput1(cCourse);
+        validateInput1(cCourse, cQuality, cFinishDate, cDOE);
         sVisible2(true);
       },
       language: languageChanger(cLanguage, "შემდეგი", "Next"),
       key: 1,
     },
   ];
-  function validateInput1(course: string | undefined) {
+  function validateInput1(
+    course: string | undefined,
+    quality: string | undefined,
+    finishDate: number | undefined,
+    DOE: string | undefined
+  ) {
     const WordsRegex = /.{2}.*/;
     if (course && WordsRegex.test(course)) {
       sCorrect7(true);
@@ -931,22 +936,26 @@ export function KnowledgeButtonReplay() {
       courseRef.current.style.border = "1px solid #EF5050";
     }
 
-    // if (employer && WordsRegex.test(employer)) {
-    //   sCorrect6(true);
-    // } else {
-    //   sCorrect6(false);
-    // }
-    // if (startDate && DateRegex.test(startDate)) {
-    //   ExperienceDateStartRef.current.style.border = "1px solid #98E37E";
-    // } else {
-    //   ExperienceDateStartRef.current.style.border = "1px solid #EF5050";
-    // }
-
-    // if (endDate && DateRegex.test(endDate)) {
-    //   ExperienceDateEndRef.current.style.border = "1px solid #98E37E";
-    // } else {
-    //   ExperienceDateEndRef.current.style.border = "1px solid #EF5050";
-    // }
+    if (
+      quality &&
+      quality.length > 0 &&
+      quality !== "აირჩიეთ ხარისხი" &&
+      quality !== "Choose a degree"
+    ) {
+      qualityRef.current.style.border = "1px solid #98E37E";
+    } else {
+      qualityRef.current.style.border = "1px solid #BCBCBC";
+    }
+    if (finishDate) {
+      finishDateRef.current.style.border = "1px solid #98E37E";
+    } else {
+      finishDateRef.current.style.border = "1px solid #BCBCBC";
+    }
+    if (DOE && DOE.length > 0) {
+      DOERef.current.style.border = "1px solid #98E37E";
+    } else {
+      DOERef.current.style.border = "1px solid #BCBCBC";
+    }
     // if (cDescription && cDescription.length > 0) {
     //   ExperienceTextAreaRef.current.style.border = "1px solid #98E37E";
     // } else {
@@ -954,28 +963,14 @@ export function KnowledgeButtonReplay() {
     // }
     if (
       course &&
-      WordsRegex.test(course)
-      // &&
-      // employer &&
-      // WordsRegex.test(employer) &&
-      // startDate &&
-      // DateRegex.test(startDate) &&
-      // endDate &&
-      // DateRegex.test(endDate)
+      WordsRegex.test(course) &&
+      quality &&
+      quality.length > 0 &&
+      finishDate &&
+      DOE &&
+      DOE.length > 0
     ) {
-      return [
-        sVisible2(false),
-
-        // cMoreExperience >= 1
-        //   ? `${ExperienceTextAreaRef1} ${ExperienceDateStartRef1} ${ExperienceDateEndRef1}`
-        //   : "",
-        // cMoreExperience >= 2
-        //   ? `${ExperienceTextAreaRef2} ${ExperienceDateStartRef2} ${ExperienceDateEndRef2}`
-        //   : "",
-
-        // sPage(cPage + 1),
-        sMoreExperience(0),
-      ];
+      return [sVisible2(false), sPage(cPage + 1), sMoreExperience(0)];
     }
   }
   return (
