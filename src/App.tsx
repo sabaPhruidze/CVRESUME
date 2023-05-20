@@ -93,6 +93,11 @@ function App() {
   const [cQuality2, sQuality2] = useState<any>("");
   const [cFinishDate2, sFinishDate2] = useState<any>();
   const [cDOE2, sDOE2] = useState<any>(""); //description of knowledge
+
+  const courseRef = useRef<any>("");
+  const qualityRef = useRef<any>("");
+  const finishDateRef = useRef<any>("");
+  const DOERef = useRef<any>("");
   function changePage() {
     switch (cPage) {
       case 0:
@@ -112,6 +117,10 @@ function App() {
   return (
     <context.Provider
       value={{
+        courseRef,
+        qualityRef,
+        finishDateRef,
+        DOERef,
         cCourse,
         sCourse,
         cQuality,

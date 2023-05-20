@@ -802,7 +802,6 @@ export function ExperienceButtonReplayskyColor() {
   const useAppContext0 = useContext(context);
   const {
     cPage,
-    sPage,
     cBGColor,
     cLanguage,
     cMoreExperience,
@@ -810,7 +809,7 @@ export function ExperienceButtonReplayskyColor() {
     cTop,
     sTop,
   } = useAppContext0;
-  const buttonDataHome = [
+  const buttonDataExperience = [
     {
       className: cBGColor
         ? `${CommonStyles.skyColorButton} ${CommonStyles.skyColorButtonDark}`
@@ -828,24 +827,44 @@ export function ExperienceButtonReplayskyColor() {
       },
     },
   ];
+  const buttonDataKnowledge = [
+    {
+      className: cBGColor
+        ? `${CommonStyles.skyColorButton} ${CommonStyles.skyColorButtonDark}`
+        : CommonStyles.skyColorButton,
 
+      language: languageChanger(
+        cLanguage,
+        "მეტი გამოცდილების დამატება",
+        "Adding more experience"
+      ),
+      key: 1,
+      onClick: () => {
+        sMoreExperience(cMoreExperience < 2 ? cMoreExperience + 1 : 2);
+        sTop(cMoreExperience < 2 ? cTop + 600 : 804 * 2 + 400);
+      },
+    },
+  ];
+  const CurrentButton =
+    cPage === 2 ? buttonDataExperience : cPage === 3 ? buttonDataKnowledge : "";
   return (
     <>
-      {buttonDataHome.map((data) => (
-        <button
-          className={data.className}
-          onClick={data.onClick}
-          key={data.key}
-          style={{
-            position: "absolute",
-            top: cMoreExperience > 0 ? cTop - 105 + 45 : 804,
-            left: "149px",
-            zIndex: 100,
-          }}
-        >
-          {data.language}
-        </button>
-      ))}
+      {CurrentButton &&
+        CurrentButton.map((data: any) => (
+          <button
+            className={data.className}
+            onClick={data.onClick}
+            key={data.key}
+            style={{
+              position: "absolute",
+              top: cMoreExperience > 0 ? cTop - 105 + 45 : 804,
+              left: "149px",
+              zIndex: 100,
+            }}
+          >
+            {data.language}
+          </button>
+        ))}
     </>
   );
 }
@@ -863,22 +882,37 @@ export function KnowledgeButtonReplay() {
     sVisible1,
     sVisible2,
     cMoreExperience,
+    cBGColor,
+    cQuality,
+    cCourse,
+    cFinishDate,
+    cDOE,
+    courseRef,
+    qualityRef,
+    finishDateRef,
+    DOERef,
   } = useAppContext0;
-
-  const buttonDataHome = [
+  function validateKnowledge() {
+    return;
+  }
+  const buttonDataKnowledge = [
     {
-      className: ` ${CommonStyles.purpleButtonBack} ${CommonStyles.purpleButtonTwice}`,
+      className: cBGColor
+        ? `${CommonStyles.purpleButtonBack} ${CommonStyles.purpleButtonTwiceDark}`
+        : ` ${CommonStyles.purpleButtonTwice} ${CommonStyles.purpleButtonBack}`,
       onClick: () => {
         sPage(cPage - 1);
-        sVisible1(true);
+        sVisible2(false);
       },
       language: languageChanger(cLanguage, "უკან", "Back"),
       key: 0,
     },
     {
-      className: CommonStyles.purpleButtonTwice,
+      className: cBGColor
+        ? `${CommonStyles.purpleButtonTwiceDark}`
+        : `${CommonStyles.purpleButtonTwice}`,
       onClick: () => {
-        sPage(cPage + 1);
+        // sPage(cPage + 1);
         sVisible1(false);
         sVisible2(true);
       },
@@ -889,7 +923,7 @@ export function KnowledgeButtonReplay() {
 
   return (
     <>
-      {buttonDataHome.map((data) => (
+      {buttonDataKnowledge.map((data) => (
         <button
           className={data.className}
           onClick={data.onClick}
@@ -898,55 +932,6 @@ export function KnowledgeButtonReplay() {
             position: "absolute",
             top: cMoreExperience > 0 ? cTop + 114 : 918,
             right: "150px",
-          }}
-        >
-          {data.language}
-        </button>
-      ))}
-    </>
-  );
-}
-
-export function KnowledgeButtonReplayskyColor() {
-  const useAppContext0 = useContext(context);
-  const {
-    cPage,
-    sPage,
-    cLanguage,
-    cMoreExperience,
-    sMoreExperience,
-    cTop,
-    sTop,
-  } = useAppContext0;
-  const buttonDataHome = [
-    {
-      className: CommonStyles.skyColorButton,
-
-      language: languageChanger(
-        cLanguage,
-        "მეტი გამოცდილების დამატება",
-        "Adding more experience"
-      ),
-      key: 1,
-      onClick: () => {
-        sMoreExperience(cMoreExperience < 2 ? cMoreExperience + 1 : 2);
-        sTop(cMoreExperience < 2 ? cTop + 600 : 804 * 2 + 400);
-      },
-    },
-  ];
-
-  return (
-    <>
-      {buttonDataHome.map((data) => (
-        <button
-          className={data.className}
-          onClick={data.onClick}
-          key={data.key}
-          style={{
-            position: "absolute",
-            top: cMoreExperience > 0 ? cTop - 105 + 45 : 804,
-            left: "149px",
-            zIndex: 100,
           }}
         >
           {data.language}

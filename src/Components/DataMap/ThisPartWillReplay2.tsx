@@ -86,6 +86,10 @@ export default function ThisPartWillReplay() {
     cDOE2,
     sDOE2,
     cVisible2,
+    courseRef,
+    qualityRef,
+    finishDateRef,
+    DOERef,
   } = useAppContext0;
   const experienceData = [
     {
@@ -131,15 +135,15 @@ export default function ThisPartWillReplay() {
     },
   ];
   const options = [
-    "აირჩიეთ ხარისხი",
-    "საშუალო სკოლის დიპლომი",
-    "ზოგადსაგანმანათლებლო დიპლომი",
-    "ბაკალავრი",
-    "მაგისტრი",
-    "ასოცირებული ხარისხი",
-    "სტუდენტი",
-    "კოლეჯის ხარისხის გარეშე",
-    "სხვა",
+    cLanguage ? "Choose a degree" : "აირჩიეთ ხარისხი",
+    cLanguage ? "High school diploma" : "საშუალო სკოლის დიპლომი",
+    cLanguage ? "General education diploma" : "ზოგადსაგანმანათლებლო დიპლომი",
+    cLanguage ? "Bachelor" : "ბაკალავრი",
+    cLanguage ? "master" : "მაგისტრი",
+    cLanguage ? "associate degree" : "ასოცირებული ხარისხი",
+    cLanguage ? "student" : "სტუდენტი",
+    cLanguage ? "Without a college degree" : "კოლეჯის ხარისხის გარეშე",
+    cLanguage ? "other" : "სხვა",
   ];
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     sQuality(e.target.value);
@@ -327,7 +331,7 @@ export default function ThisPartWillReplay() {
                   fontWeight: "700",
                 }}
               >
-                ხარისხი
+                {languageChanger(cLanguage, "ხარისხი", "Quality")}
               </label>
               <select
                 id="quality"
@@ -493,7 +497,7 @@ export default function ThisPartWillReplay() {
                     fontWeight: "700",
                   }}
                 >
-                  ხარისხი
+                  {languageChanger(cLanguage, "ხარისხი", "Quality")}
                 </label>
                 <select
                   id="quality"
@@ -670,7 +674,7 @@ export default function ThisPartWillReplay() {
                     fontWeight: "700",
                   }}
                 >
-                  ხარისხი
+                  {languageChanger(cLanguage, "ხარისხი", "Quality")}
                 </label>
                 <select
                   id="quality"

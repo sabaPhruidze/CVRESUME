@@ -4,7 +4,7 @@ import { context } from "../../App";
 import {
   ImgReplay,
   HeadlineDivCustom,
-  KnowledgeButtonReplayskyColor,
+  ExperienceButtonReplayskyColor,
 } from "../DataMap/Replay";
 import ThisPartWillReplay2 from "../DataMap/ThisPartWillReplay2";
 import CorrectWrongComponent from "./CorrectWrongComponent";
@@ -92,7 +92,7 @@ export default function Knowledge() {
         overflow: cMoreExperience === 0 ? "hidden" : "none",
       }}
     >
-      <KnowledgeButtonReplayskyColor />
+      <ExperienceButtonReplayskyColor />
       <MyKnowledgeContext.Provider
         value={{
           cVisible,

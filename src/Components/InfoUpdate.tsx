@@ -163,11 +163,19 @@ export default function InfoUpdate() {
     sVisible2,
     cDOE2,
     sDOE2,
+    courseRef,
+    qualityRef,
+    finishDateRef,
+    DOERef,
   } = useAppContext1;
 
   return (
     <infoUpdateContext.Provider
       value={{
+        courseRef,
+        qualityRef,
+        finishDateRef,
+        DOERef,
         cPage,
         sPage,
         cTop,
