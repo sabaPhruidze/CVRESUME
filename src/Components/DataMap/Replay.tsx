@@ -199,6 +199,7 @@ export function ButtonReplay() {
       onClick: () => sPage(1),
       language: languageChanger(cLanguage, "რეზიუმეს დამატება", "Add resume"),
       key: 0,
+      widthPlace: "150px",
     },
   ];
   const buttonDataPersonal = [
@@ -212,6 +213,7 @@ export function ButtonReplay() {
       },
       language: languageChanger(cLanguage, "შემდეგი", "Next"),
       key: 0,
+      widthPlace: "150px",
     },
   ];
   const buttonDataExperience = [
@@ -225,6 +227,7 @@ export function ButtonReplay() {
       },
       language: languageChanger(cLanguage, "უკან", "Back"),
       key: 0,
+      widthPlace: "150px",
     },
     {
       className: cBGColor
@@ -243,6 +246,7 @@ export function ButtonReplay() {
       },
       language: languageChanger(cLanguage, "შემდეგი", "Next"),
       key: 1,
+      widthPlace: "797px",
     },
   ];
   const properButton =
@@ -394,7 +398,7 @@ export function ButtonReplay() {
               ? {
                   position: "absolute",
                   top: cMoreExperience > 0 ? cTop + 114 : 918,
-                  right: "150px",
+                  left: data.widthPlace,
                 }
               : {}
           }
@@ -831,6 +835,7 @@ export function KnowledgeButtonReplay() {
       },
       language: languageChanger(cLanguage, "უკან", "Back"),
       key: 0,
+      widthPlace: "150px",
     },
     {
       className: cBGColor
@@ -844,6 +849,7 @@ export function KnowledgeButtonReplay() {
       },
       language: languageChanger(cLanguage, "შემდეგი", "Next"),
       key: 1,
+      widthPlace: "797px",
     },
   ];
   function validateInput1(
@@ -901,7 +907,7 @@ export function KnowledgeButtonReplay() {
           style={{
             position: "absolute",
             top: cMoreExperience > 0 ? cTop + 114 : 918,
-            right: "150px",
+            left: data.widthPlace,
           }}
         >
           {data.language}
