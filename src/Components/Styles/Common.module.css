@@ -111,7 +111,7 @@ least for 2 page */
     color: #000000;
   background-color: #ffffff;
 }
-.inputStandard:active, .inputStandard:focus, .inputStandardDark:active, .inputStandardDark:focus {
+.inputStandard:active, .inputStandard:focus, .inputStandardDark:active, .inputStandardDark:focus, .textAreaFocus:focus, .textAreaFocus:active {
     outline: 0;
 }
 .inputStandardDark {
@@ -172,7 +172,7 @@ least for 2 page */
   background-color:#032750;
   border:1px solid black
 }
-.purpleButton:focus, .skyColorButton:focus {
+.purpleButton:focus, .skyColorButton:focus  {
     transform: scale(0.95);
 }
 .purpleButtonBack {

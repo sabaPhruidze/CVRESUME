@@ -396,6 +396,7 @@ export default function ThisPartWillReplay() {
                     width: "100%",
                     height: 179,
                   }}
+                  className={CommonStyles.textAreaFocus}
                   ref={data.ref}
                 ></textarea>
                 <hr
@@ -569,6 +570,7 @@ export default function ThisPartWillReplay() {
                       width: "100%",
                       height: 179,
                     }}
+                    className={CommonStyles.textAreaFocus}
                   ></textarea>
                   <hr
                     style={{
@@ -744,6 +746,7 @@ export default function ThisPartWillReplay() {
                       width: "100%",
                       height: 179,
                     }}
+                    className={CommonStyles.textAreaFocus}
                   ></textarea>
                   <hr
                     style={{

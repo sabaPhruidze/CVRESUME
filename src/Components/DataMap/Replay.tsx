@@ -245,33 +245,13 @@ export function ButtonReplay() {
       key: 1,
     },
   ];
-  const buttonDataKnowledge = [
-    {
-      className: ` ${CommonStyles.purpleButtonBack} ${CommonStyles.purpleButtonTwice}`,
-      onClick: () => {
-        sPage(cPage - 1);
-        sVisible1(true);
-      },
-      language: languageChanger(cLanguage, "უკან", "Back"),
-      key: 0,
-    },
-    {
-      className: CommonStyles.purpleButtonTwice,
-      onClick: () => {
-        // validateInput2(cCourse, cQuality, cFinishDate, cDOE);
-        sVisible1(false);
-        sVisible2(true);
-      },
-      language: languageChanger(cLanguage, "შემდეგი", "Next"),
-      key: 1,
-    },
-  ];
   const properButton =
     cPage === 0
       ? buttonDataHome
       : cPage === 1
       ? buttonDataPersonal
       : buttonDataExperience;
+
   function validateInputPersonal(
     name: string | undefined,
     username: string | undefined,
@@ -402,61 +382,6 @@ export function ButtonReplay() {
       ];
     }
   }
-  // function validateInput2(
-  //   course: string,
-  //   quality: string,
-  //   finishDate: Number,
-  //   knowledgeDescription: string
-  // ) {
-  //   const WordsRegex = /.{2,}/;
-  //   if (course && course.length > 0) {
-  //     ExperienceTextAreaRef.current.style.border = "1px solid #98E37E";
-  //   } else {
-  //     ExperienceTextAreaRef.current.style.border = "1px solid #BCBCBC";
-  //   }
-  //   if (quality && quality.length > 0) {
-  //     ExperienceTextAreaRef.current.style.border = "1px solid #98E37E";
-  //   } else {
-  //     ExperienceTextAreaRef.current.style.border = "1px solid #BCBCBC";
-  //   }
-  //   if (finishDate) {
-  //     ExperienceTextAreaRef.current.style.border = "1px solid #98E37E";
-  //   } else {
-  //     ExperienceTextAreaRef.current.style.border = "1px solid #BCBCBC";
-  //   }
-  //   if (knowledgeDescription && knowledgeDescription.length > 0) {
-  //     ExperienceTextAreaRef.current.style.border = "1px solid #98E37E";
-  //   } else {
-  //     ExperienceTextAreaRef.current.style.border = "1px solid #BCBCBC";
-  //   }
-  //   if (
-  //     course &&
-  //     WordsRegex.test(course) &&
-  //     quality &&
-  //     WordsRegex.test(quality) &&
-  //     finishDate &&
-  //     knowledgeDescription
-  //   ) {
-  //     return [
-  //       sVisible2(false),
-  //       course,
-  //       quality,
-  //       finishDate,
-  //       knowledgeDescription,
-
-  //       cMoreExperience >= 1
-  //         ? `${ExperienceTextAreaRef1} ${ExperienceDateStartRef1} ${ExperienceDateEndRef1}`
-  //         : "",
-  //       cMoreExperience >= 2
-  //         ? `${ExperienceTextAreaRef2} ${ExperienceDateStartRef2} ${ExperienceDateEndRef2}`
-  //         : "",
-
-  //       sPage(cPage + 1),
-  //       sMoreExperience(0),
-  //     ];
-  //   }
-  // }
-
   return (
     <>
       {properButton.map((data) => (
@@ -944,31 +869,24 @@ export function KnowledgeButtonReplay() {
     ) {
       qualityRef.current.style.border = "1px solid #98E37E";
     } else {
-      qualityRef.current.style.border = "1px solid #BCBCBC";
+      qualityRef.current.style.border = "1px solid #EF5050";
     }
     if (finishDate) {
       finishDateRef.current.style.border = "1px solid #98E37E";
     } else {
-      finishDateRef.current.style.border = "1px solid #BCBCBC";
+      finishDateRef.current.style.border = "1px solid #EF5050";
     }
     if (DOE && DOE.length > 0) {
       DOERef.current.style.border = "1px solid #98E37E";
     } else {
       DOERef.current.style.border = "1px solid #BCBCBC";
     }
-    // if (cDescription && cDescription.length > 0) {
-    //   ExperienceTextAreaRef.current.style.border = "1px solid #98E37E";
-    // } else {
-    //   ExperienceTextAreaRef.current.style.border = "1px solid #BCBCBC";
-    // }
     if (
       course &&
       WordsRegex.test(course) &&
       quality &&
       quality.length > 0 &&
-      finishDate &&
-      DOE &&
-      DOE.length > 0
+      finishDate
     ) {
       return [sVisible2(false), sPage(cPage + 1), sMoreExperience(0)];
     }
