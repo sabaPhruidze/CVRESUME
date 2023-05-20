@@ -633,7 +633,6 @@ export function InputFile() {
             style={{
               padding: data.labelStyle,
             }}
-            id={data.labelId}
           >
             {data.buttonContent}
             <input

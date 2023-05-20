@@ -48,13 +48,30 @@ export default function Knowledge() {
     sVisible,
     cCorrect7,
     sVisible1,
+    cPosition1,
+    cEmployer1,
+    cStartDate1,
+    cEndDate1,
+    cDescription1,
     cMoreExperience,
+    sMoreExperience,
   } = useAppContext3;
   function languageChanger(geo: string, eng: string) {
     return !cLanguage ? geo : eng;
   }
   useEffect(() => {
     sVisible1(false);
+    if (
+      cPosition1.length > 0 ||
+      cEmployer1.length > 0 ||
+      cStartDate1.length > 0 ||
+      cEndDate1.length > 0 ||
+      cDescription1.length > 0
+    ) {
+      sMoreExperience(1);
+    } else {
+      sMoreExperience(0);
+    }
   }, []);
   return (
     <div

@@ -177,7 +177,7 @@ export default function Rendered() {
           <div
             style={{
               width: "662px",
-              height: "100px",
+              height: "140px",
               wordWrap: "break-word",
               overflow: "hidden",
               fontSize: "16px",
@@ -195,18 +195,7 @@ export default function Rendered() {
       cEndDate1.length > 0 ||
       cDescription1.length > 0 ? (
         <>
-          <hr style={{ marginTop: "19px", width: "calc(100% - 80px)" }} />
-          <p
-            style={{
-              fontSize: "18px",
-              fontWeight: "700",
-              color: "#F93B1D",
-              marginTop: "24px",
-            }}
-          >
-            გამოცდილება
-          </p>
-          <p style={{ marginTop: "15px", fontWeight: "600" }}>
+          <p style={{ marginTop: "30px", fontWeight: "600" }}>
             {cPosition1}, {cEmployer1}{" "}
           </p>
           <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
@@ -233,17 +222,6 @@ export default function Rendered() {
       cEndDate2.length > 0 ||
       cDescription2.length > 0 ? (
         <>
-          <hr style={{ marginTop: "19px", width: "calc(100% - 80px)" }} />
-          <p
-            style={{
-              fontSize: "18px",
-              fontWeight: "700",
-              color: "#F93B1D",
-              marginTop: "24px",
-            }}
-          >
-            გამოცდილება
-          </p>
           <p style={{ marginTop: "15px", fontWeight: "600" }}>
             {cPosition2}, {cEmployer2}{" "}
           </p>
@@ -253,7 +231,7 @@ export default function Rendered() {
           <div
             style={{
               width: "662px",
-              height: "100px",
+              height: "140px",
               wordWrap: "break-word",
               overflow: "hidden",
               fontSize: "16px",
