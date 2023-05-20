@@ -104,6 +104,7 @@ export default function ThisPartWillReplay() {
         "Study place"
       ),
       borderCorrect: cCorrect7,
+      ref: courseRef,
     },
   ];
   const experienceData1 = [
@@ -165,7 +166,7 @@ export default function ThisPartWillReplay() {
       onChange: (e: any) => sFinishDate(e.target.value),
       value: cFinishDate,
       key: 1,
-      ref: ExperienceDateEndRef, ///aaaaaaaaaaaaaaaqqqqqqqqqqqq
+      ref: finishDateRef, ///aaaaaaaaaaaaaaaqqqqqqqqqqqq
     },
   ];
   const dataMap1 = [
@@ -179,7 +180,6 @@ export default function ThisPartWillReplay() {
       onChange: (e: any) => sFinishDate1(e.target.value),
       value: cFinishDate1,
       key: 1,
-      ref: ExperienceDateEndRef1,
     },
   ];
   const dataMap2 = [
@@ -193,14 +193,13 @@ export default function ThisPartWillReplay() {
       onChange: (e: any) => sFinishDate2(e.target.value),
       value: cFinishDate2,
       key: 1,
-      ref: ExperienceDateEndRef2,
     },
   ];
   const DataOfTextArea = [
     {
       key: 0,
       htmlFor: "Describe",
-      ref: ExperienceTextAreaRef,
+      ref: DOERef,
       labelContext: languageChanger(cLanguage, "აღწერა", "Describe"),
       // spanContext: languageChanger(cLanguage, "(არასავალდებულო)", "(optional)"),
       placeHolder: languageChanger(
@@ -210,19 +209,6 @@ export default function ThisPartWillReplay() {
       ),
       onChange: (e: any) => {
         sDOE(e.target.value);
-        if (
-          ExperienceTextAreaRef.current.value.length === 0 &&
-          cBGColor === true
-        ) {
-          ExperienceTextAreaRef.current.style.border = "1px solid white";
-        } else if (
-          ExperienceTextAreaRef.current.value.length === 0 &&
-          cBGColor === false
-        ) {
-          ExperienceTextAreaRef.current.style.border = "1px solid black";
-        } else {
-          ExperienceTextAreaRef.current.style.border = "1px solid black";
-        }
       },
       value: cDOE,
     },
@@ -231,7 +217,6 @@ export default function ThisPartWillReplay() {
     {
       key: 0,
       htmlFor: "Describe1",
-      ref: ExperienceTextAreaRef1,
       labelContext: languageChanger(cLanguage, "აღწერა", "Describe"),
       // spanContext: languageChanger(cLanguage, "(არასავალდებულო)", "(optional)"),
       placeHolder: languageChanger(
@@ -241,9 +226,6 @@ export default function ThisPartWillReplay() {
       ),
       onChange: (e: any) => {
         sDOE1(e.target.value);
-        if (ExperienceTextAreaRef1.current.value.length === 0) {
-          ExperienceTextAreaRef1.current.style.border = "1px solid black";
-        }
       },
       value: cDOE1,
     },
@@ -252,7 +234,6 @@ export default function ThisPartWillReplay() {
     {
       key: 0,
       htmlFor: "Describe2",
-      ref: ExperienceTextAreaRef2,
       labelContext: languageChanger(cLanguage, "აღწერა", "Describe"),
       // spanContext: languageChanger(cLanguage, "(არასავალდებულო)", "(optional)"),
       placeHolder: languageChanger(
@@ -262,9 +243,6 @@ export default function ThisPartWillReplay() {
       ),
       onChange: (e: any) => {
         sDOE2(e.target.value);
-        if (ExperienceTextAreaRef2.current.value.length === 0) {
-          ExperienceTextAreaRef2.current.style.border = "1px solid black";
-        }
       },
       value: cDOE2,
     },
@@ -292,16 +270,13 @@ export default function ThisPartWillReplay() {
                     id={data.htmlForId}
                     className={CommonStyles.inputStandard}
                     style={{
-                      border: cVisible2
-                        ? data.borderCorrect
-                          ? "1px solid #98E37E"
-                          : "1px solid #EF5050"
-                        : "1px solid #BCBCBC",
+                      border: "1px solid #BCBCBC",
                       backgroundColor: cBGColor ? "black" : "white",
                       color: cBGColor ? "white" : "black",
                     }}
                     value={data.value}
                     onChange={(event) => data.set(event.target.value)}
+                    ref={data.ref}
                   />
                   <span className={CommonStyles.spanStandard}>
                     {languageChanger(
@@ -344,6 +319,7 @@ export default function ThisPartWillReplay() {
                   border: "1px solid #BCBCBC",
                   paddingLeft: 16,
                 }}
+                ref={qualityRef}
               >
                 {options.map((option, index) => (
                   <option
@@ -552,7 +528,6 @@ export default function ThisPartWillReplay() {
                         border: "1px solid #BCBCBC",
                         paddingLeft: 16,
                       }}
-                      ref={data.ref}
                     />
                   </div>
                 );
@@ -594,7 +569,6 @@ export default function ThisPartWillReplay() {
                       width: "100%",
                       height: 179,
                     }}
-                    ref={data.ref}
                   ></textarea>
                   <hr
                     style={{
@@ -729,7 +703,6 @@ export default function ThisPartWillReplay() {
                         border: "1px solid #BCBCBC",
                         paddingLeft: 16,
                       }}
-                      ref={data.ref}
                     />
                   </div>
                 );
@@ -771,7 +744,6 @@ export default function ThisPartWillReplay() {
                       width: "100%",
                       height: 179,
                     }}
-                    ref={data.ref}
                   ></textarea>
                   <hr
                     style={{

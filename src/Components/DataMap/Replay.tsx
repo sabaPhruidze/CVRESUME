@@ -879,6 +879,7 @@ export function KnowledgeButtonReplay() {
     sCorrect7,
     cTop,
     sTop,
+    sMoreExperience,
     sVisible1,
     sVisible2,
     cMoreExperience,
@@ -891,10 +892,9 @@ export function KnowledgeButtonReplay() {
     qualityRef,
     finishDateRef,
     DOERef,
+    cCorrect7,
   } = useAppContext0;
-  function validateKnowledge() {
-    return;
-  }
+
   const buttonDataKnowledge = [
     {
       className: cBGColor
@@ -913,14 +913,71 @@ export function KnowledgeButtonReplay() {
         : `${CommonStyles.purpleButtonTwice}`,
       onClick: () => {
         // sPage(cPage + 1);
-        sVisible1(false);
+        // sVisible1(false);
+        validateInput1(cCourse);
         sVisible2(true);
       },
       language: languageChanger(cLanguage, "შემდეგი", "Next"),
       key: 1,
     },
   ];
+  function validateInput1(course: string | undefined) {
+    const WordsRegex = /.{2}.*/;
+    if (course && WordsRegex.test(course)) {
+      sCorrect7(true);
+      courseRef.current.style.border = "1px solid #98E37E";
+    } else {
+      sCorrect7(false);
+      courseRef.current.style.border = "1px solid #EF5050";
+    }
 
+    // if (employer && WordsRegex.test(employer)) {
+    //   sCorrect6(true);
+    // } else {
+    //   sCorrect6(false);
+    // }
+    // if (startDate && DateRegex.test(startDate)) {
+    //   ExperienceDateStartRef.current.style.border = "1px solid #98E37E";
+    // } else {
+    //   ExperienceDateStartRef.current.style.border = "1px solid #EF5050";
+    // }
+
+    // if (endDate && DateRegex.test(endDate)) {
+    //   ExperienceDateEndRef.current.style.border = "1px solid #98E37E";
+    // } else {
+    //   ExperienceDateEndRef.current.style.border = "1px solid #EF5050";
+    // }
+    // if (cDescription && cDescription.length > 0) {
+    //   ExperienceTextAreaRef.current.style.border = "1px solid #98E37E";
+    // } else {
+    //   ExperienceTextAreaRef.current.style.border = "1px solid #BCBCBC";
+    // }
+    if (
+      course &&
+      WordsRegex.test(course)
+      // &&
+      // employer &&
+      // WordsRegex.test(employer) &&
+      // startDate &&
+      // DateRegex.test(startDate) &&
+      // endDate &&
+      // DateRegex.test(endDate)
+    ) {
+      return [
+        sVisible2(false),
+
+        // cMoreExperience >= 1
+        //   ? `${ExperienceTextAreaRef1} ${ExperienceDateStartRef1} ${ExperienceDateEndRef1}`
+        //   : "",
+        // cMoreExperience >= 2
+        //   ? `${ExperienceTextAreaRef2} ${ExperienceDateStartRef2} ${ExperienceDateEndRef2}`
+        //   : "",
+
+        // sPage(cPage + 1),
+        sMoreExperience(0),
+      ];
+    }
+  }
   return (
     <>
       {buttonDataKnowledge.map((data) => (

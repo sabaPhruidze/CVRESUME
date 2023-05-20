@@ -17,7 +17,8 @@ export default function CorrectWrongComponent() {
     cVisible1,
     cCorrect5,
     cCorrect6,
-    cCorrerct7,
+    cCorrect7,
+    sCorrect7,
     cVisible2,
     cPage,
   } = MPCL;
@@ -29,7 +30,7 @@ export default function CorrectWrongComponent() {
     { value: cCorrect3, top: "795px", left: cCorrect3 ? "916px" : "961px" },
     { value: cCorrect5, top: "190px", left: cCorrect5 ? "916px" : "961px" },
     { value: cCorrect6, top: "315px", left: cCorrect6 ? "916px" : "961px" },
-    { value: cCorrerct7, top: "190px", left: cCorrerct7 ? "916px" : "961px" },
+    { value: cCorrect7, top: "190px", left: cCorrect7 ? "916px" : "961px" },
   ];
 
   return (
