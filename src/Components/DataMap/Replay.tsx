@@ -397,7 +397,14 @@ export function ButtonReplay() {
             cPage === 2
               ? {
                   position: "absolute",
-                  top: cMoreExperience > 0 ? cTop + 114 : 918,
+                  top:
+                    cMoreExperience === 0
+                      ? 967
+                      : cMoreExperience === 1
+                      ? 1598
+                      : cMoreExperience === 2
+                      ? 2259
+                      : 967,
                   left: data.widthPlace,
                 }
               : {}
@@ -752,7 +759,7 @@ export function ExperienceButtonReplayskyColor() {
       key: 1,
       onClick: () => {
         sMoreExperience(cMoreExperience < 2 ? cMoreExperience + 1 : 2);
-        sTop(cMoreExperience < 2 ? cTop + 600 : 804 * 2 + 400);
+        // sTop(cMoreExperience < 2 ? cTop + 600 : 804 * 2 + 400);
       },
     },
   ];
@@ -770,7 +777,7 @@ export function ExperienceButtonReplayskyColor() {
       key: 1,
       onClick: () => {
         sMoreExperience(cMoreExperience < 2 ? cMoreExperience + 1 : 2);
-        sTop(cMoreExperience < 2 ? cTop + 600 : 804 * 2 + 400);
+        // sTop(cMoreExperience < 2 ? cTop + 600 : 804 * 2 + 400);
       },
     },
   ];
@@ -786,8 +793,21 @@ export function ExperienceButtonReplayskyColor() {
             key={data.key}
             style={{
               position: "absolute",
-              top: cMoreExperience > 0 ? cTop - 105 + 45 : 804,
-              left: "149px",
+              top:
+                cPage === 2 && cMoreExperience === 0
+                  ? 750
+                  : cPage === 2 && cMoreExperience === 1
+                  ? 1340
+                  : cPage === 2 && cMoreExperience === 2
+                  ? 1920
+                  : cPage === 3 && cMoreExperience === 0
+                  ? 725
+                  : cPage === 3 && cMoreExperience === 1
+                  ? 1290
+                  : cPage === 3 && cMoreExperience === 2
+                  ? 1850
+                  : "",
+              left: "150px",
               zIndex: 100,
             }}
           >
@@ -906,7 +926,14 @@ export function KnowledgeButtonReplay() {
           key={data.key}
           style={{
             position: "absolute",
-            top: cMoreExperience > 0 ? cTop + 114 : 918,
+            top:
+              cMoreExperience === 0
+                ? 967
+                : cMoreExperience === 1
+                ? 1598
+                : cMoreExperience === 2
+                ? 2259
+                : 967,
             left: data.widthPlace,
           }}
         >

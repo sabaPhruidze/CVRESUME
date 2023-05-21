@@ -8,7 +8,7 @@ import InfoUpdate from "./Components/InfoUpdate";
 export const context = createContext<any>(null);
 
 function App() {
-  const [cPage, sPage] = useState<number>(4); // current page ,set page
+  const [cPage, sPage] = useState<number>(3); // current page ,set page
   const [cLanguage, sLanguage] = useState<boolean>(false); //if false than georgian else english
   const [cBGColor, sBGColor] = useState<boolean>(false); //if false than white, if true than black {BG- means background color}
 
@@ -76,7 +76,7 @@ function App() {
   const ExperienceTextAreaRef1 = useRef<any>("");
   const ExperienceTextAreaRef2 = useRef<any>("");
   const replayRef = useRef<any>("");
-  const [cTop, sTop] = useState<any>(804);
+  const [cTop, sTop] = useState<any>(967);
 
   //knowledge
   const [cCourse, sCourse] = useState<string>("");

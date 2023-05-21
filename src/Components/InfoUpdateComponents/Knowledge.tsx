@@ -19,6 +19,12 @@ export default function Knowledge() {
   const useAppContext3 = useContext(context);
   const {
     cPage,
+    sTop,
+    cPosition2,
+    cEmployer2,
+    cStartDate2,
+    cEndDate2,
+    cDescription2,
     sPage,
     cLanguage,
     sLanguage,
@@ -66,9 +72,15 @@ export default function Knowledge() {
       cEmployer1.length > 0 ||
       cStartDate1.length > 0 ||
       cEndDate1.length > 0 ||
-      cDescription1.length > 0
+      cDescription1.length > 0 ||
+      cPosition2.length > 0 ||
+      cEmployer2.length > 0 ||
+      cStartDate2.length > 0 ||
+      cEndDate2.length > 0 ||
+      cDescription2.length > 0
     ) {
       sMoreExperience(1);
+      // sTop(967 + 551);
     } else {
       sMoreExperience(0);
     }
