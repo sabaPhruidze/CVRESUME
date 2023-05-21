@@ -488,7 +488,7 @@ export function InputReplayCustomRow() {
       content: languageChanger(cLanguage, "სახელი", "Name"),
       htmlForId: "name",
       set: sName,
-      inputPlaceHolder: !cLanguage ? "ანზორ" : "Anzor",
+      inputPlaceHolder: languageChanger(cLanguage, "ანზორ", "Anzor"),
       borderCorrect: cCorrect,
       lsCall: "name",
       lsValue: cName,
@@ -496,7 +496,7 @@ export function InputReplayCustomRow() {
     },
     {
       fullDivName: infoUpdateStyles.lastNamePart,
-      content: !cLanguage ? "გვარი" : "Username",
+      content: languageChanger(cLanguage, "გვარი", "Username"),
       htmlForId: "userName",
       set: sUsername,
       inputPlaceHolder: languageChanger(cLanguage, "მუმლაძე", "Mumladze"),
@@ -541,7 +541,7 @@ export function InputReplayCustomRow() {
             <span className={CommonStyles.spanStandard}>
               {!cLanguage
                 ? "მინიმუმ 2 ასო, ქართული ასოები"
-                : "At least 2 letters, Georgian letters"}
+                : "At least 2 letters, English letters"}
             </span>
           </div>
         );

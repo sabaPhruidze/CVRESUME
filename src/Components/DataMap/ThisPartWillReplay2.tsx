@@ -97,6 +97,11 @@ export default function ThisPartWillReplay() {
       content: languageChanger(cLanguage, "სასწავლებელი", "Study place"),
       htmlForId: "Studyplace",
       set: sCourse,
+      onChange: (e: any) => {
+        const change = e.target.value;
+        sCourse(change);
+        localStorage.setItem("course", JSON.stringify(change));
+      },
       value: cCourse,
       inputPlaceHolder: languageChanger(
         cLanguage,
@@ -113,6 +118,11 @@ export default function ThisPartWillReplay() {
       content: languageChanger(cLanguage, "სასწავლებელი", "Study place"),
       htmlForId: "Studyplace1",
       set: sCourse1,
+      onChange: (e: any) => {
+        const change = e.target.value;
+        sCourse1(change);
+        localStorage.setItem("course1", JSON.stringify(change));
+      },
       value: cCourse1,
       inputPlaceHolder: languageChanger(
         cLanguage,
@@ -127,6 +137,11 @@ export default function ThisPartWillReplay() {
       content: languageChanger(cLanguage, "სასწავლებელი", "Study place"),
       htmlForId: "Studyplace2",
       set: sCourse2,
+      onChange: (e: any) => {
+        const change = e.target.value;
+        sCourse2(change);
+        localStorage.setItem("course2", JSON.stringify(change));
+      },
       value: cCourse2,
       inputPlaceHolder: languageChanger(
         cLanguage,
@@ -147,13 +162,19 @@ export default function ThisPartWillReplay() {
     cLanguage ? "other" : "სხვა",
   ];
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    sQuality(e.target.value);
+    const change = e.target.value;
+    sQuality(change);
+    localStorage.setItem("Quality", JSON.stringify(change));
   };
   const handleChange1 = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    sQuality1(e.target.value);
+    const change = e.target.value;
+    sQuality1(change);
+    localStorage.setItem("Quality1", JSON.stringify(change));
   };
   const handleChange2 = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    sQuality2(e.target.value);
+    const change = e.target.value;
+    sQuality2(change);
+    localStorage.setItem("Quality2", JSON.stringify(change));
   };
   const dataMap = [
     {
@@ -163,7 +184,11 @@ export default function ThisPartWillReplay() {
         "დამთავრების რიცხვი",
         "End date"
       ),
-      onChange: (e: any) => sFinishDate(e.target.value),
+      onChange: (e: any) => {
+        const change = e.target.value;
+        sFinishDate(change);
+        localStorage.setItem("finishDate", JSON.stringify(change));
+      },
       value: cFinishDate,
       key: 1,
       ref: finishDateRef, ///aaaaaaaaaaaaaaaqqqqqqqqqqqq
@@ -177,7 +202,11 @@ export default function ThisPartWillReplay() {
         "დამთავრების რიცხვი",
         "End date"
       ),
-      onChange: (e: any) => sFinishDate1(e.target.value),
+      onChange: (e: any) => {
+        const change = e.target.value;
+        sFinishDate1(change);
+        localStorage.setItem("finishDate1", JSON.stringify(change));
+      },
       value: cFinishDate1,
       key: 1,
     },
@@ -190,7 +219,11 @@ export default function ThisPartWillReplay() {
         "დამთავრების რიცხვი",
         "End date"
       ),
-      onChange: (e: any) => sFinishDate2(e.target.value),
+      onChange: (e: any) => {
+        const change = e.target.value;
+        sFinishDate2(change);
+        localStorage.setItem("finishDate2", JSON.stringify(change));
+      },
       value: cFinishDate2,
       key: 1,
     },
@@ -208,7 +241,9 @@ export default function ThisPartWillReplay() {
         "Describe the knowledge"
       ),
       onChange: (e: any) => {
-        sDOE(e.target.value);
+        const change = e.target.value;
+        sDOE(change);
+        localStorage.setItem("DOE", JSON.stringify(change));
       },
       value: cDOE,
     },
@@ -225,7 +260,9 @@ export default function ThisPartWillReplay() {
         "Describe the knowledge"
       ),
       onChange: (e: any) => {
-        sDOE1(e.target.value);
+        const change = e.target.value;
+        sDOE1(change);
+        localStorage.setItem("DOE1", JSON.stringify(change));
       },
       value: cDOE1,
     },
@@ -242,7 +279,9 @@ export default function ThisPartWillReplay() {
         "Describe the knowledge"
       ),
       onChange: (e: any) => {
-        sDOE2(e.target.value);
+        const change = e.target.value;
+        sDOE2(change);
+        localStorage.setItem("DOE2", JSON.stringify(change));
       },
       value: cDOE2,
     },
@@ -275,7 +314,7 @@ export default function ThisPartWillReplay() {
                       color: cBGColor ? "white" : "black",
                     }}
                     value={data.value}
-                    onChange={(event) => data.set(event.target.value)}
+                    onChange={data.onChange}
                     ref={data.ref}
                   />
                   <span className={CommonStyles.spanStandard}>
@@ -444,7 +483,7 @@ export default function ThisPartWillReplay() {
                         color: cBGColor ? "white" : "black",
                       }}
                       value={data.value}
-                      onChange={(event) => data.set(event.target.value)}
+                      onChange={data.onChange}
                     />
                     <span className={CommonStyles.spanStandard}>
                       {languageChanger(
@@ -620,7 +659,7 @@ export default function ThisPartWillReplay() {
                         color: cBGColor ? "white" : "black",
                       }}
                       value={data.value}
-                      onChange={(event) => data.set(event.target.value)}
+                      onChange={data.onChange}
                     />
                     <span className={CommonStyles.spanStandard}>
                       {languageChanger(
