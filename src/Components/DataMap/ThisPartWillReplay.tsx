@@ -67,6 +67,11 @@ export default function ThisPartWillReplay() {
       fullDivName: infoUpdateStyles.position,
       content: languageChanger(cLanguage, "თანამდებობა", "Position"),
       htmlForId: "position",
+      onChange: (e: any) => {
+        const change = e.target.value;
+        localStorage.setItem("Position", JSON.stringify(change));
+        sPosition(change);
+      },
       set: sPosition,
       value: cPosition,
       inputPlaceHolder: languageChanger(
@@ -80,6 +85,11 @@ export default function ThisPartWillReplay() {
       fullDivName: infoUpdateStyles.employer,
       content: !cLanguage ? "დამსაქმებელი" : "Employer",
       htmlForId: "employer",
+      onChange: (e: any) => {
+        const change = e.target.value;
+        localStorage.setItem("Employer", JSON.stringify(change));
+        sEmployer(change);
+      },
       set: sEmployer,
       value: cEmployer,
       inputPlaceHolder: !cLanguage ? "დამსაქმებელი" : "Employer",
@@ -91,6 +101,11 @@ export default function ThisPartWillReplay() {
       fullDivName: infoUpdateStyles.position,
       content: languageChanger(cLanguage, "თანამდებობა", "Position"),
       htmlForId: "position1",
+      onChange: (e: any) => {
+        const change = e.target.value;
+        localStorage.setItem("Position1", JSON.stringify(change));
+        sPosition1(change);
+      },
       set: sPosition1,
       value: cPosition1,
       inputPlaceHolder: languageChanger(
@@ -103,6 +118,11 @@ export default function ThisPartWillReplay() {
       fullDivName: infoUpdateStyles.employer,
       content: !cLanguage ? "დამსაქმებელი" : "Employer",
       htmlForId: "employer1",
+      onChange: (e: any) => {
+        const change = e.target.value;
+        localStorage.setItem("Employer1", JSON.stringify(change));
+        sEmployer1(change);
+      },
       set: sEmployer1,
       value: cEmployer1,
       inputPlaceHolder: !cLanguage ? "დამსაქმებელი" : "Employer",
@@ -113,6 +133,11 @@ export default function ThisPartWillReplay() {
       fullDivName: infoUpdateStyles.position,
       content: languageChanger(cLanguage, "თანამდებობა", "Position"),
       htmlForId: "position2",
+      onChange: (e: any) => {
+        const change = e.target.value;
+        localStorage.setItem("Position2", JSON.stringify(change));
+        sPosition2(change);
+      },
       set: sPosition2,
       value: cPosition2,
       inputPlaceHolder: languageChanger(
@@ -125,6 +150,11 @@ export default function ThisPartWillReplay() {
       fullDivName: infoUpdateStyles.employer,
       content: !cLanguage ? "დამსაქმებელი" : "Employer",
       htmlForId: "employer2",
+      onChange: (e: any) => {
+        const change = e.target.value;
+        localStorage.setItem("Employer2", JSON.stringify(change));
+        sEmployer2(change);
+      },
       set: sEmployer2,
       value: cEmployer2,
       inputPlaceHolder: !cLanguage ? "დამსაქმებელი" : "Employer",
@@ -138,7 +168,11 @@ export default function ThisPartWillReplay() {
         "დაწყების რიცხვი",
         "Start number"
       ),
-      onChange: (e: any) => sStartDate(e.target.value),
+      onChange: (e: any) => {
+        const change = e.target.value;
+        sStartDate(change);
+        localStorage.setItem("startDate", JSON.stringify(change));
+      },
       value: cStartDate,
       key: 0,
       ref: ExperienceDateStartRef,
@@ -150,7 +184,11 @@ export default function ThisPartWillReplay() {
         "დამთავრების რიცხვი",
         "End date"
       ),
-      onChange: (e: any) => sEndDate(e.target.value),
+      onChange: (e: any) => {
+        const change = e.target.value;
+        localStorage.setItem("endDate", JSON.stringify(change));
+        sEndDate(change);
+      },
       value: cEndDate,
       key: 1,
       ref: ExperienceDateEndRef,
@@ -164,7 +202,11 @@ export default function ThisPartWillReplay() {
         "დაწყების რიცხვი",
         "Start number"
       ),
-      onChange: (e: any) => sStartDate1(e.target.value),
+      onChange: (e: any) => {
+        const change = e.target.value;
+        sStartDate1(change);
+        localStorage.setItem("startDate1", JSON.stringify(change));
+      },
       value: cStartDate1,
       key: 0,
       ref: ExperienceDateStartRef1,
@@ -176,7 +218,11 @@ export default function ThisPartWillReplay() {
         "დამთავრების რიცხვი",
         "End date"
       ),
-      onChange: (e: any) => sEndDate1(e.target.value),
+      onChange: (e: any) => {
+        const change = e.target.value;
+        localStorage.setItem("endDate1", JSON.stringify(change));
+        sEndDate1(change);
+      },
       value: cEndDate1,
       key: 1,
       ref: ExperienceDateEndRef1,
@@ -190,7 +236,11 @@ export default function ThisPartWillReplay() {
         "დაწყების რიცხვი",
         "Start number"
       ),
-      onChange: (e: any) => sStartDate2(e.target.value),
+      onChange: (e: any) => {
+        const change = e.target.value;
+        sStartDate2(change);
+        localStorage.setItem("startDate2", JSON.stringify(change));
+      },
       value: cStartDate2,
       key: 0,
       ref: ExperienceDateStartRef2,
@@ -202,7 +252,11 @@ export default function ThisPartWillReplay() {
         "დამთავრების რიცხვი",
         "End date"
       ),
-      onChange: (e: any) => sEndDate2(e.target.value),
+      onChange: (e: any) => {
+        const change = e.target.value;
+        localStorage.setItem("endDate2", JSON.stringify(change));
+        sEndDate2(change);
+      },
       value: cEndDate2,
       key: 1,
       ref: ExperienceDateEndRef2,
@@ -221,7 +275,9 @@ export default function ThisPartWillReplay() {
         "Role in the position and general description"
       ),
       onChange: (e: any) => {
-        sDescription(e.target.value);
+        const change = e.target.value;
+        localStorage.setItem("Description", JSON.stringify(change));
+        sDescription(change);
       },
       value: cDescription,
     },
@@ -239,7 +295,9 @@ export default function ThisPartWillReplay() {
         "Role in the position and general description"
       ),
       onChange: (e: any) => {
-        sDescription1(e.target.value);
+        const change = e.target.value;
+        localStorage.setItem("Description1", JSON.stringify(change));
+        sDescription1(change);
       },
       value: cDescription1,
     },
@@ -256,7 +314,9 @@ export default function ThisPartWillReplay() {
         "Role in the position and general description"
       ),
       onChange: (e: any) => {
-        sDescription2(e.target.value);
+        const change = e.target.value;
+        localStorage.setItem("Description2", JSON.stringify(change));
+        sDescription2(change);
       },
       value: cDescription2,
     },
@@ -293,7 +353,7 @@ export default function ThisPartWillReplay() {
                       color: cBGColor ? "white" : "black",
                     }}
                     value={data.value}
-                    onChange={(event) => data.set(event.target.value)}
+                    onChange={data.onChange}
                   />
                   <span className={CommonStyles.spanStandard}>
                     {languageChanger(
@@ -375,6 +435,7 @@ export default function ThisPartWillReplay() {
                     padding: "13px 16px",
                   }}
                   ref={data.ref}
+                  value={data.value}
                 ></textarea>
                 <hr
                   style={{
@@ -416,7 +477,7 @@ export default function ThisPartWillReplay() {
                         color: cBGColor ? "white" : "black",
                       }}
                       value={data.value}
-                      onChange={(event) => data.set(event.target.value)}
+                      onChange={data.onChange}
                     />
                     <span className={CommonStyles.spanStandard}>
                       {languageChanger(
@@ -492,6 +553,7 @@ export default function ThisPartWillReplay() {
                     id={data.htmlFor}
                     onChange={data.onChange}
                     maxLength={250}
+                    value={data.value}
                     style={{
                       backgroundColor: cBGColor ? "black" : "white",
                       color: cBGColor ? "white" : "black",
@@ -541,7 +603,7 @@ export default function ThisPartWillReplay() {
                         color: cBGColor ? "white" : "black",
                       }}
                       value={data.value}
-                      onChange={(event) => data.set(event.target.value)}
+                      onChange={data.onChange}
                     />
                     <span className={CommonStyles.spanStandard}>
                       {languageChanger(
@@ -617,6 +679,7 @@ export default function ThisPartWillReplay() {
                     id={data.htmlFor}
                     onChange={data.onChange}
                     maxLength={250}
+                    value={data.value}
                     style={{
                       backgroundColor: cBGColor ? "black" : "white",
                       color: cBGColor ? "white" : "black",
