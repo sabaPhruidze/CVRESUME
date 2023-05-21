@@ -264,14 +264,18 @@ export function ButtonReplay() {
     phone: any
   ) {
     const georgianWordsRegex = /^(?:.*[ა-ჰ]){2,}.*$/;
+    const englishWordsRegex = /^(?:.*[a-z]){2,}.*$/;
+    const whichLanguageAllowRegex = cLanguage
+      ? englishWordsRegex
+      : georgianWordsRegex;
     const mailRegex = /.*@redberry\.ge$/;
     const telNumber = /^\+995 \d{3} \d{2} \d{2} \d{2}$/;
-    if (name && georgianWordsRegex.test(name)) {
+    if (name && whichLanguageAllowRegex.test(name)) {
       sCorrect(true);
     } else {
       sCorrect(false);
     }
-    if (username && georgianWordsRegex.test(username)) {
+    if (username && whichLanguageAllowRegex.test(username)) {
       sCorrect1(true);
     } else {
       sCorrect1(false);
@@ -293,9 +297,9 @@ export function ButtonReplay() {
     }
     if (
       name &&
-      georgianWordsRegex.test(name) &&
+      whichLanguageAllowRegex.test(name) &&
       username &&
-      georgianWordsRegex.test(username) &&
+      whichLanguageAllowRegex.test(username) &&
       img &&
       email &&
       mailRegex.test(email) &&

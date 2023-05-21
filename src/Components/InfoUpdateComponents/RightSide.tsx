@@ -158,18 +158,25 @@ export default function Rendered() {
       cEndDate.length > 0 ||
       cDescription.length > 0 ? (
         <>
-          <hr style={{ marginTop: "19px", width: "calc(100% - 80px)" }} />
+          <hr style={{ marginTop: "40px", width: "calc(100% - 80px)" }} />
           <p
             style={{
-              fontSize: "18px",
-              fontWeight: "700",
+              fontSize: "22px",
+              fontWeight: "900",
               color: "#F93B1D",
               marginTop: "24px",
+              marginBottom: "15px",
             }}
           >
             გამოცდილება
           </p>
-          <p style={{ marginTop: "15px", fontWeight: "600" }}>
+          <p
+            style={{
+              marginTop: "15px",
+              fontWeight: "600",
+              marginBottom: "7px",
+            }}
+          >
             {cPosition}, {cEmployer}{" "}
           </p>
           <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
@@ -178,10 +185,12 @@ export default function Rendered() {
           <div
             style={{
               width: "662px",
-              height: "140px",
+              minHeight: 0,
+              maxHeight: "140px",
               wordWrap: "break-word",
               overflow: "hidden",
               fontSize: "16px",
+              marginTop: "16px",
             }}
           >
             {cDescription}
@@ -196,7 +205,13 @@ export default function Rendered() {
       cEndDate1.length > 0 ||
       cDescription1.length > 0 ? (
         <>
-          <p style={{ marginTop: "-15px", fontWeight: "600" }}>
+          <p
+            style={{
+              marginTop: "15px",
+              fontWeight: "600",
+              marginBottom: "7px",
+            }}
+          >
             {cPosition1}, {cEmployer1}{" "}
           </p>
           <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
@@ -205,10 +220,12 @@ export default function Rendered() {
           <div
             style={{
               width: "662px",
-              height: "100px",
+              minHeight: "0px",
+              maxHeight: "100px",
               wordWrap: "break-word",
               overflow: "hidden",
               fontSize: "16px",
+              marginTop: "16px",
             }}
           >
             {cDescription1}
@@ -223,7 +240,13 @@ export default function Rendered() {
       cEndDate2.length > 0 ||
       cDescription2.length > 0 ? (
         <>
-          <p style={{ marginTop: "15px", fontWeight: "600" }}>
+          <p
+            style={{
+              marginTop: "15px",
+              fontWeight: "600",
+              marginBottom: "7px",
+            }}
+          >
             {cPosition2}, {cEmployer2}{" "}
           </p>
           <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
@@ -232,10 +255,12 @@ export default function Rendered() {
           <div
             style={{
               width: "662px",
-              height: "140px",
+              minHeight: 0,
+              maxHeight: "140px",
               wordWrap: "break-word",
               overflow: "hidden",
               fontSize: "16px",
+              marginTop: "16px",
             }}
           >
             {cDescription2}
@@ -246,18 +271,24 @@ export default function Rendered() {
       )}
       {cCourse.length > 0 || cQuality.length > 0 || cDOE.length > 0 ? (
         <>
-          <hr style={{ marginTop: "19px", width: "calc(100% - 80px)" }} />
+          <hr style={{ marginTop: "40px", width: "calc(100% - 80px)" }} />
           <p
             style={{
               fontSize: "18px",
               fontWeight: "700",
               color: "#F93B1D",
-              marginTop: "24px",
+              marginTop: "15px",
             }}
           >
             განათლება
           </p>
-          <p style={{ marginTop: "15px", fontWeight: "600" }}>
+          <p
+            style={{
+              marginTop: "15px",
+              fontWeight: "600",
+              marginBottom: "7px",
+            }}
+          >
             {cCourse}, {cQuality}{" "}
           </p>
           <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
@@ -266,10 +297,12 @@ export default function Rendered() {
           <div
             style={{
               width: "662px",
-              height: "210px",
+              minHeight: "0px",
+              maxHeight: "230px",
               wordWrap: "break-word",
               overflow: "hidden",
               fontSize: "16px",
+              marginTop: "16px",
             }}
           >
             {cDOE}
@@ -280,18 +313,13 @@ export default function Rendered() {
       )}
       {cCourse1.length > 0 || cQuality1.length > 0 || cDOE1.length > 0 ? (
         <>
-          <hr style={{ marginTop: "19px", width: "calc(100% - 80px)" }} />
           <p
             style={{
-              fontSize: "18px",
-              fontWeight: "700",
-              color: "#F93B1D",
-              marginTop: "24px",
+              marginTop: "15px",
+              fontWeight: "600",
+              marginBottom: "7px",
             }}
           >
-            განათლება
-          </p>
-          <p style={{ marginTop: "15px", fontWeight: "600" }}>
             {cCourse1}, {cQuality1}{" "}
           </p>
           <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
@@ -300,10 +328,12 @@ export default function Rendered() {
           <div
             style={{
               width: "662px",
-              height: "210px",
+              minHeight: "0px",
+              maxHeight: "210px",
               wordWrap: "break-word",
               overflow: "hidden",
               fontSize: "16px",
+              marginTop: "16px",
             }}
           >
             {cDOE1}
@@ -314,23 +344,16 @@ export default function Rendered() {
       )}
       {cCourse2.length > 0 || cQuality2.length > 0 || cDOE2.length > 0 ? (
         <>
-          <hr style={{ marginTop: "19px", width: "calc(100% - 80px)" }} />
           <p
             style={{
-              fontSize: "18px",
-              fontWeight: "700",
-              color: "#F93B1D",
-              marginTop: "24px",
+              marginTop: "15px",
+              fontWeight: "600",
+              marginBottom: "7px",
             }}
           >
-            განათლება
-          </p>
-          <p style={{ marginTop: "15px", fontWeight: "600" }}>
             {cCourse2}, {cQuality2}{" "}
           </p>
-          <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
-            {cFinishDate2}
-          </em>
+          <em style={{ fontSize: "16px", color: "#909090" }}>{cFinishDate2}</em>
           <div
             style={{
               width: "662px",
@@ -338,6 +361,7 @@ export default function Rendered() {
               wordWrap: "break-word",
               overflow: "hidden",
               fontSize: "16px",
+              marginTop: "16px",
             }}
           >
             {cDOE2}

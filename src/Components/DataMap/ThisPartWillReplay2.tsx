@@ -387,7 +387,7 @@ export default function ThisPartWillReplay() {
                   placeholder={data.placeHolder}
                   id={data.htmlFor}
                   onChange={data.onChange}
-                  maxLength={700}
+                  maxLength={500}
                   style={{
                     backgroundColor: cBGColor ? "black" : "white",
                     color: cBGColor ? "white" : "black",
@@ -561,7 +561,7 @@ export default function ThisPartWillReplay() {
                     placeholder={data.placeHolder}
                     id={data.htmlFor}
                     onChange={data.onChange}
-                    maxLength={700}
+                    maxLength={500}
                     style={{
                       backgroundColor: cBGColor ? "black" : "white",
                       color: cBGColor ? "white" : "black",
