@@ -134,7 +134,8 @@ export default function Rendered() {
         <div
           style={{
             width: "432px",
-            height: "135px",
+            minHeight: "30px",
+            maxHeight: "135px",
             wordWrap: "break-word",
             overflow: "hidden",
             fontSize: "16px",

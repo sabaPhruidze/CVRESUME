@@ -471,8 +471,10 @@ export function InputReplayCustomRow() {
     cBGColor,
     cLanguage,
     sName,
+    cName,
     cCorrect,
     sUsername,
+    cUsername,
     cCorrect1,
     cVisible,
   } = useAppContext0;
@@ -484,6 +486,9 @@ export function InputReplayCustomRow() {
       set: sName,
       inputPlaceHolder: !cLanguage ? "ანზორ" : "Anzor",
       borderCorrect: cCorrect,
+      lsCall: "name",
+      lsValue: cName,
+      value: cName,
     },
     {
       fullDivName: infoUpdateStyles.lastNamePart,
@@ -492,6 +497,9 @@ export function InputReplayCustomRow() {
       set: sUsername,
       inputPlaceHolder: languageChanger(cLanguage, "მუმლაძე", "Mumladze"),
       borderCorrect: cCorrect1,
+      lsCall: "username",
+      lsValue: cUsername,
+      value: cUsername,
     },
   ];
   return (
@@ -506,12 +514,15 @@ export function InputReplayCustomRow() {
               {data.content}
             </label>
             <input
+              value={data.value}
               type="text"
               placeholder={data.inputPlaceHolder}
               id={data.htmlForId}
               className={CommonStyles.inputStandard}
               onChange={(e) => {
-                data.set(e.target.value);
+                const changePage = e.target.value;
+                data.set(changePage);
+                localStorage.setItem(data.lsCall, JSON.stringify(changePage));
               }}
               style={{
                 border: cVisible
@@ -537,7 +548,7 @@ export function InputReplayCustomRow() {
 // for personal -
 export function InputFile() {
   const useAppContext0 = useContext(context);
-  const { cLanguage, sUploadImg, cBGColor } = useAppContext0;
+  const { cLanguage, sUploadImg, cBGColor, cUploadImg } = useAppContext0;
   const dataMap = [
     {
       pContent: languageChanger(
@@ -550,6 +561,8 @@ export function InputFile() {
       labelId: "textArea",
       buttonContent: languageChanger(cLanguage, "ატვირთვა", "Upload"),
       key: 0,
+      lsCall: "Image",
+      lsValue: cUploadImg,
     },
   ];
   return (
@@ -577,8 +590,13 @@ export function InputFile() {
               accept="image/*"
               id={data.htmlFor}
               onChange={(e) => {
-                sUploadImg(e.target.files?.[0]);
+                const uploadedFile = e.target.files?.[0];
+                sUploadImg(uploadedFile);
                 //if something is uploaded it will be save in sUploadImg
+                localStorage.setItem(
+                  dataMap[0].lsCall,
+                  JSON.stringify(uploadedFile)
+                );
               }}
             />
             {/* allowing only Images */}
@@ -615,7 +633,9 @@ export function PersonalTextArea() {
         "General information about you"
       ),
       onChange: (e: any) => {
-        sAboutMe(e.target.value);
+        const changes = e.target.value;
+        sAboutMe(changes);
+        localStorage.setItem("AboutMe", JSON.stringify(changes));
       },
       value: cAboutMe,
     },
@@ -653,8 +673,17 @@ export function PersonalTextArea() {
 // I can join PersonalMailtelephone to the InputReplayCustomRow by using if else and changing their spaces ,but it is an additional work which I think is not nessesary currently
 export function PersonalMailTelephone() {
   const useAppContext0 = useContext(context);
-  const { cBGColor, sEmail, cLanguage, cCorrect2, sTel, cCorrect3, cVisible } =
-    useAppContext0;
+  const {
+    cBGColor,
+    sEmail,
+    cEmail,
+    cLanguage,
+    cCorrect2,
+    sTel,
+    cCorrect3,
+    cVisible,
+    cTel,
+  } = useAppContext0;
   const dataMap = [
     {
       fullDivName: infoUpdateStyles.mail,
@@ -670,6 +699,8 @@ export function PersonalMailTelephone() {
         "Must end with @redberry.ge"
       ),
       key: 0,
+      lsCall: "Email",
+      value: cEmail,
     },
     {
       fullDivName: infoUpdateStyles.telephone,
@@ -689,6 +720,8 @@ export function PersonalMailTelephone() {
         "Must meet the Georgian mobile number format"
       ),
       key: 1,
+      lsCall: "Telephone",
+      value: cTel,
     },
   ];
   return (
@@ -709,12 +742,15 @@ export function PersonalMailTelephone() {
               {data.content}
             </label>
             <input
+              value={data.value}
               type={data.type}
               placeholder={data.inputPlaceHolder}
               id={data.htmlForId}
               className={CommonStyles.inputStandard}
               onChange={(e) => {
-                data.onChange(e.target.value);
+                const change = e.target.value;
+                data.onChange(change);
+                localStorage.setItem(data.lsCall, JSON.stringify(change));
               }}
               style={{
                 border: cVisible
