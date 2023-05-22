@@ -274,7 +274,7 @@ export default function Rendered() {
           <hr style={{ marginTop: "40px", width: "calc(100% - 80px)" }} />
           <p
             style={{
-              fontSize: "18px",
+              fontSize: "22px",
               fontWeight: "700",
               color: "#F93B1D",
               marginTop: "15px",
@@ -357,7 +357,7 @@ export default function Rendered() {
           <div
             style={{
               width: "662px",
-              height: "210px",
+              height: "230px",
               wordWrap: "break-word",
               overflow: "hidden",
               fontSize: "16px",

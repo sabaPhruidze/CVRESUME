@@ -326,15 +326,19 @@ export default function InfoUpdate() {
               ? "calc(846px * 2)"
               : cPage === 3
               ? "1080px"
+              : cPage === 4
+              ? "1260px"
               : "calc(846px* 2)",
         }}
       >
-        {cPage === 2 ? (
+        {cPage === 1 ? (
+          <Personal />
+        ) : cPage === 2 ? (
           <Experience />
         ) : cPage === 3 ? (
           <Knowledge />
         ) : (
-          <Personal />
+          ""
         )}
         <RightSide />
       </div>

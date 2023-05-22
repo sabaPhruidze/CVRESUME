@@ -113,7 +113,6 @@ function App() {
         break;
     }
   }
-
   return (
     <context.Provider
       value={{
@@ -264,13 +263,15 @@ function App() {
             cMoreExperience === 0
               ? "1080px"
               : cMoreExperience === 1
-              ? "calc(1080px + 631px )"
+              ? "calc(1080px + 631px)"
               : cMoreExperience === 2
               ? "calc(1080px + 2 * 631px)"
               : cMoreExperience === 3
               ? "calc(1080px + 631px * 2)"
               : cPage === 3
               ? "1080px"
+              : cPage === 4
+              ? "1260px"
               : "calc(1080px + 631px * 2)",
           overflow: cMoreExperience === 0 ? "hidden" : "none",
         }}

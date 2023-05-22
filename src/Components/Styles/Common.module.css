@@ -241,6 +241,15 @@ I used chatJPT */
     top:48px;
     right:75px;
   }
+  .imageUploadFinal {
+    width: 246px; 
+    height: 246px; 
+    border-radius: 50%;
+    position: absolute;
+    z-index: 4;
+    top:48px;
+    right:75px;
+  }
   .commonCorrect {
     width:16.5px;
     height:16.5px;
@@ -274,13 +283,26 @@ I used chatJPT */
 /* Last */
 .finalResume {
   width:1920px;
-  height:1500px;
+  height:1260px;
   background-color: #ffffff;
   display: flex;
   justify-content: center;
-  
+  /* overflow: auto; */
 }
 .finalResumeDark {
   background-color: black;
-  
+  color:white
+}
+.finalRenderContainer {
+  width:822px;
+  height:1080px;
+  background-color: #ffffff;
+  color:black;
+  position: absolute;
+  padding-left: 80px;
+  box-sizing: border-box;
+}
+.finalRenderContainerDark {
+  background-color: black;
+  color:white;
 }
