@@ -271,3 +271,16 @@ I used chatJPT */
     left:187px;
   }
   /* გამოცდილება */
+/* Last */
+.finalResume {
+  width:1920px;
+  height:1500px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  
+}
+.finalResumeDark {
+  background-color: black;
+  
+}
