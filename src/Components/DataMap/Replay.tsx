@@ -1,25 +1,29 @@
 import React, { useContext, useRef, useState } from "react";
 
 import { context } from "../../App";
-
+// styles
 import CommonStyles from "../Styles/Common.module.css";
 import HomeStyles from "../Styles/Home.module.css";
 import infoUpdateStyles from "../Styles/infoUpdate.module.css";
+// styles
 
+// Common icons
 import georgiaFlag from "../../Assets/Img/common/georgia.png";
 import unitedKingdomFlag from "../../Assets/Img/common/unitedKingdom.png";
 import lightMode from "../../Assets/Icon/sunMode.svg";
 import darkMode from "../../Assets/Icon/nightMode.svg";
+// Common icons
+// Common after Home
+import Ellipse from "../../Assets/Img/2. SecondPage/Ellipse.svg";
+import Vector from "../../Assets/Img/2. SecondPage/Vectorvector.svg";
+// Common after Home
+
 // for Home
 import background from "../../Assets/Img/1. FirstPage/background1.jpg";
 import backgroundDark from "../../Assets/Img/1. FirstPage/backgroundDark.jpg";
 import redBerryBanner from "../../Assets/Img/1. FirstPage/redberryBanner.svg";
 import diploma from "../../Assets/Img/1. FirstPage/diploma.svg";
 // for Home
-//for infoUpdate
-import Ellipse from "../../Assets/Img/2. SecondPage/Ellipse.svg";
-import Vector from "../../Assets/Img/2. SecondPage/Vectorvector.svg";
-// for infoUpdate
 
 // for Custom
 export function ImgReplay() {
@@ -122,20 +126,24 @@ export function ImgReplay() {
     },
   ];
   const imgList = cPage === 0 ? imgData : imgData1;
-  return (
-    <>
-      {imgList.map((data) => (
-        <div key={data.key}>
-          <img
-            src={data.src}
-            alt={data.alt}
-            className={data.className}
-            onClick={data.onClick}
-          />
-        </div>
-      ))}
-    </>
-  );
+  if (cPage >= 0 && cPage <= 3) {
+    return (
+      <>
+        {imgList.map((data) => (
+          <div key={data.key}>
+            <img
+              src={data.src}
+              alt={data.alt}
+              className={data.className}
+              onClick={data.onClick}
+            />
+          </div>
+        ))}
+      </>
+    );
+  } else {
+    return null;
+  }
 }
 function languageChanger(changeReason: boolean, geo: string, eng: string) {
   return !changeReason ? geo : eng;
@@ -148,12 +156,6 @@ export function ButtonReplay() {
     cLanguage,
     cPage,
     cName,
-    sCorrect7,
-    sTop,
-    cCourse,
-    cQuality,
-    cFinishDate,
-    sVisible2,
     cUsername,
     cUploadImg,
     cEmail,
@@ -181,7 +183,6 @@ export function ButtonReplay() {
     cPosition2,
     cEmployer2,
     cDescription,
-    cDOE,
     cMoreExperience,
   } = useAppContext0;
   const buttonDataHome = [
@@ -189,7 +190,7 @@ export function ButtonReplay() {
       className: cBGColor
         ? `${HomeStyles.buttonDark} ${HomeStyles.button}`
         : HomeStyles.button,
-      onClick: () => sPage(1),
+      onClick: () => sPage(cPage + 1),
       language: languageChanger(cLanguage, "რეზიუმეს დამატება", "Add resume"),
       key: 0,
       widthPlace: "150px",
@@ -248,7 +249,6 @@ export function ButtonReplay() {
       : cPage === 1
       ? buttonDataPersonal
       : buttonDataExperience;
-
   function validateInputPersonal(
     name: string | undefined,
     username: string | undefined,
@@ -299,16 +299,7 @@ export function ButtonReplay() {
       phone &&
       telNumber.test(phone)
     ) {
-      return [
-        cName,
-        cUsername,
-        cUploadImg,
-        cEmail,
-        cTel,
-        cAboutMe,
-        cBGColor,
-        sPage(cPage + 1),
-      ];
+      return [sPage(cPage + 1)];
     }
   }
   function validateInput1(
@@ -359,20 +350,7 @@ export function ButtonReplay() {
       endDate &&
       DateRegex.test(endDate)
     ) {
-      return [
-        sVisible1(false),
-        cPosition,
-        cEmployer,
-        cPosition1,
-        cEmployer1,
-        cPosition2,
-        cEmployer2,
-        cStartDate,
-        cEndDate,
-        cDescription,
-        sPage(cPage + 1),
-        sMoreExperience(0),
-      ];
+      return [sVisible1(false), sPage(cPage + 1)];
     }
   }
   return (
