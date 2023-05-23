@@ -64,8 +64,6 @@ function App() {
   // for experience input2
 
   const ExperienceDateStartRef = useRef<any>("");
-  const ExperienceDateStartRef1 = useRef<any>("");
-  const ExperienceDateStartRef2 = useRef<any>("");
   const ExperienceDateEndRef = useRef<any>("");
   const ExperienceDateEndRef1 = useRef<any>("");
   const ExperienceDateEndRef2 = useRef<any>("");
@@ -150,10 +148,8 @@ function App() {
         ExperienceDateStartRef,
         ExperienceDateEndRef,
         ExperienceTextAreaRef,
-        ExperienceDateStartRef1,
         ExperienceDateEndRef1,
         ExperienceTextAreaRef1,
-        ExperienceDateStartRef2,
         ExperienceDateEndRef2,
         ExperienceTextAreaRef2,
 

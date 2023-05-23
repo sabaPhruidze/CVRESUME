@@ -32,10 +32,8 @@ export default function InfoUpdate() {
     ExperienceDateStartRef,
     ExperienceDateEndRef,
     ExperienceTextAreaRef,
-    ExperienceDateStartRef1,
     ExperienceDateEndRef1,
     ExperienceTextAreaRef1,
-    ExperienceDateStartRef2,
     ExperienceDateEndRef2,
     ExperienceTextAreaRef2,
     cTop,
@@ -225,10 +223,8 @@ export default function InfoUpdate() {
         cDescription2,
         sDescription2,
 
-        ExperienceDateStartRef1,
         ExperienceDateEndRef1,
         ExperienceTextAreaRef1,
-        ExperienceDateStartRef2,
         ExperienceDateEndRef2,
         ExperienceTextAreaRef2,
 

@@ -14,14 +14,11 @@ import vectorClose from "../Assets/Img/4. Fourth page/Vector (1).svg";
 export default function FinalResume() {
   const useAppContext4 = useContext(context);
   const {
-    ExperienceDateStartRef,
     ExperienceDateEndRef,
     sDOE,
     ExperienceTextAreaRef,
-    ExperienceDateStartRef1,
     ExperienceDateEndRef1,
     ExperienceTextAreaRef1,
-    ExperienceDateStartRef2,
     ExperienceDateEndRef2,
     ExperienceTextAreaRef2,
     sCourse,
