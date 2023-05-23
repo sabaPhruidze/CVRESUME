@@ -136,7 +136,6 @@ export default function ThisPartWillReplay() {
       fullDivName: infoUpdateStyles.position,
       content: languageChanger(cLanguage, "სასწავლებელი", "Study place"),
       htmlForId: "Studyplace2",
-      set: sCourse2,
       onChange: (e: any) => {
         const change = e.target.value;
         sCourse2(change);
