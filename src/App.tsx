@@ -31,12 +31,6 @@ function App() {
   const [cVisible, sVisible] = useState<boolean>(false);
   //correct wrong Personal
 
-  //correct wrong Experience
-  const [cCorrect5, sCorrect5] = useState<boolean>(false);
-  const [cCorrect6, sCorrect6] = useState<boolean>(false);
-  const [cVisible1, sVisible1] = useState<boolean>(false);
-  //correct wrong Experience
-
   // for experience input
 
   const [cPosition, sPosition] = useState<any>("");
@@ -46,7 +40,15 @@ function App() {
   const [cDescription, sDescription] = useState<any>("");
   const textAreaRef = useRef<string | null | undefined>("");
   // for experience input
+
+  //correct wrong Experience
+  const [cCorrect5, sCorrect5] = useState<boolean>(false);
+  const [cCorrect6, sCorrect6] = useState<boolean>(false);
+  const [cVisible1, sVisible1] = useState<boolean>(false);
+  //correct wrong Experience
+
   const [cMoreExperience, sMoreExperience] = useState<any>(0); //increase in height in order to add more information
+
   // for experience input1
   const [cPosition1, sPosition1] = useState<any>("");
   const [cEmployer1, sEmployer1] = useState<any>("");
@@ -69,28 +71,33 @@ function App() {
   const ExperienceTextAreaRef = useRef<any>("");
   //for experience border
 
-  const [cTop, sTop] = useState<any>(967);
-
-  //knowledge
+  //knowledge input
   const [cCourse, sCourse] = useState<string>("");
   const [cQuality, sQuality] = useState<any>("");
   const [cFinishDate, sFinishDate] = useState<any>();
   const [cDOE, sDOE] = useState<any>(""); //description of knowledge
+  //knowledge input
 
+  //knowledge input1
   const [cCourse1, sCourse1] = useState<string>("");
   const [cQuality1, sQuality1] = useState<any>("");
   const [cFinishDate1, sFinishDate1] = useState<any>();
-  const [cDOE1, sDOE1] = useState<any>(""); //description of knowledge
+  const [cDOE1, sDOE1] = useState<any>("");
+  //knowledge input1
 
+  //knowledge input2
   const [cCourse2, sCourse2] = useState<string>("");
   const [cQuality2, sQuality2] = useState<any>("");
   const [cFinishDate2, sFinishDate2] = useState<any>();
-  const [cDOE2, sDOE2] = useState<any>(""); //description of knowledge
+  const [cDOE2, sDOE2] = useState<any>("");
+  //knowledge input2
 
+  //for Knowledge border
   const courseRef = useRef<any>("");
   const qualityRef = useRef<any>("");
   const finishDateRef = useRef<any>("");
   const DOERef = useRef<any>("");
+  //for Knowledge border
 
   //correct wrong knowledge
   const [cCorrect7, sCorrect7] = useState<boolean>(false);
@@ -146,8 +153,6 @@ function App() {
         ExperienceDateStartRef,
         ExperienceDateEndRef,
         ExperienceTextAreaRef,
-        cTop,
-        sTop,
         cPage,
         sPage,
         cLanguage,
@@ -188,10 +193,8 @@ function App() {
         sEndDate,
         cDescription,
         sDescription,
-
         cMoreExperience,
         sMoreExperience,
-
         cPosition1,
         sPosition1,
         cEmployer1,
@@ -202,7 +205,6 @@ function App() {
         sEndDate1,
         cDescription1,
         sDescription1,
-
         cPosition2,
         sPosition2,
         cEmployer2,
@@ -213,7 +215,6 @@ function App() {
         sEndDate2,
         cDescription2,
         sDescription2,
-
         cCorrect5,
         sCorrect5,
         cCorrect6,
