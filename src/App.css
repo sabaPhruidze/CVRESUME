@@ -10,10 +10,6 @@
 }
 body {
   /* The task was to made the project 1920x1080 */
-  width:1920px;
-  min-height:1080px;
-  max-height: 1260px;
-  box-sizing: border-box;
   background-color: rgb(255, 255, 255);
   color:black;
   font-family: arialGeo;

@@ -8,7 +8,7 @@ import InfoUpdate from "./Components/InfoUpdate";
 export const context = createContext<any>(null);
 
 function App() {
-  const [cPage, sPage] = useState<number>(2); // current page ,set page
+  const [cPage, sPage] = useState<number>(0); // current page ,set page
   const [cLanguage, sLanguage] = useState<boolean>(false); //if false than georgian else english
   const [cBGColor, sBGColor] = useState<boolean>(false); //if false than white, if true than black {BG- means background color}
 
@@ -76,6 +76,7 @@ function App() {
   const [cQuality, sQuality] = useState<any>("");
   const [cFinishDate, sFinishDate] = useState<any>();
   const [cDOE, sDOE] = useState<any>(""); //description of knowledge
+  const [cMoreKnowledge, sMoreKnowledge] = useState<number>(0);
   //knowledge input
 
   //knowledge input1
@@ -225,28 +226,37 @@ function App() {
         sVisible2,
         cVisible1,
         sVisible1,
+        cMoreKnowledge,
+        sMoreKnowledge,
       }}
     >
       <div
         style={{
           height:
-            cMoreExperience === 0
+            cPage === 0 ||
+            cPage === 1 ||
+            (cPage === 2 && cMoreExperience === 0) ||
+            (cPage === 3 && cMoreKnowledge === 0)
               ? "1080px"
-              : cMoreExperience === 1
-              ? "calc(1080px + 631px)"
-              : cMoreExperience === 2
-              ? "calc(1080px + 2 * 631px)"
-              : cMoreExperience === 3
-              ? "calc(1080px + 631px * 2)"
-              : cPage === 3
-              ? "1080px"
+              : cPage === 2 && cMoreExperience === 1
+              ? "1711px" /* // 1711px is written because when the add more experience button is pressed its distance from top become 631px more, same goes to the second press it's distance increase by 631 px. */
+              : cPage === 2 && cMoreExperience === 2
+              ? "2342px"
+              : cPage === 3 && cMoreKnowledge === 1
+              ? "1631px" /* when the button is clicked on the knowledge page the distance instraces by 551px */
+              : cPage === 3 && cMoreKnowledge === 2
+              ? "2182px"
               : cPage === 4
               ? "1260px"
-              : "calc(1080px + 631px * 2)",
-          overflow: cMoreExperience === 0 ? "hidden" : "none",
+              : "",
+          overflow:
+            cMoreExperience === 0 || cMoreKnowledge === 0 ? "hidden" : "auto",
           backgroundColor: cBGColor ? "black" : "white",
+          width: "1920px",
+          boxSizing: "border-box",
         }}
       >
+        {" "}
         {changePage()}
       </div>
     </context.Provider>
