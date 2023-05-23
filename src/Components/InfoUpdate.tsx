@@ -32,12 +32,10 @@ export default function InfoUpdate() {
     ExperienceDateStartRef,
     ExperienceDateEndRef,
     ExperienceTextAreaRef,
-    ExperienceTextAreaRef1,
-    ExperienceTextAreaRef2,
     cTop,
     sTop,
     aboutMeRef,
-    replayRef,
+
     cPage,
     sPage,
     cLanguage,
@@ -155,7 +153,7 @@ export default function InfoUpdate() {
         sPage,
         cTop,
         sTop,
-        replayRef,
+
         cLanguage,
         sLanguage,
         cBGColor,
@@ -220,10 +218,6 @@ export default function InfoUpdate() {
         sEndDate2,
         cDescription2,
         sDescription2,
-
-        ExperienceTextAreaRef1,
-
-        ExperienceTextAreaRef2,
 
         cCorrect5,
         sCorrect5,

@@ -18,7 +18,7 @@ export default function ThisPartWillReplay() {
     cCorrect8,
     cEmployer,
     sEmployer,
-    replayRef,
+
     sStartDate,
     cStartDate,
     cEndDate,
@@ -55,8 +55,6 @@ export default function ThisPartWillReplay() {
     sCorrect9,
     cCorrect10,
     sCorrect10,
-    ExperienceTextAreaRef1,
-    ExperienceTextAreaRef2,
   } = useAppContext0;
   const experienceData = [
     {
@@ -318,7 +316,7 @@ export default function ThisPartWillReplay() {
   }
   return (
     <>
-      <div className={CommonStyles.replayThisPart} ref={replayRef}>
+      <div className={CommonStyles.replayThisPart}>
         <div className={infoUpdateStyles.positionEmployerInput}>
           <>
             {experienceData.map((data: any, idx: any) => {
@@ -442,7 +440,7 @@ export default function ThisPartWillReplay() {
         </div>
       </div>
       {cMoreExperience >= 1 ? (
-        <div className={CommonStyles.replayThisPart} ref={replayRef}>
+        <div className={CommonStyles.replayThisPart}>
           <div
             className={infoUpdateStyles.positionEmployerInput}
             style={{ marginTop: "270px" }}
@@ -569,7 +567,7 @@ export default function ThisPartWillReplay() {
         ""
       )}
       {cMoreExperience >= 2 ? (
-        <div className={CommonStyles.replayThisPart} ref={replayRef}>
+        <div className={CommonStyles.replayThisPart}>
           <div
             className={infoUpdateStyles.positionEmployerInput}
             style={{ marginTop: "270px" }}

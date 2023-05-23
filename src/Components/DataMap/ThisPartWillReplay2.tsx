@@ -26,14 +26,12 @@ export default function ThisPartWillReplay() {
     cCorrect8,
     cEmployer,
     sEmployer,
-    replayRef,
     sStartDate,
     cStartDate,
     cEndDate,
     sEndDate,
     cDescription,
     sDescription,
-    ExperienceTextAreaRef,
 
     cMoreExperience,
     cArray,
@@ -62,10 +60,6 @@ export default function ThisPartWillReplay() {
     sCorrect9,
     cCorrect10,
     sCorrect10,
-
-    ExperienceTextAreaRef1,
-
-    ExperienceTextAreaRef2,
     cCourse1,
     sCourse1,
     cQuality1,

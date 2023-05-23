@@ -15,14 +15,10 @@ export default function FinalResume() {
   const useAppContext4 = useContext(context);
   const {
     sDOE,
-    ExperienceTextAreaRef,
-    ExperienceTextAreaRef1,
-    ExperienceTextAreaRef2,
     sCourse,
     cTop,
     sTop,
     aboutMeRef,
-    replayRef,
     cPage,
     sPage,
     cLanguage,

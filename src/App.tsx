@@ -46,7 +46,7 @@ function App() {
   const [cDescription, sDescription] = useState<any>("");
   const textAreaRef = useRef<string | null | undefined>("");
   // for experience input
-  const [cMoreExperience, sMoreExperience] = useState<any>(0);
+  const [cMoreExperience, sMoreExperience] = useState<any>(0); //increase in height in order to add more information
   // for experience input1
   const [cPosition1, sPosition1] = useState<any>("");
   const [cEmployer1, sEmployer1] = useState<any>("");
@@ -62,15 +62,13 @@ function App() {
   const [cEndDate2, sEndDate2] = useState<any>("");
   const [cDescription2, sDescription2] = useState<any>("");
   // for experience input2
+
   //for experience border
   const ExperienceDateStartRef = useRef<any>("");
   const ExperienceDateEndRef = useRef<any>("");
+  const ExperienceTextAreaRef = useRef<any>("");
   //for experience border
 
-  const ExperienceTextAreaRef = useRef<any>("");
-  const ExperienceTextAreaRef1 = useRef<any>("");
-  const ExperienceTextAreaRef2 = useRef<any>("");
-  const replayRef = useRef<any>("");
   const [cTop, sTop] = useState<any>(967);
 
   //knowledge
@@ -148,10 +146,6 @@ function App() {
         ExperienceDateStartRef,
         ExperienceDateEndRef,
         ExperienceTextAreaRef,
-        ExperienceTextAreaRef1,
-        ExperienceTextAreaRef2,
-
-        replayRef,
         cTop,
         sTop,
         cPage,
