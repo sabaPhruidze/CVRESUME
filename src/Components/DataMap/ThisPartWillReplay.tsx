@@ -55,10 +55,8 @@ export default function ThisPartWillReplay() {
     sCorrect9,
     cCorrect10,
     sCorrect10,
-    ExperienceDateStartRef1,
     ExperienceDateEndRef1,
     ExperienceTextAreaRef1,
-    ExperienceDateStartRef2,
     ExperienceDateEndRef2,
     ExperienceTextAreaRef2,
   } = useAppContext0;
@@ -209,7 +207,6 @@ export default function ThisPartWillReplay() {
       },
       value: cStartDate1,
       key: 0,
-      ref: ExperienceDateStartRef1,
     },
     {
       labelHtmlFor: "EndDate1",
@@ -243,7 +240,6 @@ export default function ThisPartWillReplay() {
       },
       value: cStartDate2,
       key: 0,
-      ref: ExperienceDateStartRef2,
     },
     {
       labelHtmlFor: "EndDate2",
