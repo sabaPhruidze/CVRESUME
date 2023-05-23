@@ -8,63 +8,60 @@ import InfoUpdate from "./Components/InfoUpdate";
 export const context = createContext<any>(null);
 
 function App() {
-  const [cPage, sPage] = useState<number>(0); // current page ,set page
+  const [cPage, sPage] = useState<number>(2); // current page ,set page
   const [cLanguage, sLanguage] = useState<boolean>(false); //if false than georgian else english
   const [cBGColor, sBGColor] = useState<boolean>(false); //if false than white, if true than black {BG- means background color}
 
-  // For Personal
+  // For Personal input
   const [cName, sName] = useState<string | undefined>();
   const [cUsername, sUsername] = useState<string | undefined>();
   const [cUploadImg, sUploadImg] = useState<File | null>();
   const [cEmail, sEmail] = useState<string | undefined>();
   const [cTel, sTel] = useState<string>();
   const [cAboutMe, sAboutMe] = useState<string | undefined>();
+  // For Personal input
+
+  //correct wrong Personal
   const aboutMeRef = useRef<any>(0);
-  const textAreaRef = useRef<string | null | undefined>("");
 
   const [cCorrect, sCorrect] = useState<boolean>(false);
   const [cCorrect1, sCorrect1] = useState<boolean>(false);
   const [cCorrect2, sCorrect2] = useState<boolean>(false);
   const [cCorrect3, sCorrect3] = useState<boolean>(false);
   const [cVisible, sVisible] = useState<boolean>(false);
+  //correct wrong Personal
 
+  //correct wrong Experience
   const [cCorrect5, sCorrect5] = useState<boolean>(false);
   const [cCorrect6, sCorrect6] = useState<boolean>(false);
-  const [cCorrect7, sCorrect7] = useState<boolean>(false);
   const [cVisible1, sVisible1] = useState<boolean>(false);
+  //correct wrong Experience
 
-  const [cVisible2, sVisible2] = useState<boolean>(false);
+  // for experience input
 
-  const [cMoreExperience, sMoreExperience] = useState<any>(0);
   const [cPosition, sPosition] = useState<any>("");
   const [cEmployer, sEmployer] = useState<any>("");
   const [cStartDate, sStartDate] = useState<any>("");
   const [cEndDate, sEndDate] = useState<any>("");
   const [cDescription, sDescription] = useState<any>("");
-
+  const textAreaRef = useRef<string | null | undefined>("");
+  // for experience input
+  const [cMoreExperience, sMoreExperience] = useState<any>(0);
+  // for experience input1
   const [cPosition1, sPosition1] = useState<any>("");
   const [cEmployer1, sEmployer1] = useState<any>("");
   const [cStartDate1, sStartDate1] = useState<any>("");
   const [cEndDate1, sEndDate1] = useState<any>("");
   const [cDescription1, sDescription1] = useState<any>("");
+  // for experience input1
 
+  // for experience input2
   const [cPosition2, sPosition2] = useState<any>("");
   const [cEmployer2, sEmployer2] = useState<any>("");
   const [cStartDate2, sStartDate2] = useState<any>("");
   const [cEndDate2, sEndDate2] = useState<any>("");
   const [cDescription2, sDescription2] = useState<any>("");
-
-  const [cPosition3, sPosition3] = useState<any>("");
-  const [cEmployer3, sEmployer3] = useState<any>("");
-  const [cStartDate3, sStartDate3] = useState<any>("");
-  const [cEndDate3, sEndDate3] = useState<any>("");
-  const [cDescription3, sDescription3] = useState<any>("");
-
-  const [cPosition4, sPosition4] = useState<any>("");
-  const [cEmployer4, sEmployer4] = useState<any>("");
-  const [cStartDate4, sStartDate4] = useState<any>("");
-  const [cEndDate4, sEndDate4] = useState<any>("");
-  const [cDescription4, sDescription4] = useState<any>("");
+  // for experience input2
 
   const ExperienceDateStartRef = useRef<any>("");
   const ExperienceDateStartRef1 = useRef<any>("");
@@ -98,6 +95,12 @@ function App() {
   const qualityRef = useRef<any>("");
   const finishDateRef = useRef<any>("");
   const DOERef = useRef<any>("");
+
+  //correct wrong knowledge
+  const [cCorrect7, sCorrect7] = useState<boolean>(false);
+  const [cVisible2, sVisible2] = useState<boolean>(false);
+  //correct wrong knowledge
+
   function changePage() {
     switch (cPage) {
       case 0:
@@ -222,28 +225,6 @@ function App() {
         sEndDate2,
         cDescription2,
         sDescription2,
-
-        cPosition3,
-        sPosition3,
-        cEmployer3,
-        sEmployer3,
-        cStartDate3,
-        sStartDate3,
-        cEndDate3,
-        sEndDate3,
-        cDescription3,
-        sDescription3,
-
-        cPosition4,
-        sPosition4,
-        cEmployer4,
-        sEmployer4,
-        cStartDate4,
-        sStartDate4,
-        cEndDate4,
-        sEndDate4,
-        cDescription4,
-        sDescription4,
 
         cCorrect5,
         sCorrect5,

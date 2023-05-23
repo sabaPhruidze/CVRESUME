@@ -77,6 +77,22 @@ export function ImgReplay() {
   ];
   const imgData1 = [
     {
+      src: cBGColor ? lightMode : darkMode,
+      alt: "light or dark",
+      className: cBGColor
+        ? `${CommonStyles.modeSun} ${CommonStyles.CommonBGCPosition}`
+        : `${CommonStyles.modeMoon} ${CommonStyles.CommonBGCPosition}`,
+      onClick: () => sBGColor(!useAppContext0.cBGColor),
+      key: 0,
+    },
+    {
+      src: cLanguage !== true ? unitedKingdomFlag : georgiaFlag,
+      alt: "language",
+      className: `${CommonStyles.language} ${CommonStyles.CommonlanguagePosition}`,
+      onClick: () => sLanguage(!useAppContext0.cLanguage),
+      key: 1,
+    },
+    {
       src: Ellipse,
       alt: "Ellipse",
       className: cBGColor
@@ -335,7 +351,7 @@ export function ButtonReplay() {
     } else {
       ExperienceDateEndRef.current.style.border = "1px solid #EF5050";
     }
-    if (cDescription && cDescription.length > 0) {
+    if (description && description.length > 0) {
       ExperienceTextAreaRef.current.style.border = "1px solid #98E37E";
     } else {
       ExperienceTextAreaRef.current.style.border = "1px solid #BCBCBC";
@@ -361,14 +377,6 @@ export function ButtonReplay() {
         cStartDate,
         cEndDate,
         cDescription,
-
-        cMoreExperience >= 1
-          ? `${ExperienceTextAreaRef1} ${ExperienceDateStartRef1} ${ExperienceDateEndRef1}`
-          : "",
-        cMoreExperience >= 2
-          ? `${ExperienceTextAreaRef2} ${ExperienceDateStartRef2} ${ExperienceDateEndRef2}`
-          : "",
-
         sPage(cPage + 1),
         sMoreExperience(0),
       ];
