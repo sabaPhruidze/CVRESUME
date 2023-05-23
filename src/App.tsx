@@ -62,11 +62,11 @@ function App() {
   const [cEndDate2, sEndDate2] = useState<any>("");
   const [cDescription2, sDescription2] = useState<any>("");
   // for experience input2
-
+  //for experience border
   const ExperienceDateStartRef = useRef<any>("");
   const ExperienceDateEndRef = useRef<any>("");
-  const ExperienceDateEndRef1 = useRef<any>("");
-  const ExperienceDateEndRef2 = useRef<any>("");
+  //for experience border
+
   const ExperienceTextAreaRef = useRef<any>("");
   const ExperienceTextAreaRef1 = useRef<any>("");
   const ExperienceTextAreaRef2 = useRef<any>("");
@@ -148,9 +148,7 @@ function App() {
         ExperienceDateStartRef,
         ExperienceDateEndRef,
         ExperienceTextAreaRef,
-        ExperienceDateEndRef1,
         ExperienceTextAreaRef1,
-        ExperienceDateEndRef2,
         ExperienceTextAreaRef2,
 
         replayRef,

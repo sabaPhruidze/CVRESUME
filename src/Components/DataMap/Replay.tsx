@@ -172,8 +172,6 @@ export function ButtonReplay() {
     cTop,
     ExperienceDateStartRef,
     ExperienceDateEndRef,
-    ExperienceDateEndRef1,
-    ExperienceDateEndRef2,
     ExperienceTextAreaRef1,
     ExperienceTextAreaRef2,
     sVisible1,

@@ -34,7 +34,7 @@ export default function ThisPartWillReplay() {
     cDescription,
     sDescription,
     ExperienceTextAreaRef,
-    ExperienceDateEndRef,
+
     cMoreExperience,
     cArray,
     cPosition1,
@@ -62,9 +62,9 @@ export default function ThisPartWillReplay() {
     sCorrect9,
     cCorrect10,
     sCorrect10,
-    ExperienceDateEndRef1,
+
     ExperienceTextAreaRef1,
-    ExperienceDateEndRef2,
+
     ExperienceTextAreaRef2,
     cCourse1,
     sCourse1,
