@@ -1,8 +1,9 @@
 import React from "react";
 import { useContext } from "react";
 import { context } from "../App";
-import { ImgReplay } from "./DataMap/Replay";
-import { ButtonReplay } from "./DataMap/Replay";
+
+import { ImgReplay, ButtonReplay } from "./DataMap/Replay";
+
 import CommonStyles from "./Styles/Common.module.css";
 import HomeStyles from "./Styles/Home.module.css";
 

@@ -150,7 +150,6 @@ export default function InfoUpdate() {
         DOERef,
         cPage,
         sPage,
-
         cLanguage,
         sLanguage,
         cBGColor,
