@@ -4,11 +4,13 @@ import { context } from "../App";
 // import jsPDF from "jspdf";
 import CommonStyles from "./Styles/Common.module.css";
 
+import Ellipse from "../Assets/Img/2. SecondPage/Ellipse.svg";
+import Vector from "../Assets/Img/2. SecondPage/Vectorvector.svg";
 import OrangeLogo from "../Assets/Img/2. SecondPage/logoOrange.svg";
 import mobileIcon from "../Assets/Icon/phoneIcon.svg";
 import spiralIcon from "../Assets/Icon/@1.svg";
 import { ImgReplay } from "./DataMap/Replay";
-import vector from "../Assets/Img/4. Fourth page/Vector (1).svg";
+import vectorClose from "../Assets/Img/4. Fourth page/Vector (1).svg";
 export default function FinalResume() {
   const useAppContext4 = useContext(context);
   const {
@@ -155,6 +157,36 @@ export default function FinalResume() {
     sFinishDate,
     sQuality,
   } = useAppContext4;
+  const imgData = [
+    {
+      src: Ellipse,
+      alt: "Ellipse",
+      className: cBGColor
+        ? `${CommonStyles.ellipse} ${CommonStyles.ellipseDark}`
+        : CommonStyles.ellipse,
+      onClick: () => {
+        sPage(3);
+        if (cVisible1) {
+          sVisible1(false);
+        }
+      },
+      key: 0,
+    },
+    {
+      src: Vector,
+      alt: "Vector",
+      className: cBGColor
+        ? `${CommonStyles.vectorDark} ${CommonStyles.vectorLight}`
+        : CommonStyles.vectorDark,
+      onClick: () => {
+        sPage(3);
+        if (cVisible1) {
+          sVisible1(false);
+        }
+      },
+      key: 1,
+    },
+  ];
   // const exportRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     sBGColor(false);
@@ -625,7 +657,7 @@ export default function FinalResume() {
         </div>
       )}
       <img
-        src={vector}
+        src={vectorClose}
         alt="close button"
         style={{
           width: "13px",
@@ -641,6 +673,16 @@ export default function FinalResume() {
           sClose(true);
         }}
       />
+      {imgData.map((data) => (
+        <div key={data.key}>
+          <img
+            src={data.src}
+            alt={data.alt}
+            className={data.className}
+            onClick={data.onClick}
+          />
+        </div>
+      ))}
     </>
   );
 }

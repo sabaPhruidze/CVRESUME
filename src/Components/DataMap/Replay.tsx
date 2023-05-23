@@ -77,22 +77,6 @@ export function ImgReplay() {
   ];
   const imgData1 = [
     {
-      src: cBGColor ? lightMode : darkMode,
-      alt: "light or dark",
-      className: cBGColor
-        ? `${CommonStyles.modeSun} ${CommonStyles.CommonBGCPosition}`
-        : `${CommonStyles.modeMoon} ${CommonStyles.CommonBGCPosition}`,
-      onClick: () => sBGColor(!useAppContext0.cBGColor),
-      key: 0,
-    },
-    {
-      src: cLanguage !== true ? unitedKingdomFlag : georgiaFlag,
-      alt: "language",
-      className: `${CommonStyles.language} ${CommonStyles.CommonlanguagePosition}`,
-      onClick: () => sLanguage(!useAppContext0.cLanguage),
-      key: 1,
-    },
-    {
       src: Ellipse,
       alt: "Ellipse",
       className: cBGColor
