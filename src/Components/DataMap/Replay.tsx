@@ -594,13 +594,16 @@ export function InputFile() {
               accept="image/*"
               id={data.htmlFor}
               onChange={(e) => {
-                const uploadedFile = e.target.files?.[0];
-                sUploadImg(uploadedFile);
-                //if something is uploaded it will be save in sUploadImg
-                localStorage.setItem(
-                  dataMap[0].lsCall,
-                  JSON.stringify(uploadedFile)
-                );
+                const file = e.target.files?.[0];
+                const setImageInLocalStorage = (file: any): void => {
+                  const reader = new FileReader();
+                  sUploadImg(file);
+                  reader.onload = () => {
+                    localStorage.setItem("Image", reader.result as string);
+                  };
+                  reader.readAsDataURL(file);
+                };
+                setImageInLocalStorage(file);
               }}
             />
             {/* allowing only Images */}
