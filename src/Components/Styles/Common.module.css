@@ -296,13 +296,13 @@ I used chatJPT */
 .finalRenderContainer {
   width:822px;
   height:1080px;
+  overflow: auto;
   background-color: #ffffff;
   color:black;
   position: absolute;
+  top:54px;
+  left:549px;
   padding-left: 80px;
   box-sizing: border-box;
-}
-.finalRenderContainerDark {
-  background-color: black;
-  color:white;
+  border: 1px solid black;
 }

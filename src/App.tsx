@@ -274,6 +274,7 @@ function App() {
               ? "1260px"
               : "calc(1080px + 631px * 2)",
           overflow: cMoreExperience === 0 ? "hidden" : "none",
+          backgroundColor: cBGColor ? "black" : "white",
         }}
       >
         {changePage()}
