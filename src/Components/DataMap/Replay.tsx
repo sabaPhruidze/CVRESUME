@@ -169,7 +169,6 @@ export function ButtonReplay() {
     ExperienceTextAreaRef,
     sCorrect5,
     sCorrect6,
-    cTop,
     ExperienceDateStartRef,
     ExperienceDateEndRef,
     sVisible1,
@@ -765,15 +764,8 @@ export function PersonalMailTelephone() {
 //I prefer to stay this like it is
 export function ExperienceButtonReplayskyColor() {
   const useAppContext0 = useContext(context);
-  const {
-    cPage,
-    cBGColor,
-    cLanguage,
-    cMoreExperience,
-    sMoreExperience,
-    cTop,
-    sTop,
-  } = useAppContext0;
+  const { cPage, cBGColor, cLanguage, cMoreExperience, sMoreExperience } =
+    useAppContext0;
   const buttonDataExperience = [
     {
       className: cBGColor
@@ -788,7 +780,6 @@ export function ExperienceButtonReplayskyColor() {
       key: 1,
       onClick: () => {
         sMoreExperience(cMoreExperience < 2 ? cMoreExperience + 1 : 2);
-        // sTop(cMoreExperience < 2 ? cTop + 600 : 804 * 2 + 400);
       },
     },
   ];
@@ -806,7 +797,6 @@ export function ExperienceButtonReplayskyColor() {
       key: 1,
       onClick: () => {
         sMoreExperience(cMoreExperience < 2 ? cMoreExperience + 1 : 2);
-        // sTop(cMoreExperience < 2 ? cTop + 600 : 804 * 2 + 400);
       },
     },
   ];
@@ -855,8 +845,6 @@ export function KnowledgeButtonReplay() {
     sPage,
     cLanguage,
     sCorrect7,
-    cTop,
-    sTop,
     sMoreExperience,
     sVisible1,
     sVisible2,

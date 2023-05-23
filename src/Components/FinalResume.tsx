@@ -16,8 +16,6 @@ export default function FinalResume() {
   const {
     sDOE,
     sCourse,
-    cTop,
-    sTop,
     aboutMeRef,
     cPage,
     sPage,

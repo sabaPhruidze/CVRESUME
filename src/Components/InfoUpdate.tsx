@@ -32,8 +32,7 @@ export default function InfoUpdate() {
     ExperienceDateStartRef,
     ExperienceDateEndRef,
     ExperienceTextAreaRef,
-    cTop,
-    sTop,
+
     aboutMeRef,
 
     cPage,
@@ -151,8 +150,6 @@ export default function InfoUpdate() {
         DOERef,
         cPage,
         sPage,
-        cTop,
-        sTop,
 
         cLanguage,
         sLanguage,
