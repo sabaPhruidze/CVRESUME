@@ -15,7 +15,6 @@ export default function ThisPartWillReplay() {
     cCorrect5,
     cCorrect6,
     cCorrect7,
-    cCorrect8,
     cEmployer,
     sEmployer,
 
@@ -40,7 +39,6 @@ export default function ThisPartWillReplay() {
     sEndDate1,
     cDescription1,
     sDescription1,
-
     cPosition2,
     sPosition2,
     cEmployer2,
@@ -51,10 +49,6 @@ export default function ThisPartWillReplay() {
     sEndDate2,
     cDescription2,
     sDescription2,
-    cCorrect9,
-    sCorrect9,
-    cCorrect10,
-    sCorrect10,
   } = useAppContext0;
   const experienceData = [
     {

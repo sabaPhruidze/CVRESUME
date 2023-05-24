@@ -1,40 +1,26 @@
 import React from "react";
 import { createContext, useContext, useState, useRef } from "react";
 import { context } from "../App";
-import Home from "./Home";
+// pages
 import Personal from "./InfoUpdateComponents/Personal";
 import Experience from "./InfoUpdateComponents/Experience";
-
-// import CommonInput from "./InfoUpdateComponents/CommonInput";
-// import CorrectWrongComponent from "./InfoUpdateComponents/CorrectWrongComponent";
 import RightSide from "./InfoUpdateComponents/RightSide";
-
-// import georgiaFlag from "../Assets/Img/common/georgia.png";
-// import unitedKingdomFlag from "../Assets/Img/common/unitedKingdom.png";
-// import lightMode from "../Assets/Icon/sunMode.svg";
-// import darkMode from "../Assets/Icon/nightMode.svg";
-
-// import Ellipse from "../Assets/Img/2. SecondPage/Ellipse.svg";
-// import Vector from "../Assets/Img/2. SecondPage/Vectorvector.svg";
-// import OrangeLogo from "../Assets/Img/2. SecondPage/logoOrange.svg";
-// import mobileIcon from "../Assets/Icon/phoneIcon.svg";
-// import spiralIcon from "../Assets/Icon/@.svg";
-
-import CommonStyles from "./Styles/Common.module.css";
 import Knowledge from "./InfoUpdateComponents/Knowledge";
+// pages
+
+// styles
+import CommonStyles from "./Styles/Common.module.css";
+// styles
 
 export const infoUpdateContext = createContext<any>("s");
 
 export default function InfoUpdate() {
   const useAppContext1 = useContext(context);
-
   const {
     ExperienceDateStartRef,
     ExperienceDateEndRef,
     ExperienceTextAreaRef,
-
     aboutMeRef,
-
     cPage,
     sPage,
     cLanguage,
@@ -73,10 +59,8 @@ export default function InfoUpdate() {
     sEndDate,
     cDescription,
     sDescription,
-
     cMoreExperience,
     sMoreExperience,
-
     cPosition1,
     sPosition1,
     cEmployer1,
@@ -87,7 +71,6 @@ export default function InfoUpdate() {
     sEndDate1,
     cDescription1,
     sDescription1,
-
     cPosition2,
     sPosition2,
     cEmployer2,
@@ -98,19 +81,12 @@ export default function InfoUpdate() {
     sEndDate2,
     cDescription2,
     sDescription2,
-
     cCorrect5,
     sCorrect5,
     cCorrect6,
     sCorrect6,
     cCorrect7,
     sCorrect7,
-    cCorrect8,
-    sCorrect8,
-    cCorrect9,
-    sCorrect9,
-    cCorrect10,
-    sCorrect10,
     cVisible1,
     sVisible1,
     cCourse,
@@ -221,12 +197,6 @@ export default function InfoUpdate() {
         sCorrect6,
         cCorrect7,
         sCorrect7,
-        cCorrect8,
-        sCorrect8,
-        cCorrect9,
-        sCorrect9,
-        cCorrect10,
-        sCorrect10,
         cVisible1,
         sVisible1,
 
@@ -255,23 +225,7 @@ export default function InfoUpdate() {
         sDOE2,
       }}
     >
-      <div
-        className={`${CommonStyles.container} ${CommonStyles.flexRow}`}
-        style={{
-          height:
-            cMoreExperience === 0
-              ? "1080px"
-              : cMoreExperience === 1
-              ? "calc(846px * 2)"
-              : cMoreExperience === 2
-              ? "calc(846px * 2)"
-              : cPage === 3
-              ? "1080px"
-              : cPage === 4
-              ? "1260px"
-              : "calc(846px* 2)",
-        }}
-      >
+      <div className={`${CommonStyles.container} ${CommonStyles.flexRow}`}>
         {cPage === 1 ? (
           <Personal />
         ) : cPage === 2 ? (
