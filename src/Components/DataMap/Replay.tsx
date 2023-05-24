@@ -450,23 +450,27 @@ export function InputReplayCustomRow() {
       fullDivName: infoUpdateStyles.namePart,
       content: languageChanger(cLanguage, "სახელი", "Name"),
       htmlForId: "name",
-      set: sName,
+      onChange: (e: any) => {
+        const change = e.target.value;
+        sName(change);
+        localStorage.setItem("name", JSON.stringify(change));
+      },
       inputPlaceHolder: languageChanger(cLanguage, "ანზორ", "Anzor"),
       borderCorrect: cCorrect,
-      lsCall: "name",
-      lsValue: cName,
-      value: cName,
+      value: cName || "", // in order to not cause warning by changing from uncontrolled to controled input value.
     },
     {
       fullDivName: infoUpdateStyles.lastNamePart,
       content: languageChanger(cLanguage, "გვარი", "Username"),
       htmlForId: "userName",
-      set: sUsername,
+      onChange: (e: any) => {
+        const change = e.target.value;
+        sUsername(change);
+        localStorage.setItem("username", JSON.stringify(change));
+      },
       inputPlaceHolder: languageChanger(cLanguage, "მუმლაძე", "Mumladze"),
       borderCorrect: cCorrect1,
-      lsCall: "username",
-      lsValue: cUsername,
-      value: cUsername,
+      value: cUsername || "", // if cUsername is undefined than it will be "" else it will be written cUsername
     },
   ];
   return (
@@ -486,11 +490,7 @@ export function InputReplayCustomRow() {
               placeholder={data.inputPlaceHolder}
               id={data.htmlForId}
               className={CommonStyles.inputStandard}
-              onChange={(e) => {
-                const changePage = e.target.value;
-                data.set(changePage);
-                localStorage.setItem(data.lsCall, JSON.stringify(changePage));
-              }}
+              onChange={data.onChange}
               style={{
                 border: cVisible
                   ? data.borderCorrect
@@ -512,6 +512,7 @@ export function InputReplayCustomRow() {
     </>
   );
 }
+
 // for personal -
 export function InputFile() {
   const useAppContext0 = useContext(context);
@@ -528,6 +529,18 @@ export function InputFile() {
       labelId: "textArea",
       buttonContent: languageChanger(cLanguage, "ატვირთვა", "Upload"),
       key: 0,
+      onChange: (e: any) => {
+        const file = e.target.files?.[0];
+        const setImageInLocalStorage = (file: any): void => {
+          const reader = new FileReader();
+          sUploadImg(file);
+          reader.onload = () => {
+            localStorage.setItem("Image", reader.result as string);
+          };
+          reader.readAsDataURL(file);
+        };
+        setImageInLocalStorage(file);
+      },
       lsCall: "Image",
       lsValue: cUploadImg,
     },
@@ -556,18 +569,7 @@ export function InputFile() {
               alt="upload photo"
               accept="image/*"
               id={data.htmlFor}
-              onChange={(e) => {
-                const file = e.target.files?.[0];
-                const setImageInLocalStorage = (file: any): void => {
-                  const reader = new FileReader();
-                  sUploadImg(file);
-                  reader.onload = () => {
-                    localStorage.setItem("Image", reader.result as string);
-                  };
-                  reader.readAsDataURL(file);
-                };
-                setImageInLocalStorage(file);
-              }}
+              onChange={data.onChange}
             />
             {/* allowing only Images */}
           </label>
