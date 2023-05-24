@@ -180,10 +180,6 @@ export function ButtonReplay() {
     cEmployer,
     cStartDate,
     cEndDate,
-    cPosition1,
-    cEmployer1,
-    cPosition2,
-    cEmployer2,
     cDescription,
     cMoreExperience,
   } = useAppContext0;
@@ -932,7 +928,7 @@ export function KnowledgeButtonReplay() {
                 : cMoreExperience === 1
                 ? 1598
                 : cMoreExperience === 2
-                ? 2259
+                ? 2050
                 : 967,
             left: data.widthPlace,
           }}

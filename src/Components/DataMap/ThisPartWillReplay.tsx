@@ -14,10 +14,8 @@ export default function ThisPartWillReplay() {
     sPosition,
     cCorrect5,
     cCorrect6,
-    cCorrect7,
     cEmployer,
     sEmployer,
-
     sStartDate,
     cStartDate,
     cEndDate,
@@ -28,7 +26,6 @@ export default function ThisPartWillReplay() {
     ExperienceDateStartRef,
     ExperienceDateEndRef,
     cMoreExperience,
-    cArray,
     cPosition1,
     sPosition1,
     cEmployer1,
