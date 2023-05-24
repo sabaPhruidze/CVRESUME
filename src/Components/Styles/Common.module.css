@@ -77,7 +77,6 @@ least for 2 page */
     top:0;
     left:0;
     color:black;
-    
 }
 .infoContainerDark {
   background-color: #090909;
@@ -130,6 +129,9 @@ least for 2 page */
     cursor: pointer;
     transition: 0.5s ease;
     font-size:18px;
+    border:0;
+    border-radius: 5px;
+    font-weight: 800;
 }
 .purpleButtonDark {
   background-color:#180352 ;
@@ -184,7 +186,7 @@ least for 2 page */
     position: absolute;
     z-index: 1;
     top:0;
-    right:0;
+    left:1098px;
     padding-left:80px;
     box-sizing: border-box;
 }

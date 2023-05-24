@@ -9,7 +9,9 @@ import Vector from "../Assets/Img/2. SecondPage/Vectorvector.svg";
 import OrangeLogo from "../../Assets/Img/2. SecondPage/logoOrange.svg";
 import mobileIcon from "../../Assets/Icon/phoneIcon.svg";
 import spiralIcon from "../../Assets/Icon/@.svg";
-
+function languageChanger(changeReason: boolean, geo: string, eng: string) {
+  return !changeReason ? geo : eng;
+}
 export default function Rendered() {
   const MPCL = useContext(infoUpdateContext);
   const {
@@ -50,6 +52,7 @@ export default function Rendered() {
     cDescription2,
     sDescription2,
     cCourse,
+    cLanguage,
     cQuality,
     cFinishDate,
     cDOE,
@@ -127,7 +130,7 @@ export default function Rendered() {
                 marginBottom: "15px",
               }}
             >
-              ჩემს შესახებ
+              {languageChanger(cLanguage, "ჩემს შესახებ", "About me")}
             </div>
           </>
         )}
@@ -168,7 +171,7 @@ export default function Rendered() {
               marginBottom: "15px",
             }}
           >
-            გამოცდილება
+            {languageChanger(cLanguage, "გამოცდილება", "Experience")}
           </p>
           <p
             style={{
