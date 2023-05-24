@@ -661,7 +661,11 @@ export function PersonalMailTelephone() {
       fullDivName: infoUpdateStyles.mail,
       content: languageChanger(cLanguage, "ელ.ფოსტა", "Email"),
       htmlForId: "email",
-      onChange: sEmail,
+      onChange: (e: any) => {
+        const change = e.target.value;
+        sEmail(change);
+        localStorage.setItem("Email", JSON.stringify(change));
+      },
       inputPlaceHolder: "anzorr777@redberry.ge",
       borderCorrect: cCorrect2,
       type: "email",
@@ -671,14 +675,17 @@ export function PersonalMailTelephone() {
         "Must end with @redberry.ge"
       ),
       key: 0,
-      lsCall: "Email",
-      value: cEmail,
+      value: cEmail || "",
     },
     {
       fullDivName: infoUpdateStyles.telephone,
       content: languageChanger(cLanguage, "მობილურის ნომერი", "Mobile number"),
       htmlForId: "tel",
-      onChange: sTel,
+      onChange: (e: any) => {
+        const change = e.target.value;
+        sTel(change);
+        localStorage.setItem("Telephone", JSON.stringify(change));
+      },
       inputPlaceHolder: languageChanger(
         cLanguage,
         "უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს",
@@ -692,8 +699,7 @@ export function PersonalMailTelephone() {
         "Must meet the Georgian mobile number format"
       ),
       key: 1,
-      lsCall: "Telephone",
-      value: cTel,
+      value: cTel || "",
     },
   ];
   return (
@@ -719,11 +725,7 @@ export function PersonalMailTelephone() {
               placeholder={data.inputPlaceHolder}
               id={data.htmlForId}
               className={CommonStyles.inputStandard}
-              onChange={(e) => {
-                const change = e.target.value;
-                data.onChange(change);
-                localStorage.setItem(data.lsCall, JSON.stringify(change));
-              }}
+              onChange={data.onChange}
               style={{
                 border: cVisible
                   ? data.borderCorrect
