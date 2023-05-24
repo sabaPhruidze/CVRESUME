@@ -372,7 +372,7 @@ export function ButtonReplay() {
                       : cMoreExperience === 1
                       ? 1598
                       : cMoreExperience === 2
-                      ? 2259
+                      ? 2150
                       : 967,
                   left: data.widthPlace,
                 }
@@ -514,7 +514,6 @@ export function InputReplayCustomRow() {
     </>
   );
 }
-
 // for personal -
 export function InputFile() {
   const useAppContext0 = useContext(context);

@@ -83,7 +83,7 @@ export default function Rendered() {
             : cPage === 2 && cMoreExperience === 1
             ? "1711px" /* // 1711px is written because when the add more experience button is pressed its distance from top become 631px more, same goes to the second press it's distance increase by 631 px. */
             : cPage === 2 && cMoreExperience === 2
-            ? "2342px"
+            ? "2260px"
             : cPage === 3 && cMoreKnowledge === 1
             ? "1631px" /* when the button is clicked on the knowledge page the distance instraces by 551px */
             : cPage === 3 && cMoreKnowledge === 2

@@ -143,16 +143,17 @@ least for 2 page */
   cursor: pointer;
   transition: 0.5s ease;
   font-size:18px;
+  font-weight: 800;
 }
 .purpleButtonTwiceDark {
   padding:14px 35px;
-  
   cursor: pointer;
   transition: 0.5s ease;
   font-size:18px;
   background-color:#180352 ;
   border:1px solid black;
   color:white;
+  font-weight: 800;
 }
 
 .skyColorButton {
@@ -160,9 +161,10 @@ least for 2 page */
   padding: 14px 21px;
   color:white;
   cursor: pointer;
-  transition: 0.5s ease;
+  transition: 0.5s ease-in-out;
   font-size:18px;
   z-index: 3;
+  font-weight: 600;
 }
 .skyColorButtonDark{
   background-color:#032750;
