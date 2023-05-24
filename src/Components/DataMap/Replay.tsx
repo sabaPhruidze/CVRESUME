@@ -37,6 +37,8 @@ export function ImgReplay() {
     cPage,
     cVisible1,
     sVisible1,
+    sMoreExperinece,
+    sMoreKnowledge,
   } = useAppContext0;
 
   const imgData = [

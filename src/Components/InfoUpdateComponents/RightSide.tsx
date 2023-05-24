@@ -18,6 +18,7 @@ export default function Rendered() {
     cName,
     cUsername,
     cEmail,
+    cMoreKnowledge,
     cTel,
     cAboutMe,
     cUploadImg,
@@ -74,16 +75,24 @@ export default function Rendered() {
       }
       style={{
         height:
-          cMoreExperience === 0
+          cPage === 0 ||
+          cPage === 1 ||
+          (cPage === 2 && cMoreExperience === 0) ||
+          (cPage === 3 && cMoreKnowledge === 0)
             ? "1080px"
-            : cMoreExperience === 1
-            ? "calc(1080px + 631px )"
-            : cMoreExperience === 2
-            ? "calc(1080px + 2 * 631px)"
-            : cPage === 3
-            ? "1080px"
-            : "calc(1080px + 631px * 2)",
-        overflow: cMoreExperience === 0 ? "hidden" : "none",
+            : cPage === 2 && cMoreExperience === 1
+            ? "1711px" /* // 1711px is written because when the add more experience button is pressed its distance from top become 631px more, same goes to the second press it's distance increase by 631 px. */
+            : cPage === 2 && cMoreExperience === 2
+            ? "2342px"
+            : cPage === 3 && cMoreKnowledge === 1
+            ? "1631px" /* when the button is clicked on the knowledge page the distance instraces by 551px */
+            : cPage === 3 && cMoreKnowledge === 2
+            ? "2182px"
+            : cPage === 4
+            ? "1260px"
+            : "",
+        overflow:
+          cMoreExperience === 0 || cMoreKnowledge === 0 ? "hidden" : "auto",
       }}
     >
       <div className={CommonStyles.lineName}>
