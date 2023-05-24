@@ -54,7 +54,7 @@ export default function Personal() {
           cMoreExperience === 0
             ? "1080px"
             : cMoreExperience === 1
-            ? "calc(1080px + 630px * 2)"
+            ? "calc(1080px + 630px * 1)"
             : cMoreExperience === 2
             ? "calc(1080px + 630px * 2)"
             : "calc(1080px + 630px * 2)",
