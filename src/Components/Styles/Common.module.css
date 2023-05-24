@@ -7,11 +7,9 @@ least for 2 page */
 
   /* left side */
 .container {
-    width:1920px;
+   
     background-color: #f9f9f9;
     color:black;
-    font-family: "Arial GEO";
-    box-sizing: border-box;
 }
 
 .flexRow, .mobileContainer, .emailContainer {
@@ -203,7 +201,6 @@ least for 2 page */
     cursor: pointer;
 }
 .lineName {
-    font-family: RobotoBold;
     width:calc(100% - 264px - 75px);
     height:42px;
     color:#F93B1D;
