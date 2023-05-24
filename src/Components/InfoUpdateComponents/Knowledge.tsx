@@ -21,6 +21,7 @@ export default function Knowledge() {
     cPage,
     sTop,
     cMoreKnowledge,
+    sMoreKnowledge,
     cPosition2,
     cEmployer2,
     cStartDate2,
@@ -73,15 +74,18 @@ export default function Knowledge() {
       cEmployer1.length > 0 ||
       cStartDate1.length > 0 ||
       cEndDate1.length > 0 ||
-      cDescription1.length > 0 ||
+      cDescription1.length > 0
+    ) {
+      sMoreKnowledge(1);
+      // sTop(967 + 551);
+    } else if (
       cPosition2.length > 0 ||
       cEmployer2.length > 0 ||
       cStartDate2.length > 0 ||
       cEndDate2.length > 0 ||
       cDescription2.length > 0
     ) {
-      sMoreExperience(1);
-      // sTop(967 + 551);
+      sMoreKnowledge(2);
     } else {
       sMoreExperience(0);
     }

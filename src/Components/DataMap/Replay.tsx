@@ -743,8 +743,15 @@ export function PersonalMailTelephone() {
 //I prefer to stay this like it is
 export function ExperienceButtonReplayskyColor() {
   const useAppContext0 = useContext(context);
-  const { cPage, cBGColor, cLanguage, cMoreExperience, sMoreExperience } =
-    useAppContext0;
+  const {
+    cPage,
+    cBGColor,
+    cLanguage,
+    cMoreExperience,
+    sMoreExperience,
+    cMoreKnowledge,
+    sMoreKnowledge,
+  } = useAppContext0;
   const buttonDataExperience = [
     {
       className: cBGColor
@@ -775,7 +782,7 @@ export function ExperienceButtonReplayskyColor() {
       ),
       key: 1,
       onClick: () => {
-        sMoreExperience(cMoreExperience < 2 ? cMoreExperience + 1 : 2);
+        sMoreKnowledge(cMoreKnowledge < 2 ? cMoreKnowledge + 1 : 2);
       },
     },
   ];
@@ -798,12 +805,12 @@ export function ExperienceButtonReplayskyColor() {
                   ? 1340
                   : cPage === 2 && cMoreExperience === 2
                   ? 1920
-                  : cPage === 3 && cMoreExperience === 0
+                  : cPage === 3 && cMoreKnowledge === 0
                   ? 725
-                  : cPage === 3 && cMoreExperience === 1
-                  ? 1290
-                  : cPage === 3 && cMoreExperience === 2
-                  ? 1850
+                  : cPage === 3 && cMoreKnowledge === 1
+                  ? 1276
+                  : cPage === 3 && cMoreKnowledge === 2
+                  ? 1827
                   : "",
               left: "150px",
               zIndex: 100,
@@ -823,6 +830,7 @@ export function KnowledgeButtonReplay() {
     cPage,
     sPage,
     cLanguage,
+    cMoreKnowledge,
     sCorrect7,
     sMoreExperience,
     sVisible1,
@@ -923,12 +931,12 @@ export function KnowledgeButtonReplay() {
           style={{
             position: "absolute",
             top:
-              cMoreExperience === 0
+              cMoreKnowledge === 0
                 ? 967
-                : cMoreExperience === 1
-                ? 1598
-                : cMoreExperience === 2
-                ? 2050
+                : cMoreKnowledge === 1
+                ? 1518 // it increase by 551 according to the figma
+                : cMoreKnowledge === 2
+                ? 2069 // it increased by 551 * 2
                 : 967,
             left: data.widthPlace,
           }}
