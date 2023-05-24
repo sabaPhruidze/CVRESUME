@@ -8,12 +8,8 @@ least for 2 page */
   /* left side */
 .container {
     width:1920px;
-    height:1080px;
-    box-sizing: border-box;
     background-color: #f9f9f9;
     color:black;
-    position: relative;
-    box-sizing: border-box;
     font-family: "Arial GEO";
 }
 
