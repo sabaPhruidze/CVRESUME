@@ -225,9 +225,23 @@ export default function Rendered() {
           </>
         )}
 
-        <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
-          {cStartDate} - {cEndDate}
-        </em>
+        {cStartDate && cStartDate.length > 0 ? (
+          <>
+            <em
+              style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}
+            >
+              {cStartDate} - {cEndDate}
+            </em>
+          </>
+        ) : (
+          <>
+            <em
+              style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}
+            >
+              {cEndDate}
+            </em>
+          </>
+        )}
         <div
           style={{
             width: "662px",
@@ -269,9 +283,23 @@ export default function Rendered() {
             </p>
           </>
         )}
-        <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
-          {cStartDate1} - {cEndDate1}
-        </em>
+        {cStartDate1 && cStartDate1.length > 0 ? (
+          <>
+            <em
+              style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}
+            >
+              {cStartDate1} - {cEndDate1}
+            </em>
+          </>
+        ) : (
+          <>
+            <em
+              style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}
+            >
+              {cEndDate1}
+            </em>
+          </>
+        )}
         <div
           style={{
             width: "662px",
@@ -313,9 +341,23 @@ export default function Rendered() {
             </p>
           </>
         )}
-        <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
-          {cStartDate2} - {cEndDate2}
-        </em>
+        {cStartDate2 && cStartDate2.length > 0 ? (
+          <>
+            <em
+              style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}
+            >
+              {cStartDate2} - {cEndDate2}
+            </em>
+          </>
+        ) : (
+          <>
+            <em
+              style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}
+            >
+              {cEndDate2}
+            </em>
+          </>
+        )}
         <div
           style={{
             width: "662px",
