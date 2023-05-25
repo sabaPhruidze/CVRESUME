@@ -85,14 +85,14 @@ export default function Rendered() {
             : cPage === 2 && cMoreExperience === 2
             ? "2260px"
             : cPage === 3 && cMoreKnowledge === 1
-            ? "1631px" /* when the button is clicked on the knowledge page the distance instraces by 551px */
+            ? 1631 /* when the button is clicked on the knowledge page the distance instraces by 551px */
             : cPage === 3 && cMoreKnowledge === 2
-            ? "2182px"
+            ? 2182
             : cPage === 4
             ? "1260px"
             : "",
         overflow:
-          cMoreExperience === 0 || cMoreKnowledge === 0 ? "hidden" : "none",
+          cMoreExperience === 0 || cMoreKnowledge === 0 ? "hidden" : "visible",
       }}
     >
       <div className={CommonStyles.lineName}>
