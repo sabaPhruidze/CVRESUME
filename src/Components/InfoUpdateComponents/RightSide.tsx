@@ -92,7 +92,7 @@ export default function Rendered() {
             ? "1260px"
             : "",
         overflow:
-          cMoreExperience === 0 || cMoreKnowledge === 0 ? "hidden" : "auto",
+          cMoreExperience === 0 || cMoreKnowledge === 0 ? "hidden" : "none",
       }}
     >
       <div className={CommonStyles.lineName}>
@@ -165,136 +165,199 @@ export default function Rendered() {
         />
       )}
       <img src={OrangeLogo} alt="OrangeLogo" className={CommonStyles.orange} />
-      {cPosition.length > 0 ||
-      cEmployer.length > 0 ||
-      cStartDate.length > 0 ||
-      cEndDate.length > 0 ||
-      cDescription.length > 0 ? (
-        <>
-          <hr style={{ marginTop: "40px", width: "calc(100% - 80px)" }} />
-          <p
-            style={{
-              fontSize: "22px",
-              fontWeight: "900",
-              color: "#F93B1D",
-              marginTop: "24px",
-              marginBottom: "15px",
-            }}
-          >
-            {languageChanger(cLanguage, "გამოცდილება", "Experience")}
-          </p>
-          <p
-            style={{
-              marginTop: "15px",
-              fontWeight: "600",
-              marginBottom: "7px",
-            }}
-          >
-            {cPosition}, {cEmployer}{" "}
-          </p>
-          <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
-            {cStartDate} - {cEndDate}
-          </em>
-          <div
-            style={{
-              width: "662px",
-              minHeight: 0,
-              maxHeight: "140px",
-              wordWrap: "break-word",
-              overflow: "hidden",
-              fontSize: "16px",
-              marginTop: "16px",
-            }}
-          >
-            {cDescription}
-          </div>
-        </>
-      ) : (
-        ""
-      )}
-      {cPosition1.length > 0 ||
-      cEmployer1.length > 0 ||
-      cStartDate1.length > 0 ||
-      cEndDate1.length > 0 ||
-      cDescription1.length > 0 ? (
-        <>
-          <p
-            style={{
-              marginTop: "15px",
-              fontWeight: "600",
-              marginBottom: "7px",
-            }}
-          >
-            {cPosition1}, {cEmployer1}{" "}
-          </p>
-          <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
-            {cStartDate1} - {cEndDate1}
-          </em>
-          <div
-            style={{
-              width: "662px",
-              minHeight: "0px",
-              maxHeight: "100px",
-              wordWrap: "break-word",
-              overflow: "hidden",
-              fontSize: "16px",
-              marginTop: "16px",
-            }}
-          >
-            {cDescription1}
-          </div>
-        </>
-      ) : (
-        ""
-      )}
-      {cPosition2.length > 0 ||
-      cEmployer2.length > 0 ||
-      cStartDate2.length > 0 ||
-      cEndDate2.length > 0 ||
-      cDescription2.length > 0 ? (
-        <>
-          <p
-            style={{
-              marginTop: "15px",
-              fontWeight: "600",
-              marginBottom: "7px",
-            }}
-          >
-            {cPosition2}, {cEmployer2}{" "}
-          </p>
-          <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
-            {cStartDate2} - {cEndDate2}
-          </em>
-          <div
-            style={{
-              width: "662px",
-              minHeight: 0,
-              maxHeight: "140px",
-              wordWrap: "break-word",
-              overflow: "hidden",
-              fontSize: "16px",
-              marginTop: "16px",
-            }}
-          >
-            {cDescription2}
-          </div>
-        </>
-      ) : (
-        ""
-      )}
-      {cCourse.length > 0 || cQuality.length > 0 || cDOE.length > 0 ? (
-        <>
-          <hr style={{ marginTop: "40px", width: "calc(100% - 80px)" }} />
-          <p
-            style={{
-              fontSize: "22px",
-              fontWeight: "700",
-              color: "#F93B1D",
-              marginTop: "15px",
-            }}
-          >
-            განათლება
-          </p>
+      <>
+        {(cPosition && cPosition.length > 0) ||
+        (cPosition1 && cPosition1.length > 0) ||
+        (cPosition2 && cPosition2.length > 0) ||
+        (cEmployer && cEmployer.length > 0) ||
+        (cEmployer1 && cEmployer1.length > 0) ||
+        (cEmployer2 && cEmployer2.length > 0) ||
+        (cStartDate && cStartDate.length > 0) ||
+        (cStartDate1 && cStartDate1.length > 0) ||
+        (cStartDate2 && cStartDate2.length > 0) ||
+        (cEndDate && cEndDate.length > 0) ||
+        (cEndDate1 && cEndDate1.length > 0) ||
+        (cEndDate2 && cEndDate2.length > 0) ||
+        (cDescription && cDescription.length > 0) ||
+        (cDescription1 && cDescription1.length > 0) ||
+        (cDescription2 && cDescription2.length > 0) ? (
+          <>
+            {" "}
+            <hr style={{ marginTop: "40px", width: "calc(100% - 80px)" }} />
+            <p
+              style={{
+                fontSize: "22px",
+                fontWeight: "900",
+                color: "#F93B1D",
+                marginTop: "24px",
+                marginBottom: "15px",
+              }}
+            >
+              გამოცდილება
+            </p>
+          </>
+        ) : (
+          ""
+        )}
+        {cPosition && cPosition.length > 0 ? (
+          <>
+            <p
+              style={{
+                marginTop: "15px",
+                fontWeight: "600",
+                marginBottom: "7px",
+              }}
+            >
+              {cPosition}, {cEmployer}{" "}
+            </p>
+          </>
+        ) : (
+          <>
+            <p
+              style={{
+                marginTop: "15px",
+                fontWeight: "600",
+                marginBottom: "7px",
+              }}
+            >
+              {cEmployer}{" "}
+            </p>
+          </>
+        )}
+
+        <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
+          {cStartDate} - {cEndDate}
+        </em>
+        <div
+          style={{
+            width: "662px",
+            minHeight: 0,
+            maxHeight: "140px",
+            wordWrap: "break-word",
+            overflow: "hidden",
+            fontSize: "16px",
+            marginTop: "16px",
+          }}
+        >
+          {cDescription}
+        </div>
+      </>
+
+      <>
+        {cPosition1 && cPosition1.length > 0 ? (
+          <>
+            <p
+              style={{
+                marginTop: "15px",
+                fontWeight: "600",
+                marginBottom: "7px",
+              }}
+            >
+              {cPosition1}, {cEmployer1}{" "}
+            </p>
+          </>
+        ) : (
+          <>
+            <p
+              style={{
+                marginTop: "15px",
+                fontWeight: "600",
+                marginBottom: "7px",
+              }}
+            >
+              {cEmployer1}{" "}
+            </p>
+          </>
+        )}
+        <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
+          {cStartDate1} - {cEndDate1}
+        </em>
+        <div
+          style={{
+            width: "662px",
+            minHeight: "0px",
+            maxHeight: "100px",
+            wordWrap: "break-word",
+            overflow: "hidden",
+            fontSize: "16px",
+            marginTop: "16px",
+          }}
+        >
+          {cDescription1}
+        </div>
+      </>
+
+      <>
+        {cPosition2 && cPosition2.length > 0 ? (
+          <>
+            <p
+              style={{
+                marginTop: "15px",
+                fontWeight: "600",
+                marginBottom: "7px",
+              }}
+            >
+              {cPosition2}, {cEmployer2}{" "}
+            </p>
+          </>
+        ) : (
+          <>
+            <p
+              style={{
+                marginTop: "15px",
+                fontWeight: "600",
+                marginBottom: "7px",
+              }}
+            >
+              {cEmployer2}{" "}
+            </p>
+          </>
+        )}
+        <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
+          {cStartDate2} - {cEndDate2}
+        </em>
+        <div
+          style={{
+            width: "662px",
+            minHeight: 0,
+            maxHeight: "140px",
+            wordWrap: "break-word",
+            overflow: "hidden",
+            fontSize: "16px",
+            marginTop: "16px",
+          }}
+        >
+          {cDescription2}
+        </div>
+      </>
+
+      <>
+        {(cCourse && cCourse.length) > 0 ||
+        (cQuality && cQuality.length > 0) ||
+        (cDOE && cDOE.length > 0) ||
+        (cCourse1 && cCourse1.length > 0) ||
+        (cQuality1 && cQuality1.length > 0) ||
+        (cDOE1 && cDOE1.length > 0) ||
+        (cCourse2 && cCourse2.length > 0) ||
+        (cQuality2 && cQuality2.length > 0) ||
+        (cDOE2 && cDOE2.length > 0) ? (
+          <>
+            <hr style={{ marginTop: "40px", width: "calc(100% - 80px)" }} />
+            <p
+              style={{
+                fontSize: "22px",
+                fontWeight: "700",
+                color: "#F93B1D",
+                marginTop: "15px",
+              }}
+            >
+              განათლება
+            </p>
+          </>
+        ) : (
+          ""
+        )}
+        {cCourse && cCourse.length > 0 ? (
           <p
             style={{
               marginTop: "15px",
@@ -304,28 +367,37 @@ export default function Rendered() {
           >
             {cCourse}, {cQuality}{" "}
           </p>
-          <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
-            {cFinishDate}
-          </em>
-          <div
+        ) : (
+          <p
             style={{
-              width: "662px",
-              minHeight: "0px",
-              maxHeight: "230px",
-              wordWrap: "break-word",
-              overflow: "hidden",
-              fontSize: "16px",
-              marginTop: "16px",
+              marginTop: "15px",
+              fontWeight: "600",
+              marginBottom: "7px",
             }}
           >
-            {cDOE}
-          </div>
-        </>
-      ) : (
-        ""
-      )}
-      {cCourse1.length > 0 || cQuality1.length > 0 || cDOE1.length > 0 ? (
-        <>
+            {cQuality}{" "}
+          </p>
+        )}
+        <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
+          {cFinishDate}
+        </em>
+        <div
+          style={{
+            width: "662px",
+            minHeight: "0px",
+            maxHeight: "230px",
+            wordWrap: "break-word",
+            overflow: "hidden",
+            fontSize: "16px",
+            marginTop: "16px",
+          }}
+        >
+          {cDOE}
+        </div>
+      </>
+
+      <>
+        {cCourse1 && cCourse1.length > 0 ? (
           <p
             style={{
               marginTop: "15px",
@@ -335,28 +407,37 @@ export default function Rendered() {
           >
             {cCourse1}, {cQuality1}{" "}
           </p>
-          <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
-            {cFinishDate1}
-          </em>
-          <div
+        ) : (
+          <p
             style={{
-              width: "662px",
-              minHeight: "0px",
-              maxHeight: "210px",
-              wordWrap: "break-word",
-              overflow: "hidden",
-              fontSize: "16px",
-              marginTop: "16px",
+              marginTop: "15px",
+              fontWeight: "600",
+              marginBottom: "7px",
             }}
           >
-            {cDOE1}
-          </div>
-        </>
-      ) : (
-        ""
-      )}
-      {cCourse2.length > 0 || cQuality2.length > 0 || cDOE2.length > 0 ? (
-        <>
+            {cQuality1}{" "}
+          </p>
+        )}
+        <em style={{ fontSize: "16px", color: "#909090", marginTop: "7px" }}>
+          {cFinishDate1}
+        </em>
+        <div
+          style={{
+            width: "662px",
+            minHeight: "0px",
+            maxHeight: "210px",
+            wordWrap: "break-word",
+            overflow: "hidden",
+            fontSize: "16px",
+            marginTop: "16px",
+          }}
+        >
+          {cDOE1}
+        </div>
+      </>
+
+      <>
+        {cCourse2 && cCourse2.length > 0 ? (
           <p
             style={{
               marginTop: "15px",
@@ -366,23 +447,31 @@ export default function Rendered() {
           >
             {cCourse2}, {cQuality2}{" "}
           </p>
-          <em style={{ fontSize: "16px", color: "#909090" }}>{cFinishDate2}</em>
-          <div
+        ) : (
+          <p
             style={{
-              width: "662px",
-              height: "230px",
-              wordWrap: "break-word",
-              overflow: "hidden",
-              fontSize: "16px",
-              marginTop: "16px",
+              marginTop: "15px",
+              fontWeight: "600",
+              marginBottom: "7px",
             }}
           >
-            {cDOE2}
-          </div>
-        </>
-      ) : (
-        ""
-      )}
+            {cQuality2}{" "}
+          </p>
+        )}
+        <em style={{ fontSize: "16px", color: "#909090" }}>{cFinishDate2}</em>
+        <div
+          style={{
+            width: "662px",
+            height: "230px",
+            wordWrap: "break-word",
+            overflow: "hidden",
+            fontSize: "16px",
+            marginTop: "16px",
+          }}
+        >
+          {cDOE2}
+        </div>
+      </>
     </div>
   );
 }

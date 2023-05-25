@@ -16,11 +16,7 @@ export default function FinalResume() {
   const {
     sDOE,
     sCourse,
-    aboutMeRef,
-    cPage,
     sPage,
-    cLanguage,
-    sLanguage,
     cBGColor,
     sBGColor,
     cName,
@@ -28,23 +24,12 @@ export default function FinalResume() {
     cUsername,
     sUsername,
     cUploadImg,
-    sUploadImg,
     cEmail,
     sEmail,
     cTel,
     sTel,
     cAboutMe,
     sAboutMe,
-    cCorrect,
-    sCorrect,
-    cCorrect1,
-    sCorrect1,
-    cCorrect2,
-    sCorrect2,
-    cCorrect3,
-    sCorrect3,
-    cVisible,
-    sVisible,
     cPosition,
     sPosition,
     cEmployer,
@@ -55,10 +40,6 @@ export default function FinalResume() {
     sEndDate,
     cDescription,
     sDescription,
-
-    cMoreExperience,
-    sMoreExperience,
-
     cPosition1,
     sPosition1,
     cEmployer1,
@@ -69,7 +50,6 @@ export default function FinalResume() {
     sEndDate1,
     cDescription1,
     sDescription1,
-
     cPosition2,
     sPosition2,
     cEmployer2,
@@ -100,14 +80,8 @@ export default function FinalResume() {
     sQuality2,
     cFinishDate2,
     sFinishDate2,
-    cVisible2,
-    sVisible2,
     cDOE2,
     sDOE2,
-    courseRef,
-    qualityRef,
-    finishDateRef,
-    DOERef,
     sFinishDate,
     sQuality,
   } = useAppContext4;
@@ -262,15 +236,18 @@ export default function FinalResume() {
             {(cPosition && cPosition.length > 0) ||
             (cPosition1 && cPosition1.length > 0) ||
             (cPosition2 && cPosition2.length > 0) ||
-            (cStartDate && cStartDate.length) ||
-            (cStartDate1 && cStartDate1.length) ||
-            (cStartDate2 && cStartDate2.length) ||
-            (cEndDate && cEndDate.length) ||
-            (cEndDate1 && cEndDate1.length) ||
-            (cEndDate2 && cEndDate2.length) ||
-            (cDescription && cDescription.length) ||
-            (cDescription1 && cDescription1.length) ||
-            (cDescription2 && cDescription2.length) ? (
+            (cEmployer && cEmployer.length > 0) ||
+            (cEmployer1 && cEmployer1.length > 0) ||
+            (cEmployer2 && cEmployer2.length > 0) ||
+            (cStartDate && cStartDate.length > 0) ||
+            (cStartDate1 && cStartDate1.length > 0) ||
+            (cStartDate2 && cStartDate2.length > 0) ||
+            (cEndDate && cEndDate.length > 0) ||
+            (cEndDate1 && cEndDate1.length > 0) ||
+            (cEndDate2 && cEndDate2.length > 0) ||
+            (cDescription && cDescription.length > 0) ||
+            (cDescription1 && cDescription1.length > 0) ||
+            (cDescription2 && cDescription2.length > 0) ? (
               <>
                 {" "}
                 <hr style={{ marginTop: "40px", width: "calc(100% - 80px)" }} />
