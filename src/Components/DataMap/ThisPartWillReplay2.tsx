@@ -89,7 +89,7 @@ export default function ThisPartWillReplay() {
         sCourse(change);
         localStorage.setItem("course", JSON.stringify(change));
       },
-      value: cCourse,
+      value: cCourse || "",
       inputPlaceHolder: languageChanger(
         cLanguage,
         "სასწავლებელი",
@@ -110,7 +110,7 @@ export default function ThisPartWillReplay() {
         sCourse1(change);
         localStorage.setItem("course1", JSON.stringify(change));
       },
-      value: cCourse1,
+      value: cCourse1 || "",
       inputPlaceHolder: languageChanger(
         cLanguage,
         "სასწავლებელი",
@@ -128,7 +128,7 @@ export default function ThisPartWillReplay() {
         sCourse2(change);
         localStorage.setItem("course2", JSON.stringify(change));
       },
-      value: cCourse2,
+      value: cCourse2 || "",
       inputPlaceHolder: languageChanger(
         cLanguage,
         "სასწავლებელი",
@@ -175,7 +175,7 @@ export default function ThisPartWillReplay() {
         sFinishDate(change);
         localStorage.setItem("finishDate", JSON.stringify(change));
       },
-      value: cFinishDate,
+      value: cFinishDate || "mm/dd/yyyy",
       key: 1,
       ref: finishDateRef, ///aaaaaaaaaaaaaaaqqqqqqqqqqqq
     },
@@ -193,7 +193,7 @@ export default function ThisPartWillReplay() {
         sFinishDate1(change);
         localStorage.setItem("finishDate1", JSON.stringify(change));
       },
-      value: cFinishDate1,
+      value: cFinishDate1 || "mm/dd/yyyy",
       key: 1,
     },
   ];
@@ -210,7 +210,7 @@ export default function ThisPartWillReplay() {
         sFinishDate2(change);
         localStorage.setItem("finishDate2", JSON.stringify(change));
       },
-      value: cFinishDate2,
+      value: cFinishDate2 || "mm/dd/yyyy",
       key: 1,
     },
   ];
@@ -231,7 +231,7 @@ export default function ThisPartWillReplay() {
         sDOE(change);
         localStorage.setItem("DOE", JSON.stringify(change));
       },
-      value: cDOE,
+      value: cDOE || "",
     },
   ];
   const DataOfTextArea1 = [
@@ -250,7 +250,7 @@ export default function ThisPartWillReplay() {
         sDOE1(change);
         localStorage.setItem("DOE1", JSON.stringify(change));
       },
-      value: cDOE1,
+      value: cDOE1 || "",
     },
   ];
   const DataOfTextArea2 = [
@@ -269,7 +269,7 @@ export default function ThisPartWillReplay() {
         sDOE2(change);
         localStorage.setItem("DOE2", JSON.stringify(change));
       },
-      value: cDOE2,
+      value: cDOE2 || "",
     },
   ];
   function languageChanger(changeReason: boolean, geo: string, eng: string) {
