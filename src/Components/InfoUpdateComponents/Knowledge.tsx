@@ -77,7 +77,6 @@ export default function Knowledge() {
       cDescription1.length > 0
     ) {
       sMoreKnowledge(1);
-      // sTop(967 + 551);
     } else if (
       cPosition2.length > 0 ||
       cEmployer2.length > 0 ||
@@ -99,15 +98,14 @@ export default function Knowledge() {
       }
       style={{
         height:
-          cMoreExperience === 0 && cMoreKnowledge === 0
+          cMoreKnowledge === 0
             ? "1080px"
             : cMoreKnowledge === 1 // If experience component is 1 or if Knowledge blue button is clicked one time than the size will increase
             ? "calc(1080px + 551px * 1)"
             : cMoreKnowledge === 2
             ? "calc(1080px + 551px * 2)"
             : "calc(1080px + 551px * 2)",
-        overflow:
-          cMoreExperience === 0 || cMoreKnowledge === 0 ? "hidden" : "visible",
+        overflow: cMoreKnowledge === 0 ? "hidden" : "visible",
       }}
     >
       <ExperienceButtonReplayskyColor />
