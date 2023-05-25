@@ -12,6 +12,9 @@ import spiralIcon from "../Assets/Icon/@1.svg";
 import { ImgReplay } from "./DataMap/Replay";
 import vectorClose from "../Assets/Img/4. Fourth page/Vector (1).svg";
 export default function FinalResume() {
+  function languageChanger(changeReason: boolean, geo: string, eng: string) {
+    return !changeReason ? geo : eng;
+  }
   const useAppContext4 = useContext(context);
   const {
     sDOE,
@@ -26,6 +29,7 @@ export default function FinalResume() {
     cUploadImg,
     cEmail,
     sEmail,
+    cLanguage,
     cTel,
     sTel,
     cAboutMe,
@@ -260,7 +264,7 @@ export default function FinalResume() {
                     marginBottom: "15px",
                   }}
                 >
-                  გამოცდილება
+                  {languageChanger(cLanguage, "გამოცდილება", "Experience")}
                 </p>
               </>
             ) : (
@@ -424,7 +428,7 @@ export default function FinalResume() {
                     marginTop: "15px",
                   }}
                 >
-                  განათლება
+                  {languageChanger(cLanguage, "განათლება", "Knowledge")}
                 </p>
               </>
             ) : (
@@ -584,7 +588,11 @@ export default function FinalResume() {
             lineHeight: "43px",
           }}
         >
-          რეზიუმე წარმატებით გაიგზავნა 🎉
+          {languageChanger(
+            cLanguage,
+            "რეზიუმე წარმატებით გაიგზავნა 🎉",
+            "Resume was successfully sent 🎉"
+          )}
         </div>
       )}
       <img

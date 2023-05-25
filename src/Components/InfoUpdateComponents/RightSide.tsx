@@ -193,7 +193,7 @@ export default function Rendered() {
                 marginBottom: "15px",
               }}
             >
-              გამოცდილება
+              {languageChanger(cLanguage, "გამოცდილება", "Experience")}
             </p>
           </>
         ) : (
@@ -393,7 +393,7 @@ export default function Rendered() {
                 marginTop: "15px",
               }}
             >
-              განათლება
+              {languageChanger(cLanguage, "განათლება", "Knowledge")}
             </p>
           </>
         ) : (
