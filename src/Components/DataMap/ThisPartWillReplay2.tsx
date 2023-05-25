@@ -437,7 +437,7 @@ export default function ThisPartWillReplay() {
           </>
         </div>
       </div>
-      {cMoreExperience >= 1 || cMoreKnowledge >= 1 ? (
+      {cMoreKnowledge >= 1 ? (
         <div
           className={CommonStyles.replayThisPart}
           style={{ marginTop: "150px" }}
@@ -613,7 +613,7 @@ export default function ThisPartWillReplay() {
       ) : (
         ""
       )}
-      {cMoreExperience >= 2 || cMoreKnowledge >= 2 ? (
+      {cMoreKnowledge >= 2 ? (
         <div
           className={CommonStyles.replayThisPart}
           style={{ marginTop: "350px" }}

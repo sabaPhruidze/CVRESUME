@@ -155,6 +155,7 @@ export function ButtonReplay() {
   const {
     cBGColor,
     sPage,
+    sMoreKnowledge,
     cLanguage,
     cPage,
     cName,
@@ -348,7 +349,11 @@ export function ButtonReplay() {
       endDate &&
       DateRegex.test(endDate)
     ) {
-      return [sVisible1(false), sPage(cPage + 1)];
+      return [
+        sVisible1(false),
+        sPage(cPage + 1),
+        sMoreKnowledge(cMoreExperience),
+      ];
     }
   }
   return (
@@ -594,7 +599,7 @@ export function PersonalTextArea() {
       key: 0,
       htmlFor: "aboutMe",
       ref: aboutMeRef,
-      labelContext: languageChanger(cLanguage, "ჩემ შესახებ ", "About me"),
+      labelContext: languageChanger(cLanguage, "ჩემ შესახებ ", "About me "),
       spanContext: languageChanger(cLanguage, "(არასავალდებულო)", "(optional)"),
       placeHolder: languageChanger(
         cLanguage,
@@ -742,6 +747,7 @@ export function PersonalMailTelephone() {
 }
 //I prefer to stay this like it is
 export function ExperienceButtonReplayskyColor() {
+  // here is knowledge sky button also
   const useAppContext0 = useContext(context);
   const {
     cPage,
@@ -918,7 +924,7 @@ export function KnowledgeButtonReplay() {
       quality.length > 0 &&
       finishDate
     ) {
-      return [sVisible2(false), sPage(cPage + 1), sMoreExperience(0)];
+      return [sVisible2(false), sPage(cPage + 1)];
     }
   }
   return (

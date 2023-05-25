@@ -151,6 +151,7 @@ export default function Rendered() {
             wordWrap: "break-word",
             overflow: "hidden",
             fontSize: "16px",
+            border: 0,
           }}
         >
           {cAboutMe}

@@ -58,7 +58,7 @@ export default function Personal() {
             : cMoreExperience === 2
             ? "calc(1080px + 590px * 2)"
             : "calc(1080px + 590px * 2)",
-        overflow: cMoreExperience === 0 ? "hidden" : "none",
+        overflow: cMoreExperience === 0 ? "hidden" : "visible",
       }}
     >
       <ExperienceButtonReplayskyColor />
