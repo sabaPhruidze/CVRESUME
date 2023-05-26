@@ -212,7 +212,7 @@ export default function FinalResume() {
                     marginBottom: "15px",
                   }}
                 >
-                  ჩემს შესახებ
+                  {languageChanger(cLanguage, "ჩემს შესახებ", "About me")}
                 </div>
               </>
             )}
