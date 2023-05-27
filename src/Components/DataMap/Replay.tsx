@@ -37,8 +37,6 @@ export function ImgReplay() {
     cPage,
     cVisible1,
     sVisible1,
-    sMoreExperinece,
-    sMoreKnowledge,
   } = useAppContext0;
 
   const imgData = [
@@ -170,7 +168,7 @@ export function ButtonReplay() {
     sCorrect3,
     cAboutMe,
     aboutMeRef,
-    sMoreExperience,
+
     ExperienceTextAreaRef,
     sCorrect5,
     sCorrect6,
@@ -582,17 +580,8 @@ export function InputFile() {
 }
 export function PersonalTextArea() {
   const useAppContext0 = useContext(context);
-  const {
-    cBGColor,
-    cLanguage,
-    sAboutMe,
-    cAboutMe,
-    aboutMeRef,
-    cDescription,
-    sDescription,
-    ExperienceTextAreaRef,
-    cPage,
-  } = useAppContext0;
+  const { cBGColor, cLanguage, sAboutMe, cAboutMe, aboutMeRef } =
+    useAppContext0;
 
   const PersonalTextArea = [
     {
@@ -783,8 +772,8 @@ export function ExperienceButtonReplayskyColor() {
 
       language: languageChanger(
         cLanguage,
-        "მეტი გამოცდილების დამატება",
-        "Adding more experience"
+        "სხვა სასწავლებლის დამატება",
+        "Adding Another school"
       ),
       key: 1,
       onClick: () => {
@@ -838,10 +827,7 @@ export function KnowledgeButtonReplay() {
     cLanguage,
     cMoreKnowledge,
     sCorrect7,
-    sMoreExperience,
-    sVisible1,
     sVisible2,
-    cMoreExperience,
     cBGColor,
     cQuality,
     cCourse,
@@ -851,7 +837,6 @@ export function KnowledgeButtonReplay() {
     qualityRef,
     finishDateRef,
     DOERef,
-    cCorrect7,
   } = useAppContext0;
 
   const buttonDataKnowledge = [

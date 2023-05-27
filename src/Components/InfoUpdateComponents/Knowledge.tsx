@@ -9,17 +9,12 @@ import {
 import ThisPartWillReplay2 from "../DataMap/ThisPartWillReplay2";
 import CorrectWrongComponent from "./CorrectWrongComponent";
 import CommonStyles from "../Styles/Common.module.css";
-import Ellipse from "../../Assets/Img/2. SecondPage/Ellipse.svg";
-import Vector from "../../Assets/Img/2. SecondPage/Vectorvector.svg";
-
 import { KnowledgeButtonReplay } from "../DataMap/Replay";
 export const MyKnowledgeContext = createContext<any>("w");
 
 export default function Knowledge() {
   const useAppContext3 = useContext(context);
   const {
-    cPage,
-    sTop,
     cMoreKnowledge,
     sMoreKnowledge,
     cPosition2,
@@ -27,33 +22,9 @@ export default function Knowledge() {
     cStartDate2,
     cEndDate2,
     cDescription2,
-    sPage,
     cLanguage,
-    sLanguage,
     cBGColor,
-    sBGColor,
-    cName,
-    sName,
-    cUsername,
-    sUsername,
-    cUploadImg,
-    sUploadImg,
-    cEmail,
-    sEmail,
-    cTel,
-    sTel,
-    cAboutMe,
-    sAboutMe,
-    cCorrect,
-    sCorrect,
-    cCorrect1,
-    sCorrect1,
-    cCorrect2,
-    sCorrect2,
-    cCorrect3,
-    sCorrect3,
     cVisible,
-    sVisible,
     cCorrect7,
     sVisible1,
     cPosition1,
@@ -61,7 +32,6 @@ export default function Knowledge() {
     cStartDate1,
     cEndDate1,
     cDescription1,
-    cMoreExperience,
     sMoreExperience,
   } = useAppContext3;
   function languageChanger(geo: string, eng: string) {
